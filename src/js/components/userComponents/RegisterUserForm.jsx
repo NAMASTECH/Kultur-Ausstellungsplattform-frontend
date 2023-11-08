@@ -1,54 +1,40 @@
 // Hier kommen alle wichtigen Imports rein. Z.B. die eingebauten Hooks von react
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 
 // Imports von benoetigten Paketen
 import axios from "axios";
 
-// Import eigener Module
-import { useAuthStore } from "../hooks/useAuthStore";
-
-export default function LoginForm() {
+export default function RegisterForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [isConfirmBtnActive, setConfirmBtnActive] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  // Hole Setterfunktion fuer global gespeicherte Userdaten aus Custom Hook fuer AuthStoreContext
-  const { setUserData } = useAuthStore();
+  const [confirmedUsername, setConfirmedUsername] = useState(null);
 
   // Sideeffect zum Pruefen, ob alle Felder valide sind und man den Confirmbutton aktivieren sollte
   useEffect(() => {
     validateForm();
-  }, [username, password]);
+  }, [username, password, email, confirmPassword]);
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
 
-    const reqBody = {
+    const userData = {
       username,
       password,
+      email,
     };
+
+    console.log(userData);
 
     try {
       const resp = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/auth/login`,
-        reqBody,
-        {
-          withCredentials: true,
-        }
+        `${import.meta.env.VITE_API_BASE_URL}/auth/register/user`,
+        userData
       );
-
-      // Speichere erhaltene Userdaten im globalen UserStore (Context)
-      setUserData({
-        id: resp.data.id,
-        username: resp.data.username,
-        role: resp.data.role,
-      });
-
-      // Wenn im location State eine Ursprungsroute hinterlegt wurde, navigiere zurueck dahin
-      if (location.state?.from) navigate(location.state.from);
+      console.log(resp.data);
+      setConfirmedUsername(resp.data.username);
     } catch (error) {
       console.error(error);
     }
@@ -62,20 +48,33 @@ export default function LoginForm() {
     setPassword(evt.target.value);
   };
 
+  const handleConfirmPasswordChange = (evt) => {
+    setConfirmPassword(evt.target.value);
+  };
+  const handleEmailChange = (evt) => {
+    setEmail(evt.target.value);
+  };
   // Hilfsfunktion zum Validieren der Felder und Aktivieren des Confirmbuttons
   const validateForm = () => {
     // Pruefe, ob alle Felder befuellt und Passwortfelder gleich
-    const isValid = username.length > 0 && password.length > 0;
+    const isValid =
+      username.length > 0 &&
+      password.length > 0 &&
+      email.length > 0 &&
+      password === confirmPassword;
     setConfirmBtnActive(isValid);
   };
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
-      <h2>Login</h2>
-
+    <form className="register-form" onSubmit={handleSubmit}>
+      <h2>Register</h2>
       <label>
         Username
         <input type="text" value={username} onChange={handleUsernameChange} />
+      </label>
+      <label>
+        E-Mail
+        <input type="text" value={email} onChange={handleEmailChange} />
       </label>
 
       <label>
@@ -87,13 +86,20 @@ export default function LoginForm() {
         />
       </label>
 
+      <label>
+        Confirm password
+        <input
+          type="password"
+          value={confirmPassword}
+          onChange={handleConfirmPasswordChange}
+        />
+      </label>
+
       <button type="submit" disabled={!isConfirmBtnActive}>
-        Sign In!
+        Sign Up
       </button>
 
-      {/* {
-            confirmedUsername && <h3>Welcome {confirmedUsername}!</h3>
-        } */}
+      {confirmedUsername && <h3>Welcome {confirmedUsername}!</h3>}
     </form>
   );
 }
