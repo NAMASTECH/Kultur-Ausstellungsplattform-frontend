@@ -11,6 +11,7 @@ import { useAuthStore } from "../hooks/useAuthStore";
 export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isMail, setIsMail] = useState(false);
   const [isConfirmBtnActive, setConfirmBtnActive] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -26,10 +27,9 @@ export default function LoginForm() {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
 
-    const reqBody = {
-      username,
-      password,
-    };
+    const reqBody = isMail
+      ? { email: username, password }
+      : { username: username, password };
 
     try {
       const resp = await axios.post(
@@ -53,9 +53,17 @@ export default function LoginForm() {
       console.error(error);
     }
   };
+  const isEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
 
   const handleUsernameChange = (evt) => {
     setUsername(evt.target.value);
+    if (isEmail(evt.target.value)) {
+      setIsMail(true);
+    } else {
+      setIsMail(false);
+    }
   };
 
   const handlePasswordChange = (evt) => {
@@ -74,7 +82,7 @@ export default function LoginForm() {
       <h2>Login</h2>
 
       <label>
-        Username
+        Username or Email
         <input type="text" value={username} onChange={handleUsernameChange} />
       </label>
 
