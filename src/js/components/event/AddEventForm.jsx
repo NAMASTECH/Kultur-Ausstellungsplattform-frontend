@@ -153,25 +153,45 @@ export default function AddEventForm() {
   const validateForm = () => {
     // Pruefe, ob alle Felder befuellt
     const isValid =
-      eventTitle &&
-      artist &&
-      eventType &&
-      img &&
-      eventCategory &&
-      description &&
-      homepage &&
-      dateStart &&
-      dateEnd &&
-      timeStart &&
-      timeEnd &&
-      venueName &&
-      city &&
-      street &&
-      houseNumber &&
-      additionalAddressInfo &&
-      zipCode &&
-      venueType;
-
+      eventTitle !== "" &&
+      artist !== "" &&
+      eventType !== "" &&
+      img !== "" &&
+      eventCategory !== "" &&
+      description !== "" &&
+      homepage !== "" &&
+      dateStart !== "" &&
+      dateEnd !== "" &&
+      timeStart !== "" &&
+      timeEnd !== "" &&
+      venueName !== "" &&
+      city !== "" &&
+      street !== "" &&
+      houseNumber !== "" &&
+      additionalAddressInfo !== "" &&
+      zipCode !== "" &&
+      venueType !== "";
+    console.log(isValid);
+    // const isValid =
+    //   eventTitle &&
+    //   artist &&
+    //   eventType &&
+    //   img &&
+    //   eventCategory &&
+    //   description &&
+    //   homepage &&
+    //   dateStart &&
+    //   dateEnd &&
+    //   timeStart &&
+    //   timeEnd &&
+    //   venueName &&
+    //   city &&
+    //   street &&
+    //   houseNumber &&
+    //   additionalAddressInfo &&
+    //   zipCode &&
+    //   venueType;
+    //    console.log(isValid);
     setConfirmBtnActive(isValid);
   };
 
@@ -180,18 +200,21 @@ export default function AddEventForm() {
       <h2>Add New Event</h2>
       <label>Event Title</label>
       <input type="text" value={eventTitle} onChange={handleEventTitleChange} />
+      <label>Event Category</label>
+      <input
+        type="text"
+        value={eventCategory}
+        onChange={handleEventCategoryChange}
+      />
       <label>Artist</label>
       <input type="text" value={artist} onChange={handleArtistChange} />
-      <label>E-Mail</label>
+      <label>venueType</label>
+      <input type="text" value={venueType} onChange={handleVenueTypeChange} />
+
+      <label>Event Type</label>
       <input type="text" value={eventType} onChange={handleEventTypeChange} />
       <label>img</label>
       <input type="text" value={img} onChange={handleImgChange} />
-      <label>Description</label>
-      <input
-        type="text"
-        value={description}
-        onChange={handleDescriptionChange}
-      />
       <label>Description</label>
 
       <textarea
@@ -201,6 +224,8 @@ export default function AddEventForm() {
         rows="25"
         cols="50"
         maxLength="2000"
+        value={description}
+        onChange={handleDescriptionChange}
       >
         <p>Write something here </p>
       </textarea>

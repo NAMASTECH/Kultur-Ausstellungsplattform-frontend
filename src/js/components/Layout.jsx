@@ -30,6 +30,7 @@ function Header() {
           <NavLink to="/register/organizer">Sign Up organization</NavLink>
         )}
         {!isOnline() && <NavLink to="/api/event">Add Event</NavLink>}
+        {!isOnline() && <NavLink to="/api/events">Event Table</NavLink>}
 
         <NavLink to="/users">Users</NavLink>
       </nav>
