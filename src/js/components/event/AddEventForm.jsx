@@ -178,88 +178,74 @@ export default function AddEventForm() {
   return (
     <form className="register-form" onSubmit={handleSubmit}>
       <h2>Add New Event</h2>
-      <label>
-        Event Title
-        <input
-          type="text"
-          value={eventTitle}
-          onChange={handleEventTitleChange}
-        />
-      </label>
-      <label>
-        Artist
-        <input type="text" value={artist} onChange={handleArtistChange} />
-      </label>
-      <label>
-        E-Mail
-        <input type="text" value={eventType} onChange={handleEventTypeChange} />
-      </label>
-      <label>
-        img
-        <input type="text" value={img} onChange={handleImgChange} />
-      </label>
+      <label>Event Title</label>
+      <input type="text" value={eventTitle} onChange={handleEventTitleChange} />
+      <label>Artist</label>
+      <input type="text" value={artist} onChange={handleArtistChange} />
+      <label>E-Mail</label>
+      <input type="text" value={eventType} onChange={handleEventTypeChange} />
+      <label>img</label>
+      <input type="text" value={img} onChange={handleImgChange} />
+      <label>Description</label>
+      <input
+        type="text"
+        value={description}
+        onChange={handleDescriptionChange}
+      />
+      <label>Description</label>
 
-      <label>
-        Description
-        <input
-          type="text"
-          value={description}
-          onChange={handleDescriptionChange}
-        />
-      </label>
+      <textarea
+        size="sm"
+        name="Size"
+        placeholder="Geben Sie ein Beschreibung"
+        rows="25"
+        cols="50"
+        maxLength="2000"
+      >
+        <p>Write something here </p>
+      </textarea>
+      <label>Homepage</label>
+      <input type="text" value={homepage} onChange={handleHomepageChange} />
 
-      <label>
-        Homepage
-        <input type="text" value={homepage} onChange={handleHomepageChange} />
-      </label>
       <label>
         Start Date
         <input type="date" value={dateStart} onChange={handleDateStartChange} />
       </label>
-      <label>
-        End Date
-        <input type="date" value={dateEnd} onChange={handleDateEndChange} />
-      </label>
-      <label>
-        Start Time
-        <input type="time" value={timeStart} onChange={handleTimeStartChange} />
-      </label>
-      <label>
-        End Time
-        <input type="time" value={timeEnd} onChange={handleTimeEndChange} />
-      </label>
-      <label>
-        Venue Name
-        <input type="text" value={venueName} onChange={handleVenueNameChange} />
-      </label>
-      <label>
-        City
-        <input type="text" value={city} onChange={handleCityChange} />
-      </label>
-      <label>
-        Street
-        <input type="text" value={street} onChange={handleStreetChange} />
-      </label>
-      <label>
-        House Number
-        <input
-          type="text"
-          value={houseNumber}
-          onChange={handleHouseNumberChange}
-        />
-      </label>
-      <label>
-        additional Address Information
-        <input
-          type="text"
-          value={additionalAddressInfo}
-          onChange={handleAdditionalAddressInfoChange}
-        />
-      </label>
-      <label>
-        ZIP-Code
-        <input type="text" value={zipCode} onChange={handleZipCodeChange} />
-      </label>
+      <label>End Date</label>
+      <input type="date" value={dateEnd} onChange={handleDateEndChange} />
+
+      <label>Start Time</label>
+      <input type="time" value={timeStart} onChange={handleTimeStartChange} />
+
+      <label>End Time</label>
+      <input type="time" value={timeEnd} onChange={handleTimeEndChange} />
+
+      <label>Venue Name</label>
+      <input type="text" value={venueName} onChange={handleVenueNameChange} />
+
+      <label>City</label>
+      <input type="text" value={city} onChange={handleCityChange} />
+
+      <label>Street</label>
+      <input type="text" value={street} onChange={handleStreetChange} />
+
+      <label>House Number</label>
+      <input
+        type="text"
+        value={houseNumber}
+        onChange={handleHouseNumberChange}
+      />
+
+      <label>additional Address Information</label>
+      <input
+        type="text"
+        value={additionalAddressInfo}
+        onChange={handleAdditionalAddressInfoChange}
+      />
+
+      <label>ZIP-Code</label>
+      <input type="text" value={zipCode} onChange={handleZipCodeChange} />
+
       <button type="submit" disabled={!isConfirmBtnActive}>
         Sign Up
       </button>
