@@ -4,19 +4,19 @@ import { useEffect, useState } from "react";
 export default function EventOverview() {
   const [events, setEvents] = useState([]);
 
-    useEffect(() => {
-      // TODO use pagination when implemented
-      axios
-        .get(`${import.meta.env.VITE_API_BASE_URL}/api/events`, {
-          withCredentials: true,
-        })
-        .then((resp) => {
-          setevents(resp.data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }, []);
+  useEffect(() => {
+    // TODO use pagination when implemented
+    axios
+      .get(`${import.meta.env.VITE_API_BASE_URL}/api/events`, {
+        withCredentials: true,
+      })
+      .then((resp) => {
+        setEvents(resp.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   const eventRows = events.map((event) => {
     return (
@@ -29,17 +29,18 @@ export default function EventOverview() {
         <td>{event.img}</td>
         <td>{event.description}</td>
         <td>{event.homepage}</td>
-        <td>{event.dateStart}</td>
-        <td>{event.dateEnd}</td>
+        <td>{Date.parse(event.dateStart)}</td>
+        <td>{Date.parse(event.dateStart)}</td>
         <td>{event.timeStart}</td>
         <td>{event.timeEnd}</td>
         <td>{event.venueName}</td>
         <td>{event.venueType}</td>
-        <td>{event.city}</td>
-        <td>{event.street}</td>
-        <td>{event.houseNumber}</td>
-        <td>{event.additionalAddressInfo}</td>
-        <td>{event.zipCode}</td>
+        <td>
+          {event.venues.map(
+            (venue) =>
+              `${venue.city}, ${venue.street} ${venue.houseNumber} ${venue.zipCode}`
+          )}
+        </td>
       </tr>
     );
   });
@@ -58,17 +59,12 @@ export default function EventOverview() {
             <th>img</th>
             <th>description</th>
             <th>homepage</th>
-            <th>description</th>
             <th>dateStart</th>
             <th>dateEnd</th>
             <th>timeStart</th>
             <th>timeEnd</th>
             <th>venueName</th>
-            <th>city</th>
-            <th>street</th>
-            <th>houseNumber</th>
-            <th>additionalAddressInfo</th>
-            <th>zipCode</th>
+            <th>Address</th>
           </thead>
           <tbody>{eventRows}</tbody>
         </table>
@@ -78,3 +74,9 @@ export default function EventOverview() {
     </div>
   );
 }
+
+//    <td>{event.city}</td>
+//         <td>{event.street}</td>
+//         <td>{event.houseNumber}</td>
+//         <td>{event.additionalAddressInfo}</td>
+//         <td>{event.zipCode}</td>
