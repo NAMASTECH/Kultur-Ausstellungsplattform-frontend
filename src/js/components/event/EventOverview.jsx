@@ -11,7 +11,7 @@ export default function EventOverview() {
           withCredentials: true,
         })
         .then((resp) => {
-          setevents(resp.data);
+          setEvents(resp.data);
         })
         .catch((err) => {
           console.error(err);
@@ -29,17 +29,22 @@ export default function EventOverview() {
         <td>{event.img}</td>
         <td>{event.description}</td>
         <td>{event.homepage}</td>
-        <td>{event.dateStart}</td>
-        <td>{event.dateEnd}</td>
+        <td>{event.datesStart}</td>
+        <td>{event.datesEnd}</td>
         <td>{event.timeStart}</td>
         <td>{event.timeEnd}</td>
         <td>{event.venueName}</td>
         <td>{event.venueType}</td>
-        <td>{event.city}</td>
-        <td>{event.street}</td>
-        <td>{event.houseNumber}</td>
-        <td>{event.additionalAddressInfo}</td>
-        <td>{event.zipCode}</td>
+        {event.venues.map((venue) => {
+          return (
+            <>
+              <td>{venue.city}</td>
+              <td>{venue.street}</td>
+              <td>{venue.houseNumber}</td>
+              <td>{venue.additionalAddressInfo}</td>
+              <td>{venue.zipCode}</td>
+              </>
+          );})}
       </tr>
     );
   });
@@ -70,7 +75,7 @@ export default function EventOverview() {
             <th>additionalAddressInfo</th>
             <th>zipCode</th>
           </thead>
-          <tbody>{eventRows}</tbody>
+          <tbody>{eventRows} </tbody>
         </table>
       ) : (
         <h3>No events found!</h3>

@@ -14,8 +14,8 @@ export default function AddEventForm() {
   const [description, setDescription] = useState("");
   const [homepage, setHomepage] = useState("");
   // Wann?
-  const [dateStart, setDateStart] = useState("");
-  const [dateEnd, setDateEnd] = useState("");
+  const [datesStart, setDateStart] = useState("");
+  const [datesEnd, setDateEnd] = useState("");
   const [timeStart, setTimeStart] = useState("");
   const [timeEnd, setTimeEnd] = useState("");
   // Wo?
@@ -42,8 +42,8 @@ export default function AddEventForm() {
     eventCategory,
     description,
     homepage,
-    dateStart,
-    dateEnd,
+    datesStart,
+    datesEnd,
     timeStart,
     timeEnd,
     venueName,
@@ -66,25 +66,31 @@ export default function AddEventForm() {
       eventCategory,
       description,
       homepage,
-      dateStart,
-      dateEnd,
+      datesStart,
+      datesEnd,
       timeStart,
       timeEnd,
       venueName,
-      city,
-      street,
-      houseNumber,
-      additionalAddressInfo,
-      zipCode,
       venueType,
+      venues: [
+        {
+          city,
+          street,
+          houseNumber,
+          additionalAddressInfo,
+          zipCode,
+        },
+      ],
     };
 
-    console.log(userData);
     //path erstellen
     try {
       const resp = await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}/api/event`,
-        userData
+        userData,
+        {
+          withCredentials: true,
+        }
       );
       console.log(resp.data);
     } catch (error) {
@@ -160,8 +166,8 @@ export default function AddEventForm() {
       eventCategory !== "" &&
       description !== "" &&
       homepage !== "" &&
-      dateStart !== "" &&
-      dateEnd !== "" &&
+      datesStart !== "" &&
+      datesEnd !== "" &&
       timeStart !== "" &&
       timeEnd !== "" &&
       venueName !== "" &&
@@ -172,26 +178,6 @@ export default function AddEventForm() {
       zipCode !== "" &&
       venueType !== "";
     console.log(isValid);
-    // const isValid =
-    //   eventTitle &&
-    //   artist &&
-    //   eventType &&
-    //   img &&
-    //   eventCategory &&
-    //   description &&
-    //   homepage &&
-    //   dateStart &&
-    //   dateEnd &&
-    //   timeStart &&
-    //   timeEnd &&
-    //   venueName &&
-    //   city &&
-    //   street &&
-    //   houseNumber &&
-    //   additionalAddressInfo &&
-    //   zipCode &&
-    //   venueType;
-    //    console.log(isValid);
     setConfirmBtnActive(isValid);
   };
 
@@ -232,12 +218,11 @@ export default function AddEventForm() {
       <label>Homepage</label>
       <input type="text" value={homepage} onChange={handleHomepageChange} />
 
-      <label>
-        Start Date
-        <input type="date" value={dateStart} onChange={handleDateStartChange} />
-      </label>
+      <label>Start Date</label>
+      <input type="date" value={datesStart} onChange={handleDateStartChange} />
+
       <label>End Date</label>
-      <input type="date" value={dateEnd} onChange={handleDateEndChange} />
+      <input type="date" value={datesEnd} onChange={handleDateEndChange} />
 
       <label>Start Time</label>
       <input type="time" value={timeStart} onChange={handleTimeStartChange} />
