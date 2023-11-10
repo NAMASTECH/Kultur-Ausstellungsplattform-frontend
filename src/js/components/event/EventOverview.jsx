@@ -29,18 +29,22 @@ export default function EventOverview() {
         <td>{event.img}</td>
         <td>{event.description}</td>
         <td>{event.homepage}</td>
-        <td>{Date.parse(event.dateStart)}</td>
-        <td>{Date.parse(event.dateStart)}</td>
+        <td>{event.datesStart}</td>
+        <td>{event.datesEnd}</td>
         <td>{event.timeStart}</td>
         <td>{event.timeEnd}</td>
         <td>{event.venueName}</td>
         <td>{event.venueType}</td>
-        <td>
-          {event.venues.map(
-            (venue) =>
-              `${venue.city}, ${venue.street} ${venue.houseNumber} ${venue.zipCode}`
-          )}
-        </td>
+        {event.venues.map((venue) => {
+          return (
+            <>
+              <td>{venue.city}</td>
+              <td>{venue.street}</td>
+              <td>{venue.houseNumber}</td>
+              <td>{venue.additionalAddressInfo}</td>
+              <td>{venue.zipCode}</td>
+              </>
+          );})}
       </tr>
     );
   });
@@ -66,7 +70,7 @@ export default function EventOverview() {
             <th>venueName</th>
             <th>Address</th>
           </thead>
-          <tbody>{eventRows}</tbody>
+          <tbody>{eventRows} </tbody>
         </table>
       ) : (
         <h3>No events found!</h3>

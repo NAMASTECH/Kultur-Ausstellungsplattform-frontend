@@ -35,7 +35,6 @@ export default function App() {
           <Route path="/api/events" element={<EventOverview />} />
           <Route element={<PrivateRoute />}>
             <Route path="/users" element={<UsersTable />} />
-
             <Route path="/users/:userId" element={<UserInfo />} />
           </Route>
         </Route>
