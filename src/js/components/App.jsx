@@ -14,6 +14,8 @@ import PrivateRoute from "../services/PrivateRoute";
 import UsersTable from "./UsersTable";
 import RegisterUserForm from "./userComponents/RegisterUserForm.jsx";
 import RegisterOrgaForm from "./organizerComponents/RegisterOrgaForm.jsx";
+import AddEventForm from "./event/AddEventForm.jsx";
+import EventOverview from "./event/EventOverview.jsx";
 
 // Definition einer Komponente
 // Am besten gleich als export Statement schreiben, um es nachher nicht zu vergessen.
@@ -29,9 +31,11 @@ export default function App() {
           <Route path="/register/organizer" element={<RegisterOrgaForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/logout" element={<LogoutScreen />} />
-
+          <Route path="/api/event" element={<AddEventForm />} />
+          <Route path="/api/events" element={<EventOverview />} />
           <Route element={<PrivateRoute />}>
             <Route path="/users" element={<UsersTable />} />
+
             <Route path="/users/:userId" element={<UserInfo />} />
           </Route>
         </Route>
