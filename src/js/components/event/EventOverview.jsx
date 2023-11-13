@@ -43,8 +43,9 @@ export default function EventOverview() {
               <td>{venue.houseNumber}</td>
               <td>{venue.additionalAddressInfo}</td>
               <td>{venue.zipCode}</td>
-              </>
-          );})}
+            </>
+          );
+        })}
       </tr>
     );
   });
@@ -78,9 +79,3 @@ export default function EventOverview() {
     </div>
   );
 }
-
-//    <td>{event.city}</td>
-//         <td>{event.street}</td>
-//         <td>{event.houseNumber}</td>
-//         <td>{event.additionalAddressInfo}</td>
-//         <td>{event.zipCode}</td>
