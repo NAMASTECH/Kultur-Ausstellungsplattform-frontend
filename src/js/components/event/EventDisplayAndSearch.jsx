@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import SelectComponent from "../SelectComponent";
 
 const EventDisplayAndSearch = () => {
-  const [events, setEvents] = useState([]);
-
-
+  const eventTypes = ["Ausstellung", "Auktion", "Messe", "Vortrag", "Festival" ];
+  const venueTypes = ["Museum", "Galerie", "Messe", "Auktionshaus", "Akademie" ];
 
   return (
     <header>
@@ -16,24 +16,8 @@ const EventDisplayAndSearch = () => {
         </div>
         <div>
           <h2> Filter</h2>
-          <h3> Event Type:</h3>
-          <select name="events" id="events">
-            <option value="ausstellung">Ausstellung</option>
-            <option value="auktion">Auktion</option>
-            <option value="messe">Messe</option>
-            <option value="vortrag">Vortrag</option>
-            <option value="festival">Festival</option>
-          </select>
-        </div>
-        <div>
-          <h3> Venue Type:</h3>
-          <select name="events" id="events">
-            <option value="museum">Museum</option>
-            <option value="galerie">Galerie</option>
-            <option value="messe">Messe</option>
-            <option value="auktionshaus">Auktionshaus</option>
-            <option value="akademie">Akademie</option>
-          </select>
+          <SelectComponent title="Event Type" values={eventTypes}/>
+          <SelectComponent title="Venue Type" values={venueTypes}/>
         </div>
       </div>
     </header>
