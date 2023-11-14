@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "../../css/App.scss";
 
 // Import eigener Komponenten
-import Layout from "./Layout";
+import Layout from "./Layout/Layout";
 import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
 import UserInfo from "./UserInfo";
@@ -16,7 +16,6 @@ import RegisterUserForm from "./userComponents/RegisterUserForm.jsx";
 import RegisterOrgaForm from "./organizerComponents/RegisterOrgaForm.jsx";
 import AddEventForm from "./event/AddEventForm.jsx";
 import EventOverview from "./event/EventOverview.jsx";
-import EventDisplayAndSearch from "./event/EventDisplayAndSearch.jsx";
 
 // Definition einer Komponente
 // Am besten gleich als export Statement schreiben, um es nachher nicht zu vergessen.
@@ -34,10 +33,6 @@ export default function App() {
           <Route path="/logout" element={<LogoutScreen />} />
           <Route path="/event" element={<AddEventForm />} />
           <Route path="/events" element={<EventOverview />} />
-          <Route
-            path="/api/EventDisplayAndSearch"
-            element={<EventDisplayAndSearch />}
-          />
           <Route element={<PrivateRoute />}>
             <Route path="/users" element={<UsersTable />} />
             <Route path="/users/:userId" element={<UserInfo />} />
