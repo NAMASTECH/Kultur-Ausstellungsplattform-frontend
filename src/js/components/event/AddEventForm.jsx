@@ -14,8 +14,8 @@ export default function AddEventForm() {
   const [description, setDescription] = useState("");
   const [homepage, setHomepage] = useState("");
   // Wann?
-  const [datesStart, setDateStart] = useState("");
-  const [datesEnd, setDateEnd] = useState("");
+  const [dateStart, setDateStart] = useState("");
+  const [dateEnd, setDateEnd] = useState("");
   const [timeStart, setTimeStart] = useState("");
   const [timeEnd, setTimeEnd] = useState("");
   // Wo?
@@ -42,8 +42,8 @@ export default function AddEventForm() {
     eventCategory,
     description,
     homepage,
-    datesStart,
-    datesEnd,
+    dateStart,
+    dateEnd,
     timeStart,
     timeEnd,
     venueName,
@@ -66,8 +66,8 @@ export default function AddEventForm() {
       eventCategory,
       description,
       homepage,
-      datesStart,
-      datesEnd,
+      dateStart,
+      dateEnd,
       timeStart,
       timeEnd,
       venueName,
@@ -166,8 +166,8 @@ export default function AddEventForm() {
       eventCategory !== "" &&
       description !== "" &&
       homepage !== "" &&
-      datesStart !== "" &&
-      datesEnd !== "" &&
+      dateStart !== "" &&
+      dateEnd !== "" &&
       timeStart !== "" &&
       timeEnd !== "" &&
       venueName !== "" &&
@@ -219,10 +219,10 @@ export default function AddEventForm() {
       <input type="text" value={homepage} onChange={handleHomepageChange} />
 
       <label>Start Date</label>
-      <input type="date" value={datesStart} onChange={handleDateStartChange} />
+      <input type="date" value={dateStart} onChange={handleDateStartChange} />
 
       <label>End Date</label>
-      <input type="date" value={datesEnd} onChange={handleDateEndChange} />
+      <input type="date" value={dateEnd} onChange={handleDateEndChange} />
 
       <label>Start Time</label>
       <input type="time" value={timeStart} onChange={handleTimeStartChange} />
