@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import EventCard from "../EventCard.jsx";
+import EventCard from "./EventCard.jsx";
 import SelectComponent from "../SelectComponent.jsx";
 // import { sampleEvents } from "./mock/sampleEvents.js";
 
