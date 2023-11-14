@@ -5,8 +5,6 @@ import SelectComponent from "../SelectComponent.jsx";
 
 export default function EventOverview() {
   const [events, setEvents] = useState([]);
-  const [selectedEventType, setSelectedEventType] = useState('');
-  const [selectedVenueType, setSelectedVenueType] = useState('');
 
   useEffect(() => {
     // TODO use pagination when implemented
@@ -21,38 +19,6 @@ export default function EventOverview() {
         console.error(err);
       });
   }, []);
-
-  // const eventRows = events.map((event) => {
-  //   return (
-  //     <tr key={event._id}>
-  //       <td>{event._id}</td>
-  //       <td>{event.eventTitle}</td>
-  //       <td>{event.artist}</td>
-  //       <td>{event.eventType}</td>
-  //       <td>{event.eventCategory}</td>
-  //       <td>{event.img}</td>
-  //       <td>{event.description}</td>
-  //       <td>{event.homepage}</td>
-  //       <td>{event.dateStart}</td>
-  //       <td>{event.dateEnd}</td>
-  //       <td>{event.timeStart}</td>
-  //       <td>{event.timeEnd}</td>
-  //       <td>{event.venueName}</td>
-  //       <td>{event.venueType}</td>
-  //       {event.venues.map((venue) => {
-  //         return (
-  //           <>
-  //             <td>{venue.city}</td>
-  //             <td>{venue.street}</td>
-  //             <td>{venue.houseNumber}</td>
-  //             <td>{venue.additionalAddressInfo}</td>
-  //             <td>{venue.zipCode}</td>
-  //           </>
-  //         );
-  //       })}
-  //     </tr>
-  //   );
-  // });
 
   const events1 = [
     {
@@ -129,9 +95,9 @@ export default function EventOverview() {
     },
   ]
 
-  let i=1;
   const eventTypes = ["Ausstellung", "Auktion", "Messe", "Vortrag", "Festival" ];
   const venueTypes = ["Museum", "Galerie", "Messe", "Auktionshaus", "Akademie" ];
+  
   return (
     <div>
       <h2>Alle Veranstaltungen</h2>
@@ -157,28 +123,7 @@ export default function EventOverview() {
 
       {/* {events1.length > 0 ? ( */}
       {events.length > 0 ? (
-      
         events.map((event, index )=> { return <EventCard key={event._id} event={event}/>} )
-      
-        // <table>
-        //   <thead>
-        //     <th>ID</th>
-        //     <th> eventTitle </th>
-        //     <th>artist</th>
-        //     <th>eventType</th>
-        //     <th>eventCategory</th>
-        //     <th>img</th>
-        //     <th>description</th>
-        //     <th>homepage</th>
-        //     <th>dateStart</th>
-        //     <th>dateEnd</th>
-        //     <th>timeStart</th>
-        //     <th>timeEnd</th>
-        //     <th>venueName</th>
-        //     <th>Address</th>
-        //   </thead>
-        //   <tbody>{eventRows} </tbody>
-        // </table>
       ) : (
         <h3>No events found!</h3>
       )}
