@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 // Imports von benoetigten Paketen
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function RegisterForm() {
   const [username, setUsername] = useState("");
@@ -98,6 +99,11 @@ export default function RegisterForm() {
       <button type="submit" disabled={!isConfirmBtnActive}>
         Sign Up
       </button>
+
+      <label>
+        Bereits registriert?
+      </label>
+      <Link to="/login">Hier anmelden </Link>
 
       {confirmedUsername && <h3>Welcome {confirmedUsername}!</h3>}
     </form>
