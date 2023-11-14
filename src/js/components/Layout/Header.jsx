@@ -13,8 +13,8 @@ function Header() {
         {!isOnline() && (
           <NavLink to="/register/organizer">Sign Up organization</NavLink>
         )}
-        {isOnline() && <NavLink to="/api/event">Add Event</NavLink>}
-        {!isOnline() && <NavLink to="/api/events">Events</NavLink>}
+        {isOnline() && <NavLink to="/event">Add Event</NavLink>}
+        {!isOnline() && <NavLink to="/events">Events</NavLink>}
         {isOnline() && <NavLink to={`/users/${userData.id}`}>My Data</NavLink>}
         {isOnline() && <NavLink to="/users">Users</NavLink>}
         {!isOnline() && <NavLink to="/login">Log In</NavLink>}
