@@ -5,11 +5,13 @@ import SelectComponent from "../SelectComponent.jsx";
 
 export default function EventOverview() {
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // TODO use pagination when implemented
     axios
       .get(`/api/events`, {
+        // .get(`${import.meta.env.VITE_API_BASE_URL}/api/events`, {
         withCredentials: true,
       })
       .then((resp) => {
@@ -17,51 +19,54 @@ export default function EventOverview() {
       })
       .catch((err) => {
         console.error(err);
+      })
+      .finally(()=>{
+        setLoading(false);
       });
   }, []);
 
   const events1 = [
     {
-      eventTitle:"60 Years Tour",
-      artist:"Rolling Stones",
-      eventType:"Concert",
-      eventCategory:"Music",
-      img:"https://picsum.photos/200/30",
-      homepage:"https://rollingstones.com/tour/",
-      dateStart:"2023-12-28",
-      dateEnd:"2023-12-29",
-      timeStart:"16:00",
-      timeEnd:"00:00",
-      venueName:"Parkbühne Geyserhaus",
-      venueType:"Open Air Bühne",
+      eventTitle: "60 Years Tour",
+      artist: "Rolling Stones",
+      eventType: "Concert",
+      eventCategory: "Music",
+      img: "https://picsum.photos/200/30",
+      homepage: "https://rollingstones.com/tour/",
+      dateStart: "2023-12-28",
+      dateEnd: "2023-12-29",
+      timeStart: "16:00",
+      timeEnd: "00:00",
+      venueName: "Parkbühne Geyserhaus",
+      venueType: "Open Air Bühne",
       venues: [
         {
           city: "Leipzig",
-          street:"Kleiststraße",
+          street: "Kleiststraße",
           houseNumber: "52",
           additionalAddressInfo: "In der Nähe der Haltestelle Mosenthinstraße",
           zipCode: "04129"
         },
       ],
-      description:"The rolling stones celebrate 60 years on Stage",
+      description: "The rolling stones celebrate 60 years on Stage",
     },
     {
-      eventTitle:"Rocking the world",
-      artist:"Django Django",
-      eventType:"Concert",
-      eventCategory:"Music",
-      img:"https://picsum.photos/200/30",
-      homepage:"http://www.djangodjango.co.uk/#popupClosed",
-      dateStart:"2024-01-20",
-      dateEnd:"2024-01-20",
-      timeStart:"18:00",
-      timeEnd:"22:00",
-      venueName:"Tempodrom",
-      venueType:"Konzerthalle",
+      eventTitle: "Rocking the world",
+      artist: "Django Django",
+      eventType: "Concert",
+      eventCategory: "Music",
+      img: "https://picsum.photos/200/30",
+      homepage: "http://www.djangodjango.co.uk/#popupClosed",
+      dateStart: "2024-01-20",
+      dateEnd: "2024-01-20",
+      timeStart: "18:00",
+      timeEnd: "22:00",
+      venueName: "Tempodrom",
+      venueType: "Konzerthalle",
       venues: [
         {
           city: "Berlin",
-          street:"Möckernstrasse",
+          street: "Möckernstrasse",
           houseNumber: "10",
           additionalAddressInfo: "",
           zipCode: "10963"
@@ -70,22 +75,22 @@ export default function EventOverview() {
       description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, ipsa. Repellat est officia corporis itaque impedit deserunt adipisci quae nostrum assumenda tenetur? Quasi deleniti repudiandae neque similique inventore assumenda vitae?",
     },
     {
-      eventTitle:"Reggaejam Festival",
-      artist:"Damian Marley, 311, The Movement, Slightly Stoopid",
-      eventType:"Concert",
-      eventCategory:"Music",
-      img:"https://picsum.photos/200/300",
-      homepage:"https://reggaejam.de/de/",
-      dateStart:"2024-05-26",
-      dateEnd:"2024-05-28",
-      timeStart:"12:00",
-      timeEnd:"00:00",
-      venueName:"Klosterpark Bersenbrück",
-      venueType:"Festivalgelände",
+      eventTitle: "Reggaejam Festival",
+      artist: "Damian Marley, 311, The Movement, Slightly Stoopid",
+      eventType: "Concert",
+      eventCategory: "Music",
+      img: "https://picsum.photos/200/300",
+      homepage: "https://reggaejam.de/de/",
+      dateStart: "2024-05-26",
+      dateEnd: "2024-05-28",
+      timeStart: "12:00",
+      timeEnd: "00:00",
+      venueName: "Klosterpark Bersenbrück",
+      venueType: "Festivalgelände",
       venues: [
         {
           city: "Bersenbrück",
-          street:"",
+          street: "",
           houseNumber: "",
           additionalAddressInfo: "",
           zipCode: "49593"
@@ -95,9 +100,9 @@ export default function EventOverview() {
     },
   ]
 
-  const eventTypes = ["Ausstellung", "Auktion", "Messe", "Vortrag", "Festival" ];
-  const venueTypes = ["Museum", "Galerie", "Messe", "Auktionshaus", "Akademie" ];
-  
+  const eventTypes = ["Ausstellung", "Auktion", "Messe", "Vortrag", "Festival"];
+  const venueTypes = ["Museum", "Galerie", "Messe", "Auktionshaus", "Akademie"];
+
   return (
     <div>
       <h2>Alle Veranstaltungen</h2>
@@ -107,26 +112,30 @@ export default function EventOverview() {
       {/* <h2>Veranstaltungen filtern</h2> */}
 
       <div>
-        <SelectComponent title="Event Type" values={eventTypes}/>
-        <SelectComponent title="Venue Type" values={venueTypes}/>
+        <SelectComponent title="Event Type" values={eventTypes} />
+        <SelectComponent title="Venue Type" values={venueTypes} />
         {/* <h2> Nach Veranstaltung suchen </h2> */}
-           <label htmlFor="selectOption" style={{margin:"10px" }}></label>
-          <input id="event-search_input" style={{margin:"10px" }} type="search" placeholder="Künstler, Events, & Orte" />
-          <button className="search_btn"> Suchen </button>
+        <label htmlFor="selectOption" style={{ margin: "10px" }}></label>
+        <input id="event-search_input" style={{ margin: "10px" }} type="search" placeholder="Künstler, Events, & Orte" />
+        <button className="search_btn"> Suchen </button>
       </div>
 
       <br></br>
 
-      <div>  
+      <div>
 
       </div>
 
       {/* {events1.length > 0 ? ( */}
-      {events.length > 0 ? (
-        events.map((event, index )=> { return <EventCard key={event._id} event={event}/>} )
-      ) : (
-        <h3>No events found!</h3>
-      )}
+
+      {(!loading) ?
+        events.length > 0 ? (
+          events.map((event, index) => { return <EventCard key={event._id} event={event} /> })
+        ) : (
+          <h3>No events found!</h3>
+        ) :
+        <h3>Loading...</h3>}
+
     </div>
   );
 }
