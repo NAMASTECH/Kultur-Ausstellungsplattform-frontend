@@ -1,8 +1,8 @@
 import { NavLink, Outlet } from "react-router-dom";
 // import { AuthStoreProvider, useAuthStore } from "../hooks/useAuthStore";
-import { AuthStoreProvider } from "../hooks/useAuthStore";
+import { AuthStoreProvider } from "../../hooks/useAuthStore";
 
-import Header from "./Layout/Header.jsx";
+import Header from "./Header.jsx";
 
 export default function Layout() {
   return (
