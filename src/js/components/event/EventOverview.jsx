@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import EventCard from "../EventCard.jsx";
 import SelectComponent from "../SelectComponent.jsx";
-import { sampleEvents } from "./mock/sampleEvents.js";
+// import { sampleEvents } from "./mock/sampleEvents.js";
 
 export default function EventOverview() {
   const [events, setEvents] = useState([]);
@@ -26,8 +26,6 @@ export default function EventOverview() {
       });
   }, []);
 
-
-
   const eventTypes = ["Ausstellung", "Auktion", "Messe", "Vortrag", "Festival"];
   const venueTypes = ["Museum", "Galerie", "Messe", "Auktionshaus", "Akademie"];
 
@@ -37,11 +35,11 @@ export default function EventOverview() {
 
       <br></br>
 
-      {/* <h2>Veranstaltungen filtern</h2> */}
-
-      <div>
+      <div>     
+        {/* <h2>Veranstaltungen filtern</h2> */}
         <SelectComponent title="Event Type" values={eventTypes} />
         <SelectComponent title="Venue Type" values={venueTypes} />
+
         {/* <h2> Nach Veranstaltung suchen </h2> */}
         <label htmlFor="selectOption" style={{ margin: "10px" }}></label>
         <input id="event-search_input" style={{ margin: "10px" }} type="search" placeholder="Künstler, Events, & Orte" />
@@ -54,11 +52,9 @@ export default function EventOverview() {
 
       </div>
 
-      {/* {events1.length > 0 ? ( */}
-
       {(!loading) ?
         events.length > 0 ? (
-          events.map((event, index) => { return <EventCard key={event._id} event={event} /> })
+          events.map((event) => { return <EventCard key={event._id} event={event} /> })
         ) : (
           <h3>No events found!</h3>
         ) :
