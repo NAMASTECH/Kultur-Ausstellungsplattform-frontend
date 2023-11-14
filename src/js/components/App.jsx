@@ -32,8 +32,8 @@ export default function App() {
           <Route path="/register/organizer" element={<RegisterOrgaForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/logout" element={<LogoutScreen />} />
-          <Route path="/api/event" element={<AddEventForm />} />
-          <Route path="/api/events" element={<EventOverview />} />
+          <Route path="/event" element={<AddEventForm />} />
+          <Route path="/events" element={<EventOverview />} />
           <Route
             path="/api/EventDisplayAndSearch"
             element={<EventDisplayAndSearch />}
