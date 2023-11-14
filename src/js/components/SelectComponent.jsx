@@ -10,17 +10,16 @@ const SelectComponent = ({title, values}) => {
   };
 
   return (
-    <div>
-     <h3>{title}</h3>
-      <label htmlFor="selectOption">Wähle eine Option:</label>
+    <>
+      <label htmlFor="selectOption" style={{margin:"10px", }}>{title}</label>
       <select id="selectOption" value={selectedOption} onChange={handleSelectChange}>
         {
-            values.map(eventType => {return <option value={eventType.toLowerCase()}>{eventType}</option>})
+            values.map(value => {return <option key={value} value={value.toLowerCase()}>{value}</option>})
         }
       </select>
 
-      <p>Ausgewählte Option: {selectedOption}</p>
-    </div>
+      {/* <p>Ausgewählte Option: {selectedOption}</p> */}
+    </>
   );
 };
 
