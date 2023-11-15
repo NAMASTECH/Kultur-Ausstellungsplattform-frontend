@@ -72,15 +72,13 @@ export default function AddEventForm() {
       timeEnd,
       venueName,
       venueType,
-      venues: [
-        {
-          city,
-          street,
-          houseNumber,
-          additionalAddressInfo,
-          zipCode,
-        },
-      ],
+      city,
+      street,
+      houseNumber,
+      additionalAddressInfo,
+      zipCode,
+        
+      
     };
 
     //path erstellen
