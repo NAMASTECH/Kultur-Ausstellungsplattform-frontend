@@ -2,22 +2,22 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 // Import der zugehoerigen CSS-Datei
-import "../../css/App.scss";
+import "./css/App.scss";
 
 // Import eigener Komponenten
-import Layout from "./Layout/Layout";
-import RegisterForm from "./RegisterForm";
-import LoginForm from "./LoginForm";
-import UserInfo from "./UserInfo";
-import LogoutScreen from "./LogoutScreen";
-import PrivateRoute from "../services/PrivateRoute";
-import UsersTable from "./UsersTable";
-import RegisterUserForm from "./userComponents/RegisterUserForm.jsx";
-import RegisterOrgaForm from "./organizerComponents/RegisterOrgaForm.jsx";
-import AddEventForm from "./event/AddEventForm.jsx";
-import EventOverview from "./event/EventOverview.jsx";
-import KontaktFrom from "./Contact/kontaktFrom.jsx";
-import { Footer } from "./Layout/Footer.jsx";
+import Layout from "./js/components/Layout/Layout";
+import RegisterForm from "./js/components/RegisterForm";
+import LoginForm from "./js/components/LoginForm";
+import UserInfo from "./js/components/UserInfo";
+import LogoutScreen from "./js/components/LogoutScreen";
+import PrivateRoute from "./js/services/PrivateRoute";
+import UsersTable from "./js/components/UsersTable";
+import RegisterUserForm from "./js/components/userComponents/RegisterUserForm.jsx";
+import RegisterOrgaForm from "./js/components/organizerComponents/RegisterOrgaForm.jsx";
+import AddEventForm from "./js/components/event/AddEventForm.jsx";
+import EventOverview from "./js/components/event/EventOverview.jsx";
+import KontaktFrom from "./js/components/Contact/kontaktFrom.jsx";
+import { Footer } from "./js/components/Layout/Footer.jsx";
 
 // Definition einer Komponente
 // Am besten gleich als export Statement schreiben, um es nachher nicht zu vergessen.
