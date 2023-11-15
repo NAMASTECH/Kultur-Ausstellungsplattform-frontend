@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import EventCard from "./EventCard.jsx";
 import SelectComponent from "../SelectComponent.jsx";
 import { sampleEvents } from "./mock/sampleEvents.js";
-import EventDetails from '../event/EventDetails';
+import EventDetails from "../event/EventDetails";
 
 export default function EventOverview() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     // TODO use pagination when implemented
@@ -30,6 +31,10 @@ export default function EventOverview() {
   const eventTypes = ["Ausstellung", "Auktion", "Messe", "Vortrag", "Festival"];
   const venueTypes = ["Museum", "Galerie", "Messe", "Auktionshaus", "Akademie"];
 
+  const handleSearchInputChange = (evt) => {
+    setSearchTerm(evt.target.value);
+  };
+  console.log(searchTerm);
   return (
     <div>
       <EventDetails />
@@ -43,22 +48,32 @@ export default function EventOverview() {
 
         {/* <h2> Nach Veranstaltung suchen </h2> */}
         <label htmlFor="selectOption" style={{ margin: "10px" }}></label>
-        <input id="event-search_input" style={{ margin: "10px" }} type="search" placeholder="Künstler, Events, & Orte" />
+        <input
+          id="event-search_input"
+          value={searchTerm}
+          style={{ margin: "10px" }}
+          type="search"
+          placeholder="Künstler, Events, & Orte"
+          onChange={handleSearchInputChange}
+        />
         <button className="search_btn"> Suchen </button>
       </div>
 
       <br></br>
 
       <div>
-        {(!loading) ?
+        {!loading ? (
           events.length > 0 ? (
-            events.map((event) => { return <EventCard key={event._id} event={event} /> })
+            events.map((event) => {
+              return <EventCard key={event._id} event={event} />;
+            })
           ) : (
             <h3>No events found!</h3>
-          ) :
-          <h3>Loading...</h3>}
+          )
+        ) : (
+          <h3>Loading...</h3>
+        )}
       </div>
-
     </div>
   );
 }
