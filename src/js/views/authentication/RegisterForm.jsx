@@ -19,7 +19,7 @@ export default function RegisterForm() {
 
     const handleSubmit = async evt => {
         evt.preventDefault();
-        
+
         const userData = {
             username,
             password

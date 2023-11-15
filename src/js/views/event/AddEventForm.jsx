@@ -77,8 +77,8 @@ export default function AddEventForm() {
       houseNumber,
       additionalAddressInfo,
       zipCode,
-        
-      
+
+
     };
 
     //path erstellen

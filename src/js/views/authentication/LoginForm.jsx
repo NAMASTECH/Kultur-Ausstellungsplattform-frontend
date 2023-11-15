@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import axios from "axios";
 
 // Import eigener Module
-import { useAuthStore } from "../hooks/useAuthStore";
+import { useAuthStore } from "../../hooks/useAuthStore";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");

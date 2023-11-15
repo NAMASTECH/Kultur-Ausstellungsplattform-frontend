@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import EventCard from "./EventCard.jsx";
-import SelectComponent from "../SelectComponent.jsx";
+import EventCard from "../../components/EventCard.jsx";
+import SelectComponent from "../../components/SelectComponent.jsx";
 import { sampleEvents } from "./mock/sampleEvents.js";
-import EventDetails from "../event/EventDetails";
+import EventDetails from "./EventDetails.jsx";
 
 export default function EventOverview() {
   const [events, setEvents] = useState([]);

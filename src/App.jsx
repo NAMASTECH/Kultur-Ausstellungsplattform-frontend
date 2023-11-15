@@ -6,18 +6,17 @@ import "./css/App.scss";
 
 // Import eigener Komponenten
 import Layout from "./js/components/Layout/Layout";
-import RegisterForm from "./js/components/RegisterForm";
-import LoginForm from "./js/components/LoginForm";
-import UserInfo from "./js/components/UserInfo";
-import LogoutScreen from "./js/components/LogoutScreen";
+import RegisterForm from "./js/views/authentication/RegisterForm";
+import LoginForm from "./js/views/authentication/LoginForm";
+import UserInfo from "./js/views/user/UserInfo";
+import LogoutScreen from "./js/views/authentication/LogoutScreen";
 import PrivateRoute from "./js/services/PrivateRoute";
-import UsersTable from "./js/components/UsersTable";
-import RegisterUserForm from "./js/components/userComponents/RegisterUserForm.jsx";
-import RegisterOrgaForm from "./js/components/organizerComponents/RegisterOrgaForm.jsx";
-import AddEventForm from "./js/components/event/AddEventForm.jsx";
-import EventOverview from "./js/components/event/EventOverview.jsx";
-import KontaktFrom from "./js/components/Contact/kontaktFrom.jsx";
-import { Footer } from "./js/components/Layout/Footer.jsx";
+import UsersTable from "./js/views/user/UsersTable";
+import RegisterUserForm from "./js/views/authentication/RegisterUserForm.jsx";
+import RegisterOrgaForm from "./js/views/authentication/RegisterOrgaForm.jsx";
+import AddEventForm from "./js/views/event/AddEventForm.jsx";
+import EventOverview from "./js/views/event/EventOverview.jsx";
+import ContactForm from "./js/views/Contact/ContactForm.jsx"
 
 // Definition einer Komponente
 // Am besten gleich als export Statement schreiben, um es nachher nicht zu vergessen.
@@ -35,7 +34,7 @@ export default function App() {
           <Route path="/logout" element={<LogoutScreen />} />
           <Route path="/event" element={<AddEventForm />} />
           <Route path="/events" element={<EventOverview />} />
-          <Route path="/kontakt" element={<KontaktFrom />} />
+          <Route path="/kontakt" element={<ContactForm />} />
 
           <Route element={<PrivateRoute />}>
             <Route path="/users" element={<UsersTable />} />

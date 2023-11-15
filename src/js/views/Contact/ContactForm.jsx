@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./kontaktFormStyle.css";
-const KontaktFrom = () => {
+
+const ContactForm = () => {
   const [selectedEvent, setSelectedEvent] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -92,4 +93,4 @@ const KontaktFrom = () => {
   );
 };
 
-export default KontaktFrom;
+export default ContactForm;

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useAuthStore } from "../hooks/useAuthStore";
+import { useAuthStore } from "../../hooks/useAuthStore";
 
 export default function UserInfo() {
     const [userInfo, setUserInfo] = useState(null);
     const { userId } = useParams();
     const { clearUserData } = useAuthStore();
-    
+
 
     const handleGetInfoBtnClick = async evt => {
         try {
