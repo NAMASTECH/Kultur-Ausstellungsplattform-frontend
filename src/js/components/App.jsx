@@ -17,7 +17,6 @@ import RegisterOrgaForm from "./organizerComponents/RegisterOrgaForm.jsx";
 import AddEventForm from "./event/AddEventForm.jsx";
 import EventOverview from "./event/EventOverview.jsx";
 import KontaktFrom from "./Contact/kontaktFrom.jsx";
-import SeitigeSuchen from "../hooks/SeitigeSuchen.jsx";
 import { Footer } from "./Layout/Footer.jsx";
 
 // Definition einer Komponente
@@ -37,7 +36,6 @@ export default function App() {
           <Route path="/event" element={<AddEventForm />} />
           <Route path="/events" element={<EventOverview />} />
           <Route path="/kontakt" element={<KontaktFrom />} />
-          <Route path="/SeitigeSuchen" element={<SeitigeSuchen />} />
 
           <Route element={<PrivateRoute />}>
             <Route path="/users" element={<UsersTable />} />

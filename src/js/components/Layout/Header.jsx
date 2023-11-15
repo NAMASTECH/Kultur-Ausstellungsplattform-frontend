@@ -20,7 +20,7 @@ function Header() {
         {!isOnline() && <NavLink to="/login">Log In</NavLink>}
         {isOnline() && <NavLink to="/logout">Sign Out</NavLink>}
         {<NavLink to="/kontakt">Kontakt</NavLink>}
-        {<NavLink to="/SeitigeSuchen">SeitigeSuchen</NavLink>}
+       
       </nav>
       <br />
       {isOnline() && <h3>Hallo, {userData.username}!</h3>}
