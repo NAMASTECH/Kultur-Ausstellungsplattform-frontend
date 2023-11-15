@@ -16,6 +16,9 @@ import RegisterUserForm from "./userComponents/RegisterUserForm.jsx";
 import RegisterOrgaForm from "./organizerComponents/RegisterOrgaForm.jsx";
 import AddEventForm from "./event/AddEventForm.jsx";
 import EventOverview from "./event/EventOverview.jsx";
+import KontaktFrom from "./Contact/kontaktFrom.jsx";
+import SeitigeSuchen from "../hooks/SeitigeSuchen.jsx";
+import { Footer } from "./Layout/Footer.jsx";
 
 // Definition einer Komponente
 // Am besten gleich als export Statement schreiben, um es nachher nicht zu vergessen.
@@ -33,6 +36,9 @@ export default function App() {
           <Route path="/logout" element={<LogoutScreen />} />
           <Route path="/event" element={<AddEventForm />} />
           <Route path="/events" element={<EventOverview />} />
+          <Route path="/kontakt" element={<KontaktFrom />} />
+          <Route path="/SeitigeSuchen" element={<SeitigeSuchen />} />
+
           <Route element={<PrivateRoute />}>
             <Route path="/users" element={<UsersTable />} />
             <Route path="/users/:userId" element={<UserInfo />} />
