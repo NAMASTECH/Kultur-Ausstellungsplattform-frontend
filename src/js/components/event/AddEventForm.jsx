@@ -194,7 +194,7 @@ export default function AddEventForm() {
       />
       <label>Artist</label>
       <input type="text" value={artist} onChange={handleArtistChange} />
-      <label>venueType</label>
+      <label>Venue Type</label>
       <input type="text" value={venueType} onChange={handleVenueTypeChange} />
 
       <label>Event Type</label>

@@ -2,7 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import EventCard from "./EventCard.jsx";
 import SelectComponent from "../SelectComponent.jsx";
-// import { sampleEvents } from "./mock/sampleEvents.js";
+import { sampleEvents } from "./mock/sampleEvents.js";
+import EventDetails from '../event/EventDetails';
 
 export default function EventOverview() {
   const [events, setEvents] = useState([]);
@@ -21,7 +22,7 @@ export default function EventOverview() {
       .catch((err) => {
         console.error(err);
       })
-      .finally(()=>{
+      .finally(() => {
         setLoading(false);
       });
   }, []);
@@ -31,11 +32,11 @@ export default function EventOverview() {
 
   return (
     <div>
+      <EventDetails />
       <h2>Alle Veranstaltungen</h2>
-
       <br></br>
 
-      <div>     
+      <div>
         {/* <h2>Veranstaltungen filtern</h2> */}
         <SelectComponent title="Event Type" values={eventTypes} />
         <SelectComponent title="Venue Type" values={venueTypes} />
@@ -49,16 +50,14 @@ export default function EventOverview() {
       <br></br>
 
       <div>
-
+        {(!loading) ?
+          events.length > 0 ? (
+            events.map((event) => { return <EventCard key={event._id} event={event} /> })
+          ) : (
+            <h3>No events found!</h3>
+          ) :
+          <h3>Loading...</h3>}
       </div>
-
-      {(!loading) ?
-        events.length > 0 ? (
-          events.map((event) => { return <EventCard key={event._id} event={event} /> })
-        ) : (
-          <h3>No events found!</h3>
-        ) :
-        <h3>Loading...</h3>}
 
     </div>
   );
