@@ -9,13 +9,21 @@ export default function EventOverview() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
-
+  const [search_btn, setSearch_btn] = useState(false);
+  const [dateStart, setDateStart] = useState("");
+  const [dateEnd, setDateEnd] = useState("");
+  const [eventType, setEventType] = useState("");
   useEffect(() => {
     // TODO use pagination when implemented
     axios
       .get(`/api/events`, {
         // .get(`${import.meta.env.VITE_API_BASE_URL}/api/events`, {
         withCredentials: true,
+        params: {
+          dateStart,
+          dateEnd,
+          eventType,
+        },
       })
       .then((resp) => {
         setEvents(resp.data);
@@ -25,15 +33,23 @@ export default function EventOverview() {
       })
       .finally(() => {
         setLoading(false);
+        setSearch_btn(false)
+        console.log(events)
       });
-  }, []);
+  }, [loading, search_btn]);
 
-  const eventTypes = ["Ausstellung", "Auktion", "Messe", "Vortrag", "Festival"];
-  const venueTypes = ["Museum", "Galerie", "Messe", "Auktionshaus", "Akademie"];
+  const eventTypes = ["All", "Ausstellung", "Auktion", "Messe", "Vortrag", "Festival"];
+  const venueTypes = ["All", "Museum", "Galerie", "Messe", "Auktionshaus", "Akademie"];
 
   const handleSearchInputChange = (evt) => {
     setSearchTerm(evt.target.value);
+    
   };
+
+  const handleEventType = (evt) => {
+    setEventType(evt.target.values);
+    console.log(evt.selected)
+  }
   console.log(searchTerm);
   return (
     <div>
@@ -43,9 +59,28 @@ export default function EventOverview() {
 
       <div>
         {/* <h2>Veranstaltungen filtern</h2> */}
-        <SelectComponent title="Event Type" values={eventTypes} />
+        <SelectComponent title="Event Type" values={eventTypes} onChange={handleEventType} />
         <SelectComponent title="Venue Type" values={venueTypes} />
-
+        <label htmlFor="dateStart" style={{ margin: "10px" }}>
+          Von
+        </label>
+        <input
+          id="dateStart"
+          value={dateStart}
+          style={{ margin: "10px" }}
+          type="date"
+          onChange={(evt) => setDateStart(evt.target.value)}
+        />
+        <label htmlFor="dateEnd" style={{ margin: "10px" }}>
+          Bis
+        </label>
+        <input
+          id="dateEnd"
+          value={dateEnd}
+          style={{ margin: "10px" }}
+          type="date"
+          onChange={(evt) => setDateEnd(evt.target.value)}
+        />
         {/* <h2> Nach Veranstaltung suchen </h2> */}
         <label htmlFor="selectOption" style={{ margin: "10px" }}></label>
         <input
@@ -56,7 +91,7 @@ export default function EventOverview() {
           placeholder="Künstler, Events, & Orte"
           onChange={handleSearchInputChange}
         />
-        <button className="search_btn"> Suchen </button>
+        <button className="search_btn" onClick={(evt) => setSearch_btn(true)}> Suchen </button>
       </div>
 
       <br></br>
