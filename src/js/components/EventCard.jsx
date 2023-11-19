@@ -10,16 +10,16 @@ export default function EventCard({ event: { _id, eventTitle, artist, eventType,
                 <div className="eventTitle" >{eventTitle}</div>
                 <div className="eventType" > <b>Event Typ:</b> {eventType}</div>
                 <div className="eventCategory" > <b>Kategorie:</b> {eventCategory}</div>
-                <a href={homepage}>Homepage</a>     
+                <a href={homepage}>Homepage</a>
 
                 {venues.map((venue) => {
                     return (
-                        <>
+                        <div key={venue._id}>
                             <div className="venueName" > <b>Ort:</b> {venue.venueName}</div>
                             <div className="venueType" > <b>Typ von Veranstaltungsort:</b> {venue.venueType}</div>
                             <div><b>Adresse:</b> {(venue.street && venue.houseNumber) && `${venue.street} ${venue.houseNumber},`}  {venue.zipCode} {venue.city}</div>
                             <div>{venue.additionalAddressInfo}</div>
-                        </>
+                        </div>
                     );
                 })}
 
