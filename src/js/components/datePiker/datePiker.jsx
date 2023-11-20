@@ -1,6 +1,6 @@
 import DatePicker from "react-datepicker";
 import { useEffect, useState } from "react";
-import "react-datepicker/dist/react-datepicker.css";
+import "./react-datepicker.css";
 
 const Calendar = ({dateStart, dateEnd}) => {
     const [startDate, setStartDate] = useState(null);

@@ -5,7 +5,7 @@ import EventCard from "../../components/EventCard.jsx";
 import SelectComponent from "../../components/SelectComponent.jsx";
 import { sampleEvents } from "./mock/sampleEvents.js";
 import EventDetails from "./EventDetails.jsx";
-import Calendar from "../../components/datePiker.jsx";
+import Calendar from "../../components/datePiker/datePiker.jsx";
 
 export default function EventOverview() {
   const [events, setEvents] = useState([]);

@@ -2,7 +2,7 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 // Import der zugehoerigen CSS-Datei
-import "./css/App.scss";
+import "./styles/App.scss";
 
 // Import eigener Komponenten
 import Layout from "./js/components/Layout/Layout";
