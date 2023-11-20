@@ -55,6 +55,7 @@ export default function EventDetails() {
 
     // useEffect(() => {
     //     // TODO use pagination when implemented
+    //      useParams(), um die Event ID zu holen
     //     axios
     //         .get(`/api/event/655385b829ea2d760abf6a4a`, {
     //             // .get(`${import.meta.env.VITE_API_BASE_URL}/api/events`, {

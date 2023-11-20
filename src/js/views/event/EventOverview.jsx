@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { EventContext } from '../../context/EventContext';
 import EventCard from "../../components/EventCard.jsx";
 import SelectComponent from "../../components/SelectComponent.jsx";
 import { sampleEvents } from "./mock/sampleEvents.js";
@@ -13,6 +14,8 @@ export default function EventOverview() {
   const [dateStart, setDateStart] = useState("");
   const [dateEnd, setDateEnd] = useState("");
   const [eventType, setEventType] = useState("");
+  const [venueType, setVenueType] = useState("");
+
   useEffect(() => {
     // TODO use pagination when implemented
     axios
@@ -26,7 +29,7 @@ export default function EventOverview() {
         },
       })
       .then((resp) => {
-        setEvents(resp.data);
+        setEvents(resp.data.events);
       })
       .catch((err) => {
         console.error(err);
@@ -38,19 +41,29 @@ export default function EventOverview() {
       });
   }, [loading, search_btn]);
 
-  const eventTypes = ["All", "Ausstellung", "Auktion", "Messe", "Vortrag", "Festival"];
-  const venueTypes = ["All", "Museum", "Galerie", "Messe", "Auktionshaus", "Akademie"];
-
   const handleSearchInputChange = (evt) => {
     setSearchTerm(evt.target.value);
-    
   };
-
-  const handleEventType = (evt) => {
-    setEventType(evt.target.values);
-    console.log(evt.selected)
-  }
   console.log(searchTerm);
+
+
+  const handleEventTypeChange = (evt) => {
+    setEventType(evt.target.value);
+    console.log(evt.target.value)
+  }
+  console.log(eventType);
+
+
+  const handleVenueTypeChange = (evt) => {
+    setVenueType(evt.target.value);
+    console.log(evt.target.value)
+  }
+  console.log(venueType)
+
+
+  // EventContext konsumieren
+  const { eventTypes, venueTypes } = useContext(EventContext);
+
   return (
     <div>
       <EventDetails />
@@ -59,8 +72,8 @@ export default function EventOverview() {
 
       <div>
         {/* <h2>Veranstaltungen filtern</h2> */}
-        <SelectComponent title="Event Type" values={eventTypes} onChange={handleEventType} />
-        <SelectComponent title="Venue Type" values={venueTypes} />
+        <SelectComponent title="Event Type" values={eventTypes} onChange={handleEventTypeChange} />
+        <SelectComponent title="Venue Type" values={venueTypes} onChange={handleVenueTypeChange} />
         <label htmlFor="dateStart" style={{ margin: "10px" }}>
           Von
         </label>
@@ -82,7 +95,7 @@ export default function EventOverview() {
           onChange={(evt) => setDateEnd(evt.target.value)}
         />
         {/* <h2> Nach Veranstaltung suchen </h2> */}
-        <label htmlFor="selectOption" style={{ margin: "10px" }}></label>
+        <label htmlFor="event-search_input" style={{ margin: "10px" }}></label>
         <input
           id="event-search_input"
           value={searchTerm}

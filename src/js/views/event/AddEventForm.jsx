@@ -1,13 +1,16 @@
 // Hier kommen alle wichtigen Imports rein. Z.B. die eingebauten Hooks von react
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 // Imports von benoetigten Paketen
 import axios from "axios";
 
+import { EventContext } from "../../context/EventContext.jsx"
+import SelectComponent from "../../components/SelectComponent.jsx"
+
 export default function AddEventForm() {
   // Eckdaten
   const [eventTitle, setEventTitle] = useState("");
-  const [artist, setArtist] = useState("");
+  const [artistName, setArtistName] = useState("");
   const [eventType, setEventType] = useState("");
   const [eventCategory, setEventCategory] = useState("");
   const [img, setImg] = useState("");
@@ -36,7 +39,7 @@ export default function AddEventForm() {
     validateForm();
   }, [
     eventTitle,
-    artist,
+    artistName,
     eventType,
     img,
     eventCategory,
@@ -60,7 +63,7 @@ export default function AddEventForm() {
 
     const userData = {
       eventTitle,
-      artist,
+      artistName,
       eventType,
       img,
       eventCategory,
@@ -99,8 +102,8 @@ export default function AddEventForm() {
   const handleEventTitleChange = (evt) => {
     setEventTitle(evt.target.value);
   };
-  const handleArtistChange = (evt) => {
-    setArtist(evt.target.value);
+  const handleArtistNameChange = (evt) => {
+    setArtistName(evt.target.value);
   };
   const handleImgChange = (evt) => {
     setImg(evt.target.value);
@@ -158,7 +161,7 @@ export default function AddEventForm() {
     // Pruefe, ob alle Felder befuellt
     const isValid =
       eventTitle !== "" &&
-      artist !== "" &&
+      artistName !== "" &&
       eventType !== "" &&
       img !== "" &&
       eventCategory !== "" &&
@@ -179,6 +182,10 @@ export default function AddEventForm() {
     setConfirmBtnActive(isValid);
   };
 
+
+  // EventContext konsumieren
+  const { eventTypes, venueTypes } = useContext(EventContext);
+
   return (
     <form className="register-form" onSubmit={handleSubmit}>
       <h2>Add New Event</h2>
@@ -190,13 +197,15 @@ export default function AddEventForm() {
         value={eventCategory}
         onChange={handleEventCategoryChange}
       />
-      <label>Artist</label>
-      <input type="text" value={artist} onChange={handleArtistChange} />
-      <label>Venue Type</label>
-      <input type="text" value={venueType} onChange={handleVenueTypeChange} />
+      <label>Artist Name</label>
+      <input type="text" value={artistName} onChange={handleArtistNameChange} />
+      {/* <label>Venue Type</label> */}
+      {/* <input type="text" value={venueType} onChange={handleVenueTypeChange} /> */}
+      <SelectComponent title="Venue Type" value={venueType} values={venueTypes} onChange={handleVenueTypeChange} />
 
-      <label>Event Type</label>
-      <input type="text" value={eventType} onChange={handleEventTypeChange} />
+      {/* <label>Event Type</label> */}
+      {/* <input type="text" value={eventType} onChange={handleEventTypeChange} /> */}
+      <SelectComponent title="Event Type" value={eventType} values={eventTypes} onChange={handleEventTypeChange} />
       <label>img</label>
       <input type="text" value={img} onChange={handleImgChange} />
       <label>Description</label>
