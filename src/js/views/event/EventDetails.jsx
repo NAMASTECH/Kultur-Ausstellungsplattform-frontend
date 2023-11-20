@@ -55,6 +55,7 @@ export default function EventDetails() {
 
     // useEffect(() => {
     //     // TODO use pagination when implemented
+    //      useParams(), um die Event ID zu holen
     //     axios
     //         .get(`/api/event/655385b829ea2d760abf6a4a`, {
     //             // .get(`${import.meta.env.VITE_API_BASE_URL}/api/events`, {
@@ -76,7 +77,7 @@ export default function EventDetails() {
             <div style={{ width: "20rem", }}>
                 <img className="PlaceholderPicture" style={{ alignSelf: 'stretch', width: "100%", height: "500px", background: 'linear-gradient(0deg, #DDE1E6 0%, #DDE1E6 100%)' }} src={event.img} />
             </div>
-            <div key={event._id} className="EventDetails" style={{ width: '60%', minHeight: "fit-content", border: '1px #DDE1E6 solid', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', display: 'inline-flex', margin: "15px" }}>
+            <div className="EventDetails" style={{ width: '60%', minHeight: "fit-content", border: '1px #DDE1E6 solid', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', display: 'inline-flex', margin: "15px" }}>
                 <div className="Content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start', alignSelf: 'stretch', paddingTop: 24, paddingBottom: 16, paddingLeft: 16, paddingRight: 16, gap: 16 }}>
                     <div className="dateStart" > <b>Von:</b> {`${event.dateStart} ${event.timeStart}`}</div>
                     <div className="dateEnd" >  <b>Bis:</b> {`${event.dateEnd} ${event.timeEnd}`}</div>
@@ -88,7 +89,7 @@ export default function EventDetails() {
 
                     {event.venues.map((venue) => {
                         return (
-                            <>
+                            <div key={venue._id}>
                                 <div className="venueName" > <b>Ort:</b> {venue.venueName}</div>
                                 <div className="venueType" > <b>Typ von Veranstaltungsort:</b> {venue.venueType}</div>
                                 <div>
@@ -97,7 +98,7 @@ export default function EventDetails() {
                                     {venue.zipCode} {venue.city}
                                 </div>
                                 <div>{venue.additionalAddressInfo}</div>
-                            </>
+                            </div>
                         );
                     })}
 

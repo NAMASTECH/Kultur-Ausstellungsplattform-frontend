@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { EventContext } from '../../context/EventContext';
 import EventCard from "../../components/EventCard.jsx";
 import SelectComponent from "../../components/SelectComponent.jsx";
 import { sampleEvents } from "./mock/sampleEvents.js";
@@ -15,6 +16,7 @@ export default function EventOverview() {
   const [dateEnd, setDateEnd] = useState("");
   const [eventType, setEventType] = useState("");
   const [venueType, setVenueType] = useState("");
+
   useEffect(() => {
     // TODO use pagination when implemented
     axios
@@ -39,16 +41,9 @@ export default function EventOverview() {
         console.log(events)
       });
   }, [loading, search_btn]);
-  // ["All", "Ausstellung", "Auktion", "Messe", "Vortrag", "Festival"];
-
-  const eventTypes = {ALL: "", Ausstellung: "Ausstellung", Auktion: "Auktion", Messe: "Messe", Vortrag: "Vortrag", Festival: "Festival"}
-
-  // ["All", "Museum", "Galerie", "Messe", "Auktionshaus", "Akademie"];
-  const venueTypes = {ALL: "", Museum: "Museum", Galerie: "Galerie", Messe: "Messe", Auktionshaus: "Auktionshaus", Akademie: "Akademie"}
 
   const handleSearchInputChange = (evt) => {
     setSearchTerm(evt.target.value);
-    
   };
 
   return (
@@ -56,9 +51,39 @@ export default function EventOverview() {
       <h2>Alle Veranstaltungen</h2>
 
       <div>
-        <SelectComponent title="Event Type" values={eventTypes} setValue={setEventType} />
-        <SelectComponent title="Venue Type" values={venueTypes} setValue={setVenueType} />
-        <Calendar dateStart={setDateStart} dateEnd={setDateEnd}/>
+        {/* <h2>Veranstaltungen filtern</h2> */}
+        <SelectComponent title="Event Type" values={eventTypes} onChange={handleEventTypeChange} />
+        <SelectComponent title="Venue Type" values={venueTypes} onChange={handleVenueTypeChange} />
+        <label htmlFor="dateStart" style={{ margin: "10px" }}>
+          Von
+        </label>
+        <input
+          id="dateStart"
+          value={dateStart}
+          style={{ margin: "10px" }}
+          type="date"
+          onChange={(evt) => setDateStart(evt.target.value)}
+        />
+        <label htmlFor="dateEnd" style={{ margin: "10px" }}>
+          Bis
+        </label>
+        <input
+          id="dateEnd"
+          value={dateEnd}
+          style={{ margin: "10px" }}
+          type="date"
+          onChange={(evt) => setDateEnd(evt.target.value)}
+        />
+        {/* <h2> Nach Veranstaltung suchen </h2> */}
+        <label htmlFor="event-search_input" style={{ margin: "10px" }}></label>
+        <input
+          id="event-search_input"
+          value={searchTerm}
+          style={{ margin: "10px" }}
+          type="search"
+          placeholder="Künstler, Events, & Orte"
+          onChange={handleSearchInputChange}
+        />
         <button className="search_btn" onClick={(evt) => setSearch_btn(true)}> Suchen </button>
       </div>
 

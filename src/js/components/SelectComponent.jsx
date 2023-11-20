@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-const SelectComponent = ({title, values, setValue}) => {
+const SelectComponent = ({ title, values, onChange }) => {
   // Zustand für die ausgewählte Option
   const [selectedOption, setSelectedOption] = useState('');
 
   // Handler-Funktion für Änderungen der Auswahl
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
-    setValue(event.target.value);
+
+    if (onChange) {
+      onChange(event);
+    }
   };
 
   return (
     <>
-      <label htmlFor="selectOption" style={{margin:"10px", }}>{title}</label>
+      <label htmlFor="selectOption" style={{ margin: "10px", }}>{title}</label>
       <select id="selectOption" value={selectedOption} onChange={handleSelectChange}>
         {
-          Object.keys(values).map((key) => {
-            return <option key={key} value={values[key]}>{key}</option>
-          })
+          values.map(value => { return <option key={value} value={value.toLowerCase()}>{value}</option> })
         }
         
       </select>
