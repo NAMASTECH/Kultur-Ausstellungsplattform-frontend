@@ -66,7 +66,7 @@ export default function EventOverview() {
         {/* <h2>Veranstaltungen filtern</h2> */}
         <SelectComponent title="Event Type" values={eventTypes} onChange={handleEventTypeChange} />
         <SelectComponent title="Venue Type" values={venueTypes} onChange={handleVenueTypeChange} />
-        <Calendar startDate={setDateStart} dateEnd={setDateEnd} />
+        <Calendar dateStart={setDateStart} dateEnd={setDateEnd} />
         {/* <h2> Nach Veranstaltung suchen </h2> */}
         <label htmlFor="event-search_input" style={{ margin: "10px" }}></label>
         <input

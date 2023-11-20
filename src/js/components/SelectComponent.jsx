@@ -18,7 +18,7 @@ const SelectComponent = ({ title, values, onChange }) => {
       <label htmlFor="selectOption" style={{ margin: "10px", }}>{title}</label>
       <select id="selectOption" value={selectedOption} onChange={handleSelectChange}>
         {
-          values.map(value => { return <option key={value} value={value.toLowerCase()}>{value}</option> })
+          values.map(value => { return <option key={value} value={value}>{value}</option> })
         }
         
       </select>
