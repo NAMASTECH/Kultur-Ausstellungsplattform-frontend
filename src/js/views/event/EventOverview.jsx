@@ -42,9 +42,21 @@ export default function EventOverview() {
       });
   }, [loading, search_btn]);
 
+  console.log(events);
+
   const handleSearchInputChange = (evt) => {
     setSearchTerm(evt.target.value);
   };
+
+  const handleEventTypeChange = (evt) => {
+    setEventType(evt.target.value);
+  }
+
+  const handleVenueTypeChange = (evt) => {
+    setVenueType(evt.target.value);
+  }
+
+  const { eventTypes, venueTypes } = useContext(EventContext)
 
   return (
     <div>
@@ -54,26 +66,7 @@ export default function EventOverview() {
         {/* <h2>Veranstaltungen filtern</h2> */}
         <SelectComponent title="Event Type" values={eventTypes} onChange={handleEventTypeChange} />
         <SelectComponent title="Venue Type" values={venueTypes} onChange={handleVenueTypeChange} />
-        <label htmlFor="dateStart" style={{ margin: "10px" }}>
-          Von
-        </label>
-        <input
-          id="dateStart"
-          value={dateStart}
-          style={{ margin: "10px" }}
-          type="date"
-          onChange={(evt) => setDateStart(evt.target.value)}
-        />
-        <label htmlFor="dateEnd" style={{ margin: "10px" }}>
-          Bis
-        </label>
-        <input
-          id="dateEnd"
-          value={dateEnd}
-          style={{ margin: "10px" }}
-          type="date"
-          onChange={(evt) => setDateEnd(evt.target.value)}
-        />
+        <Calendar startDate={setDateStart} dateEnd={setDateEnd} />
         {/* <h2> Nach Veranstaltung suchen </h2> */}
         <label htmlFor="event-search_input" style={{ margin: "10px" }}></label>
         <input
