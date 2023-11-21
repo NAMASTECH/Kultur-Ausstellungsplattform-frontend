@@ -32,7 +32,7 @@ export default function EventCard({
 
         <img className="gallery-card-image " src={img} alt="image" />
       </div>
-      <div className="-card-content">
+      <div className="card-content">
         <div className="dateStart">
           {" "}
           <b>Von:</b> {`${dateStart.split("T")[0]} ${timeStart}`}
