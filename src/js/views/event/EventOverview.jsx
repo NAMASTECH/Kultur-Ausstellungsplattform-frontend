@@ -32,8 +32,8 @@ export default function EventOverview() {
           dateEnd,
           eventType,
           venueType,
-          page,
-          limit: 9,
+          page: currentPage,
+          limit,
         },
       })
       .then((resp) => {
