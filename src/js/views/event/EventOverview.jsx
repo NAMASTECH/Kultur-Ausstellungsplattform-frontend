@@ -23,7 +23,7 @@ export default function EventOverview() {
   const limit = 9;
 
   useEffect(() => {
-    // TODO use pagination when implemented
+    // use pagination
     axios
       .get(`/api/events?page=${currentPage}&limit=${limit}`, {
         withCredentials: true,

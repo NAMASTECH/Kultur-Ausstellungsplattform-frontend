@@ -15,13 +15,13 @@ export default function Layout() {
           <Header />
           <p>------------------------</p>
           <main>
-            <p>Hello main</p>
             {/* Unteransichten bzw. Kindrouten */}
             <Outlet />
           </main>
           <p>------------------------</p>
           <Footer />
         </div>
+
       </EventProvider>
     </AuthStoreProvider>
   );
