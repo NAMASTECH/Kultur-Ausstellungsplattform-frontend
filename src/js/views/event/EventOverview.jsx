@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { EventContext } from '../../context/EventContext';
+import { EventContext } from "../../context/EventContext";
 import EventCard from "../../components/EventCard.jsx";
 import SelectComponent from "../../components/SelectComponent.jsx";
 import { sampleEvents } from "./mock/sampleEvents.js";
 import EventDetails from "./EventDetails.jsx";
 import Calendar from "../../components/datePiker/datePiker.jsx";
-import PaginationComponent from '../../components/PaginationComponent';
-
+import PaginationComponent from "../../components/PaginationComponent";
+import "./EventOverview.scss";
 export default function EventOverview() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,7 +38,7 @@ export default function EventOverview() {
       })
       .then((resp) => {
         setEvents(resp.data.events);
-        console.log(resp.data.totalCount[0].count / limit)
+        console.log(resp.data.totalCount[0].count / limit);
         setTotalPages(resp.data.totalCount[0].count);
       })
       .catch((err) => {
@@ -58,26 +58,34 @@ export default function EventOverview() {
 
   const handleEventTypeChange = (evt) => {
     setEventType(evt.target.value);
-  }
+  };
 
   const handleVenueTypeChange = (evt) => {
     setVenueType(evt.target.value);
-  }
+  };
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  const { eventTypes, venueTypes } = useContext(EventContext)
+  const { eventTypes, venueTypes } = useContext(EventContext);
 
   return (
     <div>
       <h2>Alle Veranstaltungen</h2>
 
       <div>
-        
-        <SelectComponent title="Event Type" values={eventTypes} onChange={handleEventTypeChange} />
-        <SelectComponent title="Venue Type" values={venueTypes} onChange={handleVenueTypeChange} />
+        {/* <h2>Veranstaltungen filtern</h2> */}
+        <SelectComponent
+          title="Event Type"
+          values={eventTypes}
+          onChange={handleEventTypeChange}
+        />
+        <SelectComponent
+          title="Venue Type"
+          values={venueTypes}
+          onChange={handleVenueTypeChange}
+        />
         <Calendar dateStart={setDateStart} dateEnd={setDateEnd} />
       
         <label htmlFor="event-search_input" style={{ margin: "10px" }}></label>
@@ -89,10 +97,15 @@ export default function EventOverview() {
           placeholder="Künstler, Events, & Orte"
           onChange={handleSearchInputChange}
         />
-        <button className="search_btn" onClick={(evt) => setSearch_btn(true)}> Suchen </button>
+        <button className="search_btn" onClick={(evt) => setSearch_btn(true)}>
+          {" "}
+          Suchen{" "}
+        </button>
       </div>
 
-      <div>
+      <br></br>
+
+      <div className="gallery">
         {!loading ? (
           events.length > 0 ? (
             events.map((event) => {
@@ -105,7 +118,11 @@ export default function EventOverview() {
           <h3>Loading...</h3>
         )}
       </div>
-      <PaginationComponent totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange} />
+      <PaginationComponent
+        totalPages={totalPages}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 }
