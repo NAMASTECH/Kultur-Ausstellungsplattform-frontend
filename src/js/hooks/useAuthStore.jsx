@@ -24,7 +24,6 @@ export function AuthStoreProvider({children}) {
 
     // Speichere Userdaten bei Veraenderung im sessionStorage fuer Wiederherstellung, wenn Daten nicht null
     useEffect(() => {
-        console.log('AuthStore:', userData);
         if (userData) {
             sessionStorage.setItem('userData', JSON.stringify(userData));
         }

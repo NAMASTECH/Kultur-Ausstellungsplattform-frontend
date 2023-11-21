@@ -6,6 +6,7 @@ import SelectComponent from "../../components/SelectComponent.jsx";
 import { sampleEvents } from "./mock/sampleEvents.js";
 import EventDetails from "./EventDetails.jsx";
 import Calendar from "../../components/datePiker/datePiker.jsx";
+import Pagination from "../../components/pagination/pagination.jsx";
 
 export default function EventOverview() {
   const [events, setEvents] = useState([]);
@@ -16,9 +17,10 @@ export default function EventOverview() {
   const [dateEnd, setDateEnd] = useState("");
   const [eventType, setEventType] = useState("");
   const [venueType, setVenueType] = useState("");
+  const [items, setItems] = useState(0);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    // TODO use pagination when implemented
     axios
       .get(`/api/events`, {
         withCredentials: true,
@@ -27,10 +29,13 @@ export default function EventOverview() {
           dateEnd,
           eventType,
           venueType,
+          page,
+          limit: 9,
         },
       })
       .then((resp) => {
         setEvents(resp.data.events);
+        setItems(resp.data.totalCount[0].count);
       })
       .catch((err) => {
         console.error(err);
@@ -38,11 +43,8 @@ export default function EventOverview() {
       .finally(() => {
         setLoading(false);
         setSearch_btn(false)
-        console.log(events)
       });
-  }, [loading, search_btn]);
-
-  console.log(events);
+  }, [loading, search_btn, page]);
 
   const handleSearchInputChange = (evt) => {
     setSearchTerm(evt.target.value);
@@ -63,11 +65,11 @@ export default function EventOverview() {
       <h2>Alle Veranstaltungen</h2>
 
       <div>
-        {/* <h2>Veranstaltungen filtern</h2> */}
+        
         <SelectComponent title="Event Type" values={eventTypes} onChange={handleEventTypeChange} />
         <SelectComponent title="Venue Type" values={venueTypes} onChange={handleVenueTypeChange} />
         <Calendar dateStart={setDateStart} dateEnd={setDateEnd} />
-        {/* <h2> Nach Veranstaltung suchen </h2> */}
+      
         <label htmlFor="event-search_input" style={{ margin: "10px" }}></label>
         <input
           id="event-search_input"
@@ -79,8 +81,6 @@ export default function EventOverview() {
         />
         <button className="search_btn" onClick={(evt) => setSearch_btn(true)}> Suchen </button>
       </div>
-
-      <br></br>
 
       <div>
         {!loading ? (
@@ -95,6 +95,12 @@ export default function EventOverview() {
           <h3>Loading...</h3>
         )}
       </div>
+
+      
+      <Pagination items={items} setPage={setPage} />
+     
+      
+
     </div>
   );
 }

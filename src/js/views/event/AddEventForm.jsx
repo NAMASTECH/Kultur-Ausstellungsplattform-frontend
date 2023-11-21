@@ -93,7 +93,6 @@ export default function AddEventForm() {
           withCredentials: true,
         }
       );
-      console.log(resp.data);
     } catch (error) {
       console.error(error);
     }
