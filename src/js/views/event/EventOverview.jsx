@@ -38,7 +38,6 @@ export default function EventOverview() {
       })
       .then((resp) => {
         setEvents(resp.data.events);
-        console.log(resp.data.totalCount[0].count / limit);
         setTotalPages(resp.data.totalCount[0].count);
       })
       .catch((err) => {
@@ -50,7 +49,6 @@ export default function EventOverview() {
       });
   }, [loading, search_btn, currentPage]);
 
-  console.log(events);
 
   const handleSearchInputChange = (evt) => {
     setSearchTerm(evt.target.value);

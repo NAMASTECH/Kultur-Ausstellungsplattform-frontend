@@ -12,16 +12,7 @@ const ContactForm = () => {
   const handelSubmit = (e) => {
     e.preventDefault();
   };
-  // useEffect API anfrage  senden
-
-  // console.log("Daten gesendet", {
-  //   selectedEvent,
-  //   firstName,
-  //   lastName,
-  //   organisation,
-  //   email,
-  //   message,
-  // });
+  
 
   return (
     <div className="KontaktForm-container">

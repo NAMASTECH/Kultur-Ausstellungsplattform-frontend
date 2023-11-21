@@ -7,7 +7,6 @@ const Pagination = ({ items, setPage }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(9);
     const [pages , setPages] = useState(1);
-    console.log(currentPage);
 
     useEffect(() => {
         setPages(Math.ceil(items / itemsPerPage));

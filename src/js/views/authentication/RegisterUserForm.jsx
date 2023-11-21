@@ -27,14 +27,12 @@ export default function RegisterForm() {
       email,
     };
 
-    console.log(userData);
 
     try {
       const resp = await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}/auth/register/user`,
         userData
       );
-      console.log(resp.data);
       setConfirmedUsername(resp.data.username);
     } catch (error) {
       console.error(error);

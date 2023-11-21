@@ -14,24 +14,30 @@
 
 .gallery-card-image-container {
     position: relative;
-}
-
-.eventType {
+    .eventType {
     position: absolute;
-    top: 10%;
-    right: 75%;
-    transform: translate(-50%, -50%);
+    top: 5%;
+    left: 5%;
     z-index: 1;
-    color: white;
-    font-size: 18px;
+    color: black;
+    font-size: 18pt;
     font-weight: bold;
-}
+    background-color: #98ff1a;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: "Inter", sans-serif;
+    font-weight: lighter;
+    }
+
 
 .gallery-card-image {
     width: 100%;
     height: auto;
     object-fit: contain;
 }
+
+}
+
 
 .gallery-card:hover {
     transform: scale(1.05);
@@ -41,35 +47,27 @@
 
 .card-content {
     margin-top: 10px;
-    .dateStart,
-    .dateEnd  {
+    .dateStart {
          font-family: "Inter", sans-serif;
-         font-size: 17pt;
+         font-size: 12pt;
          font-weight: normal;
         }
-    .eventTitle
-     {
-        color: #98ff1a;
-                }
-    div.venue-info {
-        .venueName {
-                color: aqua;
-            }
-        
-        .venueType {
-                box-sizing: border-box;
-                border: 1px solid rgb(25, 37, 6);
-                background-color: #98ff1a;
-            }
-        .venue-address {
-        
-            .venue-additionalAddressInfo {}
-        
-                }
-
+    .artists {
+            font-family: "Inter", sans-serif;
+            font-size: 23pt;
+            font-weight: normal;
+        }
+    .eventTitle { 
+        color: black;
+        font-family: "Inter", sans-serif;
+        font-size: 23pt; 
+    }
+    .organizer{ 
+        color: black;
+        font-family: "Inter", sans-serif;
+        font-size: 17pt; 
     }   
-    
-        
+         
 }
 
 
