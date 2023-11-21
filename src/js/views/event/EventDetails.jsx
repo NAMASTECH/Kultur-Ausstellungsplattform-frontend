@@ -1,6 +1,8 @@
 
-import axios from "axios";
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from "axios";
+
 import { sampleEvents } from './mock/sampleEvents';
 
 // TO DO: GET Endpoint für 1 Event ODER Context API
@@ -51,7 +53,20 @@ const event = {
 }
 
 export default function EventDetails() {
-    // const [event, setEvent] = useState({});
+    const { eventId } = useParams();
+    const [event, setEvent] = useState({});
+
+    useEffect(() => {
+        const fetchEventDetails = async () => {
+            try {
+                const response = await axios.get(`/api/event/${eventId}`);
+                setEvent(response.data);
+            } catch (error) {
+                console.error('Error fetching event details:', error);
+            }
+        };
+        fetchEventDetails();
+    }, [eventId]);
 
     // useEffect(() => {
     //     // TODO use pagination when implemented
@@ -87,7 +102,7 @@ export default function EventDetails() {
                     <div className="eventCategory" > <b>Kategorie:</b> {event.eventCategory}</div>
                     <a href={event.homepage}>Homepage</a>
 
-                    {event.venues.map((venue) => {
+                    {/* {event.venues.map((venue) => {
                         return (
                             <div key={venue._id}>
                                 <div className="venueName" > <b>Ort:</b> {venue.venueName}</div>
@@ -100,7 +115,7 @@ export default function EventDetails() {
                                 <div>{venue.additionalAddressInfo}</div>
                             </div>
                         );
-                    })}
+                    })} */}
 
                     <p className="description" style={{
                     }}> <b>Beschreibung:</b> {event.description}</p>

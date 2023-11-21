@@ -6,7 +6,7 @@ import SelectComponent from "../../components/SelectComponent.jsx";
 import { sampleEvents } from "./mock/sampleEvents.js";
 import EventDetails from "./EventDetails.jsx";
 import Calendar from "../../components/datePiker/datePiker.jsx";
-import Pagination from "../../components/pagination/pagination.jsx";
+import PaginationComponent from '../../components/PaginationComponent';
 
 export default function EventOverview() {
   const [events, setEvents] = useState([]);
@@ -17,12 +17,15 @@ export default function EventOverview() {
   const [dateEnd, setDateEnd] = useState("");
   const [eventType, setEventType] = useState("");
   const [venueType, setVenueType] = useState("");
-  const [items, setItems] = useState(0);
-  const [page, setPage] = useState(1);
+  // For Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const limit = 9;
 
   useEffect(() => {
+    // TODO use pagination when implemented
     axios
-      .get(`/api/events`, {
+      .get(`/api/events?page=${currentPage}&limit=${limit}`, {
         withCredentials: true,
         params: {
           dateStart,
@@ -35,7 +38,8 @@ export default function EventOverview() {
       })
       .then((resp) => {
         setEvents(resp.data.events);
-        setItems(resp.data.totalCount[0].count);
+        console.log(resp.data.totalCount[0].count / limit)
+        setTotalPages(resp.data.totalCount[0].count);
       })
       .catch((err) => {
         console.error(err);
@@ -44,7 +48,9 @@ export default function EventOverview() {
         setLoading(false);
         setSearch_btn(false)
       });
-  }, [loading, search_btn, page]);
+  }, [loading, search_btn, currentPage]);
+
+  console.log(events);
 
   const handleSearchInputChange = (evt) => {
     setSearchTerm(evt.target.value);
@@ -57,6 +63,10 @@ export default function EventOverview() {
   const handleVenueTypeChange = (evt) => {
     setVenueType(evt.target.value);
   }
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   const { eventTypes, venueTypes } = useContext(EventContext)
 
@@ -95,12 +105,7 @@ export default function EventOverview() {
           <h3>Loading...</h3>
         )}
       </div>
-
-      
-      <Pagination items={items} setPage={setPage} />
-     
-      
-
+      <PaginationComponent totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange} />
     </div>
   );
 }

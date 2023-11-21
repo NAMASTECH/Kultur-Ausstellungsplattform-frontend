@@ -1,0 +1,42 @@
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; // Adjust as needed for spacing from content above
+    margin-bottom: 20px; // Space from the bottom of the page
+
+    nav {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+    }
+
+    .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+
+        .page-item {
+            margin: 0 5px; // Spacing between page items
+
+            a {
+                color: #007bff; // Adjust link color as needed
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            &.active a {
+                font-weight: bold;
+            }
+
+            &.disabled a {
+                color: #ccc;
+                pointer-events: none;
+            }
+        }
+    }
+}
