@@ -6,6 +6,7 @@ import SelectComponent from "../../components/SelectComponent.jsx";
 import { sampleEvents } from "./mock/sampleEvents.js";
 import EventDetails from "./EventDetails.jsx";
 import Calendar from "../../components/datePiker/datePiker.jsx";
+import PaginationComponent from '../../components/PaginationComponent';
 
 export default function EventOverview() {
   const [events, setEvents] = useState([]);
@@ -16,11 +17,15 @@ export default function EventOverview() {
   const [dateEnd, setDateEnd] = useState("");
   const [eventType, setEventType] = useState("");
   const [venueType, setVenueType] = useState("");
+  // For Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const limit = 9;
 
   useEffect(() => {
     // TODO use pagination when implemented
     axios
-      .get(`/api/events`, {
+      .get(`/api/events?page=${currentPage}&limit=${limit}`, {
         withCredentials: true,
         params: {
           dateStart,
@@ -31,6 +36,8 @@ export default function EventOverview() {
       })
       .then((resp) => {
         setEvents(resp.data.events);
+        console.log(resp.data.totalCount[0].count / limit)
+        setTotalPages(resp.data.totalCount[0].count);
       })
       .catch((err) => {
         console.error(err);
@@ -40,7 +47,7 @@ export default function EventOverview() {
         setSearch_btn(false)
         console.log(events)
       });
-  }, [loading, search_btn]);
+  }, [loading, search_btn, currentPage]);
 
   console.log(events);
 
@@ -55,6 +62,10 @@ export default function EventOverview() {
   const handleVenueTypeChange = (evt) => {
     setVenueType(evt.target.value);
   }
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   const { eventTypes, venueTypes } = useContext(EventContext)
 
@@ -95,6 +106,7 @@ export default function EventOverview() {
           <h3>Loading...</h3>
         )}
       </div>
+      <PaginationComponent totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange} />
     </div>
   );
 }
