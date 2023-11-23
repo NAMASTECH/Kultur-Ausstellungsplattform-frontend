@@ -1,33 +1,20 @@
 $font-size: 3.2em;
-@import './variebels';
+@import './variables';
 
 .app {
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2em;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
- 
+  width: 100vw;
+  height: 100vh;
 
   h1 {
-    font-size: $font-size;
+    
     line-height: 1.1;
     text-align: center;
   }
 
-
   button {
     width: fit-content;
     padding: 0.5em;
-  }
-
-  .nav-container {
-    display: flex;
-    gap: 1em;
   }
 
   .register-form {
@@ -51,6 +38,7 @@ $font-size: 3.2em;
       gap: 0.2em;
     }
   }
+
   table {
     orientation: portrait;
     border-collapse: collapse;
@@ -64,41 +52,9 @@ $font-size: 3.2em;
     td {
       border: 1px solid black;
     }
-    .nav-container {
-      display: flex;
-      gap: 1em;
-      a {
-        text-decoration: none;
-        color: black;
-      }
-      
-    }
-
   }
   
-  .footer-container{
-    flex-direction: column;
-    margin-top: auto;
-    background-color: bisque;
-    display: flex;
-    width: 100%;
-    height: 50px;
-    margin: 0 auto;
-    position:fixed;
-    bottom: 0;
-   .contact-info {
-    flex-direction: column;
-    color:rgb(23, 13, 168) ;
-    background-color: aquamarine;
-    width: 50%;
-    margin: 0 auto;
-    align-items: center;
-    
-
-   }
   
-
-  }
 
 }  
 

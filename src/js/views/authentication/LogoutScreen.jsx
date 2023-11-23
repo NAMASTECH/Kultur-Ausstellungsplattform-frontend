@@ -5,16 +5,23 @@ import axios from "axios";
 
 export default function LogoutScreen() {
     const { isOnline, clearUserData } = useAuthStore();
-
+    
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_API_BASE_URL}/auth/logout`, {
+        
+        axios.get(`${import.meta.env.VITE_API_BASE_URL}auth/logout`, {
             withCredentials: true
         })
             .then(resp => {
                 clearUserData();
+                setTimeout(() => {
+                    window.location.href = "/";
+                }, 2000);
             })
             .catch(error => {
-                console.error(error);
+                clearUserData();
+                setTimeout(() => {
+                    window.location.href = "/";
+                }, 2000);
             });
     }, []);
 

@@ -2,11 +2,11 @@
 
 
 .gallery-card {
-    border: 1px solid rgb(245, 233, 233);
+    // border: 1px solid rgb(245, 233, 233);
     padding: 15px;
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    // background-color: #fff;
     width: calc(33.3333% - 20px);
 
     color: #333;
@@ -25,7 +25,6 @@
     background-color: #98ff1a;
     padding: 4px 8px;
     border-radius: 4px;
-    font-family: "Inter", sans-serif;
     font-weight: lighter;
     }
 
@@ -48,23 +47,19 @@
 .card-content {
     margin-top: 10px;
     .dateStart {
-         font-family: "Inter", sans-serif;
          font-size: 12pt;
          font-weight: normal;
         }
     .artists {
-            font-family: "Inter", sans-serif;
             font-size: 23pt;
             font-weight: normal;
         }
     .eventTitle { 
         color: black;
-        font-family: "Inter", sans-serif;
         font-size: 23pt; 
     }
     .organizer{ 
         color: black;
-        font-family: "Inter", sans-serif;
         font-size: 17pt; 
     }   
          

@@ -1,6 +1,6 @@
 // Hier kommen alle wichtigen Imports rein. Z.B. die eingebauten Hooks von react
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { redirect, useLocation, useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
 // Imports von benoetigten Paketen
@@ -34,7 +34,7 @@ export default function LoginForm() {
 
     try {
       const resp = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/auth/login`,
+        `${import.meta.env.VITE_API_BASE_URL}auth/login`,
         reqBody,
         {
           withCredentials: true,
@@ -47,7 +47,11 @@ export default function LoginForm() {
         username: resp.data.username,
         role: resp.data.role,
       });
-
+      if (resp.data.role == "organizer") {
+        navigate("/users");
+      } else {
+        navigate("/");
+      }
       // Wenn im location State eine Ursprungsroute hinterlegt wurde, navigiere zurueck dahin
       if (location.state?.from) navigate(location.state.from);
     } catch (error) {
