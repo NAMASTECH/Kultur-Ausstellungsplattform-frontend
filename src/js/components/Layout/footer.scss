@@ -1,0 +1,31 @@
+.footer-container {
+    padding: 10px;
+    margin: auto;
+    width: 100%;
+ 
+    .contact-info {
+          
+        ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            
+
+            .namastech {
+                align-items: flex-start;
+                color: black;
+                margin-right: 150px;
+                text-decoration: none;
+            }
+
+            .kontakt,
+            .impressum,
+            .datenschutz {
+                text-decoration: none;
+                margin-right: 20px;
+                color: black;
+                justify-content: flex-end;
+            }
+        }
+    }
+}
