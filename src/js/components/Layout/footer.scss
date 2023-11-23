@@ -2,21 +2,24 @@
     padding: 10px;
     margin: auto;
     width: 100%;
- 
+
     .contact-info {
-          
+        display: flex;
+        justify-content: space-between; 
+     
+        
+         span{
+            a {
+                text-decoration: none;
+                color: black;
+            }
+         } 
+       
         ul {
             display: flex;
             list-style: none;
-            justify-content: center;
-            
-
-            .namastech {
-                align-items: flex-start;
-                color: black;
-                margin-right: 150px;
-                text-decoration: none;
-            }
+            justify-content:flex-end;
+        
 
             .kontakt,
             .impressum,
@@ -24,7 +27,7 @@
                 text-decoration: none;
                 margin-right: 20px;
                 color: black;
-                justify-content: flex-end;
+                
             }
         }
     }

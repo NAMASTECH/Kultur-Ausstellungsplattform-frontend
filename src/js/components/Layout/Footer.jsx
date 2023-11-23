@@ -6,12 +6,12 @@ export const Footer = () => {
   return (
     <footer className="footer-container">
       <div className="contact-info">
+        <span>
+          <Link to="/NamasTech" className="namastech">
+            &copy;NamasTech 2023
+          </Link> 
+        </span>
         <ul>
-          <li>
-            <Link to="/NamasTech" className="namastech">
-              &copy;NamasTech 2023
-            </Link>
-          </li>
           <li>
             <Link to="/kontakt" className="kontakt">
               Kontakt
@@ -23,10 +23,7 @@ export const Footer = () => {
             </Link>
           </li>
           <li>
-            <Link
-              to="/datenschutz"
-              className="datenschutz"
-            >
+            <Link to="/datenschutz" className="datenschutz">
               Datenschutz
             </Link>
           </li>
