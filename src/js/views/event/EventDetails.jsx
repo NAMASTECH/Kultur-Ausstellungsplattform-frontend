@@ -54,7 +54,26 @@ const event = {
 
 export default function EventDetails() {
     const { eventId } = useParams();
-    const [event, setEvent] = useState({});
+    const [event, setEvent] = useState({
+        _id: "",
+        eventTitle: "",
+        artist: "",
+        eventCategory: "",
+        eventType: "",
+        img: "",
+        description: "",
+        homepage: "",
+        dateStart: "",
+        dateEnd: "",
+        timeStart: "",
+        timeEnd: "",
+        organizerId: "",
+        venues: [],
+        artists: [],
+        createdAt: "",
+        updatedAt: ""
+    }
+    );
 
     useEffect(() => {
         const fetchEventDetails = async () => {
@@ -102,7 +121,7 @@ export default function EventDetails() {
                     <div className="eventCategory" > <b>Kategorie:</b> {event.eventCategory}</div>
                     <a href={event.homepage}>Homepage</a>
 
-                    {/* {event.venues.map((venue) => {
+                    {event.venues.map((venue) => {
                         return (
                             <div key={venue._id}>
                                 <div className="venueName" > <b>Ort:</b> {venue.venueName}</div>
@@ -115,7 +134,7 @@ export default function EventDetails() {
                                 <div>{venue.additionalAddressInfo}</div>
                             </div>
                         );
-                    })} */}
+                    })}
 
                     <p className="description" style={{
                     }}> <b>Beschreibung:</b> {event.description}</p>
