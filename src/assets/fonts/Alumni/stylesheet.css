@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Alumni Sans';
+    src: url('AlumniSans-Thin.eot');
+    src: url('AlumniSans-Thin.eot?#iefix') format('embedded-opentype'),
+        url('AlumniSans-Thin.woff2') format('woff2'),
+        url('AlumniSans-Thin.woff') format('woff'),
+        url('AlumniSans-Thin.ttf') format('truetype'),
+        url('AlumniSans-Thin.svg#AlumniSans-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Alumni Sans';
+    src: url('AlumniSans-ThinItalic.eot');
+    src: url('AlumniSans-ThinItalic.eot?#iefix') format('embedded-opentype'),
+        url('AlumniSans-ThinItalic.woff2') format('woff2'),
+        url('AlumniSans-ThinItalic.woff') format('woff'),
+        url('AlumniSans-ThinItalic.ttf') format('truetype'),
+        url('AlumniSans-ThinItalic.svg#AlumniSans-ThinItalic') format('svg');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
