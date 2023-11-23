@@ -1,3 +1,4 @@
+@import "../../../styles/variables";
 .footer-container {
     padding: 10px;
     margin: auto;
@@ -19,7 +20,6 @@
             display: flex;
             list-style: none;
             justify-content:flex-end;
-        
 
             .kontakt,
             .impressum,

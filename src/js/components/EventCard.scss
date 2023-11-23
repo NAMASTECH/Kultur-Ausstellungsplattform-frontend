@@ -25,7 +25,6 @@
     background-color: #98ff1a;
     padding: 4px 8px;
     border-radius: 4px;
-    font-family: "Inter", sans-serif;
     font-weight: lighter;
     }
 
@@ -48,23 +47,19 @@
 .card-content {
     margin-top: 10px;
     .dateStart {
-         font-family: "Inter", sans-serif;
          font-size: 12pt;
          font-weight: normal;
         }
     .artists {
-            font-family: "Inter", sans-serif;
             font-size: 23pt;
             font-weight: normal;
         }
     .eventTitle { 
         color: black;
-        font-family: "Inter", sans-serif;
         font-size: 23pt; 
     }
     .organizer{ 
         color: black;
-        font-family: "Inter", sans-serif;
         font-size: 17pt; 
     }   
          
