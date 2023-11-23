@@ -1,0 +1,34 @@
+.footer-container {
+    padding: 10px;
+    margin: auto;
+    width: 100%;
+
+    .contact-info {
+        display: flex;
+        justify-content: space-between; 
+     
+        
+         span{
+            a {
+                text-decoration: none;
+                color: black;
+            }
+         } 
+       
+        ul {
+            display: flex;
+            list-style: none;
+            justify-content:flex-end;
+        
+
+            .kontakt,
+            .impressum,
+            .datenschutz {
+                text-decoration: none;
+                margin-right: 20px;
+                color: black;
+                
+            }
+        }
+    }
+}
