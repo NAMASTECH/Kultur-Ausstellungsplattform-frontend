@@ -1,0 +1,86 @@
+.event-details-container__section {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+
+    .img-container__aside {
+        width: 20rem;
+
+        .event-image {
+            align-self: 'stretch';
+            width: "100%";
+            height: "500px";
+            background: linear-gradient(0deg, #DDE1E6 0%, #DDE1E6 100%)
+        }
+    }
+
+    .event-details__article {
+        width: 60%;
+        min-height: fit-content;
+        border: 1px #DDE1E6 solid;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        display: inline-flex;
+        margin: 15px;
+
+        .event-details-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            align-self: stretch;
+            padding-top: 24px;
+            padding-bottom: 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+            gap: 16px;
+
+            .font-weight-bold {
+                font-weight: bold;
+            }
+
+            .font-size-big {
+                font-size: 2em;
+            }
+
+            // TODO: Falls spezielle Styles definiert werden sollen, die nur für das eine Text Feld gelten, dann über ID (#) stylen,
+            // ansonsten Klassen (.) verwenden für alles, was allgemein ist und mehrmals verwendet werden kann.
+
+            #date-start {}
+
+            #date-end {}
+
+            #artist-info-container {
+
+                #artist-name {}
+
+                #artist-type {}
+
+                #artist-description {}
+
+                #artist-img {}
+            }
+
+            #event-title {}
+
+            #event-type {}
+
+            #event-category {}
+
+            #venue-info {
+                #venue-name {}
+
+                #venue-type {}
+
+                #venue-address-container {
+
+                    #additional-address-info {}
+                }
+            }
+
+        }
+    }
+
+}
