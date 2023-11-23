@@ -115,8 +115,23 @@ export default function EventDetails() {
                 <div className="Content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start', alignSelf: 'stretch', paddingTop: 24, paddingBottom: 16, paddingLeft: 16, paddingRight: 16, gap: 16 }}>
                     <div className="dateStart" > <b>Von:</b> {`${event.dateStart} ${event.timeStart}`}</div>
                     <div className="dateEnd" >  <b>Bis:</b> {`${event.dateEnd} ${event.timeEnd}`}</div>
-                    <div className="artists" style={{ fontSize: 20, fontWeight: '700', }}>{event.artist} </div>
-                    <div className="eventTitle" >{event.eventTitle}</div>
+                    <div className="artists" style={{ fontSize: 20, fontWeight: '700', }}> <b>Artist(s):</b>{event.artist} </div>
+
+
+                    {event.artists.map((artist) => {
+                        return (
+                            <div key={artist._id}>
+                                <div className="artistName" > <b>Artist Name:</b> {artist.artistName}</div>
+                                <div className="artistType" > <b>Artist Type</b> {artist.artistType}</div>
+                                <div className="artistDescription" > <b>Artist Description</b> {artist.artistDescription}</div>
+                                <p>Artist image:</p>
+                                <img src={artist.artistImg} className="artistImg" />
+                            </div>
+                        );
+                    })}
+
+
+                    <div className="eventTitle" > <b>Event Title:</b> {event.eventTitle}</div>
                     <div className="eventType" > <b>Event Typ:</b> {event.eventType}</div>
                     <div className="eventCategory" > <b>Kategorie:</b> {event.eventCategory}</div>
                     <a href={event.homepage}>Homepage</a>
