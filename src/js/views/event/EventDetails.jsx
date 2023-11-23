@@ -125,7 +125,7 @@ export default function EventDetails() {
                                 <div className="artistType" > <b>Artist Type</b> {artist.artistType}</div>
                                 <div className="artistDescription" > <b>Artist Description</b> {artist.artistDescription}</div>
                                 <p>Artist image:</p>
-                                <img src={artist.artistImg} className="artistImg" />
+                                <img src={artist.artistImg} className="artistImg" width="200em" />
                             </div>
                         );
                     })}
