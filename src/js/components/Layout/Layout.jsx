@@ -13,12 +13,9 @@ export default function Layout() {
 
         <div className="app">
           <Header />
-          <p>------------------------</p>
           <main>
-            {/* Unteransichten bzw. Kindrouten */}
             <Outlet />
           </main>
-          <p>------------------------</p>
           <Footer />
         </div>
 

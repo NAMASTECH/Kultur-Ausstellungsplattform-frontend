@@ -70,39 +70,7 @@ export default function EventOverview() {
 
   return (
     <div>
-      <h2>Alle Veranstaltungen</h2>
-
-      <div>
-        {/* <h2>Veranstaltungen filtern</h2> */}
-        <SelectComponent
-          title="Event Type"
-          values={eventTypes}
-          onChange={handleEventTypeChange}
-        />
-        <SelectComponent
-          title="Venue Type"
-          values={venueTypes}
-          onChange={handleVenueTypeChange}
-        />
-        <Calendar dateStart={setDateStart} dateEnd={setDateEnd} />
       
-        <label htmlFor="event-search_input" style={{ margin: "10px" }}></label>
-        <input
-          id="event-search_input"
-          value={searchTerm}
-          style={{ margin: "10px" }}
-          type="search"
-          placeholder="Künstler, Events, & Orte"
-          onChange={handleSearchInputChange}
-        />
-        <button className="search_btn" onClick={(evt) => setSearch_btn(true)}>
-          {" "}
-          Suchen{" "}
-        </button>
-      </div>
-
-      <br></br>
-
       <div className="gallery">
         {!loading ? (
           events.length > 0 ? (

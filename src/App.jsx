@@ -26,15 +26,13 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          {/* Definiere Standard Unteransicht fuer die root-Route */}
-          <Route index element={<h1>Home</h1>} />
+          <Route index element={<EventOverview />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/register/user" element={<RegisterUserForm />} />
           <Route path="/register/organizer" element={<RegisterOrgaForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/logout" element={<LogoutScreen />} />
           <Route path="/event" element={<AddEventForm />} />
-          <Route path="/events" element={<EventOverview />} />
           <Route path="/kontakt" element={<ContactForm />} />
           <Route path="/event/:eventId" element={<EventDetails />} />
 

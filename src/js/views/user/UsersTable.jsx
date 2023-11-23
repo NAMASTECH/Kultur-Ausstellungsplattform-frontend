@@ -7,7 +7,7 @@ export default function UsersTable() {
 
     useEffect(() => {
         // TODO use pagination when implemented
-        axios.get(`${import.meta.env.VITE_API_BASE_URL}/users`, {
+        axios.get(`${import.meta.env.VITE_API_BASE_URL}users/`, {
             withCredentials: true
         })
             .then(resp => {
