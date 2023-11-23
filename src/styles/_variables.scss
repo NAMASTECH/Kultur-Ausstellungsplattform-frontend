@@ -64,6 +64,32 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Alumni Sans';
+    src: url('../assets/fonts/Alumni/AlumniSans-Thin.eot');
+    src: url('../assets/fonts/Alumni/AlumniSans-Thin.eot?#iefix') format('embedded-opentype'),
+        url('../assets/fonts/Alumni/AlumniSans-Thin.woff2') format('woff2'),
+        url('../assets/fonts/Alumni/AlumniSans-Thin.woff') format('woff'),
+        url('../assets/fonts/Alumni/AlumniSans-Thin.ttf') format('truetype'),
+        url('../assets/fonts/Alumni/AlumniSans-Thin.svg#AlumniSans-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Alumni Sans';
+    src: url('../assets/fonts/Alumni/AlumniSans-ThinItalic.eot');
+    src: url('../assets/fonts/Alumni/AlumniSans-ThinItalic.eot?#iefix') format('embedded-opentype'),
+        url('../assets/fonts/Alumni/AlumniSans-ThinItalic.woff2') format('woff2'),
+        url('../assets/fonts/Alumni/AlumniSans-ThinItalic.woff') format('woff'),
+        url('../assets/fonts/Alumni/AlumniSans-ThinItalic.ttf') format('truetype'),
+        url('../assets/fonts/Alumni/AlumniSans-ThinItalic.svg#AlumniSans-ThinItalic') format('svg');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
 
 // Colors
 $bg_color: #acb8c3;
@@ -72,3 +98,4 @@ $green: #98ff1a;
 
 // Fonts
 $main_font: 'Inter', sans-serif;
+$logo_font: 'Alumni', sans-serif;
