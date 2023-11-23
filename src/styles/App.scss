@@ -1,5 +1,5 @@
 $font-size: 3.2em;
-@import './variebels';
+@import './variables';
 
 .app {
   margin: 0 auto;
@@ -11,10 +11,11 @@ $font-size: 3.2em;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: $main_font;
  
 
   h1 {
-    font-size: $font-size;
+    
     line-height: 1.1;
     text-align: center;
   }
