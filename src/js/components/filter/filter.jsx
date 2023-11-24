@@ -6,6 +6,7 @@ import SelectComponent from '../SelectComponent.jsx';
 import { EventContext } from '../../context/EventContext.jsx';
 import ReactDatePicker from 'react-datepicker';
 import './filtet.scss';
+import '../datePiker/react-datepicker.css';
 
 const Filter = ({ open, setOpen, setSearch_btn, setEventType, setVenueType, eventType, venueType, dateStart, setDateStart, dateEnd, setDateEnd }) => {
     const { eventTypes, venueTypes } = useContext(EventContext);

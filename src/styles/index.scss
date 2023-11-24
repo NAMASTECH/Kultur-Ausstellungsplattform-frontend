@@ -5,6 +5,64 @@
   box-sizing: border-box;
   font-family: $main_font;
 }
+a {
+  text-decoration: none;
+  color: black;
+}
+body {
+  background-color: $bg_color;
+  color: black;
+  margin: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+@media (prefers-color-scheme: dark){
+  a {
+    color: $main_color;
+  }
+  main {
+    background-color: $dark_color;
+    color: $dark_text_color;
+  }
+  body {
+    background-color: $dark_color;
+    color: $dark_text_color;
+    .gallery-card{
+      background-color: $dark_color;
+      color: $dark_text_color;
+       box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+      .card-content{
+       
+        .eventTitle{
+          color: $dark_text_color;
+        }
+        .dateStart{
+          color: $dark_text_color;
+        }
+        .artists{
+          color: $dark_text_color;
+        }
+        .organizer{
+          color: $dark_text_color;
+        }
+      }
+      .gallery-card-image-container{
+        .eventType{
+          color: $dark_text_color;
+        }
+      }
+    }
+    .gallery-card:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+      box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+    }
+  }
+  header{
+    background-color: $dark_color;
+    color: $dark_text_color;
+  }
+}
 @media screen and (max-width: 767px) {
   .gallery-card {
     width: 100%;

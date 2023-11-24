@@ -2,14 +2,10 @@
 
 
 .gallery-card {
-    // border: 1px solid rgb(245, 233, 233);
     padding: 15px;
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    // background-color: #fff;
     width: calc(33.3333% - 20px);
-
-    color: #333;
 }
 
 .gallery-card-image-container {
@@ -19,7 +15,7 @@
     top: 5%;
     left: 5%;
     z-index: 1;
-    color: black;
+    // color: black;
     font-size: 18pt;
     font-weight: bold;
     background-color: #98ff1a;
@@ -55,11 +51,11 @@
             font-weight: normal;
         }
     .eventTitle { 
-        color: black;
+        // color: black;
         font-size: 23pt; 
     }
     .organizer{ 
-        color: black;
+        // color: black;
         font-size: 17pt; 
     }   
          
