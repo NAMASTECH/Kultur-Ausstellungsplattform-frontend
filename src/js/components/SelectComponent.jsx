@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-const SelectComponent = ({ title, values, onChange }) => {
+const SelectComponent = ({ title, values, onChange, selected }) => {
   // Zustand für die ausgewählte Option
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState(selected);
 
   // Handler-Funktion für Änderungen der Auswahl
   const handleSelectChange = (event) => {
@@ -15,15 +15,10 @@ const SelectComponent = ({ title, values, onChange }) => {
 
   return (
     <>
-      <label htmlFor="selectOption" style={{ margin: "10px", }}>{title}</label>
-      <select id="selectOption" value={selectedOption} onChange={handleSelectChange}>
-        {
-          values.map(value => { return <option key={value} value={value}>{value}</option> })
-        }
-        
+      <label htmlFor={title} style={{ margin: "10px", }}>{title}</label>
+      <select id={title} value={selectedOption} onChange={handleSelectChange} >
+        { values.map(value => { return <option key={value} value={value}>{value}</option> }) }
       </select>
-
-      {/* <p>Ausgewählte Option: {selectedOption}</p> */}
     </>
   );
 };

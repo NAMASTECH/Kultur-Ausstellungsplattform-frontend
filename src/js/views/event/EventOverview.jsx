@@ -1,29 +1,26 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import { EventContext } from "../../context/EventContext";
+import { useEffect, useState } from "react";
 import EventCard from "../../components/EventCard.jsx";
-import SelectComponent from "../../components/SelectComponent.jsx";
-import { sampleEvents } from "./mock/sampleEvents.js";
-import EventDetails from "./EventDetails.jsx";
-import Calendar from "../../components/datePiker/datePiker.jsx";
 import PaginationComponent from "../../components/PaginationComponent";
 import "./EventOverview.scss";
+import Filter from "../../components/filter/filter.jsx";
+
+
 export default function EventOverview() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
   const [search_btn, setSearch_btn] = useState(false);
   const [dateStart, setDateStart] = useState("");
   const [dateEnd, setDateEnd] = useState("");
-  const [eventType, setEventType] = useState("");
-  const [venueType, setVenueType] = useState("");
+  const [eventType, setEventType] = useState("All");
+  const [venueType, setVenueType] = useState("All");
+  const [open, setOpen] = useState(false);
   // For Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const limit = 9;
+  const [limit, setLimit] = useState(9);
 
   useEffect(() => {
-    // TODO use pagination when implemented
     axios
       .get(`/api/events?page=${currentPage}&limit=${limit}`, {
         withCredentials: true,
@@ -47,30 +44,18 @@ export default function EventOverview() {
         setLoading(false);
         setSearch_btn(false)
       });
-  }, [loading, search_btn, currentPage]);
-
-
-  const handleSearchInputChange = (evt) => {
-    setSearchTerm(evt.target.value);
-  };
-
-  const handleEventTypeChange = (evt) => {
-    setEventType(evt.target.value);
-  };
-
-  const handleVenueTypeChange = (evt) => {
-    setVenueType(evt.target.value);
-  };
+  }, [loading, search_btn, currentPage, limit]);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  const { eventTypes, venueTypes } = useContext(EventContext);
 
   return (
     <div>
-      
+      <button onClick={() => setOpen(true)}>Filter</button>
+      <Filter open={open} setOpen={setOpen} setSearch_btn={setSearch_btn} setEventType={setEventType} setVenueType={setVenueType} eventType={eventType} venueType={venueType} dateStart={dateStart} dateEnd={dateEnd} setDateEnd={setDateEnd} setDateStart={setDateStart} />
+
       <div className="gallery">
         {!loading ? (
           events.length > 0 ? (
