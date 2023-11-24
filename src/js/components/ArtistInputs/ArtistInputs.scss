@@ -1,0 +1,12 @@
+@import '../../../styles/variables.scss';
+
+#artist-inputs {
+    display: flex;
+    flex-direction: column;
+    background-color: $bg_color;
+
+    textarea {
+        min-width: 320px;
+        height: 200px;
+    }
+}
