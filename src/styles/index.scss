@@ -1,43 +1,48 @@
 @import './variables';
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: $main_font;
 }
+
+main {
+  background-color: $bg_color;
+}
+
 @media screen and (max-width: 767px) {
   .gallery-card {
     width: 100%;
   }
 }
 
-@media screen and  (max-width: 991px) {
+@media screen and (max-width: 991px) {
   main {
-    div{
-    .gallery-card {
-      width: 80%;
+    div {
+      .gallery-card {
+        width: 80%;
+      }
     }
-}
-}
+  }
 }
 
 @media screen and (min-width: 992px) and (max-width: 1279px) {
   main {
-    div{
-    .gallery-card {
-      width: 40%;
+    div {
+      .gallery-card {
+        width: 40%;
+      }
     }
-}
-}
+  }
 }
 
 @media screen and (min-width: 1280px) {
   main {
-    div{
-    .gallery-card {
-      width: 30%;
+    div {
+      .gallery-card {
+        width: 30%;
+      }
     }
+  }
 }
-}
-}
-
