@@ -2,20 +2,16 @@ import React, { useState } from 'react';
 
 import "./ArtistInputs.scss"
 
-const ArtistInputs = ({ onArtistChange, index }) => {
-    const [artist, setArtist] = useState({
-        artistName: '',
-        artistType: '',
-        artistDescription: '',
-        artistHomepage: '',
-        artistImg: '',
-    });
+const ArtistInputs = ({ artist, index, onArtistChange }) => {
+
+    console.log(artist)
 
     const handleChange = (e) => {
         const updatedArtist = { ...artist, [e.target.name]: e.target.value };
-        setArtist(updatedArtist);
         onArtistChange(index, updatedArtist);
     };
+
+
 
     return (
         <div id="artist-inputs">
