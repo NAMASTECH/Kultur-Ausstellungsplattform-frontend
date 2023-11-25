@@ -4,14 +4,12 @@ import "./ArtistInputs.scss"
 
 const ArtistInputs = ({ artist, index, onArtistChange }) => {
 
-    console.log(artist)
+    // console.log(artist)
 
     const handleChange = (e) => {
         const updatedArtist = { ...artist, [e.target.name]: e.target.value };
         onArtistChange(index, updatedArtist);
     };
-
-
 
     return (
         <div id="artist-inputs">

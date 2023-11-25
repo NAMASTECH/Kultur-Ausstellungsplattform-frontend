@@ -229,7 +229,7 @@ export default function AddEventForm() {
   const { eventTypes, venueTypes } = useContext(EventContext);
 
 
-  console.log(artists);
+  // console.log(artists);
 
   return (
     <form className="register-form" onSubmit={handleSubmit}>
@@ -305,9 +305,6 @@ export default function AddEventForm() {
       ))}
 
       <button type="button" onClick={addArtistInput}>+ hinzufügen</button>
-
-
-
 
       <label>Venue Name</label>
       <input type="text" required value={venueName} onChange={handleVenueNameChange} />
