@@ -34,7 +34,7 @@ export default function LoginForm() {
 
     try {
       const resp = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}auth/login`,
+        `${import.meta.env.VITE_API_BASE_URL}/auth/login`,
         reqBody,
         {
           withCredentials: true,
@@ -47,6 +47,7 @@ export default function LoginForm() {
         username: resp.data.username,
         role: resp.data.role,
       });
+
       if (resp.data.role == "organizer") {
         navigate("/users");
       } else {
