@@ -3,17 +3,19 @@
     width: 80%;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
 
-    .img-container__aside {
-        width: 20rem;
 
+    .img-container {
         .event-image {
-            align-self: 'stretch';
-            width: "100%";
-            height: "500px";
+            // align-self: stretch;
+            object-fit: cover;
+            width: 100%;
+            height: 500px;
             background: linear-gradient(0deg, #DDE1E6 0%, #DDE1E6 100%)
         }
     }
+
 
     .event-details__article {
         width: 60%;
@@ -48,6 +50,11 @@
             // TODO: Falls spezielle Styles definiert werden sollen, die nur für das eine Text Feld gelten, dann über ID (#) stylen,
             // ansonsten Klassen (.) verwenden für alles, was allgemein ist und mehrmals verwendet werden kann.
 
+
+            div p#venue {
+                font-weight: bold;
+            }
+
             #date-start {}
 
             #date-end {}
@@ -65,20 +72,50 @@
 
             #event-title {}
 
+            #event-description {}
+
             #event-type {}
 
             #event-category {}
 
-            #venue-info {
-                #venue-name {}
+            #event-details-content-footer {
+                display: flex;
+                align-items: end;
+                width: 100%;
+                justify-content: space-between;
 
-                #venue-type {}
+                #venue-info {
+                    #venue-name {}
 
-                #venue-address-container {
+                    #venue-type {}
 
-                    #additional-address-info {}
+                    #venue-address-container {
+
+                        #additional-address-info {}
+                    }
+                }
+
+                #event-homepage a {
+                    display: inline-block;
+                    padding: 10px 20px;
+                    border: none;
+                    background-color: #4d4d4d;
+                    color: white;
+                    text-align: center;
+                    text-decoration: none;
+                    font-size: 16px;
+                    /* Smooth transition for hover effect */
+                    transition: background-color 0.3s;
+                    /* Change mouse pointer to indicate it's clickable */
+                    cursor: pointer;
+
+                    &:hover {
+                        /* Change shade when hovered */
+                        background-color: #888d89;
+                    }
                 }
             }
+
 
         }
     }

@@ -107,110 +107,150 @@ export default function EventDetails() {
     //         });
     // }, []);
 
+    // Function to ensure the URL starts with http:// or https://
+    const formatURL = (url) => {
+        if (!url) return '';
+
+        // Check if URL already starts with http:// or https://
+        if (url.startsWith('http://') || url.startsWith('https://')) {
+            return url;
+        }
+
+        // Prepend https:// if it's missing
+        return `https://${url}`;
+    };
+
+    const formattedEventHomepage = formatURL(event.homepage);
+
 
     // TO DO: Labels (bzw <span> Elemente, z.B. "Von:", "Bis:", etc) löschen, wenn alles richtig positioniert ist.
     return (
         <section className="event-details-container__section" >
-            <aside className="img-container__aside" >
+
+            <div className="img-container">
                 <img className="event-image" src={event.img} />
-            </aside>
+            </div>
+
 
             <article className="event-details__article" >
                 <div className="event-details-content" >
 
+                    <div>
+                        {event.venues.map((venue) => {
+                            return (
+                                <p id="venue" >
+                                    {venue.venueName}
+                                </p>
+                            )
+                        })}
+                    </div>
+
+
                     <p id="date-start" >
-                        <span className="font-weight-bold">Von:</span>
-                        {`${event.dateStart} ${event.timeStart}`}
+                        {/* <span className="font-weight-bold">Von:</span> */}
+                        {`${event.dateStart.split("T")[0]} - ${event.dateEnd.split("T")[0]} | ${event.timeStart} - ${event.timeEnd}`}
                     </p>
 
-                    <p id="date-end" >
-                        <span className="font-weight-bold">Bis:</span>
-                        {`${event.dateEnd} ${event.timeEnd}`}
+                    <h2 id="event-title" >
+                        {/* <span className="font-weight-bold">Event Title:</span> */}
+                        {event.eventTitle}
+                    </h2>
+
+                    {/* <span className="font-weight-bold">
+                        Beschreibung:
+                    </span> */}
+                    <p id="event-description">
+                        {event.description}
                     </p>
+
+                    {/* <p id="event-type" >
+                        <span className="font-weight-bold">Event Typ:</span>
+                        {event.eventType}
+                    </p> */}
+
+                    {/* <p id="event-category">
+                        <span className="font-weight-bold">Kategorie:</span>
+                        {event.eventCategory}
+                    </p> */}
+
+                    <div id="event-details-content-footer">
+                        {event.venues.map((venue) => {
+                            return (
+                                <div id="venue-info" key={venue._id}>
+                                    <p id="venue-name" >
+                                        {/* <span className="font-weight-bold">Ort:</span> */}
+                                        {venue.venueName}
+                                    </p>
+
+                                    {/* <p id="venue-type" >
+                                    <span className="font-weight-bold">Typ von Veranstaltungsort:</span>
+                                    {venue.venueType}
+                                    </p> */}
+
+                                    <div id="venue-address-container">
+                                        {/* <span className="font-weight-bold">Adresse:</span> */}
+                                        {(venue.street && venue.houseNumber) && `${venue.street} ${venue.houseNumber}`}
+                                        <br></br>
+                                        {venue.zipCode} {venue.city}
+
+                                        {
+                                            venue.additionalAddressInfo && (
+                                                <p id="additional-address-info">
+                                                    {/* <span className="font-weight-bold">
+                                                        Adresszusatz:
+                                                    </span> */}
+                                                    {venue.additionalAddressInfo}
+                                                </p>
+                                            )
+                                        }
+                                    </div>
+
+                                </div>
+                            );
+                        })}
+
+                        <div id="event-homepage">
+                            {/* <span className="font-weight-bold">Event-Homepage:</span> */}
+                            <a href={formattedEventHomepage} target="_self" rel="noopener noreferrer">
+                                {/* {event.homepage} */}
+                                Event Homepage
+                            </a>
+                        </div>
+                    </div>
 
                     <p className="font-weight-bold font-size-big">
                         <span className="font-weight-bold">Artist(s):</span>
-                        {event.artist}
+                        {/* {event.artist} */}
                     </p>
 
                     {event.artists.map((artist) => {
                         return (
                             <div id="artist-info-container" key={artist._id}>
                                 <p id="artist-name" >
-                                    <span className="font-weight-bold">Artist Name:</span>
+                                    <span className="font-weight-bold">Artist Name: </span>
                                     {artist.artistName}
                                 </p>
                                 <p id="artist-type" >
-                                    <span className="font-weight-bold">Artist Type</span>
+                                    <span className="font-weight-bold">Artist Type: </span>
                                     {artist.artistType}
                                 </p>
+                                <p id="artist-homepage" >
+                                    <span className="font-weight-bold">Artist Homepage: </span>
+                                    {artist.artistHomepage}
+                                </p>
                                 <p id="artist-description" >
-                                    <span className="font-weight-bold">Artist Description</span>
+                                    <span className="font-weight-bold">Artist Description: </span>
                                     {artist.artistDescription}
                                 </p>
 
-                                <p>Artist image:</p>
+
+                                <p>Artist image</p>
                                 <img src={artist.artistImg} id="artist-img" width="200em" />
                             </div>
                         );
                     })}
-
-                    <p id="event-title" >
-                        <span className="font-weight-bold">Event Title:</span>
-                        {event.eventTitle}
-                    </p>
-
-                    <p id="event-type" >
-                        <span className="font-weight-bold">Event Typ:</span>
-                        {event.eventType}
-                    </p>
-
-                    <p id="event-category">
-                        <span className="font-weight-bold">Kategorie:</span>
-                        {event.eventCategory}
-                    </p>
-
-                    <p>
-                        <span className="font-weight-bold">Event-Homepage:</span>
-                        <a href={event.homepage}> Homepage</a>
-                    </p>
-
-                    {event.venues.map((venue) => {
-                        return (
-                            <div id="venue-info" key={venue._id}>
-                                <p id="venue-name" >
-                                    <span className="font-weight-bold">Ort:</span>
-                                    {venue.venueName}
-                                </p>
-                                <p id="venue-type" >
-                                    <span className="font-weight-bold">Typ von Veranstaltungsort:</span>
-                                    {venue.venueType}
-                                </p>
-                                <div id="venue-address-container">
-                                    <span className="font-weight-bold">Adresse:</span>
-                                    {(venue.street && venue.houseNumber) && `${venue.street} ${venue.houseNumber},`}
-                                    {venue.zipCode} {venue.city}
-
-                                    <p id="additional-address-info">
-                                        <span className="font-weight-bold">
-                                            Adresse:
-                                        </span>
-                                        {venue.additionalAddressInfo}
-                                    </p>
-                                </div>
-
-                            </div>
-                        );
-                    })}
-
-                    <p id="event-description">
-                        <span className="font-weight-bold">
-                            Beschreibung:
-                        </span>
-                        {event.description}
-                    </p>
                 </div>
             </article>
-        </section>
+        </section >
     )
 }

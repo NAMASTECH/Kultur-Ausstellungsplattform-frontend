@@ -16,7 +16,7 @@ const Calendar = ({dateStart, dateEnd}) => {
     }, [startDate, endDate])
     return (
       <DatePicker
-        selected={startDate ? new Date() : startDate}
+        selected={startDate ? startDate : new Date() }
         onChange={onChange}
         startDate={startDate}
         endDate={endDate}

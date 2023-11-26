@@ -16,9 +16,10 @@ export const EventProvider = ({ children }) => {
   // define them here, for example:
   const eventTypes = ["All", "Ausstellung", "Auktion", "Messe", "Vortrag", "Festival"];
   const venueTypes = ["All", "Museum", "Galerie", "Messe", "Auktionshaus", "Akademie"];
+  const eventCategories = ["All", "Kunst", "Musik", "Clubs", "Sport", "Bildung", "Politik"]
 
   return (
-    <EventContext.Provider value={{ eventTypes, venueTypes }}>
+    <EventContext.Provider value={{ eventTypes, venueTypes, eventCategories }}>
       {children}
     </EventContext.Provider>
   );

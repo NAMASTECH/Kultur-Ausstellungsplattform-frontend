@@ -1,40 +1,45 @@
-header{
+header {
     width: 100%;
     display: flex;
+    flex-direction: column;
+
     .logo {
         display: flex;
         flex-direction: column;
         align-items: start;
-        
+
         .first__line {
             display: flex;
             font-size: 3em;
             gap: 1em;
+
             span {
                 display: flex;
                 align-items: center;
                 color: #ACB8C3;
                 border-radius: 50%;
                 background-color: #98FF1A;
-                padding: 1em 0.5em ; 
+                padding: 1em 0.5em;
                 height: fit-content;
                 font-size: 1em;
                 margin-top: 2%;
             }
         }
-        .second__line{
+
+        .second__line {
             display: flex;
             align-self: start;
             font-size: 3em;
         }
     }
-    .nav-container{
+
+    .nav-container {
         display: flex;
         align-items: left;
         justify-content: flex-end;
         margin-left: auto;
-        
-        a{
+
+        a {
             text-decoration: none;
             font-size: 2em;
             font-weight: bolder;
@@ -43,10 +48,12 @@ header{
             padding: 10px;
             height: fit-content;
         }
-        a:hover{
+
+        a:hover {
             background-color: #98FF1A;
             color: white;
         }
+
         h3 {
             font-size: 2em;
             font-weight: bolder;
@@ -55,27 +62,30 @@ header{
             padding: 10px;
             height: fit-content;
         }
-        
+
     }
 }
 
 @media screen and (max-width: 700px) {
-    header{
+    header {
         .logo {
             .first__line {
                 font-size: 1em;
+
                 span {
                     margin-top: 3%;
                     font-size: 0.8em;
                 }
             }
-            .second__line{
+
+            .second__line {
                 font-size: 1em;
             }
         }
-        .nav-container{
-           display: none;
+
+        .nav-container {
+            display: none;
         }
     }
-    
+
 }
