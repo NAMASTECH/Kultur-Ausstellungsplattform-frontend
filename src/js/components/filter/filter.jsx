@@ -1,5 +1,5 @@
 
-import React, { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import SelectComponent from '../SelectComponent.jsx';
@@ -8,13 +8,18 @@ import ReactDatePicker from 'react-datepicker';
 import './filtet.scss';
 
 const Filter = ({ open, setOpen, setSearch_btn, setEventType, setVenueType, eventType, venueType, dateStart, setDateStart, dateEnd, setDateEnd }) => {
-    const { eventTypes, venueTypes } = useContext(EventContext);
+    const { eventTypes, venueTypes, eventCategories } = useContext(EventContext);
+    const [eventCategory, setEventCategory] = useState("");
 
     const onChange = (dates) => {
         const [start, end] = dates;
         setDateStart(start);
         setDateEnd(end);
-      };
+    };
+
+    const handleEventCategoryChange = (evt) => {
+        setEventCategory(evt.target.value);
+    };
 
     const handleEventTypeChange = (evt) => {
         setEventType(evt.target.value);
@@ -46,7 +51,7 @@ const Filter = ({ open, setOpen, setSearch_btn, setEventType, setVenueType, even
         >
             <Box>
                 <ReactDatePicker
-                    selected={dateStart ? dateStart : new Date() }
+                    selected={dateStart ? dateStart : new Date()}
                     dateFormat="dd/MM/yyyy"
                     onChange={onChange}
                     startDate={dateStart}
@@ -54,6 +59,7 @@ const Filter = ({ open, setOpen, setSearch_btn, setEventType, setVenueType, even
                     selectsRange
                     inline
                 />
+                <SelectComponent title="Event-Kategorie" value={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} />
                 <SelectComponent
                     title="Event Type"
                     values={eventTypes}
@@ -67,8 +73,8 @@ const Filter = ({ open, setOpen, setSearch_btn, setEventType, setVenueType, even
                     selected={venueType}
                 />
                 <div className='modal_buttons'>
-                <button onClick={handleClear}>clear</button>
-                <button onClick={handleSubmit}>Suchen</button>
+                    <button onClick={handleClear}>clear</button>
+                    <button onClick={handleSubmit}>Suchen</button>
                 </div>
             </Box>
         </Modal>

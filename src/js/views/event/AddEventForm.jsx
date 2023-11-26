@@ -226,7 +226,7 @@ export default function AddEventForm() {
 
 
   // EventContext konsumieren
-  const { eventTypes, venueTypes } = useContext(EventContext);
+  const { eventTypes, venueTypes, eventCategories } = useContext(EventContext);
 
 
   // console.log(artists);
@@ -236,15 +236,16 @@ export default function AddEventForm() {
       <h2>Add New Event</h2>
       <label>Name der Veranstaltung</label>
       <input type="text" required value={eventTitle} onChange={handleEventTitleChange} />
-      <label>Kategorie</label>
-      <input
+      {/* <label>Kategorie</label> */}
+      {/* <input
         type="text"
         required
         value={eventCategory}
         default-value="Kunst"
         placeholder="Kunst"
         onChange={handleEventCategoryChange}
-      />
+      /> */}
+      <SelectComponent title="Kategorie" value={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} />
 
       {/* <label>Event Type</label> */}
       {/* <input type="text" value={eventType} onChange={handleEventTypeChange} /> */}
