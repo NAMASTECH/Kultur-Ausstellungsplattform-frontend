@@ -36,14 +36,20 @@ export default function AddEventForm() {
   const [zipCode, setZipCode] = useState("");
   const [isConfirmBtnActive, setConfirmBtnActive] = useState(false);
 
-  const [artists, setArtists] = useState([]);
+  const [artists, setArtists] = useState([{
+    artistName: '',
+    artistType: '',
+    artistDescription: '',
+    artistHomepage: '',
+    artistImg: '',
+  }]);
 
   // Sideeffect zum Pruefen, ob alle Felder valide sind und man den Confirmbutton aktivieren sollte
   useEffect(() => {
     validateForm();
   }, [
     eventTitle,
-    artistName,
+    // artistName,
     eventType,
     img,
     eventCategory,
@@ -60,6 +66,7 @@ export default function AddEventForm() {
     additionalAddressInfo,
     zipCode,
     venueType,
+    artists,  // artist Array
   ]);
 
   const handleSubmit = async (evt) => {
@@ -67,7 +74,7 @@ export default function AddEventForm() {
 
     const userData = {
       eventTitle,
-      artistName,
+      // artistName,
       eventType,
       img,
       eventCategory,
@@ -84,8 +91,7 @@ export default function AddEventForm() {
       houseNumber,
       additionalAddressInfo,
       zipCode,
-
-
+      artists,
     };
 
     //path erstellen
@@ -109,7 +115,15 @@ export default function AddEventForm() {
   };
 
   const addArtistInput = () => {
-    setArtists([...artists, {}]); // Neues leeres artist Objekt hinzufügen
+    const newArtist = {
+      artistName: '',
+      artistType: '',
+      artistDescription: '',
+      artistHomepage: '',
+      artistImg: '',
+    };
+
+    setArtists([...artists, newArtist]); // Neues leeres artist Objekt hinzufügen
   };
 
   const removeArtistInput = (index) => {
@@ -177,6 +191,14 @@ export default function AddEventForm() {
 
   // Hilfsfunktion zum Validieren der Felder und Aktivieren des Confirmbuttons
   const validateForm = () => {
+
+    // Check that there is at least one artist entry
+    const isAtLeastOneArtist = artists.length > 0;
+
+    const areArtistsValid = artists.every(artist =>
+      artist.artistName.trim() !== ""
+    );
+
     // Pruefe, ob alle Felder befuellt
     const isValid =
       eventTitle !== "" &&
@@ -196,40 +218,46 @@ export default function AddEventForm() {
       houseNumber !== "" &&
       additionalAddressInfo !== "" &&
       zipCode !== "" &&
-      venueType !== "";
+      venueType !== "" &&
+      isAtLeastOneArtist &&
+      areArtistsValid;
     setConfirmBtnActive(isValid);
   };
 
 
   // EventContext konsumieren
-  const { eventTypes, venueTypes } = useContext(EventContext);
+  const { eventTypes, venueTypes, eventCategories } = useContext(EventContext);
+
+
+  // console.log(artists);
 
   return (
     <form className="register-form" onSubmit={handleSubmit}>
       <h2>Add New Event</h2>
-      <label>Event Title</label>
+      <label>Name der Veranstaltung</label>
       <input type="text" required value={eventTitle} onChange={handleEventTitleChange} />
-      <label>Event Category</label>
-      <input
+      {/* <label>Kategorie</label> */}
+      {/* <input
         type="text"
         required
         value={eventCategory}
         default-value="Kunst"
         placeholder="Kunst"
         onChange={handleEventCategoryChange}
-      />
+      /> */}
+      <SelectComponent title="Kategorie" value={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} />
 
       {/* <label>Event Type</label> */}
       {/* <input type="text" value={eventType} onChange={handleEventTypeChange} /> */}
-      <SelectComponent title="Event Type" value={eventType} values={eventTypes} onChange={handleEventTypeChange} />
+      <SelectComponent title="Typ von Veranstaltung" value={eventType} values={eventTypes} onChange={handleEventTypeChange} />
 
-      <label>Event Homepage</label>
+      <label>Homepage der Veranstaltung</label>
       <input type="text" required value={homepage} onChange={handleHomepageChange} />
 
-      <label>Start Date</label>
+      <label>Startdatum</label>
       <input type="date" required value={dateStart} onChange={handleDateStartChange} />
 
-      <label>End Date</label>
+      <label>Enddatum</label>
       <input type="date" required value={dateEnd} onChange={handleDateEndChange} />
 
       <label>Start Time</label>
@@ -238,7 +266,7 @@ export default function AddEventForm() {
       <label>End Time</label>
       <input type="time" required value={timeEnd} onChange={handleTimeEndChange} />
 
-      <label>img</label>
+      <label>Bild vom Event</label>
 
       <input type="text" required value={img} onChange={handleImgChange} />
 
@@ -260,19 +288,24 @@ export default function AddEventForm() {
       {/* <label>Artist Name</label>
       <input type="text" required value={artistName} onChange={handleArtistNameChange} /> */}
 
-      <ArtistInputs onArtistChange={handleArtistChange} />
-
       {artists.map((artist, index) => (
         <div key={index}>
-          <ArtistInputs index={index} onArtistChange={handleArtistChange} />
-          <button type="button" onClick={() => removeArtistInput(index)}>entfernen</button>
+
+          <ArtistInputs
+            artist={artist}
+            index={index}
+            onArtistChange={handleArtistChange}
+          />
+
+          {index > 0 && (
+            <button type="button" onClick={() => removeArtistInput(index)}>
+              entfernen
+            </button>
+          )}
         </div>
       ))}
 
       <button type="button" onClick={addArtistInput}>+ hinzufügen</button>
-
-
-
 
       <label>Venue Name</label>
       <input type="text" required value={venueName} onChange={handleVenueNameChange} />

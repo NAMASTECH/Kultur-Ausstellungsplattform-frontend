@@ -3,17 +3,19 @@
     width: 80%;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
 
-    .img-container__aside {
-        width: 20rem;
 
+    .img-container {
         .event-image {
-            align-self: 'stretch';
-            width: "100%";
-            height: "500px";
+            // align-self: stretch;
+            object-fit: cover;
+            width: 100%;
+            height: 500px;
             background: linear-gradient(0deg, #DDE1E6 0%, #DDE1E6 100%)
         }
     }
+
 
     .event-details__article {
         width: 60%;
@@ -48,7 +50,12 @@
             // TODO: Falls spezielle Styles definiert werden sollen, die nur für das eine Text Feld gelten, dann über ID (#) stylen,
             // ansonsten Klassen (.) verwenden für alles, was allgemein ist und mehrmals verwendet werden kann.
 
-            // #date-start {}
+
+            div p#venue {
+                font-weight: bold;
+            }
+
+            #date-start {}
 
             // #date-end {}
 
@@ -63,22 +70,22 @@
             //     #artist-img {}
             // }
 
-            // #event-title {}
+            #event-title {}
 
             // #event-type {}
 
-            // #event-category {}
+            #event-category {}
 
-            // #venue-info {
-            //     #venue-name {}
+            #venue-info {
+                #venue-name {}
 
-            //     #venue-type {}
+                #venue-type {}
 
-            //     #venue-address-container {
+                #venue-address-container {
 
-            //         #additional-address-info {}
-            //     }
-            // }
+                    #additional-address-info {}
+                }
+            }
 
         }
     }

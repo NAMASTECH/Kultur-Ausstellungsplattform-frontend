@@ -26,6 +26,13 @@ export default function EventCard({
     navigate(`/event/${_id}`);
   };
 
+  const formatArtistNames = (artists) => {
+    if (artists.length > 3) {
+      return "mehrere Künstler";
+    }
+    return artists.map(artist => artist.artistName.toUpperCase()).join(', ');
+  };
+
   return (
     <div key={_id} onClick={handleClick} className="gallery-card">
       <div className="gallery-card-image-container">
@@ -34,9 +41,12 @@ export default function EventCard({
       </div>
       <div className="card-content">
         <div className="dateStart">
-           {`${dateStart.split("T")[0]} ${dateEnd.split("T")[0]}`}
+          {`${dateStart.split("T")[0]} ${dateEnd.split("T")[0]}`}
         </div>
-        <div className="artists">{artists[0].artistName.toUpperCase()} </div>
+        {/* <div className="artists">{artists[0].artistName.toUpperCase()} </div> */}
+        <div className="artists">
+          {formatArtistNames(artists)}
+        </div>
         <div className="eventTitle">{eventTitle}</div>
         <div className="organizer">{organizer[0].organization}</div>
       </div>
