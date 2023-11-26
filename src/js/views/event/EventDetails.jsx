@@ -227,19 +227,24 @@ export default function EventDetails() {
                         return (
                             <div id="artist-info-container" key={artist._id}>
                                 <p id="artist-name" >
-                                    <span className="font-weight-bold">Artist Name:</span>
+                                    <span className="font-weight-bold">Artist Name: </span>
                                     {artist.artistName}
                                 </p>
                                 <p id="artist-type" >
-                                    <span className="font-weight-bold">Artist Type</span>
+                                    <span className="font-weight-bold">Artist Type: </span>
                                     {artist.artistType}
                                 </p>
+                                <p id="artist-homepage" >
+                                    <span className="font-weight-bold">Artist Homepage: </span>
+                                    {artist.artistHomepage}
+                                </p>
                                 <p id="artist-description" >
-                                    <span className="font-weight-bold">Artist Description</span>
+                                    <span className="font-weight-bold">Artist Description: </span>
                                     {artist.artistDescription}
                                 </p>
 
-                                <p>Artist image:</p>
+
+                                <p>Artist image</p>
                                 <img src={artist.artistImg} id="artist-img" width="200em" />
                             </div>
                         );
