@@ -30,7 +30,7 @@ export default function EventCard({
     if (artists.length > 3) {
       return "mehrere Künstler";
     }
-    return artists.map(artist => artist.artistName).join(', ');
+    return artists.map(artist => artist.artistName.toUpperCase()).join(', ');
   };
 
   return (
