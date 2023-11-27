@@ -2,11 +2,12 @@
 .MuiBox-root {
     display: flex;
     flex-direction: column;
-    width: 20%;
+    min-width: 20%;
     height: 100%;
     top: 0;
     right: 0;
     background-color: $bg_color;
+    padding: 1% 2% 1%;
     .modal_buttons {
         display: flex;
         justify-content: space-around;
@@ -15,7 +16,13 @@
             margin-left: 10px;
         }
     }
+    label {
+        font-size: 1.2em;
+        font-weight: 600;
+        padding-top: 3%;
+    }
     select {
+        
         width: 100%;
         height: 40px;
         // border: 1px solid green;
@@ -61,6 +68,13 @@
 }
 
 @media screen and (max-width: 768px) {
+    .MuiBox-root{
+        width: 100%;
+    }
+    
+}
+
+@media screen and (max-width: 500px) {
     .MuiBox-root{
         width: 100%;
     }

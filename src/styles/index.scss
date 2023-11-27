@@ -19,37 +19,37 @@ body {
 }
 @media (prefers-color-scheme: dark){
   a {
-    color: $main_color;
+    color: $bg_color;
   }
   main {
-    background-color: $dark_color;
-    color: $dark_text_color;
+    background-color: $bg_color;
+    // color: $dark_text_color;
   }
   body {
-    background-color: $dark_color;
-    color: $dark_text_color;
+    background-color: $bg_color;
+    // color: $dark_text_color;
     .gallery-card{
-      background-color: $dark_color;
-      color: $dark_text_color;
+      background-color: $bg_color;
+      color: black;
        box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
       .card-content{
        
         .eventTitle{
-          color: $dark_text_color;
+          color: black;
         }
         .dateStart{
-          color: $dark_text_color;
+          color: black;
         }
         .artists{
-          color: $dark_text_color;
+          color: black;
         }
         .organizer{
-          color: $dark_text_color;
+          color: black;
         }
       }
       .gallery-card-image-container{
         .eventType{
-          color: $dark_text_color;
+          color: black;
         }
       }
     }
@@ -60,8 +60,8 @@ body {
     }
   }
   header{
-    background-color: $dark_color;
-    color: $dark_text_color;
+    background-color: $bg_color;
+    color: black;
   }
 }
 @media screen and (max-width: 767px) {
