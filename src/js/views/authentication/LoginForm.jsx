@@ -1,8 +1,8 @@
 // Hier kommen alle wichtigen Imports rein. Z.B. die eingebauten Hooks von react
 import { useEffect, useState } from "react";
 import { redirect, useLocation, useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
+import "./LoginForm.scss"
 // Imports von benoetigten Paketen
 import axios from "axios";
 
@@ -106,9 +106,7 @@ export default function LoginForm() {
         Sign In!
       </button>
 
-      <label>
-        Noch kein account?
-      </label>
+      <label>Noch kein account?</label>
       {/* // TO DO: redirect zu nur einer Form, wo dann ausgewählt wird, ob als user oder als organizer */}
       <Link to="/register/user">Hier registrieren (als user)</Link>
       <Link to="/register/organizer">Hier registrieren (als Organizer)</Link>

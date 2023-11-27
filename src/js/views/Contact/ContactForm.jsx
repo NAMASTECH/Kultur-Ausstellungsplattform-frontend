@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./kontaktFormStyle.css";
+import "./kontaktFormStyle.scss";
 
 const ContactForm = () => {
   const [selectedEvent, setSelectedEvent] = useState("");
@@ -16,9 +16,9 @@ const ContactForm = () => {
 
   return (
     <div className="KontaktForm-container">
-      <h2 className="kontaktForm-container-header">KONTAKT</h2>
-      <p>Schreiben Sie uns eine Nachricht.</p>
       <form onSubmit={handelSubmit}>
+        <h2 className="kontaktForm-container-header">KONTAKT</h2>
+        <p>Schreiben Sie uns eine Nachricht.</p>
         <div>
           <label htmlFor="event">Bitte Veranstaltung auswählen:</label>
           <select
