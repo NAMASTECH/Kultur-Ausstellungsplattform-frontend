@@ -60,7 +60,7 @@ const Filter = ({ open, setOpen, setSearch_btn, setEventType, setVenueType, even
                     selectsRange
                     inline
                 />
-                <SelectComponent title="Event-Kategorie" value={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} />
+                {/* <SelectComponent title="Event-Kategorie" value={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} /> */}
                 <SelectComponent
                     title="Event Type"
                     values={eventTypes}

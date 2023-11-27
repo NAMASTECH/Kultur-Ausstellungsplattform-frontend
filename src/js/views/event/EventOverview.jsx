@@ -52,8 +52,8 @@ export default function EventOverview() {
 
 
   return (
-    <div>
-      <button onClick={() => setOpen(true)}>Filter</button>
+    <div className="overview">
+      <button className="btn_filter" onClick={() => setOpen(true)}>Filter</button>
       <Filter open={open} setOpen={setOpen} setSearch_btn={setSearch_btn} setEventType={setEventType} setVenueType={setVenueType} eventType={eventType} venueType={venueType} dateStart={dateStart} dateEnd={dateEnd} setDateEnd={setDateEnd} setDateStart={setDateStart} />
 
       <div className="gallery">
