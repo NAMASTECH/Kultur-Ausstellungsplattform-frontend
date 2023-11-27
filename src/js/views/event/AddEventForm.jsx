@@ -44,6 +44,8 @@ export default function AddEventForm() {
     artistImg: '',
   }]);
 
+  const [PageNo, setPageNo] = useState(1);
+  
   // Sideeffect zum Pruefen, ob alle Felder valide sind und man den Confirmbutton aktivieren sollte
   useEffect(() => {
     validateForm();
@@ -189,6 +191,17 @@ export default function AddEventForm() {
     setZipCode(evt.target.value);
   };
 
+  const handlePageChange = (evt) => {
+    evt.preventDefault();
+    if (evt.target.value == "plus") {
+      setPageNo(PageNo + 1);
+    } else {
+      setPageNo(PageNo - 1);
+    }
+  };
+
+
+
   // Hilfsfunktion zum Validieren der Felder und Aktivieren des Confirmbuttons
   const validateForm = () => {
 
@@ -234,23 +247,12 @@ export default function AddEventForm() {
   return (
     <form className="register-form" onSubmit={handleSubmit}>
       <h2>Add New Event</h2>
+      <p>{`Page ${PageNo} of 3`}</p>
+      <div style={{ display: PageNo == 1 ? 'block' : 'none'}}>
       <label>Name der Veranstaltung</label>
       <input type="text" required value={eventTitle} onChange={handleEventTitleChange} />
-      {/* <label>Kategorie</label> */}
-      {/* <input
-        type="text"
-        required
-        value={eventCategory}
-        default-value="Kunst"
-        placeholder="Kunst"
-        onChange={handleEventCategoryChange}
-      /> */}
       <SelectComponent title="Kategorie" value={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} />
-
-      {/* <label>Event Type</label> */}
-      {/* <input type="text" value={eventType} onChange={handleEventTypeChange} /> */}
       <SelectComponent title="Typ von Veranstaltung" value={eventType} values={eventTypes} onChange={handleEventTypeChange} />
-
       <label>Homepage der Veranstaltung</label>
       <input type="text" required value={homepage} onChange={handleHomepageChange} />
 
@@ -284,10 +286,8 @@ export default function AddEventForm() {
       >
         <p>Write something here </p>
       </textarea>
-
-      {/* <label>Artist Name</label>
-      <input type="text" required value={artistName} onChange={handleArtistNameChange} /> */}
-
+</div>
+<div style={{ display: PageNo == 2 ? 'block' : 'none'}}>
       {artists.map((artist, index) => (
         <div key={index}>
 
@@ -306,7 +306,8 @@ export default function AddEventForm() {
       ))}
 
       <button type="button" onClick={addArtistInput}>+ hinzufügen</button>
-
+</div>
+<div style={{ display: PageNo == 3 ? 'block' : 'none'}}>
       <label>Venue Name</label>
       <input type="text" required value={venueName} onChange={handleVenueNameChange} />
 
@@ -337,10 +338,10 @@ export default function AddEventForm() {
 
       <label>ZIP-Code</label>
       <input type="text" required value={zipCode} onChange={handleZipCodeChange} />
-
-      <button type="submit" /*disabled={!isConfirmBtnActive} */ >
-        Hinzufügen / Vorschau ansehen
-      </button>
+</div>
+      <button type="button" onClick={handlePageChange} style={{ display: PageNo == 3 ? 'none' : 'block'}} value={`plus`} >Next</button>
+      <button type="button" onClick={handlePageChange} style={{ display: PageNo == 1 ? 'none' : 'block'}} value={`minus`}>Back</button>
+      <button type="submit" disabled={!isConfirmBtnActive} style={{ display: PageNo == 3 ? 'block' : 'none'}}> Hinzufügen / Vorschau ansehen </button>
     </form>
   );
 }
