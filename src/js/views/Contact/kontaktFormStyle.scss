@@ -1,0 +1,39 @@
+@import "../../../styles/_variables.scss";
+.KontaktForm-container {
+  max-width: 400px;
+
+  
+        form {
+          label {
+              font-weight: bold;
+              margin-bottom: 5px;
+              color: #acb8c3;
+              font-family: $main_font;
+            }
+                        input,
+                        select,
+                        textarea {
+                          padding: 10px;
+                          margin-bottom: 10px;
+                          border: 1px solid #ccc;
+                          border-radius: 5px;
+                        }
+            
+                        button {
+                          background-color: #007bff;
+                          color: #fff;
+                          border: none;
+                          border-radius: 5px;
+                          padding: 10px 20px;
+                          cursor: pointer;
+                        }
+            
+                        button:hover {
+                          background-color: #0056b3;
+                        }
+        }
+}
+
+
+
+

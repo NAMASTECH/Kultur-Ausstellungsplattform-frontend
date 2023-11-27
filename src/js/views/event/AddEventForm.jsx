@@ -4,10 +4,10 @@ import { useEffect, useState, useContext } from "react";
 // Imports von benoetigten Paketen
 import axios from "axios";
 
-import { EventContext } from "../../context/EventContext.jsx"
-import SelectComponent from "../../components/SelectComponent.jsx"
-import ArtistInputs from "../../components/ArtistInputs/ArtistInputs.jsx"
-import "./AddEventForm.scss"
+import { EventContext } from "../../context/EventContext.jsx";
+import SelectComponent from "../../components/SelectComponent.jsx";
+import ArtistInputs from "../../components/ArtistInputs/ArtistInputs.jsx";
+import "./AddEventForm.scss";
 
 export default function AddEventForm() {
   // Eckdaten
@@ -68,7 +68,7 @@ export default function AddEventForm() {
     additionalAddressInfo,
     zipCode,
     venueType,
-    artists,  // artist Array
+    artists, // artist Array
   ]);
 
   const handleSubmit = async (evt) => {
@@ -118,11 +118,11 @@ export default function AddEventForm() {
 
   const addArtistInput = () => {
     const newArtist = {
-      artistName: '',
-      artistType: '',
-      artistDescription: '',
-      artistHomepage: '',
-      artistImg: '',
+      artistName: "",
+      artistType: "",
+      artistDescription: "",
+      artistHomepage: "",
+      artistImg: "",
     };
 
     setArtists([...artists, newArtist]); // Neues leeres artist Objekt hinzufügen
@@ -204,12 +204,11 @@ export default function AddEventForm() {
 
   // Hilfsfunktion zum Validieren der Felder und Aktivieren des Confirmbuttons
   const validateForm = () => {
-
     // Check that there is at least one artist entry
     const isAtLeastOneArtist = artists.length > 0;
 
-    const areArtistsValid = artists.every(artist =>
-      artist.artistName.trim() !== ""
+    const areArtistsValid = artists.every(
+      (artist) => artist.artistName.trim() !== ""
     );
 
     // Pruefe, ob alle Felder befuellt
@@ -237,42 +236,37 @@ export default function AddEventForm() {
     setConfirmBtnActive(isValid);
   };
 
-
   // EventContext konsumieren
   const { eventTypes, venueTypes, eventCategories } = useContext(EventContext);
-
 
   // console.log(artists);
 
   return (
-    <><h2>Add New Event</h2>
-      <p>{`Page ${PageNo} of 3`}</p>
-      <form className="register-form" onSubmit={handleSubmit}>
-        <div style={{ display: PageNo == 1 ? 'block' : 'none' }}> {/* Page 1 */}
-          <label>Name der Veranstaltung</label>
-          <input type="text" required value={eventTitle} onChange={handleEventTitleChange} />
+    <>
+    <h2>Add New Event</h2>
+    <p>{`Page ${PageNo} of 3`}</p>
+    <form id="addEvent-form" onSubmit={handleSubmit}>
+      <div style={{ display: PageNo == 1 ? 'block' : 'none'}}>
+      <label>Name der Veranstaltung</label>
+      <input type="text" required value={eventTitle} onChange={handleEventTitleChange} />
+      <SelectComponent title="Kategorie" value={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} />
+      <SelectComponent title="Typ von Veranstaltung" value={eventType} values={eventTypes} onChange={handleEventTypeChange} />
+      <label>Homepage der Veranstaltung</label>
+      <input type="text" required value={homepage} onChange={handleHomepageChange} />
 
-          <SelectComponent title="Kategorie" value={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} />
+      <label>Startdatum</label>
+      <input type="date" required value={dateStart} onChange={handleDateStartChange} />
 
-          <SelectComponent title="Typ von Veranstaltung" value={eventType} values={eventTypes} onChange={handleEventTypeChange} />
+      <label>Enddatum</label>
+      <input type="date" required value={dateEnd} onChange={handleDateEndChange} />
 
-          <label>Homepage der Veranstaltung</label>
-          <input type="text" required value={homepage} onChange={handleHomepageChange} />
-          <div className="date">
-            <label>Startdatum
-            <input type="date" required value={dateStart} onChange={handleDateStartChange} /></label>
+      <label>Start Time</label>
+      <input type="time" required value={timeStart} onChange={handleTimeStartChange} />
 
-            <label>Enddatum
-            <input type="date" required value={dateEnd} onChange={handleDateEndChange} /></label>
-          </div>
-          <div className="time">
-            <label>Start Time
-            <input type="time" required value={timeStart} onChange={handleTimeStartChange} /></label>
+      <label>End Time</label>
+      <input type="time" required value={timeEnd} onChange={handleTimeEndChange} />
 
-            <label>End Time
-            <input type="time" required value={timeEnd} onChange={handleTimeEndChange} /></label>
-          </div>
-          <label>Bild vom Event</label>
+      <label>Bild vom Event</label>
 
           <input type="text" required value={img} onChange={handleImgChange} />
 
