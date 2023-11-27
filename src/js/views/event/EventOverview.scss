@@ -1,7 +1,36 @@
+.btn_filter {
+  position: absolute;
+  right: 4.8rem;
+  top: 15.5rem;
+}
 
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1em;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+}
+
+@media screen and (max-width: 700px) {
+  .btn_filter {
+    position: relative;
+    left: 1.4rem;
+    top: 0.7rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .gallery {
+    justify-content: start;
+
+    .gallery-card {
+      margin: 1rem 0;
+      padding: 0;
+      width: 100%;
+
+      .gallery-card-image {
+        border-radius: 0;
+      }
+    }
+  }
 }

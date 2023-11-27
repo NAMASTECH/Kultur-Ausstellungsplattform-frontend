@@ -1,68 +1,85 @@
-
-
+@import "../../styles/variables";
 
 .gallery-card {
-    // border: 1px solid rgb(245, 233, 233);
-    padding: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    // background-color: #fff;
-    width: calc(33.3333% - 20px);
-
-    color: #333;
+  // border: 1px solid rgb(245, 233, 233);
+  padding: 18px;
+  margin: 0 10px;
+  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: calc(33.3333% - 20px);
+  color: #333;
+  border-radius: 5px;
 }
 
 .gallery-card-image-container {
-    position: relative;
-    .eventType {
+  position: relative;
+
+  .eventType {
     position: absolute;
-    top: 5%;
-    left: 5%;
+    top: 16px;
+    left: 18px;
     z-index: 1;
     color: black;
-    font-size: 18pt;
-    font-weight: bold;
-    background-color: #98ff1a;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-weight: lighter;
-    }
+    font-family: $main_font;
+    font-size: 15px;
+    font-weight: 400;
+    background-color: $green;
+    padding: 5px 8px;
+    border-radius: 8px;
+  }
 
-
-.gallery-card-image {
+  .gallery-card-image {
     width: 100%;
-    height: auto;
+    height: 80%;
     object-fit: contain;
+    border-radius: 4px;
+  }
 }
-
-}
-
 
 .gallery-card:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
 .card-content {
-    margin-top: 10px;
-    .dateStart {
-         font-size: 12pt;
-         font-weight: normal;
-        }
-    .artists {
-            font-size: 23pt;
-            font-weight: normal;
-        }
-    .eventTitle { 
-        color: black;
-        font-size: 23pt; 
-    }
-    .organizer{ 
-        color: black;
-        font-size: 17pt; 
-    }   
-         
+  margin-top: 15px;
+  font-family: $main_font;
+
+  .dateStart {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  .artists {
+    margin-top: 15px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: -1px;
+    color: black;
+  }
+  .eventTitle {
+    margin-top: -2px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: -1px;
+    color: black;
+  }
+  .organizer {
+    color: black;
+    margin-top: 15px;
+    font-size: 1rem;
+    font-weight: 400;
+  }
 }
 
+@media screen and (max-width: 700px) {
+  .eventType {
+    margin-left: 5px;
+  }
 
+  .dateStart,
+  .artists,
+  .eventTitle,
+  .organizer {
+    padding: 0 20px;
+  }
+}

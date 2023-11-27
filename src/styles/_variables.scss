@@ -1,4 +1,4 @@
-//Font-Import aus asset-Ordner
+//------------------ Font-Import aus asset-Ordner -------------------
 @font-face {
     font-family: 'Inter';
     src: url('../assets/fonts/Inter/Inter-Bold.eot');
@@ -66,36 +66,58 @@
 
 @font-face {
     font-family: 'Alumni Sans';
-    src: url('../assets/fonts/Alumni/AlumniSans-Thin.eot');
-    src: url('../assets/fonts/Alumni/AlumniSans-Thin.eot?#iefix') format('embedded-opentype'),
-        url('../assets/fonts/Alumni/AlumniSans-Thin.woff2') format('woff2'),
-        url('../assets/fonts/Alumni/AlumniSans-Thin.woff') format('woff'),
-        url('../assets/fonts/Alumni/AlumniSans-Thin.ttf') format('truetype'),
-        url('../assets/fonts/Alumni/AlumniSans-Thin.svg#AlumniSans-Thin') format('svg');
-    font-weight: 100;
+    src: url('../assets/fonts/Alumni/AlumniSans-Bold.eot');
+    src: url('../assets/fonts/Alumni/AlumniSans-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../assets/fonts/Alumni/AlumniSans-Bold.woff2') format('woff2'),
+        url('../assets/fonts/Alumni/AlumniSans-Bold.woff') format('woff'),
+        url('../assets/fonts/Alumni/AlumniSans-Bold.ttf') format('truetype'),
+        url('../assets/fonts/Alumni/AlumniSans-Bold.svg#AlumniSans-Bold') format('svg');
+    font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 
-@font-face {
-    font-family: 'Alumni Sans';
-    src: url('../assets/fonts/Alumni/AlumniSans-ThinItalic.eot');
-    src: url('../assets/fonts/Alumni/AlumniSans-ThinItalic.eot?#iefix') format('embedded-opentype'),
-        url('../assets/fonts/Alumni/AlumniSans-ThinItalic.woff2') format('woff2'),
-        url('../assets/fonts/Alumni/AlumniSans-ThinItalic.woff') format('woff'),
-        url('../assets/fonts/Alumni/AlumniSans-ThinItalic.ttf') format('truetype'),
-        url('../assets/fonts/Alumni/AlumniSans-ThinItalic.svg#AlumniSans-ThinItalic') format('svg');
-    font-weight: 100;
-    font-style: italic;
-    font-display: swap;
-}
+
+// ----------------- Color Options ------------------
+
+// ---- dark grey ----
+$bg_color: #acb8c3;  //Hintergrundfarbe der Seite
+$green: #9ffd2c;    // Neon Akzentfarbe
+$second_color: #495a6a; //Hintergrundfarbe für Buttons und anderes
+$logo_font_color: #a2b0bd; // Fontfarbe im Neon Punkt
+$nav_font_hover: #c5d3e0;  // Fontfarbe in den Buttons bei Hover
+
+// ---- grey ----
+// $bg_color: #c6d1dd;
+// $green: #a7ff1a;
+// $second_color: #6a7c8d;
+// $logo_font_color: #b5c7d1;
+// $nav_font_hover: #e3ebf1;
+
+// ---- light grey ----
+// $bg_color: #dce2e7;
+// $green: #baff1a;
+// $second_color: #949ea8;
+// $logo_font_color: #dee3e6;
+// $nav_font_hover: #e3ebf1;
 
 
-// Colors
-$bg_color: #acb8c3;
-$second_color: #495a6a;
-$green: #98ff1a;
+// ---- light beige ----
+// $bg_color: #d0d3d6;
+// $green: #a7ff1a;
+// $second_color: #868e96;
+// $logo_font_color: #b8c7d4;
+// $nav_font_hover: #dce2e7;
 
-// Fonts
+
+// ---- dark mode ----
+$bg_color: #d0d3d6;
+$green: #a7ff1a;
+$second_color: #868e96;
+$logo_font_color: #b8c7d4;
+$nav_font_hover: #dce2e7;
+
+
+// --------------------- Fonts ----------------------
 $main_font: 'Inter', sans-serif;
-$logo_font: 'Alumni', sans-serif;
+$logo_font: 'Alumni Sans', sans-serif;

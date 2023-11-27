@@ -8,7 +8,7 @@ export const Footer = () => {
       <div className="contact-info">
         <span>
           <Link to="/NamasTech" className="namastech">
-            &copy;NamasTech 2023
+            &copy; NamasTech 2023
           </Link> 
         </span>
         <ul>

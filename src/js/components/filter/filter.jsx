@@ -6,6 +6,7 @@ import SelectComponent from '../SelectComponent.jsx';
 import { EventContext } from '../../context/EventContext.jsx';
 import ReactDatePicker from 'react-datepicker';
 import './filtet.scss';
+import '../datePiker/react-datepicker.css';
 
 const Filter = ({ open, setOpen, setSearch_btn, setEventType, setVenueType, eventType, venueType, dateStart, setDateStart, dateEnd, setDateEnd }) => {
     const { eventTypes, venueTypes, eventCategories } = useContext(EventContext);
@@ -59,7 +60,7 @@ const Filter = ({ open, setOpen, setSearch_btn, setEventType, setVenueType, even
                     selectsRange
                     inline
                 />
-                <SelectComponent title="Event-Kategorie" value={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} />
+                {/* <SelectComponent title="Event-Kategorie" value={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} /> */}
                 <SelectComponent
                     title="Event Type"
                     values={eventTypes}
