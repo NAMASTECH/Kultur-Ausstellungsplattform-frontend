@@ -45,7 +45,7 @@ export default function AddEventForm() {
   }]);
 
   const [PageNo, setPageNo] = useState(1);
-  
+
   // Sideeffect zum Pruefen, ob alle Felder valide sind und man den Confirmbutton aktivieren sollte
   useEffect(() => {
     validateForm();
@@ -245,103 +245,108 @@ export default function AddEventForm() {
   // console.log(artists);
 
   return (
-    <form className="register-form" onSubmit={handleSubmit}>
-      <h2>Add New Event</h2>
+    <><h2>Add New Event</h2>
       <p>{`Page ${PageNo} of 3`}</p>
-      <div style={{ display: PageNo == 1 ? 'block' : 'none'}}>
-      <label>Name der Veranstaltung</label>
-      <input type="text" required value={eventTitle} onChange={handleEventTitleChange} />
-      <SelectComponent title="Kategorie" value={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} />
-      <SelectComponent title="Typ von Veranstaltung" value={eventType} values={eventTypes} onChange={handleEventTypeChange} />
-      <label>Homepage der Veranstaltung</label>
-      <input type="text" required value={homepage} onChange={handleHomepageChange} />
+      <form className="register-form" onSubmit={handleSubmit}>
+        <div style={{ display: PageNo == 1 ? 'block' : 'none' }}> {/* Page 1 */}
+          <label>Name der Veranstaltung</label>
+          <input type="text" required value={eventTitle} onChange={handleEventTitleChange} />
 
-      <label>Startdatum</label>
-      <input type="date" required value={dateStart} onChange={handleDateStartChange} />
+          <SelectComponent title="Kategorie" value={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} />
 
-      <label>Enddatum</label>
-      <input type="date" required value={dateEnd} onChange={handleDateEndChange} />
+          <SelectComponent title="Typ von Veranstaltung" value={eventType} values={eventTypes} onChange={handleEventTypeChange} />
 
-      <label>Start Time</label>
-      <input type="time" required value={timeStart} onChange={handleTimeStartChange} />
+          <label>Homepage der Veranstaltung</label>
+          <input type="text" required value={homepage} onChange={handleHomepageChange} />
+          <div className="date">
+            <label>Startdatum
+            <input type="date" required value={dateStart} onChange={handleDateStartChange} /></label>
 
-      <label>End Time</label>
-      <input type="time" required value={timeEnd} onChange={handleTimeEndChange} />
+            <label>Enddatum
+            <input type="date" required value={dateEnd} onChange={handleDateEndChange} /></label>
+          </div>
+          <div className="time">
+            <label>Start Time
+            <input type="time" required value={timeStart} onChange={handleTimeStartChange} /></label>
 
-      <label>Bild vom Event</label>
+            <label>End Time
+            <input type="time" required value={timeEnd} onChange={handleTimeEndChange} /></label>
+          </div>
+          <label>Bild vom Event</label>
 
-      <input type="text" required value={img} onChange={handleImgChange} />
+          <input type="text" required value={img} onChange={handleImgChange} />
 
-      <label>Description</label>
-      <textarea
-        size="sm"
-        required
-        name="Size"
-        placeholder="Geben Sie eine Beschreibung für diese Veranstaltung an"
-        rows="25"
-        cols="50"
-        maxLength="2000"
-        value={description}
-        onChange={handleDescriptionChange}
-      >
-        <p>Write something here </p>
-      </textarea>
-</div>
-<div style={{ display: PageNo == 2 ? 'block' : 'none'}}>
-      {artists.map((artist, index) => (
-        <div key={index}>
+          <label>Description</label>
+          <textarea
+            size="sm"
+            required
+            name="Size"
+            placeholder="Geben Sie eine Beschreibung für diese Veranstaltung an"
+            rows="25"
+            cols="50"
+            maxLength="2000"
+            value={description}
+            onChange={handleDescriptionChange}
+          >
+            <p>Write something here </p>
+          </textarea>
+        </div>
+        <div style={{ display: PageNo == 2 ? 'block' : 'none' }}> {/* Page 2 */}
+          {artists.map((artist, index) => (
+            <div key={index}>
 
-          <ArtistInputs
-            artist={artist}
-            index={index}
-            onArtistChange={handleArtistChange}
+              <ArtistInputs
+                artist={artist}
+                index={index}
+                onArtistChange={handleArtistChange}
+              />
+
+              {index > 0 && (
+                <button type="button" onClick={() => removeArtistInput(index)}>
+                  entfernen
+                </button>
+              )}
+            </div>
+          ))}
+
+          <button type="button" onClick={addArtistInput}>+ hinzufügen</button>
+        </div>
+        <div style={{ display: PageNo == 3 ? 'block' : 'none' }}> {/* Page 3 */}
+          <label>Venue Name</label>
+          <input type="text" required value={venueName} onChange={handleVenueNameChange} />
+
+          <SelectComponent title="Venue Type" value={venueType} values={venueTypes} onChange={handleVenueTypeChange} />
+
+          <label>City</label>
+          <input type="text" required value={city} onChange={handleCityChange} />
+
+          <label>Street</label>
+          <input type="text" required value={street} onChange={handleStreetChange} />
+
+          <label>House Number</label>
+          <input
+            type="text"
+            required
+            value={houseNumber}
+            onChange={handleHouseNumberChange}
           />
 
-          {index > 0 && (
-            <button type="button" onClick={() => removeArtistInput(index)}>
-              entfernen
-            </button>
-          )}
+          <label>additional Address Information</label>
+          <input
+            type="text"
+            value={additionalAddressInfo}
+            onChange={handleAdditionalAddressInfoChange}
+          />
+
+          <label>ZIP-Code</label>
+          <input type="text" required value={zipCode} onChange={handleZipCodeChange} />
         </div>
-      ))}
-
-      <button type="button" onClick={addArtistInput}>+ hinzufügen</button>
-</div>
-<div style={{ display: PageNo == 3 ? 'block' : 'none'}}>
-      <label>Venue Name</label>
-      <input type="text" required value={venueName} onChange={handleVenueNameChange} />
-
-      {/* <label>Venue Type</label> */}
-      {/* <input type="text" value={venueType} onChange={handleVenueTypeChange} /> */}
-      <SelectComponent title="Venue Type" value={venueType} values={venueTypes} onChange={handleVenueTypeChange} />
-
-      <label>City</label>
-      <input type="text" required value={city} onChange={handleCityChange} />
-
-      <label>Street</label>
-      <input type="text" required value={street} onChange={handleStreetChange} />
-
-      <label>House Number</label>
-      <input
-        type="text"
-        required
-        value={houseNumber}
-        onChange={handleHouseNumberChange}
-      />
-
-      <label>additional Address Information</label>
-      <input
-        type="text"
-        value={additionalAddressInfo}
-        onChange={handleAdditionalAddressInfoChange}
-      />
-
-      <label>ZIP-Code</label>
-      <input type="text" required value={zipCode} onChange={handleZipCodeChange} />
-</div>
-      <button type="button" onClick={handlePageChange} style={{ display: PageNo == 3 ? 'none' : 'block'}} value={`plus`} >Next</button>
-      <button type="button" onClick={handlePageChange} style={{ display: PageNo == 1 ? 'none' : 'block'}} value={`minus`}>Back</button>
-      <button type="submit" disabled={!isConfirmBtnActive} style={{ display: PageNo == 3 ? 'block' : 'none'}}> Hinzufügen / Vorschau ansehen </button>
-    </form>
+        <div className="form_button">
+          <button type="button" onClick={handlePageChange} style={{ display: PageNo == 1 ? 'none' : 'block' }} value={`minus`}>Back</button>
+        <button type="button" onClick={handlePageChange} style={{ display: PageNo == 3 ? 'none' : 'block' }} value={`plus`} >Next</button>
+        <button type="submit" disabled={!isConfirmBtnActive} style={{ display: PageNo == 3 ? 'block' : 'none' }}> Hinzufügen / Vorschau ansehen </button>
+        </div>
+      </form>
+    </>
   );
 }
