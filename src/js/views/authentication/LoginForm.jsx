@@ -46,10 +46,11 @@ export default function LoginForm() {
         id: resp.data.id,
         username: resp.data.username,
         role: resp.data.role,
+        organizerId: resp.data.organizerId,
       });
 
       if (resp.data.role == "organizer") {
-        navigate("/users");
+        navigate("/mydata");
       } else {
         navigate("/");
       }
