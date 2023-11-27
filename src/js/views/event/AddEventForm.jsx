@@ -243,30 +243,31 @@ export default function AddEventForm() {
 
   return (
     <>
-    <h2>Add New Event</h2>
-    <p>{`Page ${PageNo} of 3`}</p>
-    <form id="addEvent-form" onSubmit={handleSubmit}>
-      <div style={{ display: PageNo == 1 ? 'block' : 'none'}}>
-      <label>Name der Veranstaltung</label>
-      <input type="text" required value={eventTitle} onChange={handleEventTitleChange} />
-      <SelectComponent title="Kategorie" value={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} />
-      <SelectComponent title="Typ von Veranstaltung" value={eventType} values={eventTypes} onChange={handleEventTypeChange} />
-      <label>Homepage der Veranstaltung</label>
-      <input type="text" required value={homepage} onChange={handleHomepageChange} />
+      <h2>Add New Event</h2>
+      <p>{`Page ${PageNo} of 3`}</p>
+      <form id="addEvent-form" onSubmit={handleSubmit}>
+        <div style={{ display: PageNo == 1 ? 'block' : 'none' }}>
+          <label>Name der Veranstaltung</label>
+          <input type="text" required value={eventTitle} onChange={handleEventTitleChange} />
+          <SelectComponent title="Kategorie" value={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} />
+          <SelectComponent title="Typ von Veranstaltung" value={eventType} values={eventTypes} onChange={handleEventTypeChange} />
+          <label>Homepage der Veranstaltung</label>
+          <input type="text" required value={homepage} onChange={handleHomepageChange} />
+          <div className="date">
+            <label>Startdatum
+            <input type="date" required value={dateStart} onChange={handleDateStartChange} /></label>
 
-      <label>Startdatum</label>
-      <input type="date" required value={dateStart} onChange={handleDateStartChange} />
+            <label>Enddatum
+            <input type="date" required value={dateEnd} onChange={handleDateEndChange} /></label>
+          </div>
+          <div className="time">
+            <label>Start Time
+            <input type="time" required value={timeStart} onChange={handleTimeStartChange} /></label>
 
-      <label>Enddatum</label>
-      <input type="date" required value={dateEnd} onChange={handleDateEndChange} />
-
-      <label>Start Time</label>
-      <input type="time" required value={timeStart} onChange={handleTimeStartChange} />
-
-      <label>End Time</label>
-      <input type="time" required value={timeEnd} onChange={handleTimeEndChange} />
-
-      <label>Bild vom Event</label>
+            <label>End Time
+            <input type="time" required value={timeEnd} onChange={handleTimeEndChange} /></label>
+          </div>
+          <label>Bild vom Event</label>
 
           <input type="text" required value={img} onChange={handleImgChange} />
 
@@ -337,8 +338,8 @@ export default function AddEventForm() {
         </div>
         <div className="form_button">
           <button type="button" onClick={handlePageChange} style={{ display: PageNo == 1 ? 'none' : 'block' }} value={`minus`}>Back</button>
-        <button type="button" onClick={handlePageChange} style={{ display: PageNo == 3 ? 'none' : 'block' }} value={`plus`} >Next</button>
-        <button type="submit" disabled={!isConfirmBtnActive} style={{ display: PageNo == 3 ? 'block' : 'none' }}> Hinzufügen / Vorschau ansehen </button>
+          <button type="button" onClick={handlePageChange} style={{ display: PageNo == 3 ? 'none' : 'block' }} value={`plus`} >Next</button>
+          <button type="submit" disabled={!isConfirmBtnActive} style={{ display: PageNo == 3 ? 'block' : 'none' }}> Hinzufügen / Vorschau ansehen </button>
         </div>
       </form>
     </>
