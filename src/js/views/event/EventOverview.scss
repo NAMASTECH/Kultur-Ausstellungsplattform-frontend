@@ -1,7 +1,22 @@
+@import "../../../styles/variables";
+
 .btn_filter {
   position: absolute;
   right: 4.8rem;
   top: 14rem;
+     color: black;
+    font-family: $main_font;
+    font-size: 1.1em;
+    padding: 5px 15px;
+    background-color: $bg_color;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.btn_filter:hover {
+    background-color: $second_color;
+    border: 1px solid $second_color;
+    color: $nav_font_hover;
 }
 
 .gallery {
@@ -11,11 +26,13 @@
   justify-content: center;
   gap: 1em;
 }
-.pagination{
+
+.pagination {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
 }
+
 .MuiPagination-ul {
   justify-content: center;
   

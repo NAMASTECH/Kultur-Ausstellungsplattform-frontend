@@ -5,7 +5,7 @@ import Modal from '@mui/material/Modal';
 import SelectComponent from '../SelectComponent.jsx';
 import { EventContext } from '../../context/EventContext.jsx';
 import ReactDatePicker from 'react-datepicker';
-import './filtet.scss';
+import './filter.scss';
 import '../datePiker/react-datepicker.css';
 
 const Filter = ({ open, setOpen, setSearch_btn, setEventType, setVenueType, eventType, venueType, dateStart, setDateStart, dateEnd, setDateEnd }) => {
