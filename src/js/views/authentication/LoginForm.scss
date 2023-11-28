@@ -18,7 +18,13 @@ $width: 100%;
 }
 
 // INPUTS // ============================== //
-
+.highlight{
+  display: block;
+  background-color: black;
+  color: $hl-color;
+  width: 100% ;
+  height: 1.5px;
+}
 
 input {
   background: none;
