@@ -4,6 +4,7 @@ import EventCard from "../../components/EventCard.jsx";
 import PaginationComponent from "../../components/PaginationComponent";
 import "./EventOverview.scss";
 import Filter from "../../components/filter/filter.jsx";
+import EditEvent from "../EditEvent.jsx";
 
 
 export default function EventOverview() {
@@ -56,6 +57,8 @@ export default function EventOverview() {
       <button className="btn_filter" onClick={() => setOpen(true)}>Filter</button>
       <Filter open={open} setOpen={setOpen} setSearch_btn={setSearch_btn} setEventType={setEventType} setVenueType={setVenueType} eventType={eventType} venueType={venueType} dateStart={dateStart} dateEnd={dateEnd} setDateEnd={setDateEnd} setDateStart={setDateStart} />
 
+
+      <EditEvent />
       <div className="gallery">
         {!loading ? (
           events.length > 0 ? (

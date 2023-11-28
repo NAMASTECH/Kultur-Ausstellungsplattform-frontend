@@ -18,6 +18,7 @@ import AddEventForm from "./js/views/event/AddEventForm.jsx";
 import EventOverview from "./js/views/event/EventOverview.jsx";
 import ContactForm from "./js/views/Contact/ContactForm.jsx"
 import EventDetails from "./js/views/event/EventDetails.jsx"
+import EditEvent from "./js/views/EditEvent.jsx";
 
 // Definition einer Komponente
 // Am besten gleich als export Statement schreiben, um es nachher nicht zu vergessen.
@@ -39,6 +40,7 @@ export default function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/mydata" element={<UsersTable />} />
             <Route path="/users/:userId" element={<UserInfo />} />
+            <Route path="/user/:userId" element={<EditEvent />} />
           </Route>
         </Route>
       </Routes>
