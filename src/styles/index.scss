@@ -14,9 +14,11 @@ body {
   background-color: $bg_color;
   color: black;
   margin: 0;
-  min-width: 100vw;
+  // min-width: 100vw;
   min-height: 100vh;
 }
+
+
 @media (prefers-color-scheme: dark){
   a {
     color: $bg_color;
@@ -64,6 +66,7 @@ body {
     color: black;
   }
 }
+
 @media screen and (max-width: 767px) {
   .gallery-card {
     width: 100%;
