@@ -4,6 +4,8 @@ import EventCard from "../../components/EventCard.jsx";
 import PaginationComponent from "../../components/PaginationComponent";
 import "./EventOverview.scss";
 import Filter from "../../components/filter/filter.jsx";
+import { Pagination } from "@mui/material";
+import '@emotion/styled'
 
 
 export default function EventOverview() {
@@ -69,10 +71,21 @@ export default function EventOverview() {
           <h3>Loading...</h3>
         )}
       </div>
-      <PaginationComponent
+      
+      {/* <PaginationComponent
         totalPages={totalPages}
         currentPage={currentPage}
         onPageChange={handlePageChange}
+      /> */}
+      <Pagination 
+      count={Math.ceil(totalPages/limit)}
+      page={currentPage}
+      onChange={(e, page) => setCurrentPage(page)}
+      variant="outlined"
+      shape="rounded"
+      color="primary"
+      size="large"
+      className="pagination"
       />
     </div>
   );
