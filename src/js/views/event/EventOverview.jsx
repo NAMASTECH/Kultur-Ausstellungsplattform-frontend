@@ -50,16 +50,23 @@ export default function EventOverview() {
       });
   }, [loading, search_btn, currentPage, limit]);
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
 
   return (
     <div className="overview">
       <button className="btn_filter" onClick={() => setOpen(true)}>Filter</button>
-      <Filter open={open} setOpen={setOpen} setSearch_btn={setSearch_btn} setEventType={setEventType} setVenueType={setVenueType} eventType={eventType} venueType={venueType} dateStart={dateStart} dateEnd={dateEnd} setDateEnd={setDateEnd} setDateStart={setDateStart} />
-
+      <Filter 
+        open={open} 
+        setOpen={setOpen} 
+        setSearch_btn={setSearch_btn} 
+        setEventType={setEventType} 
+        setVenueType={setVenueType} 
+        eventType={eventType} 
+        venueType={venueType} 
+        dateStart={dateStart} 
+        dateEnd={dateEnd} 
+        setDateEnd={setDateEnd} 
+        setDateStart={setDateStart} 
+      />
 
       <EditEvent />
       <div className="gallery">
@@ -76,22 +83,14 @@ export default function EventOverview() {
         )}
       </div>
 
-      {/* <PaginationComponent
-        totalPages={totalPages}
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
-      /> */}
       <StyledEngineProvider injectFirst >
-      <Stack spacing={2}  className="pagination">
-      <Pagination
-        count={Math.ceil(totalPages / limit)}
-        page={currentPage}
-        onChange={(e, page) => setCurrentPage(page)}
-        // size="large"
-        // variant="outlined"
-        
-      />
-      </Stack>
+        <Stack spacing={2} className="pagination">
+          <Pagination
+            count={Math.ceil(totalPages / limit)}
+            page={currentPage}
+            onChange={(e, page) => setCurrentPage(page)}
+          />
+        </Stack>
       </StyledEngineProvider>
     </div>
   );
