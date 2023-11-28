@@ -1,6 +1,7 @@
 // EditEvent.jsx
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import "./EditEvent.scss"
 
 export default function EditEvent({ eventId }) {
     // State for form inputs
@@ -125,50 +126,65 @@ export default function EditEvent({ eventId }) {
             </div>
 
             <article className="event-details__article" >
-                <form onSubmit={handleSaveChanges}>
+                <form id="editEvent_form" onSubmit={handleSaveChanges}>
 
                     <div className="event-details-content" >
 
-                        <label>Name vom Veranstaltungsort</label>
-                        <input name="venueName" type="text" value={event.venues[0].venueName} onChange={handleInputChange} />
-
+                        {/* <label>Name vom Veranstaltungsort</label>
                         <div>
                             {event.venues.map((venue) => {
                                 return (
                                     <>
+                                        <p id="venue" >
+                                            {venue.venueName}
+                                        </p>
+                                        <input key={venue._id} name="venueName" type="text" value={venue.venueName} onChange={(e) => handleVenueChange(index, 'venueName', e.target.value)} />
                                     </>
-                                    // <p id="venue" >
-                                    //     {venue.venueName}
-                                    // </p>
-                                    // <input key={venue._id} name="venueName" type="text" value={venue.venueName} onChange={handleInputChange} />
                                 )
                             })}
-                        </div>
+                        </div> */}
 
                         {/* <p id="date-start" >
                             <span className="font-weight-bold">Von:</span>
                             {`${event.dateStart.split("T")[0]} - ${event.dateEnd.split("T")[0]} | ${event.timeStart} - ${event.timeEnd}`}
                         </p> */}
 
-                        <label>Startdatum </label>
-                        <input name="dateStart" type="date" value={event.dateStart} onChange={handleInputChange} />
+                        <div id="date-inputs-and-time-inputs">
+                            {/* <div>
+                                <label>Startdatum </label>
+                            </div> */}
+                            <input name="dateStart" type="date" required value={event.dateStart} onChange={handleInputChange} />
 
-                        <label>Enddatum </label>
-                        <input name="dateEnd" type="date" value={event.dateEnd} onChange={handleInputChange} />
+                            <span> - </span>
+                            {/* <div>
+                                <label>Enddatum </label>
+                            </div> */}
+                            <input name="dateEnd" type="date" required value={event.dateEnd} onChange={handleInputChange} />
 
-                        <label>Startzeit </label>
-                        <input name="timeStart" type="time" value={event.timeStart} onChange={handleInputChange} />
 
-                        <label>Endzeit </label>
-                        <input name="timeEnd" type="time" value={event.timeEnd} onChange={handleInputChange} />
+                            <span> | </span>
+
+
+                            {/* <div>
+                                <label>Startzeit </label>
+                            </div> */}
+                            <input name="timeStart" type="time" required value={event.timeStart} onChange={handleInputChange} />
+
+                            <span> - </span>
+
+                            {/* <div>
+                                <label>Endzeit </label>
+                            </div> */}
+                            <input name="timeEnd" type="time" required value={event.timeEnd} onChange={handleInputChange} />
+                        </div>
+
 
                         {/* <h2 id="event-title" >
                             <span className="font-weight-bold">Event Title:</span>
                             {event.eventTitle}
                         </h2> */}
 
-                        <label>Name der Veranstaltung</label>
-                        <input name="eventTitle" type="text" value={event.eventTitle} onChange={handleInputChange} />
+                        <input name="eventTitle" type="text" required placeholder="Eventname" value={event.eventTitle} onChange={handleInputChange} />
 
                         {/* <span className="font-weight-bold">
                             Beschreibung:
@@ -177,7 +193,19 @@ export default function EditEvent({ eventId }) {
                             {event.description}
                         </p> */}
                         <label>Beschreibung der Veranstaltung</label>
-                        <input name="description" type="text" value={event.description} onChange={handleInputChange} />
+                        <textarea
+                            size="sm"
+                            required
+                            name="Size"
+                            placeholder="Geben Sie eine Beschreibung für diese Veranstaltung an"
+                            rows="25"
+                            cols="50"
+                            maxLength="2000"
+                            value={event.description}
+                            onChange={handleInputChange}
+                        />
+
+                        {/* <input name="description" type="text" required value={event.description} onChange={handleInputChange} /> */}
 
 
                         {/* TO DO: check where to display eventCategory and eventType*/}
@@ -191,10 +219,9 @@ export default function EditEvent({ eventId }) {
                                 <span className="font-weight-bold">Kategorie:</span>
                                 {event.eventCategory}
                         </p> */}
-                        <label>Typ der Veranstaltung</label>
-                        <input name="eventType" type="text" value={event.eventType} onChange={handleInputChange} />
-
-                        <input name="eventCategory" type="text" placeholder="Kategorie" value={event.eventCategory} onChange={handleInputChange} />
+                        <input name="eventType" type="text" required placeholder="Veranstaltungstyp" value={event.eventType} onChange={handleInputChange} />
+                        <label>TO DO: Als Dropdown</label>
+                        <input name="eventCategory" type="text" required placeholder="Kategorie" value={event.eventCategory} onChange={handleInputChange} />
 
 
 
@@ -218,11 +245,13 @@ export default function EditEvent({ eventId }) {
                                             {venue.venueType}
                                         </p> */}
 
-                                        <input name="venueType" type="text" placeholder="Veranstaltungsorttyp" alue={venue.venueType} onChange={(e) => handleVenueChange(index, 'venueType', e.target.value)} />
+
 
                                         <div id="venue-address-container">
 
                                             <p>Adresse</p>
+                                            <input name="venueName" type="text" placeholder="Veranstaltungsort" value={venue.venueName} onChange={(e) => handleVenueChange(index, 'venueName', e.target.value)} />
+                                            <input name="venueType" type="text" placeholder="Veranstaltungsorttyp" required value={venue.venueType} onChange={(e) => handleVenueChange(index, 'venueType', e.target.value)} />
 
                                             {/* <span className="font-weight-bold">Adresse:</span> */}
 
@@ -241,14 +270,14 @@ export default function EditEvent({ eventId }) {
                                             } */}
 
                                             <div>
-                                                <input name="street" type="text" placeholder="Straße" value={venue.street} onChange={(e) => handleVenueChange(index, 'street', e.target.value)} />
-                                                <input name="houseNumber" type="text" placeholder="Hausnummer" value={venue.houseNumber} onChange={(e) => handleVenueChange(index, 'houseNumber', e.target.value)} />
+                                                <input name="street" type="text" placeholder="Straße" required value={venue.street} onChange={(e) => handleVenueChange(index, 'street', e.target.value)} />
+                                                <input name="houseNumber" type="text" placeholder="Hausnummer" required value={venue.houseNumber} onChange={(e) => handleVenueChange(index, 'houseNumber', e.target.value)} />
                                             </div>
 
                                             <div>
-                                                <input name="zipCode" type="text" placeholder="Postleitzahl" value={venue.zipCode} onChange={(e) => handleVenueChange(index, 'zipCode', e.target.value)} />
+                                                <input name="zipCode" type="text" placeholder="Postleitzahl" required value={venue.zipCode} onChange={(e) => handleVenueChange(index, 'zipCode', e.target.value)} />
 
-                                                <input name="city" type="text" placeholder="Stadt" value={venue.city} onChange={(e) => handleVenueChange(index, 'city', e.target.value)} />
+                                                <input name="city" type="text" placeholder="Stadt" required value={venue.city} onChange={(e) => handleVenueChange(index, 'city', e.target.value)} />
 
                                             </div>
 
