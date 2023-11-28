@@ -85,35 +85,37 @@ export default function LoginForm() {
   };
 
   return (
+    <>
+    
     <form className="login-form" onSubmit={handleSubmit}>
       <h2>Login</h2>
+      <div className="group">
+          <input type="text" required="required" value={username} onChange={handleUsernameChange} autoComplete="off"/>
+          <span className="highlight"></span>
+          <span className="bar"></span>
+          <label>Email</label>
+        </div>
+        <div className="group">
+          <input type="password" required="required"value={password} onChange={handlePasswordChange} autoComplete="off" />
+          <span className="highlight"></span>
+          <span className="bar"></span>
+          <label>Password</label>
+        </div>
 
-      <label>
-        Username or Email
-        <input type="text" value={username} onChange={handleUsernameChange} />
-      </label>
-
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-      </label>
 
       <button type="submit" disabled={!isConfirmBtnActive}>
         Sign In!
       </button>
 
-      <label>Noch kein account?</label>
+      <span>Noch kein account?</span>
       {/* // TO DO: redirect zu nur einer Form, wo dann ausgewählt wird, ob als user oder als organizer */}
-      <Link to="/register/user">Hier registrieren (als user)</Link>
+      {/* <Link to="/register/user">Hier registrieren (als user)</Link> */}
       <Link to="/register/organizer">Hier registrieren (als Organizer)</Link>
 
       {/* {
             confirmedUsername && <h3>Welcome {confirmedUsername}!</h3>
         } */}
     </form>
+    </>
   );
 }
