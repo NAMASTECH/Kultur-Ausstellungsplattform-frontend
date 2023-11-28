@@ -94,13 +94,13 @@ export default function LoginForm() {
           <span className="highlight"></span>
           <span className="bar"></span>
           <label>Email</label>
-        </div>
-        <div className="group">
-          <input type="password" required="required"value={password} onChange={handlePasswordChange} autoComplete="off" />
+      </div>
+      <div className="group">
+          <input type="password" required="required" value={password} onChange={handlePasswordChange} autoComplete="off" />
           <span className="highlight"></span>
           <span className="bar"></span>
           <label>Password</label>
-        </div>
+      </div>
 
 
       <button type="submit" disabled={!isConfirmBtnActive}>
