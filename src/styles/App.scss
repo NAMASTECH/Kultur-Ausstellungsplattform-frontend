@@ -16,21 +16,21 @@
     color: #161616;
   }
 
-  button {
-    color: black;
-    font-family: $main_font;
-    font-size: 1.1em;
-    padding: 5px 15px;
-    background-color: $bg_color;
-    border: 1px solid black;
-    border-radius: 8px;
-  }
+  // button {
+  //   color: black;
+  //   font-family: $main_font;
+  //   font-size: 1.1em;
+  //   padding: 5px 15px;
+  //   background-color: $bg_color;
+  //   border: 1px solid black;
+  //   border-radius: 8px;
+  // }
 
-  button:hover {
-    background-color: $second_color;
-    border: 1px solid $second_color;
-    color: $nav_font_hover;
-  }
+  // button:hover {
+  //   background-color: $second_color;
+  //   border: 1px solid $second_color;
+  //   color: $nav_font_hover;
+  // }
 
   .register-form {
     display: flex;
