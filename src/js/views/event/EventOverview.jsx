@@ -87,8 +87,8 @@ export default function EventOverview() {
         count={Math.ceil(totalPages / limit)}
         page={currentPage}
         onChange={(e, page) => setCurrentPage(page)}
-        size="large"
-        variant="outlined"
+        // size="large"
+        // variant="outlined"
         
       />
       </Stack>
