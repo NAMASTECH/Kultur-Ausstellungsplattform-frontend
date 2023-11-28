@@ -157,10 +157,10 @@ export default function EditEvent({ eventId }) {
                         <input name="dateEnd" type="date" value={event.dateEnd} onChange={handleInputChange} />
 
                         <label>Startzeit </label>
-                        <input name="timeStart" type="date" value={event.timeStart} onChange={handleInputChange} />
+                        <input name="timeStart" type="time" value={event.timeStart} onChange={handleInputChange} />
 
                         <label>Endzeit </label>
-                        <input name="timeEnd" type="date" value={event.timeEnd} onChange={handleInputChange} />
+                        <input name="timeEnd" type="time" value={event.timeEnd} onChange={handleInputChange} />
 
                         {/* <h2 id="event-title" >
                             <span className="font-weight-bold">Event Title:</span>
