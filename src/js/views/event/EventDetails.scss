@@ -1,93 +1,174 @@
 .event-details-container__section {
     display: flex;
-    width: 80%;
+    flex-direction: column;
+    width: 90%;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
 
 
-    .img-container {
-        .event-image {
-            // align-self: stretch;
-            object-fit: cover;
-            width: 100%;
-            height: 500px;
-            background: linear-gradient(0deg, #DDE1E6 0%, #DDE1E6 100%)
-        }
-    }
-
-
-    .event-details__article {
-        width: 60%;
-        min-height: fit-content;
-        border: 1px #DDE1E6 solid;
+    .event-details-container {
+        display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        display: inline-flex;
-        margin: 15px;
+        width: 100%;
+        object-fit: contain;
 
-        .event-details-content {
+        div.img-container {
             display: flex;
+            width: 100%;
+            height: 40vh;
+
+            .event-image {
+                // align-self: stretch;
+                object-fit: cover;
+                width: 100%;
+                // height: 500px;
+                background: linear-gradient(0deg, #DDE1E6 0%, #DDE1E6 100%)
+            }
+        }
+
+
+        .event-details__article {
+
+            min-height: fit-content;
+            border: 1px #DDE1E6 solid;
             flex-direction: column;
-            align-items: flex-start;
             justify-content: flex-start;
-            align-self: stretch;
-            padding-top: 24px;
-            padding-bottom: 16px;
-            padding-left: 16px;
-            padding-right: 16px;
-            gap: 16px;
-
-            .font-weight-bold {
-                font-weight: bold;
-            }
-
-            .font-size-big {
-                font-size: 2em;
-            }
-
-            // TODO: Falls spezielle Styles definiert werden sollen, die nur für das eine Text Feld gelten, dann über ID (#) stylen,
-            // ansonsten Klassen (.) verwenden für alles, was allgemein ist und mehrmals verwendet werden kann.
+            align-items: center;
+            display: inline-flex;
 
 
-            div p#venue {
-                font-weight: bold;
-            }
+            .event-details-content {
 
-            #date-start {}
-
-            // #date-end {}
-
-            // #artist-info-container {
-
-            //     #artist-name {}
-
-            //     #artist-type {}
-
-            //     #artist-description {}
-
-            //     #artist-img {}
-            // }
-
-            #event-title {}
-
-            // #event-type {}
-
-            #event-category {}
-
-            #venue-info {
-                #venue-name {}
-
-                #venue-type {}
-
-                #venue-address-container {
-
-                    #additional-address-info {}
+                p#venue {
+                    margin: 0;
+                    height: 20.45px;
                 }
-            }
 
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                align-self: stretch;
+                padding-top: 24px;
+                padding-bottom: 16px;
+                padding-left: 16px;
+                padding-right: 16px;
+                gap: 16px;
+
+                .font-weight-bold {
+                    font-weight: bold;
+                }
+
+                .font-size-big {
+                    font-size: 2em;
+                }
+
+                // TODO: Falls spezielle Styles definiert werden sollen, die nur für das eine Text Feld gelten, dann über ID (#) stylen,
+                // ansonsten Klassen (.) verwenden für alles, was allgemein ist und mehrmals verwendet werden kann.
+
+
+                .date-and-time-container {
+                    height: 20px;
+                    display: flex;
+                    width: 100%;
+                    justify-content: flex-start;
+                    align-items: center;
+
+                    .dates-container {
+                        display: flex;
+                        align-items: center;
+
+                        .date-start_p,
+                        .date-end_p {
+                            width: 105px;
+                        }
+
+                        pre {
+                            display: inline;
+                        }
+
+                        .date-start_input,
+                        .date-end_input {
+                            width: 87.5px;
+                        }
+                    }
+
+
+                }
+
+                .event-title-container {
+                    margin: 20px 0;
+                    width: 100%;
+
+                    h2 {
+                        display: inline;
+                    }
+
+                    #eventName_input {
+                        // height: 29.09px;
+                        font-size: 21px;
+                        width: 100%;
+                    }
+                }
+
+                div p#venue {
+                    font-weight: bold;
+                }
+
+
+
+                // #artist-info-container {
+
+                //     #artist-name {}
+
+                //     #artist-type {}
+
+                //     #artist-description {}
+
+                //     #artist-img {}
+                // }
+
+                #event-title {}
+
+                // #event-type {}
+
+                #event-category {}
+
+                #venue-info {
+                    #venue-name {}
+
+                    #venue-type {}
+
+                    #venue-address-container {
+
+                        #additional-address-info {}
+                    }
+                }
+
+            }
         }
     }
+}
+
+@media screen and (min-width: 992px) {
+
+    .event-details-container__section {
+        display: flex;
+        flex-direction: column;
+
+
+        .event-details-container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+
+            div.img-container {
+                width: 100%;
+                height: 60vh;
+            }
+        }
+    }
+
 
 }

@@ -1,13 +1,31 @@
-#editEvent_form {
-    display: flex;
+div.img-container {
+
+
+    img.event-image {
+        width: 100%;
+        height: 100%
+    }
+}
+
+article {
     width: 100%;
 
-    #date-inputs {
+    #editEvent_form {
+        padding: 0;
         display: flex;
+        width: 100%;
     }
 
-    #time-inputs {
-        display: flex;
-    }
 
+    form#editEvent_form {
+
+
+        .event-details-content {
+
+
+            .eventDescription_textarea {
+                width: 100%
+            }
+        }
+    }
 }

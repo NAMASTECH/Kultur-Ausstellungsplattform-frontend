@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import PaginationComponent from "../../components/PaginationComponent";
 
@@ -37,7 +37,7 @@ export default function UsersTable() {
     const navigate = useNavigate();
 
     const handleEditClick = (eventId) => {
-        navigate(`/event/${eventId}`);
+        navigate(`/event/edit/${eventId}`);
     };
 
 
@@ -50,6 +50,7 @@ export default function UsersTable() {
                 <td>{data.venues.map(at => <span key={at._id}>{at.venueName}</span>)}</td>
                 <td className="button"><button className="disable">Deaktivieren</button></td>
                 <td className="button"><button className="update" onClick={() => handleEditClick(data._id)}>Bearbeiten <br /><span>Bearbeitet {data.updatedAt.split("T")[0]}</span></button></td>
+                {/* <NavLink to={`/event/edit/${data._id}`}>Bearbeiten</NavLink> */}
             </tr>
         );
     });

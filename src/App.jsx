@@ -36,11 +36,10 @@ export default function App() {
           <Route path="/event" element={<AddEventForm />} />
           <Route path="/kontakt" element={<ContactForm />} />
           <Route path="/event/:eventId" element={<EventDetails />} />
-
           <Route element={<PrivateRoute />}>
             <Route path="/mydata" element={<UsersTable />} />
             <Route path="/users/:userId" element={<UserInfo />} />
-            <Route path="/user/:userId" element={<EditEvent />} />
+            <Route path="/event/edit/:eventId" element={<EditEvent />} />
           </Route>
         </Route>
       </Routes>

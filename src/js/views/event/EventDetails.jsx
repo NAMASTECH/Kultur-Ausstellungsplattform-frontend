@@ -127,15 +127,18 @@ export default function EventDetails() {
     return (
         <section className="event-details-container__section" >
 
-            <div className="img-container">
-                <img className="event-image" src={event.img} />
-            </div>
+            <h2>Event Details</h2>
+
+            <div className="event-details-container">
+                <div className="img-container">
+                    <img className="event-image" src={event.img} />
+                </div>
 
 
-            <article className="event-details__article" >
-                <div className="event-details-content" >
+                <article className="event-details__article" >
+                    <div className="event-details-content" >
 
-                    <div>
+
                         {event.venues.map((venue) => {
                             return (
                                 <p id="venue" >
@@ -143,114 +146,141 @@ export default function EventDetails() {
                                 </p>
                             )
                         })}
-                    </div>
 
 
-                    <p id="date-start" >
-                        {/* <span className="font-weight-bold">Von:</span> */}
-                        {`${event.dateStart.split("T")[0]} - ${event.dateEnd.split("T")[0]} | ${event.timeStart} - ${event.timeEnd}`}
-                    </p>
+                        <div className="date-and-time-container">
+                            <div className="dates-container">
+                                <p className="date-start" >
+                                    {/* <span className="font-weight-bold">Von:</span> */}
+                                    {`${event.dateStart.split("T")[0]}`}
 
-                    <h2 id="event-title" >
-                        {/* <span className="font-weight-bold">Event Title:</span> */}
-                        {event.eventTitle}
-                    </h2>
+                                </p>
 
-                    {/* <span className="font-weight-bold">
+                                <pre> - </pre>
+
+                                <p className="date-end" >
+                                    {/* <span className="font-weight-bold">Von:</span> */}
+                                    {`${event.dateEnd.split("T")[0]}`}
+
+                                </p>
+                            </div>
+
+                            <pre> | </pre>
+
+                            <p className="time-start" >
+                                {/* <span className="font-weight-bold">Von:</span> */}
+                                {`${event.timeStart}`}
+                            </p>
+
+                            <pre> - </pre>
+
+                            <p className="time-end" >
+                                {/* <span className="font-weight-bold">Von:</span> */}
+                                {`${event.timeEnd}`}
+                            </p>
+                        </div>
+
+                        <h2 id="event-title" >
+                            {/* <span className="font-weight-bold">Event Title:</span> */}
+                            {event.eventTitle}
+                        </h2>
+
+                        {/* <span className="font-weight-bold">
                         Beschreibung:
                     </span> */}
-                    <p id="event-description">
-                        {event.description}
-                    </p>
+                        <p id="event-description">
+                            {event.description}
+                        </p>
 
-                    {/* <p id="event-type" >
+                        {/* <p id="event-type" >
                         <span className="font-weight-bold">Event Typ:</span>
                         {event.eventType}
                     </p> */}
 
-                    {/* <p id="event-category">
+                        {/* <p id="event-category">
                         <span className="font-weight-bold">Kategorie:</span>
                         {event.eventCategory}
                     </p> */}
 
-                    <div id="event-details-content-footer">
-                        {event.venues.map((venue) => {
-                            return (
-                                <div id="venue-info" key={venue._id}>
-                                    <p id="venue-name" >
-                                        {/* <span className="font-weight-bold">Ort:</span> */}
-                                        {venue.venueName}
-                                    </p>
+                        <div id="event-details-content-footer">
+                            {event.venues.map((venue) => {
+                                return (
+                                    <div id="venue-info" key={venue._id}>
+                                        <p id="venue-name" >
+                                            {/* <span className="font-weight-bold">Ort:</span> */}
+                                            {venue.venueName}
+                                        </p>
 
-                                    {/* <p id="venue-type" >
+                                        {/* <p id="venue-type" >
                                     <span className="font-weight-bold">Typ von Veranstaltungsort:</span>
                                     {venue.venueType}
                                     </p> */}
 
-                                    <div id="venue-address-container">
-                                        {/* <span className="font-weight-bold">Adresse:</span> */}
-                                        {(venue.street && venue.houseNumber) && `${venue.street} ${venue.houseNumber}`}
-                                        <br></br>
-                                        {venue.zipCode} {venue.city}
+                                        <div id="venue-address-container">
+                                            {/* <span className="font-weight-bold">Adresse:</span> */}
+                                            {(venue.street && venue.houseNumber) && `${venue.street} ${venue.houseNumber}`}
+                                            <br></br>
+                                            {venue.zipCode} {venue.city}
 
-                                        {
-                                            venue.additionalAddressInfo && (
-                                                <p id="additional-address-info">
-                                                    {/* <span className="font-weight-bold">
+                                            {
+                                                venue.additionalAddressInfo && (
+                                                    <p id="additional-address-info">
+                                                        {/* <span className="font-weight-bold">
                                                         Adresszusatz:
                                                     </span> */}
-                                                    {venue.additionalAddressInfo}
-                                                </p>
-                                            )
-                                        }
-                                    </div>
+                                                        {venue.additionalAddressInfo}
+                                                    </p>
+                                                )
+                                            }
+                                        </div>
 
+                                    </div>
+                                );
+                            })}
+
+                            <div id="event-homepage">
+                                {/* <span className="font-weight-bold">Event-Homepage:</span> */}
+                                <a href={formattedEventHomepage} target="_self" rel="noopener noreferrer">
+                                    {/* {event.homepage} */}
+                                    Event Homepage
+                                </a>
+                            </div>
+                        </div>
+
+                        <p className="font-weight-bold font-size-big">
+                            <span className="font-weight-bold">Artist(s):</span>
+                            {/* {event.artist} */}
+                        </p>
+
+                        {event.artists.map((artist) => {
+                            return (
+                                <div id="artist-info-container" key={artist._id}>
+                                    <p id="artist-name" >
+                                        <span className="font-weight-bold">Artist Name: </span>
+                                        {artist.artistName}
+                                    </p>
+                                    <p id="artist-type" >
+                                        <span className="font-weight-bold">Artist Type: </span>
+                                        {artist.artistType}
+                                    </p>
+                                    <p id="artist-homepage" >
+                                        <span className="font-weight-bold">Artist Homepage: </span>
+                                        {artist.artistHomepage}
+                                    </p>
+                                    <p id="artist-description" >
+                                        <span className="font-weight-bold">Artist Description: </span>
+                                        {artist.artistDescription}
+                                    </p>
+
+
+                                    <p>Artist image</p>
+                                    <img src={artist.artistImg} id="artist-img" width="200em" />
                                 </div>
                             );
                         })}
-
-                        <div id="event-homepage">
-                            {/* <span className="font-weight-bold">Event-Homepage:</span> */}
-                            <a href={formattedEventHomepage} target="_self" rel="noopener noreferrer">
-                                {/* {event.homepage} */}
-                                Event Homepage
-                            </a>
-                        </div>
                     </div>
-
-                    <p className="font-weight-bold font-size-big">
-                        <span className="font-weight-bold">Artist(s):</span>
-                        {/* {event.artist} */}
-                    </p>
-
-                    {event.artists.map((artist) => {
-                        return (
-                            <div id="artist-info-container" key={artist._id}>
-                                <p id="artist-name" >
-                                    <span className="font-weight-bold">Artist Name: </span>
-                                    {artist.artistName}
-                                </p>
-                                <p id="artist-type" >
-                                    <span className="font-weight-bold">Artist Type: </span>
-                                    {artist.artistType}
-                                </p>
-                                <p id="artist-homepage" >
-                                    <span className="font-weight-bold">Artist Homepage: </span>
-                                    {artist.artistHomepage}
-                                </p>
-                                <p id="artist-description" >
-                                    <span className="font-weight-bold">Artist Description: </span>
-                                    {artist.artistDescription}
-                                </p>
-
-
-                                <p>Artist image</p>
-                                <img src={artist.artistImg} id="artist-img" width="200em" />
-                            </div>
-                        );
-                    })}
-                </div>
-            </article>
+                </article>
+            </div>
         </section >
     )
 }

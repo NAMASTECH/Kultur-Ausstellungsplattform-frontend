@@ -61,7 +61,7 @@ export default function EventOverview() {
       <Filter open={open} setOpen={setOpen} setSearch_btn={setSearch_btn} setEventType={setEventType} setVenueType={setVenueType} eventType={eventType} venueType={venueType} dateStart={dateStart} dateEnd={dateEnd} setDateEnd={setDateEnd} setDateStart={setDateStart} />
 
 
-      <EditEvent />
+      {/* <EditEvent /> */}
       <div className="gallery">
         {!loading ? (
           events.length > 0 ? (
@@ -82,16 +82,16 @@ export default function EventOverview() {
         onPageChange={handlePageChange}
       /> */}
       <StyledEngineProvider injectFirst >
-      <Stack spacing={2}  className="pagination">
-      <Pagination
-        count={Math.ceil(totalPages / limit)}
-        page={currentPage}
-        onChange={(e, page) => setCurrentPage(page)}
-        // size="large"
-        // variant="outlined"
-        
-      />
-      </Stack>
+        <Stack spacing={2} className="pagination">
+          <Pagination
+            count={Math.ceil(totalPages / limit)}
+            page={currentPage}
+            onChange={(e, page) => setCurrentPage(page)}
+          // size="large"
+          // variant="outlined"
+
+          />
+        </Stack>
       </StyledEngineProvider>
     </div>
   );
