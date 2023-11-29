@@ -50,7 +50,9 @@ const Filter = ({ open, setOpen, setSearch_btn, setEventType, setVenueType, even
             open={open}
             onClose={handleClose}
         >
-            <Box>
+            <Box className="modal_filter">
+                <h2>Filter</h2>
+                <button className='close' onClick={handleClose}>X</button>
                 <ReactDatePicker
                     selected={dateStart ? dateStart : new Date()}
                     dateFormat="dd/MM/yyyy"

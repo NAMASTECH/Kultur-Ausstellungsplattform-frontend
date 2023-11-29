@@ -84,12 +84,89 @@ header {
       height: fit-content;
     }
   }
+
+  .hamburger {
+    display: none;
+  }
+  .modal__nav {
+    display: none;
+  }
 }
 
-@media screen and (max-width: 700px) {
-  header {
-    margin-left: 5px;
+@media screen and (max-width: 950px) {
+  .modal__nav {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: $bg_color;
+    
+    .hamburger__close{
+      display: flex;
+      justify-content: flex-end;
+      margin-right: 2em;
+      margin-top: 2em;
+      
+      cursor: pointer;
+      .lines{
+        width: 30px;
+        height: 3px;
+        background-color: black;
+        margin: 5px;
 
+      }
+      .lines:nth-child(1){
+        margin-right: -2.1em;
+        transform: rotate(45deg);
+        z-index: 1;
+      }
+      .lines:nth-child(2){
+        transform: rotate(-45deg);
+        z-index: 2;
+      }
+      
+
+    }
+    .nav__links{
+      width: 100%;
+      list-style: none;
+      margin-bottom: 30em;
+      li{
+        width: 100%;
+        text-align: center;
+        a{
+          display: block;
+          width: 100%;
+          text-align: left;
+          color: black;
+          font-size: 1.5em;
+          padding: 10px;
+          margin-left: 2em;
+          font-weight: bold;
+        }
+      };
+    }
+    .nav__footer{
+      width: 100%;
+      list-style: none;
+      li{
+        width: 100%;
+        text-align: center;
+        a{
+          display: block;
+          width: 100%;
+          text-align: left;
+          color: black;
+          font-size: 1.5em;
+          padding: 10px;
+          margin-left: 2em;
+          font-weight: bold;
+        }
+      };
+    }
+  }
+  header {
+    
     .logo {
       .first__line {
         font-size: 3.3em;
@@ -113,5 +190,21 @@ header {
     .nav-container {
       display: none;
     }
+
+    .hamburger {
+      display: block;
+      position: fixed;
+      top: 1em;
+      right: 1em;
+
+      .line {
+        width: 30px;
+        height: 3px;
+        background-color: black;
+        margin: 5px;
+      }
+    }
+
+    
   }
 }

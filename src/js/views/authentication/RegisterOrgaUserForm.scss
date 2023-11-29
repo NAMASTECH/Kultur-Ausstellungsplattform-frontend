@@ -7,8 +7,6 @@ $width: 400px;
 
 
 .register-Orga-User-Form {
-
-  
     max-width: 500px;
     display: flex;
     flex-direction: column;
@@ -103,6 +101,12 @@ $width: 400px;
     button:hover {
       background-color: $green ;
       opacity: 0.6;
+    }
+    button:disabled{
+      cursor: not-allowed;
+    }
+    bottom[disabled]{
+      cursor: not-allowed;
     }
     span{
       color: $hl-color;

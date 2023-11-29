@@ -86,36 +86,32 @@ export default function LoginForm() {
 
   return (
     <>
-    
-    <form className="login-form" onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <div className="group">
-          <input type="text" required="required" value={username} onChange={handleUsernameChange} autoComplete="off"/>
+
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h2>Login</h2>
+        <div className="group">
+          <input type="text" required="required" value={username} onChange={handleUsernameChange} autoComplete="off" />
           <span className="highlight"></span>
           <span className="bar"></span>
           <label>Email</label>
-      </div>
-      <div className="group">
+        </div>
+        <div className="group">
           <input type="password" required="required" value={password} onChange={handlePasswordChange} autoComplete="off" />
           <span className="highlight"></span>
           <span className="bar"></span>
           <label>Password</label>
-      </div>
+        </div>
 
 
-      <button type="submit" disabled={!isConfirmBtnActive}>
-        Sign In!
-      </button>
+        <button type="submit" disabled={!isConfirmBtnActive}>
+          Sign In!
+        </button>
 
-      <span>Noch kein account?</span>
-      {/* // TO DO: redirect zu nur einer Form, wo dann ausgewählt wird, ob als user oder als organizer */}
-      {/* <Link to="/register/user">Hier registrieren (als user)</Link> */}
-      <Link to="/register/organizer">Hier registrieren (als Organizer)</Link>
-
-      {/* {
-            confirmedUsername && <h3>Welcome {confirmedUsername}!</h3>
-        } */}
-    </form>
+        <span>Noch kein account?
+          <Link to="/register/organizer">Hier registrieren (als Organizer)</Link>
+        </span>
+       
+      </form>
     </>
   );
 }

@@ -1,6 +1,6 @@
 @import "../../../styles/variables";
 
-.MuiBox-root {
+.modal_filter {
   display: flex;
   flex-direction: column;
   // min-width: 21%;
@@ -10,6 +10,17 @@
   right: 0;
   background-color: $bg_color;
   padding: 1% 2.5% 1%;
+
+  .close{
+    width: 100%;
+    height: 35px;
+    border: 1px solid #7f8797;
+    border-radius: 5px;
+    background-color: $bg_color;
+    color: black;
+    padding: 0 10px;
+    margin-bottom: 10px;
+  }
 
   .modal_buttons {
     display: flex;
@@ -88,13 +99,9 @@
 }
 
 @media screen and (max-width: 768px) {
-  .MuiBox-root {
+  .modal_filter {
     width: 100%;
   }
 }
 
-@media screen and (max-width: 500px) {
-  .MuiBox-root {
-    width: 100%;
-  }
-}
+
