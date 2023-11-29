@@ -9,7 +9,7 @@ import './filter.scss';
 import '../datePiker/react-datepicker.css';
 
 const Filter = ({ open, setOpen, setSearch_btn, setEventType, setVenueType, eventType, venueType, dateStart, setDateStart, dateEnd, setDateEnd }) => {
-    const { eventTypes, venueTypes, eventCategories } = useContext(EventContext);
+    const { eventCategoriesFilter, eventTypesFilter, venueTypesFilter, } = useContext(EventContext);
     const [eventCategory, setEventCategory] = useState("");
 
     const onChange = (dates) => {
@@ -62,16 +62,22 @@ const Filter = ({ open, setOpen, setSearch_btn, setEventType, setVenueType, even
                     selectsRange
                     inline
                 />
-                {/* <SelectComponent title="Event-Kategorie" value={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} /> */}
+                {/* <SelectComponent 
+                    title="Event-Kategorie"
+                    value={eventCategory}
+                    values={eventCategoriesFilter}
+                    onChange={handleEventCategoryChange}
+                /> */}
+
                 <SelectComponent
                     title="Event Type"
-                    values={eventTypes}
+                    values={eventTypesFilter}
                     onChange={handleEventTypeChange}
                     selected={eventType}
                 />
                 <SelectComponent
                     title="Venue Type"
-                    values={venueTypes}
+                    values={venueTypesFilter}
                     onChange={handleVenueTypeChange}
                     selected={venueType}
                 />
