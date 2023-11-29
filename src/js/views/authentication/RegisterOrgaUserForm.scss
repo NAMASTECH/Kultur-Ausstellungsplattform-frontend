@@ -1,96 +1,118 @@
 @import "../../../styles/_variables.scss";
-  // VARIABLES // ============================== //
-$bg-color: #1a1a1a; 
-$hl-color: #cf8a5b; 
-$muted-color: #757575; 
-$green: #4caf50; 
+$bg-color: #424242;
+$hl-color: $green;
+$muted-color: #000;
 $trans-time: 300ms;
-$width: 100%;
-$main-font: 'Comic Sans MS',cursive; 
+$width: 400px;
+
 
 .register-Orga-User-Form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid $muted-color;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    transition: background-color $trans-time;
-    background-color: $muted-color;
-}
 
-h2 {
-    text-align: center;
-    color: $bg-color;
-    font-family: $main-font;
-}
+  
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-label {
-    display: block;
-    margin: 10px 0;
-    font-weight: bold;
-    font-family: $main-font;
-}
+    align-items: center;
 
-input {
-    background: none;
-    color: $muted-color;
-    font-size: 18px;
-    padding: 10px 10px 10px 5px;
-    display: block;
-    width: $width;
-    border: none;
-    border-radius: 0;
-    border-bottom: 2px solid $muted-color;
-    font-family: $main-font;
-
-    &:focus {
-        outline: none;
-        border-color: $hl-color;
+    .group {
+      position: relative;
+      margin: 1em 1em;
+      align-items: center;
     }
 
-    &:focus~label,
-    &:valid~label {
+    // INPUTS // ============================== //
+    .highlight {
+      display: block;
+      background-color: black;
+      color: $hl-color;
+      width: 100%;
+      height: 2px;
+    }
+
+    input,
+    textarea {
+      background: none;
+      color: $muted-color;
+      font-size: 18px;
+      padding: 10px 10px 10px 5px;
+      display: block;
+      width: $width;
+      border: none;
+      border-radius: 0;
+      border-bottom: 0;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:focus~label,
+      &:valid~label {
         top: -14px;
         font-size: 12px;
         color: $hl-color;
-    }
+      }
 
-    &:focus~.bar:before {
+      &:focus~.bar:before {
         width: $width;
-    }
-}
-
-input:focus {
-    border-color: $green;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: blue;
-    color: #fff;
-    border: 1px solid $green;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color $trans-time;
-
-    &:disabled {
-        background-color: $muted-color;
-        cursor: not-allowed;
+      }
     }
 
-    &:hover {
-        background-color: darken($green, 10%);
+    input[type="password"] {
+      letter-spacing: 0.3em;
     }
-}
 
-label a {
-    color: $hl-color;
-    text-decoration: none;
-    transition: color $trans-time;
-
-    &:hover {
-        color: lighten($hl-color, 10%);
+    label {
+      color: $muted-color;
+      font-size: 16px;
+      font-weight: normal;
+      position: absolute;
+      pointer-events: none;
+      left: 5px;
+      top: 10px;
+      transition: $trans-time ease all;
     }
-}
+
+    .bar {
+      position: relative;
+      display: block;
+      width: $width;
+
+      &:before {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 0px;
+        position: absolute;
+        background: $hl-color;
+        transition: $trans-time ease all;
+        left: 0%;
+      }
+    }
+
+    button {
+      background-color: $green;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: $green ;
+      opacity: 0.6;
+    }
+    span{
+      color: $hl-color;
+      font-size: 12px;
+      font-weight: bold;
+      text-align: center;
+      margin: 0.5em 0;
+      a{
+        margin-left: 1em;
+        text-decoration: none;
+      }
+    }
+  }

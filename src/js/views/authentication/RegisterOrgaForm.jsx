@@ -73,54 +73,23 @@ export default function RegisterForm() {
   return (
     <form className="register-Orga-User-Form" onSubmit={handleSubmit}>
       <h2>Register</h2>
-      <label>
-        Firstname
-        <input type="text" value={firstname} onChange={handleFirstnameChange} />
-      </label>
-      <label>
-        Lastname
-        <input type="text" value={lastname} onChange={handleLastnameChange} />
-      </label>
-      <label>
-        organization
-        <input
-          type="text"
-          value={organization}
-          onChange={handleOrganizationChange}
-        />
-      </label>
-
-      <label>
-        E-Mail
-        <input type="text" value={email} onChange={handleEmailChange} />
-      </label>
-
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-      </label>
-
-      <label>
-        Confirm password
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={handleConfirmPasswordChange}
-        />
-      </label>
-
+   
+      <div className="group"><input type="text" required="required" onChange={handleFirstnameChange} /><span className="highlight"></span><span className="bar"></span><label>Firstname</label></div>
+      <div className="group"><input type="text" required="required" onChange={handleFirstnameChange} /><span className="highlight"></span><span className="bar"></span><label>Lastname</label></div>
+      <div className="group"><input type="text" required="required" onChange={handleLastnameChange} /><span className="highlight"></span><span className="bar"></span><label>Organization</label></div>
+      <div className="group"><input type="text" required="required" onChange={handleEmailChange} /><span className="highlight"></span><span className="bar"></span><label>Email</label></div>
+      <div className="group"><input type="password" required="required" onChange={handlePasswordChange} /><span className="highlight"></span><span className="bar"></span><label>Password</label></div>
+      <div className="group"><input type="password" required="required" onChange={handleConfirmPasswordChange} /><span className="highlight"></span><span className="bar"></span><label>Confirm Password</label></div>
+       
+ 
       <button type="submit" disabled={!isConfirmBtnActive}>
         Sign Up
       </button>
 
-      <label>
+      <span>
         Bereits registriert?
         <Link to="/login">Hier anmelden </Link>
-      </label>
+      </span>
     </form>
   );
 }
