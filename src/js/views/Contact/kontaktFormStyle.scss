@@ -1,40 +1,107 @@
 @import "../../../styles/_variables.scss";
+$bg-color: #424242;
+$hl-color: $green;
+$muted-color: #000;
+$trans-time: 300ms;
+$width: 400px;
+
 .KontaktForm-container {
-  max-width: 400px;
-  margin: 0 auto;
 
-  
-        form {
-          label {
-              font-weight: bold;
-              margin-bottom: 5px;
-              color: #acb8c3;
-              font-family: $main_font;
-            }
-                        input,
-                        select,
-                        textarea {
-                          padding: 10px;
-                          margin-bottom: 10px;
-                          border: 1px solid #ccc;
-                          border-radius: 5px;
-                        }
-            
-                        button {
-                          background-color: #007bff;
-                          color: #fff;
-                          border: none;
-                          border-radius: 5px;
-                          padding: 10px 20px;
-                          cursor: pointer;
-                        }
-            
-                        button:hover {
-                          background-color: #0056b3;
-                        }
-        }
+  form {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    align-items: center;
+
+    .group {
+      position: relative;
+      margin: 1em 1em;
+      align-items: center;
+    }
+
+    // INPUTS // ============================== //
+    .highlight {
+      display: block;
+      background-color: black;
+      color: $hl-color;
+      width: 100%;
+      height: 2px;
+    }
+
+    input,
+    textarea {
+      background: none;
+      color: $muted-color;
+      font-size: 18px;
+      padding: 10px 10px 10px 5px;
+      display: block;
+      width: $width;
+      border: none;
+      border-radius: 0;
+      border-bottom: 0;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:focus~label,
+      &:valid~label {
+        top: -14px;
+        font-size: 12px;
+        color: $hl-color;
+      }
+
+      &:focus~.bar:before {
+        width: $width;
+      }
+    }
+
+    input[type="password"] {
+      letter-spacing: 0.3em;
+    }
+
+    label {
+      color: $muted-color;
+      font-size: 16px;
+      font-weight: normal;
+      position: absolute;
+      pointer-events: none;
+      left: 5px;
+      top: 10px;
+      transition: $trans-time ease all;
+    }
+
+    .bar {
+      position: relative;
+      display: block;
+      width: $width;
+
+      &:before {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 0px;
+        position: absolute;
+        background: $hl-color;
+        transition: $trans-time ease all;
+        left: 0%;
+      }
+    }
+
+    button {
+      background-color: $green;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: $green ;
+      opacity: 0.6;
+    }
+  }
 }
-
-
-
-

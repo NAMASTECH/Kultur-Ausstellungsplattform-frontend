@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 // Imports von benoetigten Paketen
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./RegisterOrgaUserForm.scss";
 
 export default function RegisterForm() {
   const [username, setUsername] = useState("");
@@ -26,7 +27,6 @@ export default function RegisterForm() {
       password,
       email,
     };
-
 
     try {
       const resp = await axios.post(
@@ -65,7 +65,7 @@ export default function RegisterForm() {
   };
 
   return (
-    <form className="register-form" onSubmit={handleSubmit}>
+    <form className="register-Orga-User-Form" onSubmit={handleSubmit}>
       <h2>Register</h2>
       <label>
         Username
@@ -98,9 +98,7 @@ export default function RegisterForm() {
         Sign Up
       </button>
 
-      <label>
-        Bereits registriert?
-      </label>
+      <label>Bereits registriert?</label>
       <Link to="/login">Hier anmelden </Link>
 
       {confirmedUsername && <h3>Welcome {confirmedUsername}!</h3>}

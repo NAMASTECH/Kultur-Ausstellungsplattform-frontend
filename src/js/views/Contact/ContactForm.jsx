@@ -18,7 +18,7 @@ const ContactForm = () => {
     <div className="KontaktForm-container">
       <form onSubmit={handelSubmit}>
         <h2 className="kontaktForm-container-header">KONTAKT</h2>
-        <p>Schreiben Sie uns eine Nachricht.</p>
+        {/* <p>Schreiben Sie uns eine Nachricht.</p>
         <div>
           <label htmlFor="event">Bitte Veranstaltung auswählen:</label>
           <select
@@ -32,51 +32,13 @@ const ContactForm = () => {
             <option value="Event 3">Event 3</option>
             <option value="Event 4">Event 4</option>
           </select>
-        </div>
+        </div> */}
 
-        <label htmlFor="vorname">Vorname:</label>
-        <input
-          type="text"
-          id="vorname"
-          placeholder="Ihre Vorname"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-
-        <label htmlFor="nachname">Nachname:</label>
-        <input
-          type="text"
-          id="nachname"
-          placeholder="Ihre Lastname"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-
-        <label htmlFor="organisation">organisation:</label>
-        <input
-          type="text"
-          id="organisation"
-          placeholder="Ihre Organisation"
-          value={organisation}
-          onChange={(e) => setOrganisation(e.target.value)}
-        />
-
-        <label htmlFor="email">E-Mail Adresse:</label>
-        <input
-          type="email"
-          id="email"
-          placeholder="Ihre E-Mail"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <label htmlFor="nachricht">Ihre Nachricht:</label>
-        <textarea
-          id="nachricht"
-          value={message}
-          placeholder=" freun wir uns auf  Ihre Nachricht "
-          onChange={(e) => setMessage(e.target.value)}
-        />
+        <div class="group"><input type="text" required="required" /><span class="highlight"></span><span class="bar"></span><label>Ihre Vorname</label></div>
+        <div class="group"><input type="text" required="required" /><span class="highlight"></span><span class="bar"></span><label>Ihre Nachname</label></div>
+        <div class="group"><input type="text" required="required" /><span class="highlight"></span><span class="bar"></span><label>Ihre Organisation</label></div>
+        <div class="group"><input type="text" required="required" /><span class="highlight"></span><span class="bar"></span><label>Ihre Email</label></div>
+        <div class="group"><textarea type="textarea" rows="5" required="required"></textarea><span class="highlight"></span><span class="bar"></span><label>Message</label></div>
 
         <button type="submit">Absenden</button>
       </form>
