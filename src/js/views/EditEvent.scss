@@ -25,7 +25,7 @@ div.img-container {
 
         input {
             padding: 0.5rem;
-            
+
         }
 
         textarea {
@@ -37,8 +37,12 @@ div.img-container {
             padding: 0.5rem;
             width: 100%;
         }
+
+        label {
+            display: none;
+        }
     }
-    
+
 }
 
 #venue-address-container {
@@ -71,7 +75,7 @@ div.img-container {
 
 .filter_button {
     display: flex;
-    
+
     button {
         margin: 1rem;
         padding: 0.5rem;
