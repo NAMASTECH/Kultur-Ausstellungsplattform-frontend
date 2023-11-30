@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import PaginationComponent from "../../components/PaginationComponent";
+import "./MyEvents.scss"
 
 export default function UsersTable() {
     const [data, setUsers] = useState([]);
@@ -73,8 +74,8 @@ export default function UsersTable() {
     });
 
     return (
-        <>
-            <h2 className="title">All Events</h2>
+        <div id="myEvents">
+
             {
                 (data.length > 0)
                     ? (
@@ -95,13 +96,13 @@ export default function UsersTable() {
                         </table>
 
                     )
-                    : <h3>No Users found!</h3>
+                    : <h3 id="logout_message">Sie haben noch keine Events erstellt.</h3>
 
             }
 
             {(data.length > 0) && (
                 <PaginationComponent totalPages={totalPages} currentPage={page} onPageChange={setPage} />
             )}
-        </>
+        </div>
     );
 }
