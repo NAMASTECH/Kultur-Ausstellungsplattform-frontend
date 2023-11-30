@@ -35,6 +35,9 @@
     border-radius: 4px;
   }
 }
+.isCanceled{
+  opacity: 0.3;
+}
 
 .gallery-card:hover {
   transform: scale(1.05);

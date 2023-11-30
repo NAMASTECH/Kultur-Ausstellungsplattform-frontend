@@ -1,6 +1,7 @@
 // EditEvent.jsx
 import axios from 'axios';
 import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { EventContext } from '../context/EventContext';
 import { useAuthStore } from "../hooks/useAuthStore"
@@ -15,29 +16,41 @@ export default function EditEvent() {
     const [eventType, setEventType] = useState("All");
     const [venueType, setVenueType] = useState("All");
     const [organizerName, setOrganizerName] = useState(userData.username);
+    const navigate = useNavigate();
 
     const [event, setEvent] = useState({
-        _id: "",
-        eventTitle: "",
-        artist: "",
-        eventCategory: "",
-        eventType: "",
-        img: "",
-        description: "",
-        homepage: "",
-        dateStart: "",
-        dateEnd: "",
-        timeStart: "",
-        timeEnd: "",
-        organizerId: "",
-        venues: [{
-            venueName: "",
-        }],
-        artists: [],
-        createdAt: "",
-        updatedAt: ""
+        eventTitle: '',
+        eventCategory: '',
+        eventType: '',
+        img: '',
+        description: '',
+        homepage: '',
+        dateStart: '',
+        dateEnd: '',
+        timeStart: '',
+        timeEnd: '',
+        isActive: true,
+        venues: [
+            {
+                venueName: '',
+                venueType: '',
+                street: '',
+                houseNumber: '',
+                zipCode: '',
+                city: '',
+                additionalAddressInfo: ''
+            }
+        ],
+        artists: [
+            {
+                artistName: '',
+                artistType: '',
+                artistImg: '',
+                artistHomepage: '',
+                artistDescription: ''
+            }
+        ],
     });
-
 
 
 
@@ -61,34 +74,24 @@ export default function EditEvent() {
     const handleSaveChanges = async (e) => {
         e.preventDefault();
         try {
-            const updatedEvent = {
-                ...event,
-                eventType,
-                venueType,
-                // Any other fields you want to include
-            };
-
-            const response = await axios.put(`/api/event/${eventId}`, updatedEvent, {
-                // TO DO: header mit richtiger Konfiguration
-                // headers: {
-                //     'Authorization': `Bearer ${userData.token}` 
-                // },
+            const response = await axios.patch(`/api/event/${eventId}`, event, {
                 withCredentials: true
             });
-            console.log('Event updated successfully:', response.data);
+            navigate(`/mydata`)
         } catch (error) {
-            console.error('Error updating event:', error.response.data);
+            console.error(error);
         }
     };
 
     const handleDeleteEvent = async () => {
         if (window.confirm('Sind Sie sicher, dass sie dieses Event löschen möchten?')) {
             try {
-                const response = await axios.delete(`/api/event/${eventId}`, {
+                const response = await axios.put(`/api/events/deactivate/${eventId}`, {
                     withCredentials: true
                 });
                 // Handle the response, for example, redirect to another page or update the state
-                console.log('Event deleted successfully:', response.data);
+                alert('Event deleted successfully:', response.data.message);
+                navigate(`/mydata`)
             } catch (error) {
                 // Handle the error, for example, show an error message
                 console.error('Error deleting event:', error.response.data);
@@ -171,7 +174,7 @@ export default function EditEvent() {
                         <div className="event-details-content" >
 
                             <label htmlFor="organizerName">Veranstalter -
-                            <input name="organizerName" type="text" placeholder="Veranstalter" value={organizerName} onChange={handleOrganizerNameChange} />
+                                <input name="organizerName" type="text" placeholder="Veranstalter" value={organizerName} onChange={handleOrganizerNameChange} />
                             </label>
 
 
@@ -179,7 +182,7 @@ export default function EditEvent() {
                                 return (
                                     <div key={venue._id}>
                                         <label htmlFor="venueName">Veranstaltungsort -
-                                        <input name="venueName" type="text" placeholder="Veranstaltungsort" value={venue.venueName} onChange={(e) => handleVenueChange(index, 'venueName', e.target.value)} />
+                                            <input name="venueName" type="text" placeholder="Veranstaltungsort" value={venue.venueName} onChange={(e) => handleVenueChange(index, 'venueName', e.target.value)} />
                                         </label>
                                     </div>
                                 )
@@ -189,26 +192,29 @@ export default function EditEvent() {
 
                                 <div className="dates-container">
                                     <label htmlFor="dateStart">Datum -
-                                    <input className="date-start_input" name="dateStart" type="date" required value={event.dateStart.split("T")[0]} onChange={handleInputChange} /></label>
+                                        <input className="date-start_input" name="dateStart" type="date" required value={event.dateStart.split("T")[0]} onChange={handleInputChange} /></label>
 
                                     <pre> - </pre>
 
                                     <input className="date-end_input" name="dateEnd" type="date" required value={event.dateEnd.split("T")[0]} onChange={handleInputChange} />
                                 </div>
 
-                                <pre>  | </pre>
-                                <label htmlFor="">Open Houers</label>
-                                <input name="timeStart" type="time" required value={event.timeStart} onChange={handleInputChange} />
+                                <pre> | </pre>
 
-                                <pre> - </pre>
+                                <div className='hours-container'>
+                                    <label htmlFor="">Öffnungszeiten -</label>
+                                    <input name="timeStart" type="time" required value={event.timeStart} onChange={handleInputChange} />
 
-                                <input name="timeEnd" type="time" required value={event.timeEnd} onChange={handleInputChange} />
+                                    <pre> - </pre>
+
+                                    <input name="timeEnd" type="time" required value={event.timeEnd} onChange={handleInputChange} />
+                                </div>
                             </div>
 
                             <div className="event-title-container">
                                 {/* <h2>Eventname</h2> */}
                                 <label htmlFor="eventTitle">Title -
-                                <input id="eventName_input" name="eventTitle" type="text" required placeholder="Eventname" value={event.eventTitle} onChange={handleInputChange} /></label>
+                                    <input id="eventName_input" name="eventTitle" type="text" required placeholder="Eventname" value={event.eventTitle} onChange={handleInputChange} /></label>
                             </div>
                             <label htmlFor="description">Description</label>
                             <textarea
@@ -246,29 +252,29 @@ export default function EditEvent() {
                                             <div id="venue-address-container">
 
                                                 <p>Adresse</p>
-                                                <label htmlFor="venueName"> Name -
-                                                <input name="venueName" type="text" placeholder="Veranstaltungsort" value={venue.venueName} onChange={(e) => handleVenueChange(index, 'venueName', e.target.value)} /></label>
-                                                <label htmlFor="venueType"> Type -
-                                                <input name="venueType" type="text" placeholder="Veranstaltungsorttyp" required value={venue.venueType} onChange={(e) => handleVenueChange(index, 'venueType', e.target.value)} /></label>
+                                                <label htmlFor="venueName"> Veranstaltungsort-
+                                                    <input name="venueName" type="text" placeholder="Veranstaltungsort" value={venue.venueName} onChange={(e) => handleVenueChange(index, 'venueName', e.target.value)} /></label>
+                                                <label htmlFor="venueType"> Veranstaltungsorttyp -
+                                                    <input name="venueType" type="text" placeholder="Veranstaltungsorttyp" required value={venue.venueType} onChange={(e) => handleVenueChange(index, 'venueType', e.target.value)} /></label>
 
                                                 <div>
-                                                    <label htmlFor="street">Street - 
-                                                    <input name="street" type="text" placeholder="Straße" required value={venue.street} onChange={(e) => handleVenueChange(index, 'street', e.target.value)} /></label>
+                                                    <label htmlFor="street">Straße -
+                                                        <input name="street" type="text" placeholder="Straße" required value={venue.street} onChange={(e) => handleVenueChange(index, 'street', e.target.value)} /></label>
                                                     <label htmlFor="houseNumber">Number -
-                                                    <input name="houseNumber" type="text" placeholder="Hausnummer" required value={venue.houseNumber} onChange={(e) => handleVenueChange(index, 'houseNumber', e.target.value)} /></label>
+                                                        <input name="houseNumber" type="text" placeholder="Hausnummer" required value={venue.houseNumber} onChange={(e) => handleVenueChange(index, 'houseNumber', e.target.value)} /></label>
                                                 </div>
 
                                                 <div>
-                                                    <label htmlFor="zipCode">ZipCode -
-                                                    <input name="zipCode" type="text" placeholder="Postleitzahl" required value={venue.zipCode} onChange={(e) => handleVenueChange(index, 'zipCode', e.target.value)} /></label>
-                                                    <label htmlFor="city">city -
-                                                    <input name="city" type="text" placeholder="Stadt" required value={venue.city} onChange={(e) => handleVenueChange(index, 'city', e.target.value)} /></label>
+                                                    <label htmlFor="zipCode">PLZ -
+                                                        <input name="zipCode" type="text" placeholder="Postleitzahl" required value={venue.zipCode} onChange={(e) => handleVenueChange(index, 'zipCode', e.target.value)} /></label>
+                                                    <label htmlFor="city">Stadt -
+                                                        <input name="city" type="text" placeholder="Stadt" required value={venue.city} onChange={(e) => handleVenueChange(index, 'city', e.target.value)} /></label>
 
                                                 </div>
 
                                                 <div>
-                                                    <label htmlFor="additionalAddressInfo">Additional Address Info - 
-                                                    <input name="additionalAddressInfo" type="text" placeholder="Adresszusatz" value={venue.additionalAddressInfo} onChange={(e) => handleVenueChange(index, 'additionalAddressInfo', e.target.value)} />
+                                                    <label htmlFor="additionalAddressInfo">Zusätzliche Adressinformationen -
+                                                        <input name="additionalAddressInfo" type="text" placeholder="Adresszusatz" value={venue.additionalAddressInfo} onChange={(e) => handleVenueChange(index, 'additionalAddressInfo', e.target.value)} />
                                                     </label>
                                                 </div>
                                             </div>
@@ -285,8 +291,8 @@ export default function EditEvent() {
                                         Event Homepage
                                     </a>
                                 </div> */}
-                            <label htmlFor="homepage">Homepage -
-                            <input name="homepage" type="text" placeholder="Event Homepage" value={event.homepage} onChange={handleInputChange} /></label>
+                            <label htmlFor="homepage">Startseite -
+                                <input name="homepage" type="text" placeholder="Event Homepage" value={event.homepage} onChange={handleInputChange} /></label>
 
 
                             <p className="font-weight-bold font-size-big">
@@ -301,23 +307,23 @@ export default function EditEvent() {
                                     return (
                                         <div key={artist._id} id="artist-info-container">
                                             <p id="artist-name" >
-                                                <span className="font-weight-bold">Artist Name: </span>
+                                                <span className="font-weight-bold">Künstlername: </span>
                                                 {artist.artistName}
                                             </p>
                                             <p id="artist-type" >
-                                                <span className="font-weight-bold">Artist Type: </span>
+                                                <span className="font-weight-bold">Künstlertyp: </span>
                                                 {artist.artistType}
                                             </p>
                                             <p id="artist-homepage" >
-                                                <span className="font-weight-bold">Artist Homepage: </span>
+                                                <span className="font-weight-bold">Künstler Startseite: </span>
                                                 {artist.artistHomepage}
                                             </p>
                                             <p id="artist-description" >
-                                                <span className="font-weight-bold">Artist Description: </span>
+                                                <span className="font-weight-bold">Beschreibung des Künstlers: </span>
                                                 {artist.artistDescription}
                                             </p>
 
-                                            <p>Artist image</p>
+                                            <p>Künstlerbild</p>
                                             <img src={formattedArtistImgUrl} id="artist-img" width="200em" />
                                         </div>
                                     );
@@ -325,9 +331,10 @@ export default function EditEvent() {
                             </div>
 
                         </div>
-
-                        <button type="submit" >Speichern</button>
-                        <button onClick={handleDeleteEvent}>Löschen</button>
+                        <div className='filter_button'>
+                            <button onClick={handleDeleteEvent}>{event.isActive ? 'dezactivire' : 'activire'}</button>
+                            <button type="submit" >Speichern</button>
+                        </div>
                     </form>
                 </article>
             </div>
