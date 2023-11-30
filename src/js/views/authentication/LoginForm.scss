@@ -102,10 +102,12 @@ $width: 400px;
     background-color: $green ;
     opacity: 0.6;
   }
-  button:disabled{
+
+  button:disabled {
     cursor: not-allowed;
   }
-  bottom[disabled]{
+
+  bottom[disabled] {
     cursor: not-allowed;
   }
 
@@ -126,16 +128,8 @@ $width: 400px;
 // MEDIA QUERIES // ============================== //
 @media screen and (max-width: 768px) {
   $width: 300px;
+
   .login-form {
     max-width: 400px;
-    button:disabled{
-      border: 2px solid red;
-      color: red;
-    }
-    bottom[disabled]{
-      border: 2px solid red;
-      color: red;
-    }
-    
   }
 }
