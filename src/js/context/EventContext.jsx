@@ -14,12 +14,17 @@ export const EventProvider = ({ children }) => {
 
   // OR
   // define them here, for example:
-  const eventTypes = ["All", "Ausstellung", "Auktion", "Messe", "Vortrag", "Festival"];
-  const venueTypes = ["All", "Museum", "Galerie", "Messe", "Auktionshaus", "Akademie"];
-  const eventCategories = ["All", "Kunst", "Musik", "Clubs", "Sport", "Bildung", "Politik"]
+  const eventCategories = ["Kunst", "Musik", "Clubs", "Sport", "Bildung", "Politik"]
+  const eventTypes = ["Ausstellung", "Auktion", "Messe", "Vortrag", "Festival"];
+  const venueTypes = ["Museum", "Galerie", "Messe", "Auktionshaus", "Akademie"];
+
+  const eventCategoriesFilter = ["All", "Kunst", "Musik", "Clubs", "Sport", "Bildung", "Politik"]
+  const eventTypesFilter = ["All", "Ausstellung", "Auktion", "Messe", "Vortrag", "Festival"];
+  const venueTypesFilter = ["All", "Museum", "Galerie", "Messe", "Auktionshaus", "Akademie"];
+
 
   return (
-    <EventContext.Provider value={{ eventTypes, venueTypes, eventCategories }}>
+    <EventContext.Provider value={{ eventCategories, eventCategoriesFilter, eventTypes, eventTypesFilter, venueTypes, venueTypesFilter }}>
       {children}
     </EventContext.Provider>
   );

@@ -237,7 +237,7 @@ export default function AddEventForm() {
   };
 
   // EventContext konsumieren
-  const { eventTypes, venueTypes, eventCategories } = useContext(EventContext);
+  const { eventCategories, eventTypes, venueTypes } = useContext(EventContext);
 
   // console.log(artists);
 
@@ -255,17 +255,17 @@ export default function AddEventForm() {
           <input type="text" required value={homepage} onChange={handleHomepageChange} />
           <div className="date">
             <label>Startdatum
-            <input type="date" required value={dateStart} onChange={handleDateStartChange} /></label>
+              <input type="date" required value={dateStart} onChange={handleDateStartChange} /></label>
 
             <label>Enddatum
-            <input type="date" required value={dateEnd} onChange={handleDateEndChange} /></label>
+              <input type="date" required value={dateEnd} onChange={handleDateEndChange} /></label>
           </div>
           <div className="time">
             <label>Start Time
-            <input type="time" required value={timeStart} onChange={handleTimeStartChange} /></label>
+              <input type="time" required value={timeStart} onChange={handleTimeStartChange} /></label>
 
             <label>End Time
-            <input type="time" required value={timeEnd} onChange={handleTimeEndChange} /></label>
+              <input type="time" required value={timeEnd} onChange={handleTimeEndChange} /></label>
           </div>
           <label>Bild vom Event</label>
 
