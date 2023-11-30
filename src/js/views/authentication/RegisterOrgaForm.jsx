@@ -37,7 +37,7 @@ export default function RegisterForm() {
         `${import.meta.env.VITE_API_BASE_URL}/auth/register/organizer`,
         userData
       );
-      alert("Sie haben sich erfolgreich registriert " , resp)
+      alert("Sie haben sich erfolgreich registriert ", resp)
     } catch (error) {
       console.error(error);
     }
@@ -73,15 +73,15 @@ export default function RegisterForm() {
   return (
     <form className="register-Orga-User-Form" onSubmit={handleSubmit}>
       <h2>Register</h2>
-   
+
       <div className="group"><input type="text" required="required" onChange={handleFirstnameChange} /><span className="highlight"></span><span className="bar"></span><label>Firstname</label></div>
-      <div className="group"><input type="text" required="required" onChange={handleFirstnameChange} /><span className="highlight"></span><span className="bar"></span><label>Lastname</label></div>
-      <div className="group"><input type="text" required="required" onChange={handleLastnameChange} /><span className="highlight"></span><span className="bar"></span><label>Organization</label></div>
+      <div className="group"><input type="text" required="required" onChange={handleLastnameChange} /><span className="highlight"></span><span className="bar"></span><label>Lastname</label></div>
+      <div className="group"><input type="text" required="required" onChange={handleOrganizationChange} /><span className="highlight"></span><span className="bar"></span><label>Organization</label></div>
       <div className="group"><input type="text" required="required" onChange={handleEmailChange} /><span className="highlight"></span><span className="bar"></span><label>Email</label></div>
       <div className="group"><input type="password" required="required" onChange={handlePasswordChange} /><span className="highlight"></span><span className="bar"></span><label>Password</label></div>
       <div className="group"><input type="password" required="required" onChange={handleConfirmPasswordChange} /><span className="highlight"></span><span className="bar"></span><label>Confirm Password</label></div>
-       
- 
+
+
       <button type="submit" disabled={!isConfirmBtnActive}>
         Sign Up
       </button>
