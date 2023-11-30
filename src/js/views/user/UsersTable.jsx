@@ -61,7 +61,7 @@ export default function UsersTable() {
 
     const userRows = data.map(data => {
         return (
-            <tr key={data._id} className={!data.isActive && 'isCanceled'}>
+            <tr key={data._id} className={!data.isActive ? 'isCanceled' : ''}>
                 <td>{data.eventTitle}</td>
                 <td>{data.dateStart.split("T")[0]}</td>
                 <td>{data.dateEnd.split("T")[0]}</td>
