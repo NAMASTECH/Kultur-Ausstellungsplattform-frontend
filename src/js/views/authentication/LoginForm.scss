@@ -44,14 +44,14 @@ $width: 400px;
       outline: none;
     }
 
-    &:focus ~ label,
-    &:valid ~ label {
+    &:focus~label,
+    &:valid~label {
       top: -14px;
       font-size: 12px;
       color: $hl-color;
     }
 
-    &:focus ~ .bar:before {
+    &:focus~.bar:before {
       width: $width;
     }
   }
@@ -102,9 +102,11 @@ $width: 400px;
     background-color: $green;
     opacity: 0.6;
   }
+
   button:disabled {
     cursor: not-allowed;
   }
+
   bottom[disabled] {
     cursor: not-allowed;
   }
@@ -126,6 +128,7 @@ $width: 400px;
 // MEDIA QUERIES // ============================== //
 @media screen and (max-width: 768px) {
   $width: 200px;
+
   .login-form {
     max-width: 355px;
 
@@ -133,6 +136,7 @@ $width: 400px;
       border: 2px solid red;
       color: red;
     }
+
     bottom[disabled] {
       border: 2px solid red;
       color: red;
