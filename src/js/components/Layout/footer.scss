@@ -25,17 +25,24 @@
       justify-content: flex-end;
       gap: 35px;
 
-            .kontakt,
-            .impressum,
-            .datenschutz {
-                text-decoration: none;
-                margin-right: 20px;
-                color: black;
-                
-            }
-        }
+      .kontakt,
+      .impressum,
+      .datenschutz {
+        text-decoration: none;
+        color: black;
+      }
     }
   }
+}
 
+@media screen and (max-width: 950px) {
+  .kontakt,
+  .impressum,
+  .datenschutz {
+    display: none;
+  }
 
-
+  .contact-info {
+    margin: 40px 0 10px 0;
+  }
+}

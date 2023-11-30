@@ -4,7 +4,7 @@
   position: absolute;
   right: 4.8rem;
   top: 14rem;
-     color: black;
+    color: black;
     font-family: $main_font;
     font-size: 1.1em;
     padding: 5px 15px;
@@ -37,14 +37,16 @@
   justify-content: center;
   
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 950px) {
   .btn_filter {
     position: relative;
     left: 1.4rem;
     top: 0.7rem;
     margin-bottom: 0.6rem;
   }
+}
 
+  @media screen and (max-width: 950px) {
   .gallery {
     justify-content: start;
 

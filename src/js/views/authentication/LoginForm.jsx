@@ -107,7 +107,7 @@ export default function LoginForm() {
           Sign In!
         </button>
 
-        <span>Noch kein account?
+        <span className="register">Noch kein account?
           <Link to="/register/organizer">Hier registrieren (als Organizer)</Link>
         </span>
        
