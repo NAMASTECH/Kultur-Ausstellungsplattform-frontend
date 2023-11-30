@@ -173,17 +173,16 @@ export default function EditEvent() {
 
                         <div className="event-details-content" >
 
-                            <label htmlFor="organizerName">Veranstalter -
-                                <input name="organizerName" type="text" placeholder="Veranstalter" value={organizerName} onChange={handleOrganizerNameChange} />
-                            </label>
+                            <label htmlFor="organizerName">Veranstalter</label>
+
+                            <input name="organizerName" type="text" placeholder="Veranstalter" value={organizerName} onChange={handleOrganizerNameChange} />
 
 
                             {event.venues.map((venue, index) => {
                                 return (
                                     <div key={venue._id}>
-                                        <label htmlFor="venueName">Veranstaltungsort -
-                                            <input name="venueName" type="text" placeholder="Veranstaltungsort" value={venue.venueName} onChange={(e) => handleVenueChange(index, 'venueName', e.target.value)} />
-                                        </label>
+                                        <label htmlFor="venueName">Veranstaltungsort</label>
+                                        <input name="venueName" type="text" placeholder="Veranstaltungsort" value={venue.venueName} onChange={(e) => handleVenueChange(index, 'venueName', e.target.value)} />
                                     </div>
                                 )
                             })}
@@ -191,8 +190,8 @@ export default function EditEvent() {
                             <div className="date-and-time-container">
 
                                 <div className="dates-container">
-                                    <label htmlFor="dateStart">Datum -
-                                        <input className="date-start_input" name="dateStart" type="date" required value={event.dateStart.split("T")[0]} onChange={handleInputChange} /></label>
+                                    <label htmlFor="dateStart">Datum</label>
+                                    <input className="date-start_input" name="dateStart" type="date" required value={event.dateStart.split("T")[0]} onChange={handleInputChange} />
 
                                     <pre> - </pre>
 
@@ -202,19 +201,19 @@ export default function EditEvent() {
                                 <pre> | </pre>
 
                                 <div className='hours-container'>
-                                    <label htmlFor="">Öffnungszeiten -</label>
+                                    <label htmlFor="timeStart">Startzeit </label>
                                     <input name="timeStart" type="time" required value={event.timeStart} onChange={handleInputChange} />
 
                                     <pre> - </pre>
-
+                                    <label htmlFor="timeEnd">Endzeit </label>
                                     <input name="timeEnd" type="time" required value={event.timeEnd} onChange={handleInputChange} />
                                 </div>
                             </div>
 
                             <div className="event-title-container">
                                 {/* <h2>Eventname</h2> */}
-                                <label htmlFor="eventTitle">Title -
-                                    <input id="eventName_input" name="eventTitle" type="text" required placeholder="Eventname" value={event.eventTitle} onChange={handleInputChange} /></label>
+                                <label htmlFor="eventTitle">Title </label>
+                                <input id="eventName_input" name="eventTitle" type="text" required placeholder="Eventname" value={event.eventTitle} onChange={handleInputChange} />
                             </div>
                             <label htmlFor="description">Description</label>
                             <textarea
@@ -252,30 +251,29 @@ export default function EditEvent() {
                                             <div id="venue-address-container">
 
                                                 <p>Adresse</p>
-                                                <label htmlFor="venueName"> Veranstaltungsort-
-                                                    <input name="venueName" type="text" placeholder="Veranstaltungsort" value={venue.venueName} onChange={(e) => handleVenueChange(index, 'venueName', e.target.value)} /></label>
-                                                <label htmlFor="venueType"> Veranstaltungsorttyp -
-                                                    <input name="venueType" type="text" placeholder="Veranstaltungsorttyp" required value={venue.venueType} onChange={(e) => handleVenueChange(index, 'venueType', e.target.value)} /></label>
+                                                <label htmlFor="venueName"> Veranstaltungsort</label>
+                                                <input name="venueName" type="text" placeholder="Veranstaltungsort" value={venue.venueName} onChange={(e) => handleVenueChange(index, 'venueName', e.target.value)} />
+                                                <label htmlFor="venueType"> Veranstaltungsorttyp</label>
+                                                <input name="venueType" type="text" placeholder="Veranstaltungsorttyp" required value={venue.venueType} onChange={(e) => handleVenueChange(index, 'venueType', e.target.value)} />
 
                                                 <div>
-                                                    <label htmlFor="street">Straße -
-                                                        <input name="street" type="text" placeholder="Straße" required value={venue.street} onChange={(e) => handleVenueChange(index, 'street', e.target.value)} /></label>
-                                                    <label htmlFor="houseNumber">Number -
-                                                        <input name="houseNumber" type="text" placeholder="Hausnummer" required value={venue.houseNumber} onChange={(e) => handleVenueChange(index, 'houseNumber', e.target.value)} /></label>
+                                                    <label htmlFor="street">Straße</label>
+                                                    <input name="street" type="text" placeholder="Straße" required value={venue.street} onChange={(e) => handleVenueChange(index, 'street', e.target.value)} />
+                                                    <label htmlFor="houseNumber">Number</label>
+                                                    <input name="houseNumber" type="text" placeholder="Hausnummer" required value={venue.houseNumber} onChange={(e) => handleVenueChange(index, 'houseNumber', e.target.value)} />
                                                 </div>
 
                                                 <div>
-                                                    <label htmlFor="zipCode">PLZ -
-                                                        <input name="zipCode" type="text" placeholder="Postleitzahl" required value={venue.zipCode} onChange={(e) => handleVenueChange(index, 'zipCode', e.target.value)} /></label>
-                                                    <label htmlFor="city">Stadt -
-                                                        <input name="city" type="text" placeholder="Stadt" required value={venue.city} onChange={(e) => handleVenueChange(index, 'city', e.target.value)} /></label>
-
+                                                    <label htmlFor="zipCode">PLZ</label>
+                                                    <input name="zipCode" type="text" placeholder="Postleitzahl" required value={venue.zipCode} onChange={(e) => handleVenueChange(index, 'zipCode', e.target.value)} />
+                                                    <label htmlFor="city">Stadt</label>
+                                                    <input name="city" type="text" placeholder="Stadt" required value={venue.city} onChange={(e) => handleVenueChange(index, 'city', e.target.value)} />
                                                 </div>
 
                                                 <div>
-                                                    <label htmlFor="additionalAddressInfo">Zusätzliche Adressinformationen -
-                                                        <input name="additionalAddressInfo" type="text" placeholder="Adresszusatz" value={venue.additionalAddressInfo} onChange={(e) => handleVenueChange(index, 'additionalAddressInfo', e.target.value)} />
-                                                    </label>
+                                                    <label htmlFor="additionalAddressInfo">Zusätzliche Adressinformationen</label>
+                                                    <input name="additionalAddressInfo" type="text" placeholder="Adresszusatz" value={venue.additionalAddressInfo} onChange={(e) => handleVenueChange(index, 'additionalAddressInfo', e.target.value)} />
+
                                                 </div>
                                             </div>
 
@@ -296,7 +294,7 @@ export default function EditEvent() {
 
 
                             <p className="font-weight-bold font-size-big">
-                                <span className="font-weight-bold">Artist(s):</span>
+                                <span className="font-weight-bold">Künstler:</span>
                                 {/* {event.artist} */}
                             </p>
                             <div>
