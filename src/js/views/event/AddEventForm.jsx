@@ -11,10 +11,14 @@ import "./AddEventForm.scss";
 
 export default function AddEventForm() {
   // Eckdaten
+
+  // EventContext konsumieren
+  const { eventCategories, eventTypes, venueTypes } = useContext(EventContext);
+
   const [eventTitle, setEventTitle] = useState("");
   const [artistName, setArtistName] = useState("");
-  const [eventType, setEventType] = useState("");
-  const [eventCategory, setEventCategory] = useState("");
+  const [eventType, setEventType] = useState(eventTypes[0]);
+  const [eventCategory, setEventCategory] = useState(eventCategories[0]);
   const [img, setImg] = useState("");
   const [description, setDescription] = useState("");
   const [homepage, setHomepage] = useState("");
@@ -27,7 +31,7 @@ export default function AddEventForm() {
   // Name vom Veranstaltungsort
   const [venueName, setVenueName] = useState("");
 
-  const [venueType, setVenueType] = useState("");
+  const [venueType, setVenueType] = useState(venueTypes[0]);
   const [city, setCity] = useState("");
   const [street, setStreet] = useState("");
   const [houseNumber, setHouseNumber] = useState("");
@@ -98,6 +102,7 @@ export default function AddEventForm() {
 
     //path erstellen
     try {
+      console.log("Request Body before sending: ", userData)
       const resp = await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}/api/event`,
         userData,
@@ -106,7 +111,21 @@ export default function AddEventForm() {
         }
       );
     } catch (error) {
-      console.error(error);
+      console.error("Axios error:", error);
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error(error.response.data);
+        console.error(error.response.status);
+        console.error(error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error('Error', error.message);
+      }
+      console.error(error.config);
     }
   };
 
@@ -236,8 +255,7 @@ export default function AddEventForm() {
     setConfirmBtnActive(isValid);
   };
 
-  // EventContext konsumieren
-  const { eventCategories, eventTypes, venueTypes } = useContext(EventContext);
+
 
   // console.log(artists);
 
@@ -249,8 +267,8 @@ export default function AddEventForm() {
         <div style={{ display: PageNo == 1 ? 'block' : 'none' }}>
           <label>Name der Veranstaltung</label>
           <input type="text" required value={eventTitle} onChange={handleEventTitleChange} />
-          <SelectComponent title="Kategorie" value={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} />
-          <SelectComponent title="Typ von Veranstaltung" value={eventType} values={eventTypes} onChange={handleEventTypeChange} />
+          <SelectComponent title="Kategorie" selected={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} />
+          <SelectComponent title="Typ von Veranstaltung" selected={eventType} values={eventTypes} onChange={handleEventTypeChange} />
           <label>Homepage der Veranstaltung</label>
           <input type="text" required value={homepage} onChange={handleHomepageChange} />
           <div className="date">
@@ -262,10 +280,10 @@ export default function AddEventForm() {
           </div>
           <div className="time">
             <label>Start Time
-              <input type="time" required value={timeStart} onChange={handleTimeStartChange} /></label>
+              <input type="time" name="timeStart" required value={timeStart} onChange={handleTimeStartChange} /></label>
 
             <label>End Time
-              <input type="time" required value={timeEnd} onChange={handleTimeEndChange} /></label>
+              <input type="time" name="timeEnd" required value={timeEnd} onChange={handleTimeEndChange} /></label>
           </div>
           <label>Bild vom Event</label>
 
@@ -310,7 +328,7 @@ export default function AddEventForm() {
           <label>Venue Name</label>
           <input type="text" required value={venueName} onChange={handleVenueNameChange} />
 
-          <SelectComponent title="Venue Type" value={venueType} values={venueTypes} onChange={handleVenueTypeChange} />
+          <SelectComponent title="Venue Type" selected={venueType} values={venueTypes} onChange={handleVenueTypeChange} />
 
           <label>City</label>
           <input type="text" required value={city} onChange={handleCityChange} />
@@ -339,7 +357,7 @@ export default function AddEventForm() {
         <div className="form_button">
           <button type="button" onClick={handlePageChange} style={{ display: PageNo == 1 ? 'none' : 'block' }} value={`minus`}>Back</button>
           <button type="button" onClick={handlePageChange} style={{ display: PageNo == 3 ? 'none' : 'block' }} value={`plus`} >Next</button>
-          <button type="submit" disabled={!isConfirmBtnActive} style={{ display: PageNo == 3 ? 'block' : 'none' }}> Hinzufügen / Vorschau ansehen </button>
+          <button type="submit" /* disabled={!isConfirmBtnActive} */ style={{ display: PageNo == 3 ? 'block' : 'none' }}> Hinzufügen / Vorschau ansehen </button>
         </div>
       </form>
     </>

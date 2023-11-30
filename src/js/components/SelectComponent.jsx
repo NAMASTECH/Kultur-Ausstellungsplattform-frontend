@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react';
 
-const SelectComponent = ({ title, values, onChange, selected }) => {
+const SelectComponent = ({ title, selected, values, onChange }) => {
   // Zustand für die ausgewählte Option
-  const [selectedOption, setSelectedOption] = useState(selected);
- // Bei Änderungen der ausgewählten Option soll der Zustand aktualisiert werden
+  const [selectedOption, setSelectedOption] = useState(selected || values[0]);
+  // // Bei Änderungen der ausgewählten Option soll der Zustand aktualisiert werden
   useEffect(() => {
-    setSelectedOption(selected);
+    if (selected) {
+      setSelectedOption(selected);
+    }
   }, [selected]);
+
+  console.log(selectedOption);
+
   // Handler-Funktion für Änderungen der Auswahl
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
@@ -19,7 +24,7 @@ const SelectComponent = ({ title, values, onChange, selected }) => {
   return (
     <>
       <label htmlFor={title} >{title}</label>
-      <select id={title} value={selectedOption} onChange={handleSelectChange} >
+      <select value={selectedOption} onChange={handleSelectChange} >
         {values.map(value => { return <option key={value} value={value}>{value}</option> })}
       </select>
     </>
