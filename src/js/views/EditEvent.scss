@@ -2,30 +2,90 @@ div.img-container {
 
 
     img.event-image {
-        width: 100%;
+        width: 50%;
         height: 100%
     }
 }
 
-article {
+.event-details__article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
 
+
     #editEvent_form {
-        padding: 0;
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         width: 100%;
+        height: 100%;
+
+        input {
+            padding: 0.5rem;
+            
+        }
+
+        textarea {
+            padding: 0.5rem;
+            width: 100%;
+        }
+
+        select {
+            padding: 0.5rem;
+            width: 100%;
+        }
     }
+    
+}
 
+#venue-address-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 
-    form#editEvent_form {
+    label {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0.5rem;
 
+        input {
+            padding: 0.5rem;
+            width: 100%;
+        }
 
-        .event-details-content {
+        textarea {
+            padding: 0.5rem;
+            width: 100%;
+        }
 
+        select {
+            padding: 0.5rem;
+            width: 100%;
+        }
+    }
+}
 
-            .eventDescription_textarea {
-                width: 100%
-            }
+.filter_button {
+    display: flex;
+    
+    button {
+        margin: 1rem;
+        padding: 0.5rem;
+        border-radius: 5px;
+        border: none;
+        background-color: #f5f5f5;
+        color: #000;
+        font-weight: bold;
+        width: 100%;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #000;
+            color: #fff;
         }
     }
 }

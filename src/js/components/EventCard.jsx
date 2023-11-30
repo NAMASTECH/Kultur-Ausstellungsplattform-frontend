@@ -18,10 +18,10 @@ export default function EventCard({
     venueType,
     venues,
     organizer,
+    isActive,
   },
 }) {
   const navigate = useNavigate();
-
   const handleClick = () => {
     navigate(`/event/${_id}`);
   };
@@ -34,7 +34,7 @@ export default function EventCard({
   };
 
   return (
-    <div key={_id} onClick={handleClick} className="gallery-card">
+    <div key={_id} onClick={isActive ? handleClick : () => {}} className={!isActive ? 'isCanceled gallery-card': 'gallery-card'}>
       <div className="gallery-card-image-container">
         {/* <p className="eventType">{venues[0].venueType}</p> */}
         <p className="eventType">{eventType}</p>
@@ -49,7 +49,7 @@ export default function EventCard({
           {formatArtistNames(artists)}
         </div>
         <div className="eventTitle">{eventTitle}</div>
-        <div className="organizer">{organizer[0].organization}</div>
+        <div className="organizer">{organizer[0] && organizer[0].organization}</div>
       </div>
     </div>
   );

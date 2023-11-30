@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const SelectComponent = ({ title, values, onChange, selected }) => {
   // Zustand für die ausgewählte Option
   const [selectedOption, setSelectedOption] = useState(selected);
-
+ // Bei Änderungen der ausgewählten Option soll der Zustand aktualisiert werden
+  useEffect(() => {
+    setSelectedOption(selected);
+  }, [selected]);
   // Handler-Funktion für Änderungen der Auswahl
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
