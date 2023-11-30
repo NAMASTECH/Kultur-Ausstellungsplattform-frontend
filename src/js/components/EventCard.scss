@@ -30,7 +30,7 @@
 
   .gallery-card-image {
     width: 100%;
-    height: 30rem;
+    height: 27rem;
     object-fit: cover;
     border-radius: 4px;
   }
@@ -39,7 +39,7 @@
 .gallery-card:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  // box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
 .card-content {
@@ -52,14 +52,13 @@
   }
   .artists {
     margin-top: 15px;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 500;
     letter-spacing: -1px;
     color: black;
   }
   .eventTitle {
-    margin-top: -2px;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 500;
     letter-spacing: -1px;
     color: black;
@@ -81,6 +80,6 @@
   .artists,
   .eventTitle,
   .organizer {
-    padding: 0 20px;
+    padding: 0 17px;
   }
 }
