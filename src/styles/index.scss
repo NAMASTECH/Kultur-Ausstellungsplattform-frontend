@@ -22,60 +22,211 @@ body {
 
 
 @media (prefers-color-scheme: dark) {
-  a {
-    color: $bg_color;
-  }
+  $bg_dark_color: #161616;
+  $text_dark_color: #fff;
+  $bg_cards_dark_color: #242424;
+  $bg_calendar_dark_hover: #575656;
+  $bg_calendar_dark_selected: #a7a7a7;
 
-  main {
-    background-color: $bg_color;
-    // color: $dark_text_color;
+  .app {
+    header {
+      background-color: $bg_dark_color;
+      color: $text_dark_color;
+
+      .logo {
+        .first__line {
+          h1 {
+            color: $text_dark_color;
+          }
+        }
+
+        .second__line {
+          h1 {
+            color: $text_dark_color;
+          }
+        }
+      }
+
+      .hamburger {
+        .line {
+          background-color: $text_dark_color;
+        }
+      }
+
+      .nav-container {
+        a {
+          color: $text_dark_color;
+        }
+      }
+    }
+
+    main {
+      background-color: $bg_dark_color;
+      color: $text_dark_color;
+
+      .overview {
+
+        .gallery-card {
+          background-color: $bg_cards_dark_color;
+
+          .card-content {
+            .dateStart {
+              color: $text_dark_color;
+            }
+
+            .artists {
+              color: $text_dark_color;
+            }
+
+            .eventTitle {
+              color: $text_dark_color;
+            }
+
+            .organizer {
+              color: $text_dark_color;
+            }
+          }
+        }
+      }
+
+    }
+
+    footer {
+      .contact-info {
+        span {
+          .namastech {
+            color: $text_dark_color;
+          }
+        }
+
+        ul {
+          li {
+
+            .kontakt,
+            .impressum,
+            .datenschutz {
+              color: $text_dark_color;
+            }
+          }
+        }
+      }
+
+      background-color: $bg_dark_color;
+      color: $text_dark_color;
+    }
+
   }
 
   body {
-    background-color: $bg_color;
+    background-color: $bg_dark_color;
+    color: $text_dark_color;
 
-    // color: $dark_text_color;
-    .gallery-card {
-      background-color: $bg_color;
-      color: black;
-      box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+    .modal_filter {
+      background-color: $bg_dark_color;
+      color: $text_dark_color;
 
-      .card-content {
+      .close {
+        color: $text_dark_color;
+        background-color: $bg_dark_color;
+      }
 
-        .eventTitle {
-          color: black;
-        }
+      div {
+        .react-datepicker {
+          background-color: $bg_dark_color;
+          color: $text_dark_color;
 
-        .dateStart {
-          color: black;
-        }
+          .react-datepicker__triangle {
+            background-color: $bg_dark_color;
+            color: $text_dark_color;
+          }
 
-        .artists {
-          color: black;
-        }
+          button {
+            color: $text_dark_color;
+            background-color: $bg_dark_color;
+          }
 
-        .organizer {
-          color: black;
+          .react-datepicker__month-container {
+            background-color: $bg_dark_color;
+            color: $text_dark_color;
+
+            .react-datepicker__header {
+              background-color: $bg_dark_color;
+              color: $text_dark_color;
+
+              .react-datepicker__current-month {
+                background-color: $bg_dark_color;
+                color: $text_dark_color;
+              }
+
+              .react-datepicker__day-names {
+                background-color: $bg_dark_color;
+                color: $text_dark_color;
+
+                .react-datepicker__day-name {
+                  background-color: $bg_dark_color;
+                  color: $text_dark_color;
+                }
+              }
+            }
+
+            .react-datepicker__month {
+              background-color: $bg_dark_color;
+              color: $text_dark_color;
+
+              .react-datepicker__day {
+              //   background-color: $bg_dark_color;
+                color: $text_dark_color;
+                &:hover {
+                  background-color: $bg_calendar_dark_hover;
+                  color: $text_dark_color;
+                }
+                &--selected {
+                  background-color: $bg_calendar_dark_selected;
+                  color: $text_dark_color;
+                }
+              }
+            }
+          }
+
         }
       }
 
-      .gallery-card-image-container {
-        .eventType {
-          color: black;
+      select {
+        color: $text_dark_color;
+        background-color: $bg_dark_color;
+      }
+
+      .modal_buttons {
+        button {
+          color: $text_dark_color;
+          background-color: $bg_dark_color;
+          border: 1px solid $text_dark_color;
         }
       }
     }
-
-    .gallery-card:hover {
-      transform: scale(1.05);
-      transition: transform 0.3s ease;
-      box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+    .modal__nav {
+      background-color: $bg_dark_color;
+      color: $text_dark_color;
+      .hamburger__close{
+        .lines{
+          background-color: $text_dark_color;
+        }
+      }
+      .nav__links{
+          li{
+            a{
+              color: $text_dark_color;
+            }
+          }
+      }
+      .nav__footer{
+        li{
+          a{
+            color: $text_dark_color;
+          }
+        }
+      }
     }
-  }
-
-  header {
-    background-color: $bg_color;
-    color: black;
   }
 }
 
