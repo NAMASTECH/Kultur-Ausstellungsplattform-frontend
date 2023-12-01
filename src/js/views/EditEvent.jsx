@@ -304,10 +304,13 @@ export default function EditEvent() {
 
                                     return (
                                         <div key={artist._id} id="artist-info-container">
-                                            <p id="artist-name" >
-                                                <span className="font-weight-bold">Künstlername: </span>
-                                                {artist.artistName}
-                                            </p>
+                                            <label htmlFor="artistName">Künstlername: </label>
+                                            <input
+                                                name="artistName"
+                                                type="text"
+                                                value={artist.artistName}
+                                                onChange={(e) => handleArtistChange(index, 'artistName', e.target.value)}
+                                            />
                                             {/* <p id="artist-type" ></p>
                                                 <span className="font-weight-bold">Künstlertyp: </span>
                                                 {artist.artistType}
