@@ -264,7 +264,7 @@ export default function AddEventForm() {
       <h2>Add New Event</h2>
       <p>{`Page ${PageNo} of 3`}</p>
       <form id="addEvent-form" onSubmit={handleSubmit}>
-        <div style={{ display: PageNo == 1 ? 'block' : 'none' }}>
+        <div className="page_add_form" style={{ display: PageNo == 1 ? 'block' : 'none' }}>
           <label>Name der Veranstaltung</label>
           <input type="text" required value={eventTitle} onChange={handleEventTitleChange} />
           <SelectComponent title="Kategorie" selected={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} />
@@ -304,7 +304,7 @@ export default function AddEventForm() {
             <p>Write something here </p>
           </textarea>
         </div>
-        <div style={{ display: PageNo == 2 ? 'block' : 'none' }}> {/* Page 2 */}
+        <div className="page_add_form" style={{ display: PageNo == 2 ? 'block' : 'none' }}> {/* Page 2 */}
           {artists.map((artist, index) => (
             <div key={index}>
 
@@ -324,7 +324,7 @@ export default function AddEventForm() {
 
           <button type="button" onClick={addArtistInput}>+ hinzufügen</button>
         </div>
-        <div style={{ display: PageNo == 3 ? 'block' : 'none' }}> {/* Page 3 */}
+        <div className="page_add_form" style={{ display: PageNo == 3 ? 'block' : 'none' }}> {/* Page 3 */}
           <label>Venue Name</label>
           <input type="text" required value={venueName} onChange={handleVenueNameChange} />
 
@@ -355,9 +355,9 @@ export default function AddEventForm() {
           <input type="text" required value={zipCode} onChange={handleZipCodeChange} />
         </div>
         <div className="form_button">
-          <button type="button" onClick={handlePageChange} style={{ display: PageNo == 1 ? 'none' : 'block' }} value={`minus`}>Back</button>
-          <button type="button" onClick={handlePageChange} style={{ display: PageNo == 3 ? 'none' : 'block' }} value={`plus`} >Next</button>
-          <button type="submit" /* disabled={!isConfirmBtnActive} */ style={{ display: PageNo == 3 ? 'block' : 'none' }}> Hinzufügen / Vorschau ansehen </button>
+          <button type="button" onClick={handlePageChange} style={{ display: PageNo == 1 ? 'none' : 'block' }} value={`minus`}>Zurück</button>
+          <button type="button" onClick={handlePageChange} style={{ display: PageNo == 3 ? 'none' : 'block' }} value={`plus`} >Nächste</button>
+          <button type="submit" /* disabled={!isConfirmBtnActive} */ style={{ display: PageNo == 3 ? 'block' : 'none' }}> Hinzufügen</button>
         </div>
       </form>
     </>

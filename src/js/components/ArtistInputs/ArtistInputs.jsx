@@ -20,6 +20,7 @@ const ArtistInputs = ({ artist, index, onArtistChange }) => {
             value={artist.artistName}
             onChange={handleChange}
             placeholder="Artist Name"
+            className='artist-input'
         />
         // <input
         //     name="artistType"
