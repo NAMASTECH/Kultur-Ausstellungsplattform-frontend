@@ -25,12 +25,21 @@ export default function EventCard({
   const handleClick = () => {
     navigate(`/event/${_id}`);
   };
-
+  console.log(artists)
   const formatArtistNames = (artists) => {
+    let artistNames = [];
     if (artists.length > 3) {
       return "mehrere Künstler";
     }
-    return artists.map(artist => artist.artistName.toUpperCase()).join(', ');
+    artistNames.push(
+      artists.map((artist) => {
+        return artist.artistName;
+      })
+    );
+    artistNames = artistNames.join(", ");
+
+    return  artistNames;
+      
   };
 
   return (
