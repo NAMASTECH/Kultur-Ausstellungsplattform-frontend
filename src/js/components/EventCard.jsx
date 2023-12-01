@@ -25,7 +25,7 @@ export default function EventCard({
   const handleClick = () => {
     navigate(`/event/${_id}`);
   };
-
+  console.log(artists)
   const formatArtistNames = (artists) => {
     // Check if artists is defined and has elements
     if (!artists || artists.length === 0) {
