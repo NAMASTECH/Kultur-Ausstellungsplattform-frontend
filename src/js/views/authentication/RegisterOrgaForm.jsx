@@ -86,7 +86,7 @@ export default function RegisterForm() {
       </div>
 
       <form className="register-Orga-User-Form" onSubmit={handleSubmit}>
-        <h2>REGISTERUNG ORGANISATION</h2>
+        <h2>REGISTERUNG</h2>
         <div className="input">
           <div>
             <div className="group"><input type="text" required="required" onChange={handleFirstnameChange} /><span className="highlight"></span><span className="bar"></span><label>Firstname</label></div>

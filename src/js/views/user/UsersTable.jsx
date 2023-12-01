@@ -96,7 +96,7 @@ export default function UsersTable() {
                         </table>
 
                     )
-                    : <h3 id="logout_message">Sie haben noch keine Events erstellt.</h3>
+                    : <h3 id="login_message">Sie haben noch keine Events erstellt.</h3>
 
             }
 

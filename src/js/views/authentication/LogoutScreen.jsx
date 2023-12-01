@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import axios from "axios";
+import "./LogoutScreen.scss"
 
 
 export default function LogoutScreen() {
@@ -26,8 +27,8 @@ export default function LogoutScreen() {
     }, []);
 
     return (
-        <>
-            {!isOnline() && <h3>You have been successfully logged out!</h3>}
-        </>
+        <div className="logout">
+            {!isOnline() && <h3 className="logout_message">You have been successfully logged out!</h3>}
+        </div>
     );
 }

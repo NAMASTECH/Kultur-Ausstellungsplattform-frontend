@@ -1,12 +1,13 @@
 @import "../../../styles/variables";
 
-#myEvents {
+
+.logout {
     display: flex;
     align-items: center;
     justify-items: center;
     height: 30vh;
 
-    h3#login_message {
+    .logout_message {
         text-align: center;
         margin: 0 auto;
         font-family: $main_font;
