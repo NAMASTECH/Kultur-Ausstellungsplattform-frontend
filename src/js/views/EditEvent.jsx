@@ -7,15 +7,26 @@ import { EventContext } from '../context/EventContext';
 import { useAuthStore } from "../hooks/useAuthStore"
 import SelectComponent from '../components/SelectComponent';
 import "./EditEvent.scss"
+import ArtistInputs from '../components/ArtistInputs/ArtistInputs';
 
 export default function EditEvent() {
 
     const { eventId } = useParams();
     const { userData } = useAuthStore();
+    // EventContext konsumieren
+    const { eventCategories, eventTypes, venueTypes } = useContext(EventContext);
+
     // State for form inputs
-    const [eventType, setEventType] = useState("All");
-    const [venueType, setVenueType] = useState("All");
+    const [eventType, setEventType] = useState(eventTypes[0]);
+    const [venueType, setVenueType] = useState(venueTypes[0]);
     const [organizerName, setOrganizerName] = useState(userData.username);
+    const [artists, setArtists] = useState([{
+        artistName: '',
+        artistType: '',
+        artistDescription: '',
+        artistHomepage: '',
+        artistImg: '',
+    }]);
     const navigate = useNavigate();
 
     const [event, setEvent] = useState({
@@ -54,11 +65,17 @@ export default function EditEvent() {
 
 
 
+
     useEffect(() => {
         const fetchEventDetails = async () => {
             try {
                 const response = await axios.get(`/api/event/${eventId}`);
+
+                console.log(response.data);
                 setEvent(response.data);
+                setArtists(response.data.artists);
+                setVenueType(response.data.venues[0].venueType);
+                setEventType(response.data.eventType);
             } catch (error) {
                 console.error('Error fetching event details:', error);
             }
@@ -73,8 +90,33 @@ export default function EditEvent() {
 
     const handleSaveChanges = async (e) => {
         e.preventDefault();
+
+        const inputValues = {
+            organizerName,
+            eventTitle: event.eventTitle,
+            // artistName,
+            eventType: eventType || event.eventType || eventTypes[0],
+            img: event.img,
+            // eventCategory: eevent.eventCategory || eventCategories[0],
+            description: event.description,
+            homepage: event.homepage,
+            dateStart: event.dateStart,
+            dateEnd: event.dateEnd,
+            timeStart: event.timeStart,
+            timeEnd: event.timeEnd,
+            venueName: event.venues[0].venueName,
+            venueType: venueType || event.venues[0].venueType || venueTypes[0],
+            city: event.venues[0].city,
+            street: event.venues[0].street,
+            houseNumber: event.venues[0].houseNumber,
+            additionalAddressInfo: event.venues[0].additionalAddressInfo,
+            zipCode: event.venues[0].zipCode,
+            artists,
+        };
+
         try {
-            const response = await axios.patch(`/api/event/${eventId}`, event, {
+            console.log("Request Body before sending: ", inputValues)
+            const response = await axios.patch(`/api/event/${eventId}`, inputValues, {
                 withCredentials: true
             });
             navigate(`/mydata`)
@@ -113,17 +155,29 @@ export default function EditEvent() {
         setEvent(prevEvent => ({ ...prevEvent, venues: updatedVenues }));
     };
 
-    const handleArtistChange = (index, field, value) => {
-        const updatedArtists = event.artists.map((artist, i) => {
+    const handleArtistChange = (index, updatedArtist) => {
+        const newArtists = artists.map((artist, i) => {
             if (i === index) {
-                // Update the specific artist object
-                return { ...artist, [field]: value };
+                return { ...artist, ...updatedArtist };
             }
             return artist;
         });
+        setArtists(newArtists);
+    };
 
-        // Update the event state with the new artists array
-        setEvent(prevEvent => ({ ...prevEvent, artists: updatedArtists }));
+    // Function to add a new artist input
+    const addArtistInput = () => {
+        setArtists([
+            ...artists,
+            { artistName: "", artistType: "", artistDescription: "", artistHomepage: "", artistImg: "" }
+        ]);
+    };
+
+    // Function to remove an artist input
+    const removeArtistInput = (index) => {
+        const newArtists = [...artists];
+        newArtists.splice(index, 1);
+        setArtists(newArtists);
     };
 
     // Function to ensure the URL starts with http:// or https://
@@ -154,9 +208,6 @@ export default function EditEvent() {
     const formattedEventHomepage = formatURL(event.homepage);
     const formattedImgUrl = formatURL(event.img);
 
-    // EventContext konsumieren
-    const { eventTypes, venueTypes } = useContext(EventContext);
-
     return (
 
         <section className="event-details-container__section" >
@@ -178,14 +229,14 @@ export default function EditEvent() {
                             <input name="organizerName" type="text" placeholder="Veranstalter" value={organizerName} onChange={handleOrganizerNameChange} />
 
 
-                            {event.venues.map((venue, index) => {
+                            {/* {event.venues.map((venue, index) => {
                                 return (
                                     <div key={venue._id}>
                                         <label htmlFor="venueName">Veranstaltungsort</label>
                                         <input name="venueName" type="text" placeholder="Veranstaltungsort" value={venue.venueName} onChange={(e) => handleVenueChange(index, 'venueName', e.target.value)} />
                                     </div>
                                 )
-                            })}
+                            })} */}
 
                             <div className="date-and-time-container">
 
@@ -253,8 +304,8 @@ export default function EditEvent() {
                                                 <p>Adresse</p>
                                                 <label htmlFor="venueName"> Veranstaltungsort</label>
                                                 <input name="venueName" type="text" placeholder="Veranstaltungsort" value={venue.venueName} onChange={(e) => handleVenueChange(index, 'venueName', e.target.value)} />
-                                                <label htmlFor="venueType"> Veranstaltungsorttyp</label>
-                                                <input name="venueType" type="text" placeholder="Veranstaltungsorttyp" required value={venue.venueType} onChange={(e) => handleVenueChange(index, 'venueType', e.target.value)} />
+                                                {/* <label htmlFor="venueType"> Veranstaltungsorttyp</label>
+                                                <input name="venueType" type="text" placeholder="Veranstaltungsorttyp" required value={venue.venueType} onChange={(e) => handleVenueChange(index, 'venueType', e.target.value)} /> */}
 
                                                 <div>
                                                     <label htmlFor="street">Straße</label>
@@ -298,37 +349,25 @@ export default function EditEvent() {
                                 {/* {event.artist} */}
                             </p>
                             <div>
-                                {event.artists.map((artist, index) => {
-
-                                    const formattedArtistImgUrl = formatURL(artist.artistImg)
-
+                                {artists.map((artist, index) => {
                                     return (
-                                        <div key={artist._id} id="artist-info-container">
-                                            <label htmlFor="artistName">Künstlername: </label>
-                                            <input
-                                                name="artistName"
-                                                type="text"
-                                                value={artist.artistName}
-                                                onChange={(e) => handleArtistChange(index, 'artistName', e.target.value)}
+                                        <div key={index}>
+                                            <ArtistInputs
+                                                artist={artist}
+                                                index={index}
+                                                onArtistChange={handleArtistChange}
                                             />
-                                            {/* <p id="artist-type" ></p>
-                                                <span className="font-weight-bold">Künstlertyp: </span>
-                                                {artist.artistType}
-                                            </p>
-                                            <p id="artist-homepage" >
-                                                <span className="font-weight-bold">Künstler Startseite: </span>
-                                                {artist.artistHomepage}
-                                            </p>
-                                            <p id="artist-description" >
-                                                <span className="font-weight-bold">Beschreibung des Künstlers: </span>
-                                                {artist.artistDescription}
-                                            </p>
 
-                                            <p>Künstlerbild</p>
-                                            <img src={formattedArtistImgUrl} id="artist-img" width="200em" /> */}
+                                            {index > 0 && (
+                                                <button type="button" onClick={() => removeArtistInput(index)}>
+                                                    entfernen
+                                                </button>
+                                            )}
                                         </div>
-                                    );
+                                    )
                                 })}
+
+                                <button type="button" onClick={addArtistInput}>+ hinzufügen</button>
                             </div>
 
                         </div>

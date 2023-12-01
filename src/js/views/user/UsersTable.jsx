@@ -44,20 +44,46 @@ export default function UsersTable() {
         navigate(`/event/edit/${eventId}`);
     };
 
+    // const handleStateEvent = async (e) => {
+    //     const id = e.target.value.split("T")[0];
+
+    //     const message = e.target.value.split("T")[1] == 'true' ? 'Deaktivieren' : 'Aktivire';
+    //     if (window.confirm(`Sind Sie sicher, dass sie dieses Event ${message} möchten?`)) {
+    //         try {
+    //             const response = await axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/events/deactivate/${id}`, {
+    //                 withCredentials: true
+    //             });
+    //             // Handle the response, for example, redirect to another page or update the state
+    //             console.log('Event updated!', response.data);
+    //         } catch (error) {
+    //             // Handle the error, for example, show an error message
+    //             console.error('Error deleting event:', error.response.data);
+    //         }
+    //     }
+    // };
+
     const handleStateEvent = async (e) => {
         const id = e.target.value.split("T")[0];
+        const isActive = e.target.value.split("T")[1] === 'true';
 
-        const message = e.target.value.split("T")[1] == 'true' ? 'Deaktivieren' : 'Aktivire';
+        const message = isActive ? 'Deaktivieren' : 'Aktivieren';
+
         if (window.confirm(`Sind Sie sicher, dass sie dieses Event ${message} möchten?`)) {
             try {
+                // Führe die Aktualisierung durch
                 const response = await axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/events/deactivate/${id}`, {
                     withCredentials: true
                 });
-                // Handle the response, for example, redirect to another page or update the state
+
+                // Handle die Antwort hier, z.B. navigiere zu einer anderen Seite
                 console.log('Event updated!', response.data);
+
+                // Beispiel: Navigiere zu einer anderen Seite
+                navigate('/path-to-redirect');
+
             } catch (error) {
-                // Handle the error, for example, show an error message
-                console.error('Error deleting event:', error.response.data);
+                // Handle den Fehler hier, zeige z.B. eine Fehlermeldung
+                console.error('Error updating event:', error.response.data);
             }
         }
     };
@@ -105,14 +131,14 @@ export default function UsersTable() {
 
             {(all > limit) && (
                 <StyledEngineProvider injectFirst >
-                <Stack spacing={2} className="pagination">
-                  <Pagination
-                    count={Math.ceil(totalPages / limit)}
-                    page={page}
-                    onChange={(e, page) => setPage(page)}
-                  />
-                </Stack>
-              </StyledEngineProvider>
+                    <Stack spacing={2} className="pagination">
+                        <Pagination
+                            count={Math.ceil(totalPages / limit)}
+                            page={page}
+                            onChange={(e, page) => setPage(page)}
+                        />
+                    </Stack>
+                </StyledEngineProvider>
 
             )}
         </div>
