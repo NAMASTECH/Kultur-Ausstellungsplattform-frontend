@@ -5,6 +5,27 @@ $muted-color: #000;
 $trans-time: 300ms;
 $width: 400px;
 
+.error{
+  color: red;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 1em 0;
+  height: 10%;
+  width: 100%;
+}
+
+.open{
+  display: block;
+  
+}
+
+.close{
+  display: block;
+  height: 10%;
+  width: 100%;
+}
+
 .login-form {
   max-width: 500px;
   display: flex;

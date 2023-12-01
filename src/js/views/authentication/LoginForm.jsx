@@ -13,6 +13,8 @@ export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isMail, setIsMail] = useState(false);
+  const [message, setMessage] = useState("");
+  const [isError, setIsError] = useState(false);
   const [isConfirmBtnActive, setConfirmBtnActive] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -40,7 +42,7 @@ export default function LoginForm() {
           withCredentials: true,
         }
       );
-
+        console.log(resp);
       // Speichere erhaltene Userdaten im globalen UserStore (Context)
       setUserData({
         id: resp.data.id,
@@ -57,9 +59,17 @@ export default function LoginForm() {
       // Wenn im location State eine Ursprungsroute hinterlegt wurde, navigiere zurueck dahin
       if (location.state?.from) navigate(location.state.from);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
+      setMessage(error.response.data.message);
+      setIsError(true);
     }
   };
+
+  setTimeout(() => {
+    setMessage("");
+    setIsError(false);
+  }, 5000);
+
   const isEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
@@ -86,6 +96,9 @@ export default function LoginForm() {
 
   return (
     <>
+      <div className={isError ? 'error ' : 'error close'}>
+        <h2>{message}</h2>
+      </div>
 
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>Login</h2>
