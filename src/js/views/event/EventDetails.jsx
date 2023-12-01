@@ -60,10 +60,17 @@ export default function EventDetails() {
     const formattedEventHomepage = formatURL(event.homepage);
 
     const formatArtistNames = (artists) => {
-        // if (artists.length > 3) {
-        //     return "mehrere Künstler";
-        // }
-        return artists.map(artist => artist.artistName.toUpperCase()).join(', ');
+        // Check if artists is defined and has elements
+        if (!artists || artists.length === 0) {
+            return "Keine Künstler verfügbar";
+        }
+        if (artists.length > 3) {
+            return "mehrere Künstler";
+        }
+        return artists.map(artist => {
+            // Check if artistName is defined and a string before converting to uppercase
+            return artist.artistName ? artist.artistName.toUpperCase() : "Kein Künstlername angegeben";
+        }).join(', ');
     };
 
 
