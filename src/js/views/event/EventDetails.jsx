@@ -60,10 +60,16 @@ export default function EventDetails() {
     const formattedEventHomepage = formatURL(event.homepage);
 
     const formatArtistNames = (artists) => {
-        // if (artists.length > 3) {
-        //     return "mehrere Künstler";
-        // }
-        return artists.map(artist => artist.artistName.toUpperCase()).join(', ');
+        let artistNames = [];
+        if (artists.length > 3) {
+            return "mehrere Künstler";
+        }
+        artistNames.push(
+            artists.map((artist) => {
+                return artist.artistName;
+            })
+        );
+        return artistNames.join(", ");
     };
 
 
