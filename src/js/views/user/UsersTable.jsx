@@ -4,6 +4,9 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import PaginationComponent from "../../components/PaginationComponent";
 import "./MyEvents.scss"
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import { StyledEngineProvider } from '@mui/material/styles';
 
 export default function UsersTable() {
     const [data, setUsers] = useState([]);
@@ -74,7 +77,7 @@ export default function UsersTable() {
     });
 
     return (
-        <div id="myEvents">
+        <div className="myEvents">
 
             {
                 (data.length > 0)
@@ -100,8 +103,17 @@ export default function UsersTable() {
 
             }
 
-            {(data.length > 0) && (
-                <PaginationComponent totalPages={totalPages} currentPage={page} onPageChange={setPage} />
+            {(all > limit) && (
+                <StyledEngineProvider injectFirst >
+                <Stack spacing={2} className="pagination">
+                  <Pagination
+                    count={Math.ceil(totalPages / limit)}
+                    page={page}
+                    onChange={(e, page) => setPage(page)}
+                  />
+                </Stack>
+              </StyledEngineProvider>
+
             )}
         </div>
     );
