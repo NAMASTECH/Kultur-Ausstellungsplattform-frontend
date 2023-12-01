@@ -59,6 +59,13 @@ export default function EventDetails() {
 
     const formattedEventHomepage = formatURL(event.homepage);
 
+    const formatArtistNames = (artists) => {
+        // if (artists.length > 3) {
+        //     return "mehrere Künstler";
+        // }
+        return artists.map(artist => artist.artistName.toUpperCase()).join(', ');
+    };
+
 
     // TO DO: Labels (bzw <span> Elemente, z.B. "Von:", "Bis:", etc) löschen, wenn alles richtig positioniert ist.
     return (
@@ -117,6 +124,16 @@ export default function EventDetails() {
                             </p>
                         </div>
 
+
+
+
+                        <div className="artists">
+                            {formatArtistNames(event.artists)}
+                        </div>
+
+
+
+
                         <h2 id="event-title" >
                             {/* <span className="font-weight-bold">Event Title:</span> */}
                             {event.eventTitle}
@@ -174,22 +191,21 @@ export default function EventDetails() {
                                     </div>
                                 );
                             })}
-
-                            <div id="event-homepage">
-                                {/* <span className="font-weight-bold">Event-Homepage:</span> */}
-                                <a href={formattedEventHomepage} target="_self" rel="noopener noreferrer">
-                                    {/* {event.homepage} */}
-                                    Event Homepage
-                                </a>
-                            </div>
                         </div>
 
-                        <p className="font-weight-bold font-size-big">
-                            <span className="font-weight-bold">Artist(s):</span>
-                            {/* {event.artist} */}
-                        </p>
+                        <div id="event-homepage">
+                            {/* <span className="font-weight-bold">Event-Homepage:</span> */}
+                            <a href={formattedEventHomepage} target="_self" rel="noopener noreferrer">
+                                {/* {event.homepage} */}
+                                Event Homepage
+                            </a>
+                        </div>
 
-                        {event.artists.map((artist) => {
+                        {/* <p className="font-weight-bold font-size-big">
+                            <span className="font-weight-bold">Artist(s):</span>
+                        </p> */}
+
+                        {/* {event.artists.map((artist) => {
                             return (
                                 <div id="artist-info-container" key={artist._id}>
                                     <p id="artist-name" >
@@ -214,7 +230,7 @@ export default function EventDetails() {
                                     <img src={artist.artistImg} id="artist-img" width="200em" />
                                 </div>
                             );
-                        })}
+                        })} */}
                     </div>
                 </article>
             </div>

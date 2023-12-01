@@ -289,8 +289,8 @@ export default function EditEvent() {
                                         Event Homepage
                                     </a>
                                 </div> */}
-                            <label htmlFor="homepage">Startseite -
-                                <input name="homepage" type="text" placeholder="Event Homepage" value={event.homepage} onChange={handleInputChange} /></label>
+                            <label htmlFor="homepage">Startseite - </label>
+                            <input name="homepage" type="text" placeholder="Event Homepage" value={event.homepage} onChange={handleInputChange} />
 
 
                             <p className="font-weight-bold font-size-big">
@@ -308,7 +308,7 @@ export default function EditEvent() {
                                                 <span className="font-weight-bold">Künstlername: </span>
                                                 {artist.artistName}
                                             </p>
-                                            <p id="artist-type" >
+                                            {/* <p id="artist-type" ></p>
                                                 <span className="font-weight-bold">Künstlertyp: </span>
                                                 {artist.artistType}
                                             </p>
@@ -322,7 +322,7 @@ export default function EditEvent() {
                                             </p>
 
                                             <p>Künstlerbild</p>
-                                            <img src={formattedArtistImgUrl} id="artist-img" width="200em" />
+                                            <img src={formattedArtistImgUrl} id="artist-img" width="200em" /> */}
                                         </div>
                                     );
                                 })}
