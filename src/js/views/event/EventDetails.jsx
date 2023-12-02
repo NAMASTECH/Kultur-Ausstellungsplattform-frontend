@@ -82,7 +82,7 @@ export default function EventDetails() {
 
             <div className="event-details-container">
                 <div className="img-container">
-                    <img className="event-image" src={event.img} />
+                    <img className="event-image" alt="Bild vom Event" src={event.img} />
                 </div>
 
 
@@ -116,19 +116,23 @@ export default function EventDetails() {
                                 </p>
                             </div>
 
-                            <pre> | </pre>
+                            <pre className="pipe"> | </pre>
 
-                            <p className="time-start" >
-                                {/* <span className="font-weight-bold">Von:</span> */}
-                                {`${event.timeStart}`}
-                            </p>
 
-                            <pre> - </pre>
+                            <div className="hours-container">
+                                <p className="time-start" >
+                                    {/* <span className="font-weight-bold">Von:</span> */}
+                                    {`${event.timeStart}`}
+                                </p>
 
-                            <p className="time-end" >
-                                {/* <span className="font-weight-bold">Von:</span> */}
-                                {`${event.timeEnd}`}
-                            </p>
+                                <pre> - </pre>
+
+                                <p className="time-end" >
+                                    {/* <span className="font-weight-bold">Von:</span> */}
+                                    {`${event.timeEnd}`}
+                                </p>
+                            </div>
+
                         </div>
 
 

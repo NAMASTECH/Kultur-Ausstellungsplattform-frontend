@@ -216,7 +216,7 @@ export default function EditEvent() {
             <div className="event-details-container">
 
                 <div className="img-container">
-                    <img className="event-image" alt="Es wurde noch kein Bild für diese Veranstaltung hinterlegt" src={formattedImgUrl} />
+                    <img className="event-image" alt="Bild vom Event" src={formattedImgUrl} />
                 </div>
 
                 <article className="event-details__article" >
@@ -249,7 +249,7 @@ export default function EditEvent() {
                                     <input className="date-end_input" name="dateEnd" type="date" required value={event.dateEnd.split("T")[0]} onChange={handleInputChange} />
                                 </div>
 
-                                <pre> | </pre>
+                                <pre className="pipe"> | </pre>
 
                                 <div className='hours-container'>
                                     <label htmlFor="timeStart">Startzeit </label>
@@ -266,6 +266,8 @@ export default function EditEvent() {
                                 <label htmlFor="eventTitle">Title </label>
                                 <input id="eventName_input" name="eventTitle" type="text" required placeholder="Eventname" value={event.eventTitle} onChange={handleInputChange} />
                             </div>
+                            <label htmlFor="img">Bild-URL - </label>
+                            <input name="img" type="text" placeholder="Bild-URL" value={event.img} onChange={handleInputChange} />
                             <label htmlFor="description">Description</label>
                             <textarea
                                 className="eventDescription_textarea"

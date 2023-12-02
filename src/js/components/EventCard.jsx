@@ -45,7 +45,7 @@ export default function EventCard({
       <div className="gallery-card-image-container">
         {/* <p className="eventType">{venues[0].venueType}</p> */}
         <p className="eventType">{eventType}</p>
-        <img className="gallery-card-image" src={img} alt="image" />
+        <img className="gallery-card-image" alt="Bild vom Event" src={img} />
       </div>
       <div className="card-content">
         <div className="dateStart">
