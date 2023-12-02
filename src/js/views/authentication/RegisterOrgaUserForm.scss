@@ -1,89 +1,102 @@
 @import "../../../styles/_variables.scss";
-$bg-color: #424242;
+// $bg-color: #424242;
 $hl-color: $green;
 $muted-color: #000;
 $trans-time: 300ms;
-$width: 100%;
 
-.register-Orga-User-section{
+
+.register-Orga-User-section {
   display: flex;
   flex-direction: row;
   justify-content: center;
-.info_card{
-  width: 40%;
-  margin-left: 4%;
-  h1{
-    // color: #fff;
-    text-align: left;
-    font-size: 3em;
-  }
-  p{
-    // color: #fff;
-    text-align: left;
-    font-size: 1.5em;
-  }
-  .redirect{
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    a{
-      display: flex;
-      color: $green;
-      text-decoration: none;
-      font-size: 1.5em;
-      font-weight: bold;
-      margin-left: 1em;
-      background-color: #495a6a;
-      padding: 0.2em 1em;
-      border-radius: 5px;
-      transition: 0.3s;
-      height: 2em;
-      width: max-content;
-      margin-top: 10px;
-      &:hover{
-        color: $bg-color;
-        background-color: $green;
-      }
-      align-items: center;
+  $width: 100%;
+
+  .info_card {
+    width: 40%;
+    margin: 0 3.8vw;    
+    color: #1f1f1f; 
+    h1 {
+      // color: #fff;
+      text-align: left;
+      font-size: 3em;
+      color: #252525;   
+      line-height: 2.5rem;   
     }
-  
-  }
-}
-.register-Orga-User-Form {
-    max-width: 60%;
-    display: flex;
-    align-items: center;
-    h2{
-      color: #fff;
+    p {
+      // color: #fff;
+      text-align: left;
+      font-size: 1.4em;
     }
-    .input{
+    .redirect {
       display: flex;
       flex-direction: row;
+      justify-content: left;
+      p {
+        padding-top: 20px;
+      }
+      a {
+        display: flex;
+        color: $logo_font_color;
+        text-decoration: none;
+        font-size: 1.2em;
+        font-weight: 500;
+        margin-left: 2em;
+        background-color: #495a6a;
+        padding: 1.1em 1em;
+        border-radius: 8px;
+        transition: 0.3s;
+        height: 2em;
+        width: max-content;
+        margin-top: 35px;
+        &:hover {
+          color: rgb(43, 43, 43);
+          background-color: $green;
+        }
+        align-items: center;
+      }
+    }
+  }
+  .register-Orga-User-Form {
+    width: 45em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 7%;
+           
+    h2 {
+      color: #c0d3dd;
+      font-weight: 500;
+      margin-bottom: 0.3em;        
+    }
+    .input {
+      display: flex;
+      flex-direction: row;
+      margin-left: 1em;
     }
 
-    .group {
+    .group {      
       position: relative;
-      margin: 1em 1em;
+      margin: 1.7em 1em;
       align-items: center;
     }
 
     // INPUTS // ============================== //
     .highlight {
       display: block;
-      background-color: white;
+      background-color: #c0d3dd;
       color: $hl-color;
-      width: 100%;
-      height: 2px;
+      width: 93%;
+      height: 1px;
     }
 
     input,
     textarea {
       background: none;
-      color: white;
+      color: #c0d3dd;
       font-size: 18px;
       padding: 10px 10px 10px 5px;
       display: block;
-      width: $width;
+      // width: $width;
       border: none;
       border-radius: 0;
       border-bottom: 0;
@@ -92,15 +105,15 @@ $width: 100%;
         outline: none;
       }
 
-      &:focus~label,
-      &:valid~label {
+      &:focus ~ label,
+      &:valid ~ label {
         top: -14px;
         font-size: 12px;
-        color: #fff;
+        color: $green;        
       }
 
-      &:focus~.bar:before {
-        width: $width;
+      &:focus ~ .bar:before {
+        width: 93%;
       }
     }
 
@@ -109,7 +122,7 @@ $width: 100%;
     }
 
     label {
-      color: #fff;
+      color: #c0d3dd;
       font-size: 16px;
       font-weight: normal;
       position: absolute;
@@ -125,7 +138,7 @@ $width: 100%;
       width: $width;
 
       &:before {
-        content: '';
+        content: "";
         height: 2px;
         width: 0;
         bottom: 0px;
@@ -138,58 +151,65 @@ $width: 100%;
 
     button {
       background-color: $green;
-      color: #000;
+      color: #3f3f3f;
       border: none;
       border-radius: 5px;
-      padding: 10px 20px;
+      margin: 1.6em 0 0em 0;
+      padding: 8px 15px;
+      font-weight: 500;
+      font-size: 1.1rem;
       cursor: pointer;
     }
 
     button:hover {
-      background-color: $green ;
+      background-color: $green;
       opacity: 0.6;
     }
-    button:disabled{
+    button:disabled {
       cursor: not-allowed;
     }
-    bottom[disabled]{
+    bottom[disabled] {
       cursor: not-allowed;
     }
-    span{
+    .login-hinweis {
       color: $hl-color;
       font-size: 12px;
       font-weight: bold;
       text-align: center;
-      margin: 0.5em 0;
-      a{
+      margin: 2em 0;
+      a {
         margin-left: 1em;
         text-decoration: none;
+        color: #c0d3dd;        
+        font-weight: 500;
+      }
+      a:hover {
+        color: $green;
       }
     }
   }
 }
 
 @media screen and (max-width: 950px) {
-  .register-Orga-User-section{
+  .register-Orga-User-section {
     flex-direction: column;
-    .info_card{
-      width: 100%;
-      margin-left: 0;
-      h1{
-        font-size: 2em;
+    .info_card {
+      width: 100vw;
+      margin-left: 2.5vw;
+      h1 {
+        font-size: 3em;
       }
-      p{
+      p {
         font-size: 1em;
       }
-      .redirect{
+      .redirect {
         flex-direction: row;
-        
       }
     }
-    .register-Orga-User-Form{
-      max-width: 100%;
+    .register-Orga-User-Form {
+      max-width: 95vw;
       margin-top: 3%;
-      .input{
+      .input {
         flex-direction: row;
       }
     }

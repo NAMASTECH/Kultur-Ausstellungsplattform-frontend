@@ -64,7 +64,8 @@ header {
       color: black;
       padding: 6px 15px;
       height: fit-content;
-      border-radius: 10px;
+      border-radius: 8px;
+      transition: 0.3s;
     }
 
     a:hover {
