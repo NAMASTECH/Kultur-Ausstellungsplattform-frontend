@@ -12,7 +12,7 @@
 
 .gallery-card-image-container {
   position: relative;
- 
+
 
   .eventType {
     position: absolute;
@@ -35,7 +35,8 @@
     border-radius: 4px;
   }
 }
-.isCanceled{
+
+.isCanceled {
   opacity: 0.3;
 }
 
@@ -53,6 +54,7 @@
     font-size: 1rem;
     font-weight: 400;
   }
+
   .artists {
     margin-top: 15px;
     font-size: 1.5rem;
@@ -60,12 +62,14 @@
     letter-spacing: -1px;
     color: black;
   }
+
   .eventTitle {
     font-size: 1.5rem;
     font-weight: 500;
     letter-spacing: -1px;
     color: black;
   }
+
   .organizer {
     color: black;
     margin: 15px 0;
@@ -79,10 +83,10 @@
     margin-left: 5px;
   }
 
-  .dateStart,
-  .artists,
-  .eventTitle,
-  .organizer {
-    padding: 0 17px;
-  }
+  // .dateStart,
+  // .artists,
+  // .eventTitle,
+  // .organizer {
+  //   padding: 0 17px;
+  // }
 }
