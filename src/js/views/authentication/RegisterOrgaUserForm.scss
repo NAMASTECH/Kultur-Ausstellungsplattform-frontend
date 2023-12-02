@@ -13,21 +13,24 @@ $trans-time: 300ms;
 
   .info_card {
     width: 40%;
+    margin-top: 2rem;
     margin: 0 3.8vw;    
     color: #1f1f1f; 
     h1 {
-      // color: #fff;
+      
       text-align: left;
       font-size: 3em;
       color: #252525;   
       line-height: 2.5rem;   
     }
     p {
-      // color: #fff;
+      margin-top: 2rem;
       text-align: left;
       font-size: 1.4em;
+      line-height: 1.8rem;
     }
     .redirect {
+      margin-top: 1.8rem;
       display: flex;
       flex-direction: row;
       justify-content: left;
@@ -47,7 +50,7 @@ $trans-time: 300ms;
         transition: 0.3s;
         height: 2em;
         width: max-content;
-        margin-top: 35px;
+        margin-top: 2.5rem;
         &:hover {
           color: rgb(43, 43, 43);
           background-color: $green;
