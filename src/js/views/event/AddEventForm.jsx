@@ -40,13 +40,15 @@ export default function AddEventForm() {
   const [zipCode, setZipCode] = useState("");
   const [isConfirmBtnActive, setConfirmBtnActive] = useState(false);
 
-  const [artists, setArtists] = useState([{
-    artistName: '',
-    artistType: '',
-    artistDescription: '',
-    artistHomepage: '',
-    artistImg: '',
-  }]);
+  const [artists, setArtists] = useState([
+    {
+      artistName: "",
+      artistType: "",
+      artistDescription: "",
+      artistHomepage: "",
+      artistImg: "",
+    },
+  ]);
 
   const [PageNo, setPageNo] = useState(1);
 
@@ -102,7 +104,7 @@ export default function AddEventForm() {
 
     //path erstellen
     try {
-      console.log("Request Body before sending: ", userData)
+      console.log("Request Body before sending: ", userData);
       const resp = await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}/api/event`,
         userData,
@@ -123,7 +125,7 @@ export default function AddEventForm() {
         console.error(error.request);
       } else {
         // Something happened in setting up the request that triggered an Error
-        console.error('Error', error.message);
+        console.error("Error", error.message);
       }
       console.error(error.config);
     }
@@ -219,8 +221,6 @@ export default function AddEventForm() {
     }
   };
 
-
-
   // Hilfsfunktion zum Validieren der Felder und Aktivieren des Confirmbuttons
   const validateForm = () => {
     // Check that there is at least one artist entry
@@ -255,8 +255,6 @@ export default function AddEventForm() {
     setConfirmBtnActive(isValid);
   };
 
-
-
   // console.log(artists);
 
   return (
@@ -264,26 +262,79 @@ export default function AddEventForm() {
       <h2>Add New Event</h2>
       <p>{`Page ${PageNo} of 3`}</p>
       <form id="addEvent-form" onSubmit={handleSubmit}>
-        <div className="page_add_form" style={{ display: PageNo == 1 ? 'block' : 'none' }}>
+        <div
+          className="page_add_form"
+          style={{ display: PageNo == 1 ? "block" : "none" }}
+        >
           <label>Name der Veranstaltung</label>
-          <input type="text" required value={eventTitle} onChange={handleEventTitleChange} />
-          <SelectComponent title="Kategorie" selected={eventCategory} values={eventCategories} onChange={handleEventCategoryChange} />
-          <SelectComponent title="Typ von Veranstaltung" selected={eventType} values={eventTypes} onChange={handleEventTypeChange} />
+          <input
+            type="text"
+            required
+            value={eventTitle}
+            onChange={handleEventTitleChange}
+          />
+          <SelectComponent
+            title="Kategorie"
+            selected={eventCategory}
+            values={eventCategories}
+            onChange={handleEventCategoryChange}
+          />
+          <SelectComponent
+            title="Typ von Veranstaltung"
+            selected={eventType}
+            values={eventTypes}
+            onChange={handleEventTypeChange}
+          />
           <label>Homepage der Veranstaltung</label>
-          <input type="text" required value={homepage} onChange={handleHomepageChange} />
+          <input
+            type="text"
+            required
+            value={homepage}
+            onChange={handleHomepageChange}
+          />
           <div className="date">
-            <label>Startdatum
-              <input type="date" required value={dateStart} onChange={handleDateStartChange} /></label>
+            <label>
+              Startdatum
+              <input
+                type="date"
+                required
+                value={dateStart}
+                onChange={handleDateStartChange}
+              />
+            </label>
 
-            <label>Enddatum
-              <input type="date" required value={dateEnd} onChange={handleDateEndChange} /></label>
+            <label>
+              Enddatum
+              <input
+                type="date"
+                required
+                value={dateEnd}
+                onChange={handleDateEndChange}
+              />
+            </label>
           </div>
           <div className="time">
-            <label>Start Time
-              <input type="time" name="timeStart" required value={timeStart} onChange={handleTimeStartChange} /></label>
+            <label>
+              Start Time
+              <input
+                type="time"
+                name="timeStart"
+                required
+                value={timeStart}
+                onChange={handleTimeStartChange}
+              />
+            </label>
 
-            <label>End Time
-              <input type="time" name="timeEnd" required value={timeEnd} onChange={handleTimeEndChange} /></label>
+            <label>
+              End Time
+              <input
+                type="time"
+                name="timeEnd"
+                required
+                value={timeEnd}
+                onChange={handleTimeEndChange}
+              />
+            </label>
           </div>
           <label>Bild vom Event</label>
 
@@ -304,10 +355,14 @@ export default function AddEventForm() {
             <p>Write something here </p>
           </textarea>
         </div>
-        <div className="page_add_form" style={{ display: PageNo == 2 ? 'block' : 'none' }}> {/* Page 2 */}
+        <div
+          className="page_add_form"
+          style={{ display: PageNo == 2 ? "block" : "none" }}
+        >
+          {" "}
+          {/* Page 2 */}
           {artists.map((artist, index) => (
             <div key={index}>
-
               <ArtistInputs
                 artist={artist}
                 index={index}
@@ -321,21 +376,43 @@ export default function AddEventForm() {
               )}
             </div>
           ))}
-
-          <button type="button" onClick={addArtistInput}>+ hinzufügen</button>
+          <button type="button" onClick={addArtistInput}>
+            + hinzufügen
+          </button>
         </div>
-        <div className="page_add_form" style={{ display: PageNo == 3 ? 'block' : 'none' }}> {/* Page 3 */}
+        <div
+          className="page_add_form"
+          style={{ display: PageNo == 3 ? "block" : "none" }}
+        >
+          {" "}
+          {/* Page 3 */}
           <label>Venue Name</label>
-          <input type="text" required value={venueName} onChange={handleVenueNameChange} />
-
-          <SelectComponent title="Venue Type" selected={venueType} values={venueTypes} onChange={handleVenueTypeChange} />
-
+          <input
+            type="text"
+            required
+            value={venueName}
+            onChange={handleVenueNameChange}
+          />
+          <SelectComponent
+            title="Venue Type"
+            selected={venueType}
+            values={venueTypes}
+            onChange={handleVenueTypeChange}
+          />
           <label>City</label>
-          <input type="text" required value={city} onChange={handleCityChange} />
-
+          <input
+            type="text"
+            required
+            value={city}
+            onChange={handleCityChange}
+          />
           <label>Street</label>
-          <input type="text" required value={street} onChange={handleStreetChange} />
-
+          <input
+            type="text"
+            required
+            value={street}
+            onChange={handleStreetChange}
+          />
           <label>House Number</label>
           <input
             type="text"
@@ -343,21 +420,46 @@ export default function AddEventForm() {
             value={houseNumber}
             onChange={handleHouseNumberChange}
           />
-
           <label>additional Address Information</label>
           <input
             type="text"
             value={additionalAddressInfo}
             onChange={handleAdditionalAddressInfoChange}
           />
-
           <label>ZIP-Code</label>
-          <input type="text" required value={zipCode} onChange={handleZipCodeChange} />
+          <input
+            type="text"
+            required
+            value={zipCode}
+            onChange={handleZipCodeChange}
+          />
         </div>
         <div className="form_button">
-          <button type="button" onClick={handlePageChange} style={{ display: PageNo == 1 ? 'none' : 'block' }} value={`minus`}>Zurück</button>
-          <button type="button" onClick={handlePageChange} style={{ display: PageNo == 3 ? 'none' : 'block' }} value={`plus`} >Nächste</button>
-          <button type="submit" /* disabled={!isConfirmBtnActive} */ style={{ display: PageNo == 3 ? 'block' : 'none' }}> Hinzufügen</button>
+          <button
+            type="button"
+            onClick={handlePageChange}
+            style={{ display: PageNo == 1 ? "none" : "block" }}
+            value={`minus`}
+          >
+            Zurück
+          </button>
+          <button
+            type="button"
+            onClick={handlePageChange}
+            style={{ display: PageNo == 3 ? "none" : "block" }}
+            value={`plus`}
+          >
+            Weiter
+          </button>
+          <button
+            type="submit"
+            /* disabled={!isConfirmBtnActive} */ style={{
+              display: PageNo == 3 ? "block" : "none",
+            }}
+          >
+            {" "}
+            Speichen
+          </button>
         </div>
       </form>
     </>
