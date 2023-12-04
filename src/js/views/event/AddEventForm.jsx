@@ -9,12 +9,12 @@ import SelectComponent from "../../components/SelectComponent.jsx";
 import ArtistInputs from "../../components/ArtistInputs/ArtistInputs.jsx";
 import "./AddEventForm.scss";
 import { useNavigate } from "react-router-dom";
-const navigate = useNavigate();
+
 
 
 export default function AddEventForm() {
   // Eckdaten
-
+const navigate = useNavigate();
   // EventContext konsumieren
   const { eventCategories, eventTypes, venueTypes } = useContext(EventContext);
 
@@ -107,7 +107,6 @@ export default function AddEventForm() {
 
     //path erstellen
     try {
-      console.log("Request Body before sending: ", userData);
       const resp = await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}/api/event`,
         userData,

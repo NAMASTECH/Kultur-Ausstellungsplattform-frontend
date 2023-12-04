@@ -31,13 +31,13 @@ export default function LoginForm() {
     validateForm();
   }, [username, password]);
 
-  useEffect(() => {
-    if (userData.role == "organizer") {
-      redirect("/mydata");
-    } else {
-      redirect("/");
-    }
-  }, [isMail])
+  // useEffect(() => {
+  //   if (userData.role == "organizer") {
+  //     redirect("/mydata");
+  //   } else {
+  //     redirect("/");
+  //   }
+  // } , [userData.role])
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
