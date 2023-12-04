@@ -19,32 +19,32 @@ const ArtistInputs = ({ artist, index, onArtistChange }) => {
                     required
                     value={artist.artistName}
                     onChange={handleChange}
-                    placeholder="Artist Name"
+                    placeholder="Künstlername"
                     className='artist-input'
                 />
                 <input
                     name="artistType"
                     value={artist.artistType}
                     onChange={handleChange}
-                    placeholder="Artist Type"
+                    placeholder="Genre"
                 />
                 <input
                     name="artistHomepage"
                     value={artist.artistHomepage}
                     onChange={handleChange}
-                    placeholder="Artist Homepage"
+                    placeholder="Künstler Homepage"
                 />
                 <input
                     name="artistImg"
                     value={artist.artistImg}
                     onChange={handleChange}
-                    placeholder="Artist Image"
+                    placeholder="Bild vom Künstler"
                 />
             </div>
             <div>
                 <textarea
                     size="sm"
-                    placeholder="Artist Description"
+                    placeholder="Beschreibung vom Künstler"
                     // rows="5"
                     // cols="20"
                     maxLength="2000"
