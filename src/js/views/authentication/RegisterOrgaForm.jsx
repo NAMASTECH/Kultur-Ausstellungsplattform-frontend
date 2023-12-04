@@ -86,22 +86,54 @@ export default function RegisterForm() {
       </div>
 
       <form className="register-Orga-User-Form" onSubmit={handleSubmit}>
+
         <h2>REGISTRIERUNG</h2>
+
         <div className="input">
           <div>
-            <div className="group"><input type="text" required="required" onChange={handleFirstnameChange} /><span className="highlight"></span><span className="bar"></span><label>Firstname</label></div>
-            <div className="group"><input type="text" required="required" onChange={handleOrganizationChange} /><span className="highlight"></span><span className="bar"></span><label>Organization</label></div>
-            <div className="group"><input type="password" required="required" onChange={handlePasswordChange} /><span className="highlight"></span><span className="bar"></span><label>Password</label></div>
+            <div className="group">
+              <input type="text" required="required" onChange={handleFirstnameChange} />
+              <span className="highlight"></span>
+              <span className="bar"></span>
+              <label>Firstname</label></div>
+            <div className="group">
+              <input type="text" required="required" onChange={handleOrganizationChange} />
+              <span className="highlight"></span>
+              <span className="bar"></span>
+              <label>Organization</label></div>
+            <div className="group">
+              <input type="password" required="required" onChange={handlePasswordChange} />
+              <span className="highlight"></span>
+              <span className="bar"></span>
+              <label>Password</label></div>
           </div>
+
           <div>
-            <div className="group"><input type="text" required="required" onChange={handleLastnameChange} /><span className="highlight"></span><span className="bar"></span><label>Lastname</label></div>
-            <div className="group"><input type="text" required="required" onChange={handleEmailChange} /><span className="highlight"></span><span className="bar"></span><label>Email</label></div>
-            <div className="group"><input type="password" required="required" onChange={handleConfirmPasswordChange} /><span className="highlight"></span><span className="bar"></span><label>Confirm Password</label></div>
+            <div className="group">
+              <input type="text" required="required" onChange={handleLastnameChange} />
+              <span className="highlight"></span>
+              <span className="bar"></span>
+              <label>Lastname</label>
+            </div>
+            <div className="group">
+              <input type="text" required="required" onChange={handleEmailChange} />
+              <span className="highlight"></span>
+              <span className="bar"></span>
+              <label>Email</label></div>
+            <div className="group">
+              <input type="password" required="required" onChange={handleConfirmPasswordChange} />
+              <span className="highlight"></span>
+              <span className="bar"></span>
+              <label>Confirm Password</label>
+            </div>
           </div>
+
         </div>
+
         <button type="submit" disabled={!isConfirmBtnActive}> Sign Up </button>
 
-        <span className="login-hinweis"> Bereits registriert? <Link to="/login">Hier anmelden </Link> </span>
+        <span className="login-hinweis"> Bereits registriert? <Link to="/login">Hier anmelden </Link></span>
+
       </form>
     </section>
   );
