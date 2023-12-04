@@ -78,7 +78,7 @@ export default function EventDetails() {
     return (
         <section className="event-details-container__section" >
 
-            <h2>Event Details</h2>
+            {/* <h2>Event Details</h2> */}
 
             <div className="event-details-container">
                 <div className="img-container">

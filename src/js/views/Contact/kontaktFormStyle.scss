@@ -3,7 +3,7 @@
 $hl-color: $green;
 $muted-color: #000;
 $trans-time: 300ms;
-// $width: 400px;
+$width: 400px;
 
 .KontaktForm-container {
   form {
@@ -34,7 +34,7 @@ $trans-time: 300ms;
       .bar {
         position: relative;
         display: block;
-        // width: $width;
+        width: $width;
 
         &:before {
           content: "";
@@ -50,20 +50,19 @@ $trans-time: 300ms;
 
       input,
       textarea {
-        // background: none;
-        background-color: #495a6a;
+        background: none;
         color: $muted-color;
         font-size: 18px;
         padding: 10px 10px 10px 5px;
         display: block;
-        width: 100%;
+        width: 400px;
         border: none;
         border-radius: 0;
         border-bottom: 0;
 
         &:focus {
           outline: none;
-          background-color: lightgray;
+          background: none;
         }
 
         &:focus~label,
@@ -74,7 +73,7 @@ $trans-time: 300ms;
         }
 
         &:focus~.bar:before {
-          // width: $width;
+          width: $width;
         }
       }
     }

@@ -128,14 +128,22 @@
                     width: 100%;
 
                     a {
-                        padding: 5px auto;
+                        padding: 5px 10px;
                         border-radius: 20px;
+                        text-decoration: none;
+                        color: #DDE1E6;
                         background-color: $second_color;
                         -webkit-border-radius: 20px;
                         -moz-border-radius: 20px;
                         -ms-border-radius: 20px;
                         -o-border-radius: 20px;
+                        &:hover {
+                            background-color: $green;
+                            color: #000000;
+                            transform: scaleX(1.1);
+                        }
                     }
+
                 }
 
 
