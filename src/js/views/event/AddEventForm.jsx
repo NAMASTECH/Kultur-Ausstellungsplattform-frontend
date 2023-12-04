@@ -8,6 +8,9 @@ import { EventContext } from "../../context/EventContext.jsx";
 import SelectComponent from "../../components/SelectComponent.jsx";
 import ArtistInputs from "../../components/ArtistInputs/ArtistInputs.jsx";
 import "./AddEventForm.scss";
+import { useNavigate } from "react-router-dom";
+const navigate = useNavigate();
+
 
 export default function AddEventForm() {
   // Eckdaten
@@ -112,6 +115,7 @@ export default function AddEventForm() {
           withCredentials: true,
         }
       );
+      navigate('/mydata');
     } catch (error) {
       console.error("Axios error:", error);
       if (error.response) {

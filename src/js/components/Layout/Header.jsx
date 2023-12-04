@@ -29,11 +29,11 @@ function Header() {
       </div>
       <nav className="nav-container">
         {<NavLink to="/">Events</NavLink>}
-        {isOnline() && userData.role == "organizer" && <NavLink to="/event">Add Event</NavLink> || <NavLink to="/register/organizer">Add Event</NavLink> }
-        {isOnline() && <NavLink to={`/mydata/`}>My Data</NavLink>}
+        {isOnline() && userData.role == "organizer" && <NavLink to="/event">Ereignis hinzufügen</NavLink> || <NavLink to="/event">Ereignis hinzufügen</NavLink> }
+        {isOnline() && <NavLink to={`/mydata/`}>Meine Daten</NavLink>}
         {/* {isOnline() && <NavLink to="/users">Users</NavLink>} */}
-        {!isOnline() && <NavLink to="/login">Login</NavLink>}
-        {isOnline() && <NavLink to="/logout">Sign Out</NavLink>}
+        {!isOnline() && <NavLink to="/login">Anmeldung</NavLink>}
+        {isOnline() && <NavLink to="/logout">Abmelden</NavLink>}
         {!isOnline() && <NavLink to="/kontakt">Kontakt</NavLink>}
         {/* {isOnline() && <h3>Hallo, {userData.username}!</h3>} */}
       </nav>

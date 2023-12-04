@@ -1,13 +1,17 @@
 // Hier kommen alle wichtigen Imports rein. Z.B. die eingebauten Hooks von react
 import { useEffect, useState } from "react";
-import { redirect, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./LoginForm.scss"
 // Imports von benoetigten Paketen
 import axios from "axios";
 
+
+
+
 // Import eigener Module
 import { useAuthStore } from "../../hooks/useAuthStore";
+import { red } from "@mui/material/colors";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
@@ -20,12 +24,20 @@ export default function LoginForm() {
   const location = useLocation();
 
   // Hole Setterfunktion fuer global gespeicherte Userdaten aus Custom Hook fuer AuthStoreContext
-  const { setUserData } = useAuthStore();
+  const { setUserData, userData, isOnline } = useAuthStore();
 
   // Sideeffect zum Pruefen, ob alle Felder valide sind und man den Confirmbutton aktivieren sollte
   useEffect(() => {
     validateForm();
   }, [username, password]);
+
+  useEffect(() => {
+    if (userData.role == "organizer") {
+      redirect("/mydata");
+    } else {
+      redirect("/");
+    }
+  }, [isMail])
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
