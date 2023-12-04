@@ -92,17 +92,17 @@ export default function RegisterForm() {
         <div className="input">
           <div>
             <div className="group">
-              <input type="text" required="required" onChange={handleFirstnameChange} />
+              <input type="text" required onChange={handleFirstnameChange} />
               <span className="highlight"></span>
               <span className="bar"></span>
               <label>Firstname</label></div>
             <div className="group">
-              <input type="text" required="required" onChange={handleOrganizationChange} />
+              <input type="text" required onChange={handleOrganizationChange} />
               <span className="highlight"></span>
               <span className="bar"></span>
               <label>Organization</label></div>
             <div className="group">
-              <input type="password" required="required" onChange={handlePasswordChange} />
+              <input type="password" required onChange={handlePasswordChange} />
               <span className="highlight"></span>
               <span className="bar"></span>
               <label>Password</label></div>
@@ -110,18 +110,18 @@ export default function RegisterForm() {
 
           <div>
             <div className="group">
-              <input type="text" required="required" onChange={handleLastnameChange} />
+              <input type="text" required onChange={handleLastnameChange} />
               <span className="highlight"></span>
               <span className="bar"></span>
               <label>Lastname</label>
             </div>
             <div className="group">
-              <input type="text" required="required" onChange={handleEmailChange} />
+              <input type="text" required onChange={handleEmailChange} />
               <span className="highlight"></span>
               <span className="bar"></span>
               <label>Email</label></div>
             <div className="group">
-              <input type="password" required="required" onChange={handleConfirmPasswordChange} />
+              <input type="password" required onChange={handleConfirmPasswordChange} />
               <span className="highlight"></span>
               <span className="bar"></span>
               <label>Confirm Password</label>
