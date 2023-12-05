@@ -10,14 +10,24 @@ import ArtistInputs from "../../components/ArtistInputs/ArtistInputs.jsx";
 import "./AddEventForm.scss";
 import { useNavigate } from "react-router-dom";
 
-
-
 export default function AddEventForm() {
-  // Eckdaten
-const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  // Datum erstellen
+  var currentDate = new Date();
+
+  // Datum aufteilen
+  var year = currentDate.getFullYear();
+  var month = ("0" + (currentDate.getMonth() + 1)).slice(-2);
+  var day = ("0" + currentDate.getDate()).slice(-2);
+
+  // Datum als string formatieren, im Format "YYYY-MM-DD", zur anzeige als initialen Wert bei statDate
+  var formattedDate = year + "-" + month + "-" + day;
+
   // EventContext konsumieren
   const { eventCategories, eventTypes, venueTypes } = useContext(EventContext);
 
+  // Eckdaten
   const [eventTitle, setEventTitle] = useState("");
   const [artistName, setArtistName] = useState("");
   const [eventType, setEventType] = useState(eventTypes[0]);
@@ -26,10 +36,10 @@ const navigate = useNavigate();
   const [description, setDescription] = useState("");
   const [homepage, setHomepage] = useState("");
   // Wann?
-  const [dateStart, setDateStart] = useState("");
+  const [dateStart, setDateStart] = useState(formattedDate);
   const [dateEnd, setDateEnd] = useState("");
-  const [timeStart, setTimeStart] = useState("");
-  const [timeEnd, setTimeEnd] = useState("");
+  const [timeStart, setTimeStart] = useState("12:00");
+  const [timeEnd, setTimeEnd] = useState("00:00");
   // Wo?
   // Name vom Veranstaltungsort
   const [venueName, setVenueName] = useState("");
@@ -114,7 +124,7 @@ const navigate = useNavigate();
           withCredentials: true,
         }
       );
-      navigate('/mydata');
+      navigate("/mydata");
     } catch (error) {
       console.error("Axios error:", error);
       if (error.response) {
@@ -262,14 +272,14 @@ const navigate = useNavigate();
 
   return (
     <>
-      <h2>Add New Event</h2>
+      <h2>Event hinzufügen</h2>
       <p>{`Page ${PageNo} of 3`}</p>
       <form id="addEvent-form" onSubmit={handleSubmit}>
         <div
           className="page_add_form"
           style={{ display: PageNo == 1 ? "block" : "none" }}
         >
-          <label>Name der Veranstaltung</label>
+          <label>Eventname</label>
           <input
             type="text"
             required
@@ -283,12 +293,12 @@ const navigate = useNavigate();
             onChange={handleEventCategoryChange}
           />
           <SelectComponent
-            title="Typ von Veranstaltung"
+            title="Typ von Event"
             selected={eventType}
             values={eventTypes}
             onChange={handleEventTypeChange}
           />
-          <label>Homepage der Veranstaltung</label>
+          <label>Event Homepage</label>
           <input
             type="text"
             required
@@ -341,7 +351,13 @@ const navigate = useNavigate();
           </div>
           <label>Bild vom Event</label>
 
-          <input type="text" required value={img} onChange={handleImgChange} />
+          <input
+            type="text"
+            required
+            value={img}
+            placeholder="z.B. www.meine-coole-seite.de/bilder/event.jpg"
+            onChange={handleImgChange}
+          />
 
           <label>Description</label>
           <textarea
@@ -354,16 +370,70 @@ const navigate = useNavigate();
             maxLength="2000"
             value={description}
             onChange={handleDescriptionChange}
-          >
-            <p>Write something here </p>
-          </textarea>
+          ></textarea>
         </div>
+
         <div
           className="page_add_form"
           style={{ display: PageNo == 2 ? "block" : "none" }}
         >
           {" "}
           {/* Page 2 */}
+          <label>Name vom Veranstaltungsort</label>
+          <input
+            type="text"
+            required
+            value={venueName}
+            onChange={handleVenueNameChange}
+          />
+          <SelectComponent
+            title="Art des Veranstaltungsorts"
+            selected={venueType}
+            values={venueTypes}
+            onChange={handleVenueTypeChange}
+          />
+          <label>Stadt</label>
+          <input
+            type="text"
+            required
+            value={city}
+            onChange={handleCityChange}
+          />
+          <label>Straße</label>
+          <input
+            type="text"
+            required
+            value={street}
+            onChange={handleStreetChange}
+          />
+          <label>Hausnummer</label>
+          <input
+            type="text"
+            required
+            value={houseNumber}
+            onChange={handleHouseNumberChange}
+          />
+          <label>Adresszusatz</label>
+          <input
+            type="text"
+            value={additionalAddressInfo}
+            onChange={handleAdditionalAddressInfoChange}
+          />
+          <label>Postleitzahl</label>
+          <input
+            type="text"
+            required
+            value={zipCode}
+            onChange={handleZipCodeChange}
+          />
+        </div>
+
+        <div
+          className="page_add_form"
+          style={{ display: PageNo == 3 ? "block" : "none" }}
+        >
+          {" "}
+          {/* Page 3 */}
           {artists.map((artist, index) => (
             <div key={index}>
               <ArtistInputs
@@ -383,60 +453,7 @@ const navigate = useNavigate();
             + hinzufügen
           </button>
         </div>
-        <div
-          className="page_add_form"
-          style={{ display: PageNo == 3 ? "block" : "none" }}
-        >
-          {" "}
-          {/* Page 3 */}
-          <label>Venue Name</label>
-          <input
-            type="text"
-            required
-            value={venueName}
-            onChange={handleVenueNameChange}
-          />
-          <SelectComponent
-            title="Venue Type"
-            selected={venueType}
-            values={venueTypes}
-            onChange={handleVenueTypeChange}
-          />
-          <label>City</label>
-          <input
-            type="text"
-            required
-            value={city}
-            onChange={handleCityChange}
-          />
-          <label>Street</label>
-          <input
-            type="text"
-            required
-            value={street}
-            onChange={handleStreetChange}
-          />
-          <label>House Number</label>
-          <input
-            type="text"
-            required
-            value={houseNumber}
-            onChange={handleHouseNumberChange}
-          />
-          <label>additional Address Information</label>
-          <input
-            type="text"
-            value={additionalAddressInfo}
-            onChange={handleAdditionalAddressInfoChange}
-          />
-          <label>ZIP-Code</label>
-          <input
-            type="text"
-            required
-            value={zipCode}
-            onChange={handleZipCodeChange}
-          />
-        </div>
+
         <div className="form_button">
           <button
             type="button"

@@ -290,7 +290,7 @@ export default function EditEvent() {
                             />
 
                             <SelectComponent
-                                title="Typ von Veranstaltungsort"
+                                title="Art des Veranstaltungsorts"
                                 values={venueTypes}
                                 onChange={handleVenueTypeChange}
                                 selected={event.venues[0].venueType}
@@ -362,19 +362,19 @@ export default function EditEvent() {
 
                                             {index > 0 && (
                                                 <button type="button" onClick={() => removeArtistInput(index)}>
-                                                    entfernen
+                                                    Entfernen
                                                 </button>
                                             )}
                                         </div>
                                     )
                                 })}
 
-                                <button type="button" onClick={addArtistInput}>+ hinzufügen</button>
+                                <button type="button" onClick={addArtistInput}>+ Hinzufügen</button>
                             </div>
 
                         </div>
                         <div className='filter_button'>
-                            <button onClick={handleDeleteEvent}>{event.isActive ? 'dezactivire' : 'activire'}</button>
+                            <button onClick={handleDeleteEvent}>{event.isActive ? 'Deaktivieren' : 'Aktivieren'}</button>
                             <button type="submit" >Speichern</button>
                         </div>
                     </form>
