@@ -60,6 +60,15 @@ $width: 400px;
     border: none;
     border-radius: 0;
     border-bottom: 0;
+    &:-internal-autofill-selected {
+      appearance: none;
+      background-color: #495a6a !important;
+      color: #000 !important;
+    }
+    &:-webkit-autofill{
+      -webkit-box-shadow: 0 0 0 30px #495a6a inset !important;
+      -webkit-text-fill-color: #000 !important;
+    }
 
     &:focus {
       outline: none;

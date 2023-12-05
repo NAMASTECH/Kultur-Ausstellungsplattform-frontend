@@ -20,7 +20,8 @@ export default function LoginForm() {
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
   const [isConfirmBtnActive, setConfirmBtnActive] = useState(false);
-  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const redirect = useNavigate();
   const location = useLocation();
 
   // Hole Setterfunktion fuer global gespeicherte Userdaten aus Custom Hook fuer AuthStoreContext
@@ -31,13 +32,16 @@ export default function LoginForm() {
     validateForm();
   }, [username, password]);
 
-  // useEffect(() => {
-  //   if (userData.role == "organizer") {
-  //     redirect("/mydata");
-  //   } else {
-  //     redirect("/");
-  //   }
-  // } , [userData])
+  useEffect(() => {
+    if (!userData){
+      return;
+    }
+    if (userData.role == "organizer") {
+      redirect("/mydata");
+    } else {
+      redirect("/");
+    }
+  } , [userData])
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();

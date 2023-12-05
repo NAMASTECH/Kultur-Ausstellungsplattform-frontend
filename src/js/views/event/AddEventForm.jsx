@@ -271,8 +271,8 @@ export default function AddEventForm() {
   // console.log(artists);
 
   return (
-    <>
-      <h2>Event hinzufügen</h2>
+    <section className="add__event">
+      {/* <h2>Event hinzufügen</h2> */}
       <p>{`Page ${PageNo} of 3`}</p>
       <form id="addEvent-form" onSubmit={handleSubmit}>
         <div
@@ -482,6 +482,6 @@ export default function AddEventForm() {
           </button>
         </div>
       </form>
-    </>
+    </section>
   );
 }
