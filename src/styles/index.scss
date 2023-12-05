@@ -99,42 +99,51 @@
 
         }
       }
-      .myEvents{
-        table{
-          thead{
-            tr{
-              th{
-              background-color: $bg_dark_thead;
-              color: $text_dark_color;
-            }
+
+      .myEvents {
+        table {
+          thead {
+            tr {
+              th {
+                background-color: $bg_dark_thead;
+                color: $text_dark_color;
+              }
             }
           }
         }
-        tbody{
-          tr{
+
+        tbody {
+          tr {
             background-color: $bg_cards_dark_color;
-            &:nth-child(odd){
+
+            &:nth-child(odd) {
               background-color: $bg_dark_tbody_odd;
             }
-            &:nth-child(even){
+
+            &:nth-child(even) {
               background-color: $bg_dark_tbody_even;
             }
-            .button{
-              button{
+
+            .button {
+              button {
                 color: $text_dark_color;
                 background-color: $bg_dark_button;
                 border: 1px solid $text_dark_border_color;
               }
             }
           }
-          
+
         }
       }
-      form{
-        label{
+
+      form {
+        label {
           color: $text_dark_color;
-          input{
-            color: $text_dark_color;
+
+          input {
+            // color: $text_dark_color;
+            background: none;
+            color: #c0d3dd;
           }
         }
       }
@@ -163,10 +172,6 @@
       background-color: $bg_dark_color;
       color: $text_dark_color;
     }
-
-
-
-
   }
 
   body {

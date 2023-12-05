@@ -55,14 +55,38 @@
     border-radius: 15px;
     background-color: #495a6a;
 
+
+    label {
+      color: #c0d3dd;
+    }
+
+
+    input,
+    select,
+    textarea {
+      background: none;
+      color: #c0d3dd;
+      border: none;
+
+    }
+
+    select {
+      border-bottom: 2px solid #a7ff1a;
+    }
+
+    .highlight {
+      background-color: #c0d3dd;
+    }
   }
 
   #addEvent-form {
     min-height: 645px;
+
     input {
       padding: 5px;
     }
-    .page_add_form{
+
+    .page_add_form {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -72,15 +96,17 @@
       background-color: #495a6a;
       min-height: 600px;
       margin: 0;
-      .artist-input{
+
+      .artist-input {
         width: 446px;
       }
-        input{
-          width: 446px;
-        }
 
+      input {
+        width: 446px;
       }
-    
+
+    }
+
 
     select {
       padding: 5px;
