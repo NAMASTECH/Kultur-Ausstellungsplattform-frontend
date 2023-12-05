@@ -195,6 +195,9 @@
           button {
             color: $text_dark_color;
             background-color: $bg_dark_color;
+            span::before {
+              border-color: $bg_calendar_dark_selected;
+            }
           }
 
           .react-datepicker__month-container {
