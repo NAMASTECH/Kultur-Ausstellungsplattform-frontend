@@ -70,13 +70,13 @@ const Filter = ({ open, setOpen, setSearch_btn, setEventType, setVenueType, even
                 /> */}
 
                 <SelectComponent
-                    title="Event Type"
+                    title="Typ von Event"
                     values={eventTypesFilter}
                     onChange={handleEventTypeChange}
                     selected={eventType}
                 />
                 <SelectComponent
-                    title="Venue Type"
+                    title="Veranstaltungsort"
                     values={venueTypesFilter}
                     onChange={handleVenueTypeChange}
                     selected={venueType}
