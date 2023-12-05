@@ -51,6 +51,16 @@
         }
       }
     }
+    .register-Orga-User-section{
+      .info_card{
+        h1{
+          color: $text_dark_color;
+        }
+        p{
+          color: $text_dark_color;
+        }
+      }
+    }
 
     main {
       background-color: $bg_dark_color;
