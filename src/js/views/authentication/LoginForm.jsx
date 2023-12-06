@@ -119,13 +119,13 @@ export default function LoginForm() {
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>LOGIN</h2>
         <div className="group">
-          <input type="text" required="required" value={username} onChange={handleUsernameChange} autoComplete="off" />
+          <input type="text" required="required" value={username} onChange={handleUsernameChange} />
           <span className="highlight"></span>
           <span className="bar"></span>
           <label>Email</label>
         </div>
         <div className="group">
-          <input type="password" required="required" value={password} onChange={handlePasswordChange} autoComplete="off" />
+          <input type="password" required="required" value={password} onChange={handlePasswordChange} />
           <span className="highlight"></span>
           <span className="bar"></span>
           <label>Password</label>
