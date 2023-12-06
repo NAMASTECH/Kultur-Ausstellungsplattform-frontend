@@ -7,6 +7,7 @@ import "./MyEvents.scss"
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { StyledEngineProvider } from '@mui/material/styles';
+import { Dialog } from "@mui/material";
 
 export default function UsersTable() {
     const [data, setUsers] = useState([]);
@@ -14,6 +15,9 @@ export default function UsersTable() {
     const [limit, setLimit] = useState(20);
     const [all, setAll] = useState(0);
     const [totalPages, setTotalPages] = useState(1);
+    const [open, setOpen] = useState(false);
+    const [confirm, setConfirm] = useState(null);
+    const [value, setValue] = useState('');
 
     const { userData } = useAuthStore();
 
@@ -63,12 +67,11 @@ export default function UsersTable() {
     // };
 
     const handleStateEvent = async (e) => {
-        const id = e.target.value.split("T")[0];
-        const isActive = e.target.value.split("T")[1] === 'true';
+        const id = value.split("T")[0];
+        const isActive = value.split("T")[1] === 'true';
 
         const message = isActive ? 'Deaktivieren' : 'Aktivieren';
-
-        if (window.confirm(`Sind Sie sicher, dass sie dieses Event ${message} möchten?`)) {
+        if (value !== '') {
             try {
                 // Führe die Aktualisierung durch
                 const response = await axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/events/deactivate/${id}`, {
@@ -76,17 +79,33 @@ export default function UsersTable() {
                 });
 
                 // Handle die Antwort hier, z.B. navigiere zu einer anderen Seite
-                console.log('Event updated!', response.data);
-
                 // Beispiel: Navigiere zu einer anderen Seite
-                navigate('/mydata');
-
+                setValue('');
+                navigate('/login');
+                setConfirm(null);
             } catch (error) {
                 // Handle den Fehler hier, zeige z.B. eine Fehlermeldung
                 console.error('Error updating event:', error.response.data);
             }
         }
+        
     };
+
+    const handleOpenDialog = (e) => {
+        setOpen(true);
+        setValue(e.target.value);
+        if (e.target.value.split("T")[1] === 'true') {
+        setConfirm(false);
+        } else {
+            setConfirm(true);
+        }
+    }
+
+    const handleCloseDialog = () => {
+        setValue('');
+        setOpen(false);
+        setConfirm(null);
+    }
 
 
     const userRows = data.map(data => {
@@ -96,7 +115,7 @@ export default function UsersTable() {
                 <td>{data.dateStart.split("T")[0]}</td>
                 <td>{data.dateEnd.split("T")[0]}</td>
                 <td>{data.venues.map(at => <span key={at._id}>{at.venueName}</span>)}</td>
-                <td className="button"><button className="disable" value={data._id + "T" + data.isActive} onClick={handleStateEvent} >{!data.isActive ? 'Aktivire' : 'Deaktivieren'}</button></td>
+                <td className="button"><button className="disable" value={data._id + "T" + data.isActive} onClick={handleOpenDialog} >{!data.isActive ? 'Aktivire' : 'Deaktivieren'}</button></td>
                 <td className="button"><button className="update" onClick={() => handleEditClick(data._id)}>Bearbeiten <br /><span>Bearbeitet {data.updatedAt.split("T")[0]}</span></button></td>
             </tr>
         );
@@ -104,7 +123,13 @@ export default function UsersTable() {
 
     return (
         <div className="myEvents">
-
+            < Dialog open={open} >
+                <div className="dialog confirm__element">
+                    <h2>Event wurde erfolgreich {confirm ? 'aktiviert' : 'deaktiviert'}!</h2>
+                    <button onClick={handleStateEvent} >{confirm ? 'Aktiviert' : 'Deaktiviert'}</button>
+                    <button onClick={handleCloseDialog} >Zurück</button>
+                </div>
+            </Dialog>
             {
                 (data.length > 0)
                     ? (
@@ -124,9 +149,7 @@ export default function UsersTable() {
                             </tbody>
                         </table>
 
-                    )
-                    : <h3 id="login_message">Sie haben noch keine Events erstellt.</h3>
-
+                    ) : <h3 id="login_message">Sie haben noch keine Events erstellt.</h3>
             }
 
             {(all > limit) && (
