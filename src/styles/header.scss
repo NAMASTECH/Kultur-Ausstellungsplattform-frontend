@@ -1,5 +1,6 @@
 @import "./variables";
-main{
+
+main {
   background-color: $bg_color;
 }
 
@@ -7,6 +8,7 @@ header {
   width: 100%;
   display: flex;
   flex-direction: column;
+  background-color: $bg_color;
 
   .logo {
     display: flex;
@@ -92,53 +94,60 @@ header {
   .hamburger {
     display: none;
   }
+
   .modal__nav {
     display: none;
   }
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1024px) {
   .modal__nav {
     display: flex;
     flex-direction: column;
     width: 100vw;
     height: 100vh;
     background-color: $bg_color;
-    
-    .hamburger__close{
+
+    .hamburger__close {
       display: flex;
       justify-content: flex-end;
       margin-right: 2em;
       margin-top: 2em;
-      
+
       cursor: pointer;
-      .lines{
+
+      .lines {
         width: 30px;
         height: 3px;
         background-color: black;
         margin: 5px;
 
       }
-      .lines:nth-child(1){
+
+      .lines:nth-child(1) {
         margin-right: -2.1em;
         transform: rotate(45deg);
         z-index: 1;
       }
-      .lines:nth-child(2){
+
+      .lines:nth-child(2) {
         transform: rotate(-45deg);
         z-index: 2;
       }
-      
+
 
     }
-    .nav__links{
+
+    .nav__links {
       width: 100%;
       list-style: none;
       margin: 1em 0 23em 0;
-      li{
+
+      li {
         width: 100%;
         text-align: center;
-        a{
+
+        a {
           display: block;
           width: 100%;
           text-align: left;
@@ -148,15 +157,20 @@ header {
           margin-left: 1.5em;
           font-weight: bold;
         }
-      };
+      }
+
+      ;
     }
-    .nav__footer{
+
+    .nav__footer {
       width: 100%;
       list-style: none;
-      li{
+
+      li {
         width: 100%;
         text-align: center;
-        a{
+
+        a {
           display: block;
           width: 100%;
           text-align: left;
@@ -166,11 +180,12 @@ header {
           margin-left: 1.5em;
           font-weight: bold;
         }
-      };
+      }
     }
   }
+
   header {
-    
+
     .logo {
       .first__line {
         font-size: 3.3em;
@@ -209,6 +224,6 @@ header {
       }
     }
 
-    
+
   }
 }
