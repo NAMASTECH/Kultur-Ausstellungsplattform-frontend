@@ -55,7 +55,6 @@
     border-radius: 15px;
     background-color: #495a6a;
 
-
     label {
       color: #c0d3dd;
     }
@@ -67,6 +66,12 @@
       background: none;
       color: #c0d3dd;
       border: none;
+
+      ::placeholder {
+        color: $logo_font_color;
+        opacity: 0.4;
+        /* Firefox */
+      }
 
     }
 

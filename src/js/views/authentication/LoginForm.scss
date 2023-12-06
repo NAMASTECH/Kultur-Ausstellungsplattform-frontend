@@ -5,7 +5,7 @@ $muted-color: #000;
 $trans-time: 300ms;
 $width: 400px;
 
-.error{
+.error {
   color: red;
   font-size: 1em;
   font-weight: bold;
@@ -15,12 +15,12 @@ $width: 400px;
   width: 100%;
 }
 
-.open{
+.open {
   display: block;
-  
+
 }
 
-.close{
+.close {
   display: block;
   height: 10%;
   width: 100%;
@@ -51,8 +51,8 @@ $width: 400px;
 
   input,
   textarea {
-    background: none;
-    color: $muted-color;
+    // background: none;
+    // color: $muted-color;
     font-size: 18px;
     padding: 10px 10px 10px 5px;
     display: block;
@@ -60,12 +60,14 @@ $width: 400px;
     border: none;
     border-radius: 0;
     border-bottom: 0;
+
     &:-internal-autofill-selected {
       appearance: none;
       background-color: #495a6a !important;
       color: #000 !important;
     }
-    &:-webkit-autofill{
+
+    &:-webkit-autofill {
       -webkit-box-shadow: 0 0 0 30px #495a6a inset !important;
       -webkit-text-fill-color: #000 !important;
     }

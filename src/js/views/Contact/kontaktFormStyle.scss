@@ -10,9 +10,14 @@ $width: 400px;
     max-width: 500px;
     // display: flex;
     // flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    // justify-content: center;
+    // align-items: center;
 
+    h2 {
+      color: #c0d3dd;
+      font-weight: 500;
+      margin-bottom: 0.3em;
+    }
 
     .group {
       position: relative;
@@ -54,6 +59,7 @@ $width: 400px;
         width: 400px;
         border-radius: 0;
         border-bottom: 0;
+
 
         &:focus {
           outline: none;
