@@ -29,7 +29,7 @@ function Header() {
       </div>
       <nav className="nav-container">
         {<NavLink to="/">Events</NavLink>}
-        {isOnline() && userData.role == "organizer" && <NavLink to="/event">Event hinzufügen</NavLink> || <NavLink to="/register/organizer">Event hinzufügen</NavLink>}
+        {isOnline() && userData.role == "organizer" && <NavLink to="/event">Event erstellen</NavLink> || <NavLink to="/register/organizer">Event hinzufügen</NavLink>}
         {isOnline() && <NavLink to={`/mydata/`}>Meine Daten</NavLink>}
         {/* {isOnline() && <NavLink to="/users">Users</NavLink>} */}
         {!isOnline() && <NavLink to="/login">Anmeldung</NavLink>}
