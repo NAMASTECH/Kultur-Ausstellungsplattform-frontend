@@ -25,12 +25,19 @@ div.img-container {
 
         input {
             padding: 0.5rem;
+            border-bottom: 2px solid #a7ff1a;
+            margin-right: 2em;
+        }
 
+        label,
+        p {
+            color: #c0d3dd;
         }
 
         textarea {
             padding: 0.5rem;
             width: 100%;
+            border-bottom: 2px solid #a7ff1a;
         }
 
         select {
