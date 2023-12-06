@@ -7,6 +7,10 @@
   font-family: $main_font;
 }
 
+html {
+  background-color: $bg_color;
+}
+
 @media (prefers-color-scheme: dark) {
   $bg_dark_color: #161616;
   $text_dark_color: #c0d3dd;
@@ -19,6 +23,11 @@
   $bg_dark_tbody_even: #242424;
   $bg_dark_button: #161616;
   $text_dark_border_color: #fff;
+
+  html {
+    background-color: $bg_dark_color;
+  }
+
 
   .app {
     header {
@@ -51,19 +60,22 @@
         }
       }
     }
-    .register-Orga-User-section{
-      .info_card{
-        h1{
+
+    .register-Orga-User-section {
+      .info_card {
+        h1 {
           color: $text_dark_color;
         }
-        p{
+
+        p {
           color: $text_dark_color;
         }
       }
     }
-    .login-form{
-      .register{
-        a{
+
+    .login-form {
+      .register {
+        a {
           color: $text_dark_color;
         }
       }
@@ -217,6 +229,7 @@
           button {
             color: $text_dark_color;
             background-color: $bg_dark_color;
+
             span::before {
               border-color: $bg_calendar_dark_selected;
             }
