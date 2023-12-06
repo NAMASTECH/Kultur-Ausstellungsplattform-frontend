@@ -7,11 +7,16 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     #addEvent-form {
+        padding: 5rem;
         align-items: center;
         justify-content: center;
         width: 100%;
-        max-width: 500px;
+        max-width: 800px;
+        min-height: 645px;
+        // height: 60vh;
+
 
         p {
             text-align: center;
@@ -24,6 +29,8 @@ h2 {
             width: 100%;
             margin-bottom: 1em;
             border-bottom: 2px solid #a7ff1a;
+            margin-bottom: 3em;
+            font-size: 1.4rem;
         }
 
         select {
@@ -31,6 +38,7 @@ h2 {
             border-radius: 0;
             margin-bottom: 1em;
             color: rgba(0, 0, 0, 0.725);
+            font-size: 1.4rem;
         }
 
         label {
@@ -38,29 +46,42 @@ h2 {
             flex-direction: column;
         }
 
-        .date {
+        label {
+            font-size: 1.4rem;
+        }
+
+        .category-and-eventType-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 3em;
+        }
+
+        .date-inputs-container {
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            gap: 1em;
+            gap: 3em;
             // margin: 0 20px;
 
-            input {
+            input,
+            label {
                 width: 100%;
             }
 
         }
 
-        .time {
+        .time-inputs-container {
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            gap: 1em;
+            gap: 3em;
             // margin: 0 20px;
 
-            input {
+            input,
+            label {
                 width: 100%;
             }
         }
@@ -85,6 +106,83 @@ h2 {
             border: 2px solid #a7ff1a;
 
             // &:hover {}
+        }
+
+        input {
+            padding: 5px;
+        }
+
+        .page_add_form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            border-radius: 15px;
+            background-color: #495a6a;
+            min-height: 600px;
+            margin: 0;
+
+
+        }
+
+
+        select {
+            padding: 5px;
+            border-radius: 5px;
+            appearance: menulist-button;
+        }
+
+        div {
+            div {
+                width: 100%;
+
+                input {
+                    width: 100%;
+                }
+
+            }
+        }
+
+        .date,
+        .time {
+            width: 100%;
+            margin: 0 auto;
+
+            label {
+                width: 100%;
+
+                input {
+                    padding: 5px;
+                    width: 100%;
+                }
+            }
+        }
+
+        div {
+            button {
+                margin: 0 auto;
+                width: 100%;
+                padding: 5px;
+                border-radius: 5px;
+                background-color: #161616;
+                color: #fff;
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+        }
+
+        .form_button {
+            button {
+                margin: 0 auto;
+                width: 100%;
+                padding: 5px;
+                border-radius: 5px;
+                background-color: #161616;
+                color: #fff;
+                font-size: 1.2em;
+                font-weight: bold;
+            }
         }
 
     }

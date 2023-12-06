@@ -22,12 +22,12 @@ const SelectComponent = ({ title, selected, values, onChange }) => {
   };
 
   return (
-    <>
+    <div>
       <label htmlFor={title} >{title}</label>
       <select value={selectedOption} onChange={handleSelectChange} >
         {values.map(value => { return <option key={value} value={value}>{value}</option> })}
       </select>
-    </>
+    </div>
   );
 };
 

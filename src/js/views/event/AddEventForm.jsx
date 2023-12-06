@@ -286,18 +286,21 @@ export default function AddEventForm() {
             value={eventTitle}
             onChange={handleEventTitleChange}
           />
-          <SelectComponent
-            title="Kategorie"
-            selected={eventCategory}
-            values={eventCategories}
-            onChange={handleEventCategoryChange}
-          />
-          <SelectComponent
-            title="Typ von Event"
-            selected={eventType}
-            values={eventTypes}
-            onChange={handleEventTypeChange}
-          />
+          <div className="category-and-eventType-container">
+            <SelectComponent
+              title="Kategorie"
+              selected={eventCategory}
+              values={eventCategories}
+              onChange={handleEventCategoryChange}
+            />
+            <SelectComponent
+              title="Typ von Event"
+              selected={eventType}
+              values={eventTypes}
+              onChange={handleEventTypeChange}
+            />
+          </div>
+
           <label>Event Homepage</label>
           <input
             type="text"
@@ -305,7 +308,7 @@ export default function AddEventForm() {
             value={homepage}
             onChange={handleHomepageChange}
           />
-          <div className="date">
+          <div className="date-inputs-container">
             <label>
               Startdatum
               <input
@@ -326,7 +329,7 @@ export default function AddEventForm() {
               />
             </label>
           </div>
-          <div className="time">
+          <div className="time-inputs-container">
             <label>
               Start Time
               <input
