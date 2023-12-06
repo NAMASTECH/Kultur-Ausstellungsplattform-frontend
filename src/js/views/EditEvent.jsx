@@ -267,7 +267,7 @@ export default function EditEvent() {
                                 <input id="eventName_input" name="eventTitle" type="text" required placeholder="Eventname" value={event.eventTitle} onChange={handleInputChange} />
                             </div>
                             <label htmlFor="img">Bild-URL - </label>
-                            <input name="img" type="text" placeholder="Bild-URL" value={event.img} onChange={handleInputChange} />
+                            <input id="event-image-input" name="img" type="text" placeholder="Bild-URL" value={event.img} onChange={handleInputChange} />
                             <label htmlFor="description">Description</label>
                             <textarea
                                 className="eventDescription_textarea"
@@ -303,7 +303,9 @@ export default function EditEvent() {
 
                                             <div id="venue-address-container">
 
-                                                <p>Adresse</p>
+                                                <p>
+                                                    <span className="font-weight-bold font-size-big">Adresse</span>
+                                                </p>
                                                 <label htmlFor="venueName"> Veranstaltungsort</label>
                                                 <input name="venueName" type="text" placeholder="Veranstaltungsort" value={venue.venueName} onChange={(e) => handleVenueChange(index, 'venueName', e.target.value)} />
                                                 {/* <label htmlFor="venueType"> Veranstaltungsorttyp</label>
@@ -312,15 +314,15 @@ export default function EditEvent() {
                                                 <div>
                                                     <label htmlFor="street">Straße</label>
                                                     <input name="street" type="text" placeholder="Straße" required value={venue.street} onChange={(e) => handleVenueChange(index, 'street', e.target.value)} />
-                                                    <label htmlFor="houseNumber">Number</label>
-                                                    <input name="houseNumber" type="text" placeholder="Hausnummer" required value={venue.houseNumber} onChange={(e) => handleVenueChange(index, 'houseNumber', e.target.value)} />
+                                                    <label htmlFor="houseNumber">Hausnummer</label>
+                                                    <input className="no-border-left" name="houseNumber" type="text" placeholder="Hausnummer" required value={venue.houseNumber} onChange={(e) => handleVenueChange(index, 'houseNumber', e.target.value)} />
                                                 </div>
 
                                                 <div>
                                                     <label htmlFor="zipCode">PLZ</label>
                                                     <input name="zipCode" type="text" placeholder="Postleitzahl" required value={venue.zipCode} onChange={(e) => handleVenueChange(index, 'zipCode', e.target.value)} />
                                                     <label htmlFor="city">Stadt</label>
-                                                    <input name="city" type="text" placeholder="Stadt" required value={venue.city} onChange={(e) => handleVenueChange(index, 'city', e.target.value)} />
+                                                    <input className="no-border-left" name="city" type="text" placeholder="Stadt" required value={venue.city} onChange={(e) => handleVenueChange(index, 'city', e.target.value)} />
                                                 </div>
 
                                                 <div>
@@ -343,7 +345,7 @@ export default function EditEvent() {
                                     </a>
                                 </div> */}
                             <label htmlFor="homepage">Startseite - </label>
-                            <input name="homepage" type="text" placeholder="Event Homepage" value={event.homepage} onChange={handleInputChange} />
+                            <input id="homepage-URL-input" name="homepage" type="text" placeholder="Event Homepage" value={event.homepage} onChange={handleInputChange} />
 
 
                             <p className="font-weight-bold font-size-big">

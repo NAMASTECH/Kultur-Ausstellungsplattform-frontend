@@ -272,7 +272,7 @@ export default function AddEventForm() {
 
   return (
     <section className="add__event">
-      {/* <h2>Event hinzufügen</h2> */}
+      {/* <h2>Event erstellen</h2> */}
       <p>{`Page ${PageNo} of 3`}</p>
       <form id="addEvent-form" onSubmit={handleSubmit}>
         <div

@@ -96,7 +96,8 @@
 
                         .date-start_input,
                         .date-end_input {
-                            width: 87.5px;
+                            width: 120px;
+                            margin-right: 0;
                         }
                     }
 
@@ -137,6 +138,7 @@
                         -moz-border-radius: 20px;
                         -ms-border-radius: 20px;
                         -o-border-radius: 20px;
+
                         &:hover {
                             background-color: $green;
                             color: #000000;
