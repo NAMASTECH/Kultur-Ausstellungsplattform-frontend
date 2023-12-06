@@ -34,7 +34,7 @@ function Header() {
         {/* {isOnline() && <NavLink to="/users">Users</NavLink>} */}
         {!isOnline() && <NavLink to="/login">Anmeldung</NavLink>}
         {isOnline() && <NavLink to="/logout">Abmelden</NavLink>}
-        {!isOnline() && <NavLink to="/kontakt">Kontakt</NavLink>}
+        {/* {!isOnline() && <NavLink to="/kontakt">Kontakt</NavLink>} */}
         {/* {isOnline() && <h3>Hallo, {userData.username}!</h3>} */}
       </nav>
       <Modal
