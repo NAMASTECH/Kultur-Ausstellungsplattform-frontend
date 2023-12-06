@@ -9,7 +9,6 @@ $trans-time: 300ms;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  $width: 100%;
 
   .info_card {
     width: 40%;
@@ -143,7 +142,7 @@ $trans-time: 300ms;
     .bar {
       position: relative;
       display: block;
-      width: $width;
+      width: $inputWidth;
 
       &:before {
         content: "";

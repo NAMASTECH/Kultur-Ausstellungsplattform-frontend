@@ -3,7 +3,6 @@
 $hl-color: $green;
 $muted-color: #000;
 $trans-time: 300ms;
-$width: 400px;
 
 .KontaktForm-container {
   form {
@@ -37,7 +36,7 @@ $width: 400px;
       .bar {
         position: relative;
         display: block;
-        width: $width;
+        width: $inputWidth;
 
         &:before {
           content: "";
@@ -56,7 +55,7 @@ $width: 400px;
         font-size: 18px;
         padding: 10px 10px 10px 5px;
         display: block;
-        width: 400px;
+        width: $inputWidth;
         border-radius: 0;
         border-bottom: 0;
 
@@ -74,7 +73,7 @@ $width: 400px;
         }
 
         &:focus~.bar:before {
-          width: $width;
+          width: $inputWidth;
         }
       }
     }

@@ -3,7 +3,7 @@ $bg-color: #424242;
 $hl-color: $green;
 $muted-color: #000;
 $trans-time: 300ms;
-$width: 400px;
+
 
 .error {
   color: red;
@@ -50,7 +50,7 @@ $width: 400px;
     display: block;
     background-color: black;
     color: $hl-color;
-    width: $width;
+    width: $inputWidth;
     height: 2px;
   }
 
@@ -61,7 +61,7 @@ $width: 400px;
     font-size: 18px;
     padding: 10px 10px 10px 5px;
     display: block;
-    width: $width;
+    width: $inputWidth;
     border: none;
     border-radius: 0;
     border-bottom: 0;
@@ -89,7 +89,7 @@ $width: 400px;
     }
 
     &:focus~.bar:before {
-      width: $width;
+      width: $inputWidth;
     }
   }
 
@@ -111,7 +111,7 @@ $width: 400px;
   .bar {
     position: relative;
     display: block;
-    width: $width;
+    width: $inputWidth;
 
     &:before {
       content: "";
@@ -164,7 +164,7 @@ $width: 400px;
 
 // MEDIA QUERIES // ============================== //
 @media screen and (max-width: 768px) {
-  $width: 200px;
+  $inputWidth: 200px;
 
   .login-form {
     max-width: 355px;
