@@ -281,20 +281,21 @@ export default function EditEvent() {
                                 value={event.description}
                                 onChange={handleInputChange}
                             />
+                            <div className="category-and-eventType-container">
+                                <SelectComponent
+                                    title="Event-Typ"
+                                    values={eventTypes}
+                                    onChange={handleEventTypeChange}
+                                    selected={event.eventType}
+                                />
 
-                            <SelectComponent
-                                title="Event-Typ"
-                                values={eventTypes}
-                                onChange={handleEventTypeChange}
-                                selected={event.eventType}
-                            />
-
-                            <SelectComponent
-                                title="Art des Veranstaltungsorts"
-                                values={venueTypes}
-                                onChange={handleVenueTypeChange}
-                                selected={event.venues[0].venueType}
-                            />
+                                <SelectComponent
+                                    title="Art des Veranstaltungsorts"
+                                    values={venueTypes}
+                                    onChange={handleVenueTypeChange}
+                                    selected={event.venues[0].venueType}
+                                />
+                            </div>
 
                             {event.venues.map((venue, index) => {
                                 return (
