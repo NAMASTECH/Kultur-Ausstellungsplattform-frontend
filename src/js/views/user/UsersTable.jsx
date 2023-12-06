@@ -79,7 +79,7 @@ export default function UsersTable() {
                 console.log('Event updated!', response.data);
 
                 // Beispiel: Navigiere zu einer anderen Seite
-                navigate('/path-to-redirect');
+                navigate('/mydata');
 
             } catch (error) {
                 // Handle den Fehler hier, zeige z.B. eine Fehlermeldung
