@@ -19,6 +19,7 @@ h2 {
         }
 
         input {
+            outline: none;
             // border-radius: 5px;
             width: 100%;
             margin-bottom: 1em;
@@ -27,8 +28,9 @@ h2 {
 
         select {
             width: 100%;
-
+            border-radius: 0;
             margin-bottom: 1em;
+            color: rgba(0, 0, 0, 0.725);
         }
 
         label {
