@@ -1,6 +1,6 @@
 // Hier kommen alle wichtigen Imports rein. Z.B. die eingebauten Hooks von react
 import { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 // Imports von benoetigten Paketen
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -14,7 +14,8 @@ export default function RegisterForm() {
   const [organization, setOrganization] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isConfirmBtnActive, setConfirmBtnActive] = useState(false);
-
+  const navigate = useNavigate();
+  
   // Sideeffect zum Pruefen, ob alle Felder valide sind und man den Confirmbutton aktivieren sollte
   useEffect(() => {
     validateForm();
@@ -38,6 +39,7 @@ export default function RegisterForm() {
         userData
       );
       alert("Sie haben sich erfolgreich registriert ", resp)
+      navigate('/login')
     } catch (error) {
       console.error(error);
     }
