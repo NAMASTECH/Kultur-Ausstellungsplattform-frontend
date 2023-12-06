@@ -33,7 +33,7 @@ export default function LoginForm() {
   }, [username, password]);
 
   useEffect(() => {
-    if (!userData){
+    if (!userData) {
       return;
     }
     if (userData.role == "organizer") {
@@ -41,7 +41,7 @@ export default function LoginForm() {
     } else {
       redirect("/");
     }
-  } , [userData])
+  }, [userData])
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -58,7 +58,7 @@ export default function LoginForm() {
           withCredentials: true,
         }
       );
-        console.log(resp);
+      console.log(resp);
       // Speichere erhaltene Userdaten im globalen UserStore (Context)
       setUserData({
         id: resp.data.id,
@@ -117,7 +117,7 @@ export default function LoginForm() {
       </div>
 
       <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Login</h2>
+        <h2>LOGIN</h2>
         <div className="group">
           <input type="text" required="required" value={username} onChange={handleUsernameChange} autoComplete="off" />
           <span className="highlight"></span>
@@ -139,7 +139,7 @@ export default function LoginForm() {
         <span className="register">Noch kein account?
           <Link to="/register/organizer">Hier registrieren (als Organizer)</Link>
         </span>
-       
+
       </form>
     </>
   );

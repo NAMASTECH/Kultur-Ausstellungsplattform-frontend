@@ -28,11 +28,16 @@ $width: 400px;
 
 .login-form {
   max-width: 500px;
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   justify-content: center;
-
   align-items: center;
+
+  h2 {
+    color: #c0d3dd;
+    font-weight: 500;
+    margin-bottom: 0.3em;
+  }
 
   .group {
     position: relative;
