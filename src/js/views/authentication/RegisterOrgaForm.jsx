@@ -15,7 +15,7 @@ export default function RegisterForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isConfirmBtnActive, setConfirmBtnActive] = useState(false);
   const navigate = useNavigate();
-  
+
   // Sideeffect zum Pruefen, ob alle Felder valide sind und man den Confirmbutton aktivieren sollte
   useEffect(() => {
     validateForm();
@@ -38,8 +38,8 @@ export default function RegisterForm() {
         `${import.meta.env.VITE_API_BASE_URL}/auth/register/organizer`,
         userData
       );
-      alert("Sie haben sich erfolgreich registriert ", resp)
-      navigate('/login')
+      // alert("Sie haben sich erfolgreich registriert ", resp)
+      navigate('/')
     } catch (error) {
       console.error(error);
     }
