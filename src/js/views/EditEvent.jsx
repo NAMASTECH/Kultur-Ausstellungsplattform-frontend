@@ -71,7 +71,7 @@ export default function EditEvent() {
             try {
                 const response = await axios.get(`/api/event/${eventId}`);
 
-                console.log(response.data);
+                // console.log(response.data);
                 setEvent(response.data);
                 setArtists(response.data.artists);
                 setVenueType(response.data.venues[0].venueType);
@@ -115,7 +115,7 @@ export default function EditEvent() {
         };
 
         try {
-            console.log("Request Body before sending: ", inputValues)
+            // console.log("Request Body before sending: ", inputValues)
             const response = await axios.patch(`/api/event/${eventId}`, inputValues, {
                 withCredentials: true
             });
