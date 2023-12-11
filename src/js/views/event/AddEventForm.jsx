@@ -289,6 +289,7 @@ export default function AddEventForm() {
           <div className="category-and-eventType-container">
             <SelectComponent
               title="Kategorie"
+              // selected={eventCategory[0]}
               selected={eventCategory}
               values={eventCategories}
               onChange={handleEventCategoryChange}
