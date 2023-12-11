@@ -89,14 +89,14 @@ export default function EventDetails() {
                 <article className="event-details__article" >
                     <div className="event-details-content" >
 
-
-                        {event.venues.map((venue) => {
+                        {/* TO DO: Später Organizer anzeigen (vor allem für Musik-Kategorie) */}
+                        {/* {event.venues.map((venue) => {
                             return (
                                 <p id="venue" key={venue._id}>
                                     {venue.venueName}
                                 </p>
                             )
-                        })}
+                        })} */}
 
 
                         <div className="date-and-time-container">
