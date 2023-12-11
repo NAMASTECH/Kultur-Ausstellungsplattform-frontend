@@ -40,8 +40,6 @@ export default function EventCard({
     }).join(', ');
   };
 
-  console.log(event);
-
   return (
     <div key={_id} onClick={isActive ? handleClick : () => { }} className={!isActive ? 'isCanceled gallery-card' : 'gallery-card'}>
       <div className="gallery-card-image-container">
