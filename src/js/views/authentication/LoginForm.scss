@@ -34,7 +34,7 @@ $trans-time: 300ms;
   align-items: center;
 
   h2 {
-    color: #c0d3dd;
+    color: $text_color_light;
     font-weight: 500;
     margin-bottom: 0.3em;
   }
@@ -152,11 +152,13 @@ $trans-time: 300ms;
   .register {
     color: $hl-color;
     font-size: 12px;
-    font-weight: bold;
+    font-weight: 500;
     text-align: center;
     margin: 0 0 1em 0;
 
     a {
+
+      color: #c0d3dd;
       margin-left: 1em;
       text-decoration: none;
     }
