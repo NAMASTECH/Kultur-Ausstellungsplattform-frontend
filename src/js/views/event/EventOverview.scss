@@ -4,19 +4,19 @@
   position: absolute;
   right: 3.8vw;
   top: 14rem;
-    color: black;
-    font-family: $main_font;
-    font-size: 1.1em;
-    padding: 5px 15px;
-    background-color: $bg_color;
-    border: 1px solid black;
-    border-radius: 8px;
+  color: black;
+  font-family: $main_font;
+  font-size: 1.1em;
+  padding: 5px 15px;
+  background-color: $bg_color;
+  border: 1px solid black;
+  border-radius: 8px;
 }
 
 .btn_filter:hover {
-    background-color: $second_color;
-    border: 1px solid $second_color;
-    color: $nav_font_hover;
+  background-color: $second_color;
+  border: 1px solid $second_color;
+  color: $nav_font_hover;
 }
 
 .gallery {
@@ -35,9 +35,10 @@
 
 .MuiPagination-ul {
   justify-content: center;
-  
+
 }
-@media screen and (max-width: 950px) {
+
+@media screen and (max-width: 1025px) {
   .btn_filter {
     position: relative;
     left: 1.1rem;
@@ -46,7 +47,7 @@
   }
 }
 
-  @media screen and (max-width: 950px) {
+@media screen and (max-width: 950px) {
   .gallery {
     justify-content: start;
 
