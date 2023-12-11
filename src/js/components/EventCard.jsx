@@ -40,6 +40,8 @@ export default function EventCard({
     }).join(', ');
   };
 
+  console.log(event);
+
   return (
     <div key={_id} onClick={isActive ? handleClick : () => { }} className={!isActive ? 'isCanceled gallery-card' : 'gallery-card'}>
       <div className="gallery-card-image-container">
@@ -56,7 +58,15 @@ export default function EventCard({
           {artists.length > 0 && formatArtistNames(artists)}
         </div>
         <div className="eventTitle">{eventTitle}</div>
-        <div className="organizer">{organizer[0] && organizer[0].organization}</div>
+
+        {/* <div className="organizer">{venueName} {organizer[0] && organizer[0].organization}</div> */}
+        {venues.map((venue) => {
+          return (
+            <p id="venue" key={venue._id}>
+              {venue.venueName}
+            </p>
+          )
+        })}
       </div>
     </div>
   );
