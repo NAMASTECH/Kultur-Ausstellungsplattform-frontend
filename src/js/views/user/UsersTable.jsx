@@ -88,14 +88,14 @@ export default function UsersTable() {
                 console.error('Error updating event:', error.response.data);
             }
         }
-        
+
     };
 
     const handleOpenDialog = (e) => {
         setOpen(true);
         setValue(e.target.value);
         if (e.target.value.split("T")[1] === 'true') {
-        setConfirm(false);
+            setConfirm(false);
         } else {
             setConfirm(true);
         }
@@ -116,7 +116,14 @@ export default function UsersTable() {
                 <td>{data.dateEnd.split("T")[0]}</td>
                 <td>{data.venues.map(at => <span key={at._id}>{at.venueName}</span>)}</td>
                 <td className="button"><button className="disable" value={data._id + "T" + data.isActive} onClick={handleOpenDialog} >{!data.isActive ? 'Aktivire' : 'Deaktivieren'}</button></td>
-                <td className="button"><button className="update" onClick={() => handleEditClick(data._id)}>Bearbeiten <br /><span>Bearbeitet {data.updatedAt.split("T")[0]}</span></button></td>
+                <td className="button">
+                    <button className="update" onClick={() => handleEditClick(data._id)}>
+                        Bearbeiten
+                        <br />
+                        {/* <span>Bearbeitet {data.updatedAt.split("T")[0]}</span> */}
+                    </button>
+                </td>
+
             </tr>
         );
     });
