@@ -133,8 +133,11 @@ export default function UsersTable() {
             < Dialog open={open} >
                 <div className="dialog confirm__element">
                     <h2>Event wurde erfolgreich {confirm ? 'aktiviert' : 'deaktiviert'}!</h2>
-                    <button onClick={handleStateEvent} >{confirm ? 'Aktiviert' : 'Deaktiviert'}</button>
-                    <button onClick={handleCloseDialog} >Zurück</button>
+                    {/* <p>Das Event wurde erfolgreich {confirm ? 'aktiviert' : 'deaktiviert'}.</p> */}
+                    <div>
+                        <button onClick={handleStateEvent} >{confirm ? 'Aktiviert' : 'Deaktiviert'}</button>
+                        <button onClick={handleCloseDialog} >Zurück</button>
+                    </div>
                 </div>
             </Dialog>
             {
