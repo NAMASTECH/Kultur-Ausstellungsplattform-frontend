@@ -80,10 +80,23 @@ $trans-time: 300ms;
     }
 
     .input {
+      width: 100%;
+      gap: 1em;
+      justify-content: space-between;
       display: flex;
       flex-direction: row;
       margin-left: 1em;
+
+      div.inputs-column {
+        width: 100%;
+
+        input {
+          width: 100%
+        }
+      }
     }
+
+
 
     .group {
       position: relative;
@@ -96,7 +109,7 @@ $trans-time: 300ms;
       display: block;
       background-color: #c0d3dd;
       color: $hl-color;
-      width: 93%;
+      width: 100%;
       height: 1px;
     }
 
@@ -120,7 +133,7 @@ $trans-time: 300ms;
       }
 
       &:focus~.bar:before {
-        width: 93%;
+        width: 100%;
       }
     }
 
@@ -142,7 +155,7 @@ $trans-time: 300ms;
     .bar {
       position: relative;
       display: block;
-      width: $inputWidth;
+      width: 100%;
 
       &:before {
         content: "";
