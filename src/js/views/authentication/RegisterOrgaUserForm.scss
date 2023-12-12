@@ -85,10 +85,11 @@ $trans-time: 300ms;
       justify-content: space-between;
       display: flex;
       flex-direction: row;
-      margin-left: 1em;
+      margin: 1em 0;
 
       div.inputs-column {
         width: 100%;
+        margin: 0 1em;
 
         input {
           width: 100%
@@ -100,7 +101,8 @@ $trans-time: 300ms;
 
     .group {
       position: relative;
-      margin: 1.7em 1em;
+      // margin: 1.7em 1em;
+      margin: 1.7em auto;
       align-items: center;
     }
 
