@@ -7,6 +7,7 @@ import axios from "axios";
 import { EventContext } from "../../context/EventContext.jsx";
 import SelectComponent from "../../components/SelectComponent.jsx";
 import ArtistInputs from "../../components/ArtistInputs/ArtistInputs.jsx";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs.jsx"
 import "./AddEventForm.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -273,8 +274,10 @@ export default function AddEventForm() {
   return (
     <section className="add__event">
       {/* <h2>Event erstellen</h2> */}
-      <p>{`Page ${PageNo} of 3`}</p>
+      {/* <p>{`Page ${PageNo} of 3`}</p> */}
       <form id="addEvent-form" onSubmit={handleSubmit}>
+        <Breadcrumbs pageNo={PageNo} setPageNo={setPageNo} />
+
         <div
           className="page_add_form"
           style={{ display: PageNo == 1 ? "block" : "none" }}
@@ -376,7 +379,6 @@ export default function AddEventForm() {
             onChange={handleDescriptionChange}
           ></textarea>
         </div>
-
         <div
           className="page_add_form"
           style={{ display: PageNo == 2 ? "block" : "none" }}
@@ -486,6 +488,6 @@ export default function AddEventForm() {
           </button>
         </div>
       </form>
-    </section>
+    </section >
   );
 }

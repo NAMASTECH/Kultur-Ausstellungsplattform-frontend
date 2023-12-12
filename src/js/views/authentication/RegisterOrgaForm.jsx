@@ -92,7 +92,7 @@ export default function RegisterForm() {
         <h2>REGISTRIERUNG</h2>
 
         <div className="input">
-          <div>
+          <div className="inputs-column">
             <div className="group">
               <input type="text" required onChange={handleFirstnameChange} autoComplete="new-password" />
               <span className="highlight"></span>
@@ -110,7 +110,7 @@ export default function RegisterForm() {
               <label>Password</label></div>
           </div>
 
-          <div>
+          <div className="inputs-column">
             <div className="group">
               <input type="text" required onChange={handleLastnameChange} autoComplete="new-password" />
               <span className="highlight"></span>

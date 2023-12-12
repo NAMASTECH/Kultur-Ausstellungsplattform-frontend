@@ -206,7 +206,7 @@ export default function EventDetails() {
 
                         <div id="event-homepage">
                             {/* <span className="font-weight-bold">Event-Homepage:</span> */}
-                            <a href={formattedEventHomepage} target="_self" rel="noopener noreferrer">
+                            <a href={formattedEventHomepage} target="_blank" rel="noopener noreferrer">
                                 {/* {event.homepage} */}
                                 Event Homepage
                             </a>
