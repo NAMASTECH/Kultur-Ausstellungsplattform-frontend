@@ -17,8 +17,8 @@ html {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: #000000cf;
-  color: #ffffff;
+  background-color: $bg_color;
+  // color: $text_color_light;
   font-family: $main_font;
   font-weight: 400;
   font-size: 1.5em;
@@ -68,6 +68,22 @@ html {
 
   html {
     background-color: $bg_dark_color;
+  }
+
+  .confirm__element{
+    background-color: $bg_dark_color;
+
+    h2 {
+      color: $text_dark_color;
+    }
+
+    div{
+      button {
+        color: $text_dark_color;
+        background-color: $bg_dark_button;
+        border: 1px solid $text_dark_border_color;
+      }
+    }
   }
 
 
