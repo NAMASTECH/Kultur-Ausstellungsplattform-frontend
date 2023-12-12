@@ -32,7 +32,7 @@ export default function EventCard({
       return "Keine Künstler verfügbar";
     }
     if (artists.length > 3) {
-      return "Mehrere Künstler";
+      return "MEHRERE KÜNSTLER";
     }
     return artists.map(artist => {
       // Check if artistName is defined and a string before converting to uppercase
