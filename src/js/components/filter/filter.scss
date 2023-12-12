@@ -3,13 +3,12 @@
 .modal_filter {
   display: flex;
   flex-direction: column;
-  // min-width: 21%;
-  width: 22%;
+  width: 25rem;
   height: 100%;
   top: 0;
   right: 0;
   background-color: $bg_color;
-  padding: 1% 2.5% 1%;
+  padding: 1rem 2rem 1rem;
 
   .close {
     width: 35px;
@@ -119,13 +118,19 @@
   z-index: 9999;
 }
 
-@media screen and (max-width: 768px) {
-  .modal_filter {
-    width: 100%;
+// @media screen and (max-width: 768px) {
+//   .modal_filter {
+//     width: 100%;
 
-    .close {
-      top: 1em;
-      right: 1em;
-    }
+//     .close {
+//       top: 1em;
+//       right: 1em;
+//     }
+//   }
+// }
+
+@media screen and (max-width: 500px) {
+  .MuiBox-root {
+    width: 100%;
   }
 }
