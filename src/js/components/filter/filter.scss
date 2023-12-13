@@ -10,6 +10,10 @@
   background-color: $bg_color;
   padding: 1rem 2rem 1rem;
 
+  h2 {
+    margin-top: 10px;
+  }
+
   .close {
     width: 35px;
     height: 35px;
@@ -50,10 +54,11 @@
     }
   }
 
-  label {
+ label {
     font-size: 1em;
     font-weight: 600;
-    padding: 6% 0 2% 0;
+    padding: 6% 0 2% 0;   
+    
   }
 
   select {
@@ -64,13 +69,14 @@
     background-color: $bg_color;
     color: black;
     padding: 0 10px;
-    margin-bottom: 10px;
+    margin: 10px 0 20px 0; 
   }
+
 
   .react-datepicker {
     width: 100%;
-    margin-top: 2%;
     background-color: $bg_color;
+    margin-bottom: 30px;
 
     button {
       span::before {

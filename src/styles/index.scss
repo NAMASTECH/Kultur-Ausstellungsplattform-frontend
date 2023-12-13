@@ -17,18 +17,20 @@ html {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: $bg_color;
+  background-color: $bg_color;  
   // color: $text_color_light;
   font-family: $main_font;
   font-weight: 400;
-  font-size: 1.5em;
+  font-size: 1em;  
   text-align: center;
   padding: 0 1em;
 
   h2 {
     font-size: 2em;
     font-weight: 400;
+    margin-top: 2rem;
     margin-bottom: 1em;
+    padding: 1rem 1rem 0 1rem;
   }
 
   div{
@@ -39,17 +41,25 @@ html {
   margin-bottom: 5%;
   margin-top: 5%;
   button {
-    border: 1px solid #c91818;
-    margin: 0.2em;
-    line-height: 1em;
-    width: 8em;
-    height: 2.7em;
-    
+    border: 1px solid #313131;
+    border-radius: 7px;
+    margin-top: -2rem;
+    margin-bottom: 1rem;
+    // line-height: 1em;
+    // width: 8em;
+    // height: 2.7em;
+    background-color: $bg-color;
     justify-content: space-between;
     align-items: center;
-    
+    font-size: 1rem;
+    padding: 0.5rem 1.1rem;
+    transition: 0.3s;
 
-  }
+    &:hover {
+      background-color: $second_color;
+      color: $nav_font_hover;
+    }
+  }  
 }
 }
 
@@ -72,9 +82,9 @@ html {
 
   .confirm__element{
     background-color: $bg_dark_color;
-
+    
     h2 {
-      color: $text_dark_color;
+      color: $text_dark_color;      
     }
 
     div{

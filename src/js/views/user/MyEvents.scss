@@ -1,7 +1,7 @@
 @import "../../../styles/variables";
 
 .myEvents {
-     height: 100%;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -19,16 +19,18 @@
    
     table {
       border-collapse: collapse;
-      width: 90%;
+      width: 92%;
       margin: 0 auto;
       border: none;
   
       thead {
-        tr {
+        tr {          
           th {
             background-color: $second_color;
             color: $nav_font_hover;
             text-align: left;
+            padding: 6px 8px;
+            font-weight: 500;
           }
         }
       }
@@ -41,11 +43,21 @@
   
             .update {
               border: 1px solid $second_color;
+              border-radius: 7px;
+              background-color: $bg-color;
               margin: 0.2em;
               line-height: 1em;
-              width: 8em;
-              height: 2.7em;
+              // width: 8em;
+              // height: 2.7em;
+              padding: 9px 15px;
               align-self: flex-start;
+              font-size: 0.9em;
+              transition: 0.3s;
+
+              &:hover {
+                background-color: $second_color;
+                color: $nav_font_hover;
+              }
   
               span {
                 display: flex;
@@ -56,13 +68,23 @@
   
             .disable {
               border: 1px solid $second_color;
+              border-radius: 7px;
+              background-color: $bg-color;
               margin: 0.2em;
               line-height: 1em;
-              width: 8em;
-              height: 2.7em;
+              // width: 8em;
+              // height: 2.7em;
+              padding: 9px 12px;
               display: flex;
               justify-content: center;
               align-items: center;
+              font-size: 0.9em;
+              transition: 0.3s;
+
+              &:hover {
+                background-color: $second_color;
+                color: $nav_font_hover;
+              }
             }
           }
   
