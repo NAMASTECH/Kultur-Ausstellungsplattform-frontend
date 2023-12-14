@@ -61,7 +61,7 @@ export default function EventCard({
         {venues.map((venue) => {
           return (
             <p id="venue" key={venue._id}>
-              {venue.venueName}
+              {venue.venueName.toString().includes(venue.venueType) ? `${venue.venueName}` : `${venue.venueType} ${venue.venueName}` }
             </p>
           )
         })}

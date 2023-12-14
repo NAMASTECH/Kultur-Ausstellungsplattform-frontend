@@ -173,7 +173,7 @@ export default function EventDetails() {
                                     <div id="venue-info" key={venue._id}>
                                         <p id="venue-name" >
                                             {/* <span className="font-weight-bold">Ort:</span> */}
-                                            {venue.venueName}
+                                            {venue.venueName.toString().includes(venue.venueType) ? `${venue.venueName}` : `${venue.venueType} ${venue.venueName}` }
                                         </p>
 
                                         {/* <p id="venue-type" >
