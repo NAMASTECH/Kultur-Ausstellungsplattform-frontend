@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from "axios";
+import api from "../../services/api";
 import "./EventDetails.scss"
 
 
@@ -34,7 +35,7 @@ export default function EventDetails() {
     useEffect(() => {
         const fetchEventDetails = async () => {
             try {
-                const response = await axios.get(`/api/event/${eventId}`);
+                const response = await api.get(`/api/event/${eventId}`);
                 setEvent(response.data);
             } catch (error) {
                 console.error('Error fetching event details:', error);

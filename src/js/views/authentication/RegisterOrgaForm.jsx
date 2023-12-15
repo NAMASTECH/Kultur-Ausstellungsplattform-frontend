@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // Imports von benoetigten Paketen
 import axios from "axios";
+import api from "../../services/api";
 import { Link } from "react-router-dom";
 import "./RegisterOrgaUserForm.scss";
 
@@ -34,8 +35,8 @@ export default function RegisterForm() {
 
 
     try {
-      const resp = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/auth/register/organizer`,
+      const resp = await api.post(
+        `/auth/register/organizer`,
         userData
       );
       // alert("Sie haben sich erfolgreich registriert ", resp)

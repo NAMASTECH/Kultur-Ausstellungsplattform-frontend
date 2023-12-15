@@ -1,4 +1,5 @@
 import axios from "axios";
+import api from "../../services/api";
 import { useEffect, useState } from "react";
 import EventCard from "../../components/EventCard.jsx";
 import PaginationComponent from "../../components/PaginationComponent";
@@ -25,7 +26,7 @@ export default function EventOverview() {
   const [limit, setLimit] = useState(9);
 
   useEffect(() => {
-    axios
+    api
       .get(`/api/events?page=${currentPage}&limit=${limit}`, {
         withCredentials: true,
         params: {

@@ -1,5 +1,6 @@
 // EditEvent.jsx
 import axios from 'axios';
+import api from '../services/api';
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -69,9 +70,7 @@ export default function EditEvent() {
     useEffect(() => {
         const fetchEventDetails = async () => {
             try {
-                const response = await axios.get(`/api/event/${eventId}`);
-
-                // console.log(response.data);
+                const response = await api.get(`/api/event/${eventId}`);
                 setEvent(response.data);
                 setArtists(response.data.artists);
                 setVenueType(response.data.venues[0].venueType);
@@ -116,7 +115,7 @@ export default function EditEvent() {
 
         try {
             // console.log("Request Body before sending: ", inputValues)
-            const response = await axios.patch(`/api/event/${eventId}`, inputValues, {
+            const response = await api.patch(`/api/event/${eventId}`, inputValues, {
                 withCredentials: true
             });
             navigate(`/mydata`)
@@ -128,7 +127,7 @@ export default function EditEvent() {
     const handleDeleteEvent = async () => {
         if (window.confirm('Sind Sie sicher, dass sie dieses Event löschen möchten?')) {
             try {
-                const response = await axios.put(`/api/events/deactivate/${eventId}`, {
+                const response = await api.put(`/api/events/deactivate/${eventId}`, {
                     withCredentials: true
                 });
                 // Handle the response, for example, redirect to another page or update the state

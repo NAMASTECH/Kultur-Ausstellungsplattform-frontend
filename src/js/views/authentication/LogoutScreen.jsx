@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import axios from "axios";
+import api from "../../services/api";
 import "./LogoutScreen.scss"
 
 
@@ -9,7 +10,7 @@ export default function LogoutScreen() {
 
     useEffect(() => {
 
-        axios.get(`${import.meta.env.VITE_API_BASE_URL}auth/logout`, {
+        api.get(`/auth/logout`, {
             withCredentials: true
         })
             .then(resp => {

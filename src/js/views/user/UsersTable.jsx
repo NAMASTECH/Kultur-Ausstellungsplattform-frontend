@@ -1,4 +1,5 @@
 import axios from "axios";
+import api from "../../services/api";
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../hooks/useAuthStore";
@@ -22,7 +23,7 @@ export default function UsersTable() {
     const { userData } = useAuthStore();
 
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/events/organizer/${userData.organizerId}`, {
+        api.get(`/api/events/organizer/${userData.organizerId}`, {
             withCredentials: true,
             params: {
                 page,
@@ -47,25 +48,6 @@ export default function UsersTable() {
     const handleEditClick = (eventId) => {
         navigate(`/event/edit/${eventId}`);
     };
-
-    // const handleStateEvent = async (e) => {
-    //     const id = e.target.value.split("T")[0];
-
-    //     const message = e.target.value.split("T")[1] == 'true' ? 'Deaktivieren' : 'Aktivire';
-    //     if (window.confirm(`Sind Sie sicher, dass sie dieses Event ${message} möchten?`)) {
-    //         try {
-    //             const response = await axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/events/deactivate/${id}`, {
-    //                 withCredentials: true
-    //             });
-    //             // Handle the response, for example, redirect to another page or update the state
-    //             console.log('Event updated!', response.data);
-    //         } catch (error) {
-    //             // Handle the error, for example, show an error message
-    //             console.error('Error deleting event:', error.response.data);
-    //         }
-    //     }
-    // };
-
     const handleStateEvent = async (e) => {
         const id = value.split("T")[0];
         const isActive = value.split("T")[1] === 'true';
@@ -74,7 +56,7 @@ export default function UsersTable() {
         if (value !== '') {
             try {
                 // Führe die Aktualisierung durch
-                const response = await axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/events/deactivate/${id}`, {
+                const response = await api.put(`/api/events/deactivate/${id}`, {
                     withCredentials: true
                 });
 

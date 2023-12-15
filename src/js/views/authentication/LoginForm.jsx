@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./LoginForm.scss"
 // Imports von benoetigten Paketen
 import axios from "axios";
+import api from "../../services/api";
 
 
 
@@ -51,8 +52,8 @@ export default function LoginForm() {
       : { username: username, password };
 
     try {
-      const resp = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/auth/login`,
+      const resp = await api.post(
+        `/auth/login`,
         reqBody,
         {
           withCredentials: true,

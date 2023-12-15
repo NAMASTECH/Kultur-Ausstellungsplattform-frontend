@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import api from "../../services/api";
 import { useParams } from "react-router-dom";
 import { useAuthStore } from "../../hooks/useAuthStore";
 
@@ -11,7 +12,7 @@ export default function UserInfo() {
 
     const handleGetInfoBtnClick = async evt => {
         try {
-            const resp = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/users/${userId}`, {
+            const resp = await api.get(`/users/${userId}`, {
                 withCredentials: true
             });
             console.log(resp.data);
@@ -24,7 +25,7 @@ export default function UserInfo() {
             // Unauthorized (Token nicht da oder abgelaufen)
             if (error.response.status === 401) {
                 try {
-                    await axios.get(`${import.meta.env.VITE_API_BASE_URL}/auth/logout`, {
+                    await api.get(`/auth/logout`, {
                         withCredentials: true
                     });
                     clearUserData();

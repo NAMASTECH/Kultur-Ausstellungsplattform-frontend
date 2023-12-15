@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 
 // Imports von benoetigten Paketen
 import axios from "axios";
+import api from "../../services/api";
 
 import { EventContext } from "../../context/EventContext.jsx";
 import SelectComponent from "../../components/SelectComponent.jsx";
@@ -118,8 +119,8 @@ export default function AddEventForm() {
 
     //path erstellen
     try {
-      const resp = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/api/event`,
+      const resp = await api.post(
+        `/api/event`,
         userData,
         {
           withCredentials: true,
