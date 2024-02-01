@@ -84,12 +84,12 @@
 | UserInformation          | This component shows more details about an user.                                               |
 | EditEventForm            | This component is a form to edit an event in the database.                                     |
 
-## Timeframes
+## Timeframes for 5 people team
 
 | Component                                                                                     | Priority | Estimated Time | Time Invested | Actual Time |
 | --------------------------------------------------------------------------------------------- | :------: | :------------: | :-----------: | :---------: |
-| Create a backend with Node.js and Express.js                                                  | H        | 3h             | 3h            | 3h          |
-| Create a database with MongoDB                                                                | H        | 3h             | 3h            | 3h          |
+| Create a backend with Node.js and Express.js                                                  | H        | 160h           | 160h          | 160h        |
+| Create a database with MongoDB                                                                | H        | 4h             | 3h            | 3h          |
 | Create a frontend with React                                                                  | H        | 3h             | 3h            | 3h          |
 | Create a EventOverview page with all the events in the database                               | H        | 3h             | 3h            | 3h          |
 | Create a RegisterForm page to register to the platform                                        | H        | 3h             | 3h            | 3h          |
@@ -99,10 +99,14 @@
 | Create a AddEventForm page to add an event to the database                                    | H        | 3h             | 3h            | 3h          |
 | Create a ContactForm page to contact the platform                                             | H        | 3h             | 3h            | 3h          |
 | Create a EventDetails page to show more details about an event                                | H        | 3h             | 3h            | 3h          |
-| Create a EventFilter page to filter for an date range or an event type or event location      | H        | 3h             | 3h            | 3h          |
-| Create a UserTable page to show all the users in the database                                 | H        | 3h             | 3h            | 3h          |
-| Create a UserInformation page to show more details about an user                              | H        | 3h             | 3h            | 3h          |
+| Create a EventFilter page to filter for an date range or an event type or event location      | H        | 30h            | 30h           | 30h         |
+| Create a UserTable page to show all the users in the database                                 | H        | 2h             | 2h            | 2h          |
+| Create a UserInformation page to show more details about an user                              | H        | 0h             | 0h            | 0h          |
+| Create a SCSS style for the frontend                                                          | H        | 3h             | 3h            | 3h          |
 | Create a EditEventForm page to edit an event in the database                                  | H        | 3h             | 3h            | 3h          |
+| Requerments engineering                                                                       | H        | 3h             | 3h            | 3h          |
+| Testig and bug fixing                                                                         | H        | 3h             | 3h            | 3h          |
+| Total work hours                                                                              | H        | 550h           | 550h          | 550h        |
 
 ## .env sample
 
